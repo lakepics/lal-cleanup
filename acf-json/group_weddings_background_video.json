@@ -1,0 +1,136 @@
+{
+  "key": "group_background_video",
+  "title": "NOT_USED - Background Video Section",
+  "fields": [
+    {
+      "key": "field_background_video_url",
+      "label": "Background Video URL",
+      "name": "background_video_url",
+      "type": "url",
+      "instructions": "Paste the Wistia or supported video URL for the background video script.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "100",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "https://fast.wistia.com/embed/medias/4e2kjpftga.jsonp",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_background_video_library_url",
+      "label": "Background Video Library URL",
+      "name": "background_video_library_url",
+      "type": "url",
+      "instructions": "Paste the Wistia library script URL.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "100",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "https://fast.wistia.com/assets/external/E-v1.js",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_background_video_h1",
+      "label": "Background Video H1",
+      "name": "background_video_h1",
+      "type": "text",
+      "instructions": "The main heading text shown over the background video.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "100",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "Get Away & Get Inspired",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_background_video_h2",
+      "label": "Background Video H2",
+      "name": "background_video_h2",
+      "type": "wysiwyg",
+      "instructions": "The subheading shown below the main heading.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "100",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "tabs": "all",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "delay": 0
+    },
+    {
+      "key": "field_background_video_button_label",
+      "label": "Button Label",
+      "name": "background_video_button_label",
+      "type": "text",
+      "instructions": "Text shown on the hero button.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "100",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "Book Your Stay",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_background_video_button_url",
+      "label": "Button URL",
+      "name": "background_video_button_url",
+      "type": "url",
+      "instructions": "URL used when the hero button is clicked.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "100",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "https://reservations.travelclick.com/112652#/guestsandrooms",
+      "prepend": "",
+      "append": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_template",
+        "operator": "==",
+        "value": "template-weddings-2022.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "seamless",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Fields to edit the wedding background video section content."
+}

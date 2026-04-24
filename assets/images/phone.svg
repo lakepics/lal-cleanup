@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="20px" viewBox="0 0 21 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>phone</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Monday_due" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-weight="normal" font-family="FontAwesome" letter-spacing="0.400000006" font-size="25">
+        <g id="1--Homepage" transform="translate(-437.000000, -2321.000000)" fill="#FFFFFF">
+            <g id="footer" transform="translate(0.000000, 2230.000000)">
+                <g id="top_footer" transform="translate(234.000000, 46.000000)">
+                    <g id="contact-information" transform="translate(200.666667, 0.000000)">
+                        <g id="contact-Information" transform="translate(1.000000, 35.000000)">
+                            <g id="phone">
+                                <text>
+                                    <tspan x="2" y="30"></tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

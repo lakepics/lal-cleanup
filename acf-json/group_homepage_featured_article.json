@@ -1,0 +1,512 @@
+{
+    "key": "group_homepage_featured_article",
+    "title": "Homepage Featured Article",
+    "fields": [
+        {
+            "key": "field_home_fa_tab_content",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 1
+        },
+        {
+            "key": "field_home_fa_article",
+            "label": "Featured Article",
+            "name": "homepage_featured_article",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Choose an article to feature here. Leave blank and the component will not render.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "articles"
+            ],
+            "post_status": "publish",
+            "taxonomy": "",
+            "return_format": "object",
+            "multiple": 0,
+            "allow_null": 1,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "bidirectional": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_home_fa_eyebrow",
+            "label": "Eyebrow",
+            "name": "homepage_featured_article_eyebrow",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional small label above the title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "From the Journal",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "From the Journal",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_home_fa_button_text",
+            "label": "Button Text",
+            "name": "homepage_featured_article_button_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Read More",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Read More",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_home_fa_button_style",
+            "label": "Button Style",
+            "name": "homepage_featured_article_button_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "primary": "Primary",
+                "secondary": "Secondary",
+                "brown": "Brown",
+                "light": "Light",
+                "outline": "Outline",
+                "outline-dark": "Outline Dark",
+                "outline-gold": "Outline Gold"
+            },
+            "default_value": "outline-dark",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_home_fa_tab_layout",
+            "label": "Layout Specific Styles",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_home_fa_image_position",
+            "label": "Image Position",
+            "name": "homepage_featured_article_image_position",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Choose whether the image appears on the left or right.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "Image Left / Text Right",
+                "right": "Image Right / Text Left"
+            },
+            "default_value": "left",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_home_fa_heading_font",
+            "label": "Title Font Face",
+            "name": "homepage_featured_article_heading_font_family",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "haarlem": "Haarlem",
+                "freight-big-pro": "Freight Big Pro"
+            },
+            "default_value": "haarlem",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_home_fa_heading_weight",
+            "label": "Title Font Weight",
+            "name": "homepage_featured_article_heading_font_weight",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "300": "Light",
+                "400": "Regular",
+                "500": "Medium",
+                "600": "Semibold",
+                "700": "Bold"
+            },
+            "default_value": "300",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_home_fa_tab_section",
+            "label": "Section Styles",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_home_fa_background",
+            "label": "Section Background",
+            "name": "homepage_featured_article_background_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#ffffff",
+            "enable_opacity": 1,
+            "return_format": "string"
+        },
+        {
+            "key": "field_home_fa_panel_background",
+            "label": "Content Panel Background",
+            "name": "homepage_featured_article_panel_background_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#f6f3ed",
+            "enable_opacity": 1,
+            "return_format": "string"
+        },
+        {
+            "key": "field_home_fa_eyebrow_color",
+            "label": "Eyebrow Color",
+            "name": "homepage_featured_article_eyebrow_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#946E29",
+            "enable_opacity": 1,
+            "return_format": "string"
+        },
+        {
+            "key": "field_home_fa_title_color",
+            "label": "Title Color",
+            "name": "homepage_featured_article_title_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#51534a",
+            "enable_opacity": 1,
+            "return_format": "string"
+        },
+        {
+            "key": "field_home_fa_body_color",
+            "label": "Copy Color",
+            "name": "homepage_featured_article_body_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#51534a",
+            "enable_opacity": 1,
+            "return_format": "string"
+        },
+        {
+            "key": "field_home_fa_image_scrollwork_color",
+            "label": "Image Scrollwork Color",
+            "name": "homepage_featured_article_image_scrollwork_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Controls the scrollwork color on the image side of the seam.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#ffffff",
+            "enable_opacity": 1,
+            "return_format": "string"
+        },
+        {
+            "key": "field_home_fa_panel_scrollwork_color",
+            "label": "Panel Scrollwork Color",
+            "name": "homepage_featured_article_panel_scrollwork_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "Controls the scrollwork color on the content panel side of the seam.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#946E29",
+            "enable_opacity": 1,
+            "return_format": "string"
+        },
+        {
+            "key": "field_home_fa_rollover_toggle",
+            "label": "Enable Rollover Effect",
+            "name": "homepage_featured_article_enable_rollover_effect",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Adds the homepage-style lift and drop shadow effect to the featured article block.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            },
+            "message": "Use homepage-style hover shadow",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui_on_text": "On",
+            "ui_off_text": "Off",
+            "ui": 1
+        },
+        {
+            "key": "field_home_fa_keyline_position",
+            "label": "Section Keyline",
+            "name": "homepage_featured_article_keyline_position",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Optional 1px divider line for the top or bottom of the section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "": "None",
+                "top": "Top",
+                "bottom": "Bottom"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_home_fa_keyline_color",
+            "label": "Keyline Color",
+            "name": "homepage_featured_article_keyline_color",
+            "aria-label": "",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#51534a",
+            "enable_opacity": 1,
+            "return_format": "string"
+        },
+        {
+            "key": "field_home_fa_padding_top",
+            "label": "Padding Top",
+            "name": "homepage_featured_article_padding_top",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "60px",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "60px",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_home_fa_padding_bottom",
+            "label": "Padding Bottom",
+            "name": "homepage_featured_article_padding_bottom",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "60px",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "60px",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-landing-page.php"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Optional featured article block for the homepage landing page template.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1776727600
+}

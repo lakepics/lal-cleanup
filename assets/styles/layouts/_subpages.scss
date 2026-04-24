@@ -1,0 +1,835 @@
+/* ========     Copy Bullets variation    ======== */
+
+.copy-bullets {
+    margin-bottom: 30px;
+    .container {
+        .row {
+            .col-md-12 {
+                padding: 0px;
+                .row {
+                    .col-md-8 {
+                        padding-left: 0px;
+                        .copy-div {
+                            margin-right: 30px;
+                            .copy-paragraph {
+                                margin: 0px;
+                            }
+                            p {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .col-md-4 {
+                        padding: 0px;
+                        .top-right-title {
+                            width: 100%;
+                            letter-spacing: .01em;
+                            color: $main-brown;
+                            margin: 0px 0px 10px 0px;
+                            margin-left: 0px;
+                        }
+                        .bullet-list {
+                            li {
+                                list-style-type: disc;
+                                list-style-position: outside;
+                                list-style-image: none;
+                                padding-bottom: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* ========     Grid Main Nav     ======== */
+
+.grid-main-nav {
+    margin-bottom: 50px;
+    .container {
+        padding: 0px;
+        .col-md-12 {
+            .row {
+                .col-md-6 {
+                    padding: 0;
+                    #box {
+                        max-width: 585px;
+                        height: 330px;
+                        box-shadow: inset 1px 1px 40px 0 rgba(0, 0, 0, .45);
+                        margin: 0 auto;
+                        background-position: center;
+                        background-size: cover;
+                        overflow: hidden;
+                        border-bottom: 2px solid #fff;
+                        border-left: 2px solid #fff;
+                        &:hover {
+                            #overlay {
+                                opacity: 1;
+                                width: 100%;
+                                height: 100%;
+                            }
+                            .overlay-box {
+                                display: none;
+
+                            }
+                        }
+                        .overlay-title {
+font-size: 2.2em;
+    padding: 10px 0;
+    color: #fff;
+    letter-spacing: .05em;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1;
+    display: table-cell;
+    font-family: Proxima Nova Regular,Helvetica Neue,Helvetia,Arial,sans-serif;
+    vertical-align: middle;
+                        }
+                        #overlay {
+                            background: rgba(99, 131, 168, .80);
+                            text-align: center;
+                            padding: 150px 0px 150px 0px;
+                            opacity: 0;
+                            max-width: 585px;
+                            height: 330px;
+                            -webkit-transition: opacity .25s ease;
+                            #plus {
+                                font-size: 20px;
+                                color: white;
+                                text-align: center;
+                                padding: 20px;
+                                letter-spacing: 0.05em;
+                                border-bottom: 2px solid white;
+                                border-top: 2px solid white;
+                                font-weight: 500;
+                                white-space: nowrap;
+                                width: 250px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.overlay-box {
+margin: 23% 0;
+    display: table;
+    height: auto;
+    background-color: rgba(0,0,0,.6);
+    width: 100%;
+    display: table;
+}
+
+
+/* ========     Gold Buttons Header     ======== */
+
+.goldbuttons {
+    margin-bottom: 30px;
+    .container {
+        padding: 0px;
+        .row {
+            .col-md-12 {
+                .row {
+                    .col-md-8 {
+                        padding: 0px;
+                        .copy-div {
+                            .copy-paragraph {
+                                margin: 0px;
+                            }
+                            p {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .col-md-4 {
+                        padding: 0px;
+                        #main-qp {
+                            float: right;
+                            .bottom-15 {
+                                padding-bottom: 15px !important;
+                                margin-bottom: 0px;
+                                line-height: 1.5;
+                                text-align: left;
+                                .fa-button {
+                                    background-color: #ad8a5f;
+                                    width: 290px;
+                                    background-position: right;
+                                    background-repeat: no-repeat;
+                                    color: #FFFFFF !important;
+                                    display: inline-block;
+                                    font-size: 1em;
+                                    height: 40px;
+                                    font-weight: 600;
+                                    letter-spacing: 0.05em;
+                                    line-height: 24px;
+                                    margin: 0;
+                                    padding: 10px 50px 10px 20px;
+                                    zoom: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* ========     two Gold Buttons Header     ======== */
+
+.twogoldbuttons {
+    .container {
+        padding: 0px;
+        .row {
+            .col-md-12 {
+                .row {
+                    .col-md-8 {
+                        padding: 0px;
+                        .copy-div {
+                            .copy-paragraph {
+                                margin: 0px;
+                                margin-left: 17px;
+                                li {
+                                    list-style-type: disc;
+                                    list-style-position: outside;
+                                    list-style-image: none;
+                                    padding-bottom: 5px;
+                                }
+                            }
+                            p {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .col-md-4 {
+                        padding: 0px;
+                        #main-qp {
+                            float: right;
+                            .bottom-15 {
+                                padding-bottom: 15px !important;
+                                margin-bottom: 0px;
+                                line-height: 1.5;
+                                text-align: left;
+                                .fa-button {
+                                    background-color: #ad8a5f;
+                                    width: 290px;
+                                    background-position: right;
+                                    background-repeat: no-repeat;
+                                    color: #FFFFFF !important;
+                                    display: inline-block;
+                                    font-size: 1em;
+                                    min-height: 40px;
+                                    font-weight: 600;
+                                    letter-spacing: 0.05em;
+                                    line-height: 24px;
+                                    margin: 0;
+                                    padding: 10px 50px 10px 20px;
+                                    zoom: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* template-complete-meeting-package.php 
+*/
+
+.column__fullwidth {
+    margin: 20px 0px 0px 0px;
+    &--heading {
+        margin-top: 0;
+    }
+    &--paragraph {}
+    &--image {
+        width: 100%;
+    }
+    .col-md-12 {
+        margin: 0px 0px 20px 0px;
+        & .col-md-12:last-child {
+            margin: 0px;
+        }
+    }
+    .col-md-5 {
+        padding: 0px;
+    }
+    .col-md-7 {
+        padding: 0 25px 0 0;
+    }
+}
+
+.divider-border {
+    margin: 20px 0px !important;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* Components-list-boxes.php */
+
+.list-boxes {
+    .container {
+        .main-heading {}
+        .row {
+            .col-md-12 {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+.col-img-right-fundraiser {
+    max-width: 390px;
+}
+
+
+/* Planner Toolkit Page */
+
+.planner {
+    margin-bottom: 30px;
+    .container {
+        width: 1200px;
+        padding: 0px;
+        .row {
+            .col-md-12 {
+                padding: 0px;
+                // .col-md-3:first-child {
+                //     padding-left: 0px;
+                // }
+                .col-md-3 {
+                    .card {
+                        background-color: $main-beige;
+                        height: auto;
+                        min-width: 235px;
+                        padding: 0px;
+                        text-align: center;
+                        border-radius: 2px;
+                        box-shadow: 0 1px 2px 0 rgba(123, 123, 123, 0.50);
+                        display: block;
+                        position: relative;
+                        .card-link {
+                            .planner-heading {
+                                background-color: $main-blue;
+                                color: white;
+                                text-align: center;
+                                margin: 0px;
+                                padding: 10px 0px;
+                                font-size: 1em;
+                                font-weight: 600;
+                                border-radius: 2px 2px 0px 0px;
+                            }
+                            .card-img {
+                                position: relative;
+                                float: left;
+                                width: 100%;
+                                height: auto;
+                                overflow: hidden;
+                                img {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* Floorplans */
+
+.floorplan {
+    .container {
+        padding: 0px;
+        .row {
+            .col-md-12 {
+                img {
+                    max-width: 1140px;
+                }
+            }
+        }
+    }
+}
+
+
+/* -----==================-----     image 5/7 col with burron.php --> used for floor maps page   -----==================----- */
+
+#col-five-seven {
+    padding: 20px 0px;
+    .container {
+        padding: 0px;
+        .row {
+            .col-md-12 {
+                padding: 0px;
+                .row {
+                    .col-md-5 {
+                        height: 305px;
+                        .col-five-seven-heading {}
+                        .col-left-copy {}
+                        .gen-btn {
+                            float: left;
+                            margin-top: 30px;
+                            position: absolute;
+                            border: 2px solid $main-blue;
+                            background-color: $main-blue;
+                            @extend .parent-button;
+                            &:hover {
+                                a {
+                                    color: $main-blue;
+                                }
+                            }
+                            .gen-btn-animate {
+                                @extend .child-button;
+                                background-color: white;
+                                a {
+                                    color: $main-blue;
+                                }
+                            }
+                        }
+                    }
+                }
+                .col-md-7 {
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* -----==================-----     image 5/7 col with burron.php   -----==================----- */
+
+#calculator {
+    .container {
+        .row {
+            .col-md-12 {
+                padding: 0px;
+                #calculator-heading {
+                    font-family: $bold-sans-serif !important;
+                }
+                .container {
+                    max-width: 1140px;
+                    padding: 0px;
+                }
+                .dfield {
+                    position: relative;
+                    margin-left: 17px;
+                }
+            }
+        }
+    }
+}
+
+
+/* -----==================-----     components-onsite-amenities.php   -----==================----- */
+
+#amenities-page {
+    .container {
+        .row {
+            .col-md-12 {
+                padding: 0px;
+                .col-md-7 {
+                    padding: 0px 25px 0px 0px;
+                }
+                .col-md-5 {
+                    padding: 0px 0px 0px 25px;
+                    .icons-ul {
+                        margin-left: 5em;
+                        li {
+                            margin: 0 0 5px 0;
+                            font-size: 1.2em;
+                            list-style-type: none;
+                            i {
+                                color: $main-gold;
+                                font-size: 1.5em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* -----==================-----     components-menu.php   -----==================----- */
+
+
+/* -----==================-----     components-one-col-img-buttons.php   -----==================----- */
+
+#one-col-buttons {
+    padding: 20px 0px;
+    .container {
+        padding: 0px;
+        .row {
+            .col-md-12 {
+                padding: 0px;
+                .row {
+                    .col-md-7 {
+                        padding-right: 30px;
+                        min-height: 288px;
+                        .col-one-heading {
+                            height: 29px;
+                            font-size: 24px;
+                            font-weight: bold;
+                            font-style: normal;
+                            font-stretch: normal;
+                            line-height: normal;
+                            letter-spacing: 0.4px;
+                            color: #5d402b;
+                            margin-top: 0px;
+                            padding: 0px;
+                            white-space: nowrap;
+                        }
+                        .col-left-copy {
+                            padding-bottom: 20px;
+                            p {
+                                padding-bottom: 10px;
+                            }
+                            ul {}
+                            .gen-btn {
+                                float: left;
+                                margin-top: 30px;
+                                position: absolute;
+                                border: 2px solid $main-blue;
+                                background-color: $main-blue;
+                                @extend .parent-button;
+                                &:hover {
+                                    a {
+                                        color: $main-blue;
+                                    }
+                                }
+                                .gen-btn-animate {
+                                    @extend .child-button;
+                                    background-color: white;
+                                    a {
+                                        color: $main-blue;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .col-md-5 {}
+                }
+            }
+        }
+    }
+}
+
+
+/* Conferences */
+
+#conference-template {
+    .container {
+        .col-md-12 {
+            padding: 0px;
+            margin-bottom: 20px;
+            .row {
+                h2 {
+                    font-family: $bold-sans-serif !important;
+                }
+                h3 {
+                    font-family: $bold-sans-serif !important;
+                }
+                p {}
+                ul {}
+            }
+        }
+    }
+}
+
+
+/* getaways */
+
+#getaways-template {
+    .container {
+        margin-bottom: 30px;
+        .col-md-12 {
+            padding: 0px;
+            margin-bottom: 20px;
+            .row {
+                h2 {
+                    font-family: $bold-sans-serif !important;
+                }
+                h3 {
+                    font-family: $bold-sans-serif !important;
+                }
+                p {}
+                ul {}
+            }
+        }
+    }
+}
+
+.copy-custom {
+    margin-bottom: 30px;
+    .container {
+        .row {
+            .col-md-12 {
+                padding: 0px;
+                .row {
+                    .col-md-4 {
+                        padding-left: 0px;
+                        .copy-div {
+                            .copy-paragraph {
+                                margin: 0px;
+                            }
+                            p {
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .col-md-8 {
+                        padding: 0px;
+                        p:last-of-type {
+                            margin-bottom: 30px;
+                        }
+                        p:first-of-type {
+                            padding-bottom: 10px;
+                        }
+                        p {}
+                        .top-right-title {
+                            width: 100%;
+                            font-size: 1.5em;
+                            font-weight: 600;
+                            letter-spacing: .01em;
+                            color: $main-brown;
+                            margin: 0px 0px 10px 0px;
+                        }
+                        .bullet-list {
+                            li {
+                                list-style-type: disc;
+                                list-style-position: outside;
+                                list-style-image: none;
+                                padding-bottom: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.standout {
+    font-family: $semibold-sans-serif;
+    text-decoration: underline;
+    color: $main-blue;
+}
+
+
+/* FAQ */
+
+#faq-template {
+    .container {
+        .col-md-12 {
+            padding: 0px;
+            margin-bottom: 30px;
+            .row {
+                h3 {
+                    font-style: italic;
+                }
+                p {}
+            }
+        }
+    }
+}
+
+
+/* Directions */
+
+#directions-template {
+    .container {
+        .col-md-12 {
+            padding: 0px;
+            margin-bottom: 30px;
+            .row {
+                h3 {
+                    font-family: $semibold-sans-serif;
+                }
+                p {}
+            }
+        }
+    }
+}
+
+
+/* history */
+
+#history-template {
+    .container {
+        .col-md-12 {
+            padding: 0px;
+            .row {
+                h3 {
+                    font-family: $semibold-sans-serif;
+                    padding: 20px 0px;
+                }
+                p {}
+            }
+            .col-md-5 {
+                padding: 0px;
+            }
+            .col-md-7 {
+                padding: 0px;
+            }
+            .col-left {
+                padding-right: 25px !important;
+            }
+            .col-right {
+                padding-left: 25px !important;
+            }
+        }
+        img {
+            width: 100%
+        }
+    }
+}
+
+
+/* Master Style Atlas */
+
+@import "https://cdn.rawgit.com/google/code-prettify/master/styles/desert.css";
+$lightGray: #fafafa;
+$medBlue: #9baecf;
+$char: #292929;
+.codeblock {
+    max-width: 1170px;
+    margin: 0 auto;
+    width: 100%;
+    @media (max-width: 650px) {
+        width: 75%;
+    }
+    @media (max-width: 430px) {
+        width: 100%;
+    }
+    code,
+    .code,
+    pre {
+        font-family: 'Source Code Pro';
+        background: $char;
+        color: $lightGray;
+        font-size: 16px;
+        padding: 0;
+        padding: 10px;
+        &:before {
+            display: block;
+            width: calc(100%);
+            margin-left: -3px;
+            margin-top: -3px;
+            padding: 3px;
+            text-transform: uppercase;
+            content: attr(data-lang);
+            background: $medBlue;
+        }
+        .o {
+            color: green;
+        }
+        .w {
+            color: white;
+        }
+    }
+}
+
+
+/* Tablepress */
+
+.tablepress-id-1 tbody td.column-1 {
+    background-color: $main-gold;
+    color: #FFFFFF !important;
+    .tablepress .row-hover tr:hover td {
+        &:hover {
+            color: white;
+            background-color: red;
+        }
+    }
+}
+
+.tablepress-id-1 thead th {
+    background-color: #7f634b !important;
+    color: #FFFFFF !important;
+    font-weight: normal !important;
+    text-align: center !important;
+}
+
+.tablepress-id-2 tbody td.column-1 {
+    color: $main-text !important;
+    .tablepress .row-hover tr:hover td {
+        &:hover {
+            color: white;
+            background-color: red;
+        }
+    }
+}
+
+.tablepress-id-2 thead th {
+    background-color: #7f634b !important;
+    color: #FFFFFF !important;
+    font-weight: normal !important;
+    text-align: center !important;
+}
+
+.tablepress thead th,
+.tablepress tfoot th {
+    background-color: $main-brown;
+    font-weight: bold;
+    vertical-align: middle;
+    font-size: .9em;
+    font-family: $semibold-sans-serif;
+    color: $main-text;
+}
+
+
+/* Row background colors */
+
+.tablepress thead th,
+.tablepress tfoot th {
+    background-color: $main-brown;
+    font-weight: bold;
+    vertical-align: middle;
+    font-size: .9em;
+    font-family: $semibold-sans-serif;
+    color: $main-text;
+}
+
+.tablepress .odd td {
+    background-color: #f7f4f2;
+}
+
+.tablepress .even td {
+    background-color: #ffffff;
+}
+
+.tablepress .row-hover tr:hover td {
+    background-color: #EBDDD1;
+    color: black;
+}
+
+.tablepress .row-hover tr:hover td.column-1 {
+    background-color: #7f634b;
+    color: white;
+}
+
+
+/* history pge */
+
+.fullrow-div {
+    .col-md-4 {
+        padding-left: 0px;
+    }
+}
+
+.two-columns-div {
+    margin: 20px 0px;
+}

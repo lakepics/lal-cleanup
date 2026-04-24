@@ -1,0 +1,28 @@
+Deployment manifest for recent theme work
+Date: 2026-04-19
+
+Homepage featured article:
+acf-json/group_homepage_featured_article.json
+components/component-featured-article.php
+template-landing-page.php
+
+Flexible section builder / featured article section:
+acf-json/group_theme_section_builder.json
+components/components-section-featured-article.php
+template-flexible-sections.php
+
+Reusable section updates from this work pass:
+components/components-section-video-hero.php
+components/components-section-card-grid.php
+components/components-section-image-scroller.php
+components/components-background-video.php
+components/components-video-hero-wistia.php
+
+Styling / layout fixes carried in this pass:
+assets/styles/customizer.css
+dist/styles/custom.css
+base.php
+
+Gallery caption fix:
+components/component-gallery.php
+template-gallery.php

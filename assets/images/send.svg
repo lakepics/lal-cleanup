@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="21px" viewBox="0 0 20 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>send</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Monday_due" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-weight="normal" font-family="FontAwesome" letter-spacing="0.400000006" font-size="20">
+        <g id="1--Homepage" transform="translate(-993.000000, -2320.000000)" fill="#FFFFFF">
+            <g id="footer" transform="translate(0.000000, 2230.000000)">
+                <g id="top_footer" transform="translate(234.000000, 46.000000)">
+                    <g id="Subscribe" transform="translate(536.333333, 0.000000)">
+                        <g id="email">
+                            <text id="send">
+                                <tspan x="223" y="62"></tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

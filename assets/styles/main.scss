@@ -1,0 +1,41 @@
+@import "common/variables";
+// Automatically injected Bower dependencies via wiredep (never manually edit this block)
+// bower:scss
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "../../bower_components/font-awesome/scss/font-awesome.scss";
+@import "../../bower_components/slick-carousel/slick/slick.scss";
+// endbower
+
+
+@import "common/reset";
+@import "common/global";
+@import "common/fonts";
+@import "common/buttons";
+@import "components/forms";
+@import "components/grid";
+@import "components/wp-classes";
+@import "components/accordion";
+
+// Atlas containg CSS of all pages
+@import "atlas/dining";
+@import "atlas/recreation";
+@import "atlas/aboutus";
+
+
+// Webpages
+@import "pages/homepage";
+
+//Template Layouts
+@import "layouts/subpages";
+@import "layouts/components";
+@import "layouts/header";
+@import "layouts/hero";
+@import "layouts/footer";
+@import "layouts/gallery";
+@import "layouts/slick-theme";
+@import "layouts/slick";
+@import "layouts/body";
+
+//CSS Libraries
+@import "layouts/fontawesome";
+@import "layouts/fancybox";

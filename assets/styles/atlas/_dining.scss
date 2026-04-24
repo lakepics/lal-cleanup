@@ -1,0 +1,72 @@
+
+/**
+Daily Menus
+ * // http://http://lacc-dev.hhs.ucla.edu/daily-meals-2/
+
+ */
+#menus {
+    .container {
+        padding: 0px;
+        .col-md-12 {
+            padding: 0px;
+            h2 {
+                padding: 0px;
+                margin-top: 0px;
+            }
+            h3 {
+            	font-family: $semibold-sans-serif;
+            }
+            .row {
+                .col-md-4 {
+                    padding-left: 0px;
+                    padding-right: 30px;
+                    li {
+                        padding: 2px 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// #menus {
+//     margin: 20px 0px;
+// }
+//<section class="menu-item-lists">
+.menu-item-lists {
+    ul {
+        list-style-type: none;
+        padding: 0px;
+        li {
+            list-style-type: none;
+        }
+    }
+}
+
+.daily-meals-page {
+    .full-row-content {
+        margin: 0px;
+    }
+}
+
+.menu-col-title {
+    .col-md-12 {
+        margin-bottom: 20px;
+        p {
+            margin: 0px;
+        }
+    }
+}
+
+.chef-special {
+    margin-left: 15px;
+    font-style: italic;
+}
+
+.menu-lists {
+    list-style-type: none;
+}
+
+//Dining -> Refreshments
+
+

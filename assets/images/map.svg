@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="22px" viewBox="0 0 15 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>map</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Monday_due" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-weight="normal" font-family="FontAwesome" letter-spacing="0.400000006" font-size="25">
+        <g id="1--Homepage" transform="translate(-440.000000, -2431.000000)" fill="#FFFFFF">
+            <g id="footer" transform="translate(0.000000, 2230.000000)">
+                <g id="top_footer" transform="translate(234.000000, 46.000000)">
+                    <g id="contact-information" transform="translate(200.666667, 0.000000)">
+                        <g id="contact-Information" transform="translate(1.000000, 35.000000)">
+                            <text id="map">
+                                <tspan x="5" y="140"></tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

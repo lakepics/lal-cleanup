@@ -1,0 +1,165 @@
+/* CSS for hoempage */
+
+
+/* ========     components-subheader.php     ======== */
+
+.header__heading {
+    height: 80px;
+    background-color: $main-blue;
+    width: 100%;
+    &--subheading {
+        color: white;
+    }
+    &--text {
+        margin: 50px 0px 30px 0px;
+        white-space: nowrap;
+    }
+}
+/* ========     components-headings.php     ======== */
+
+.heading__container {
+    margin: 0px;
+    &--heading {
+        text-align: center;
+        margin: 0 0 20px;
+    }
+    &--subheading {
+        text-align: center;
+        margin: 0px;
+    }
+}
+
+
+/* ========     components-awards.php     ======== */
+
+.award__container {
+    margin: 50px 0px;
+    &--column {
+        width: 20%;
+        float: left;
+        position: relative;
+        min-height: 1px;
+        padding: 0;
+        img {
+            max-width: 215px;
+            height: auto;
+        }
+    }
+}
+/* ========     components-quicklinks.php     ======== */
+
+.quicklinks__container {
+    margin: 50px 0px;
+    .col-md-4 {
+        @include tablet {
+            margin-bottom: 50px;
+        }
+    }
+    &--card {
+        max-width: 350px;
+        min-height: 460px;
+        background-color: $main-beige;
+        padding: 0;
+        text-align: center;
+        border-radius: 2px;
+        box-shadow: 0 1px 2px 0 hsla(0, 0%, 48%, .5);
+        &--heading {
+            color: white;
+            font-family: $bold-sans-serif;
+            font-size: 1.5em;
+            letter-spacing: 0.03em;
+            line-height: 1.15;
+            text-align: center;
+            padding: 10px;
+            margin: 0px;
+            background-color: $main-blue;
+        }
+        a {
+            text-decoration: none;
+            color: $main-text;
+        }
+        &--subheading {
+            display: inline-block;
+            padding: 20px 15px 10px;
+        }
+        img {
+            position: relative;
+            float: left;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+    }
+}
+
+
+/* ========     components-gallery-toprow.php     ======== */
+
+
+/* ========     components-gallery-bottomrow.php     ======== */
+
+.gallery__container {
+    background-color: $main-brown;
+    margin: 0px !important;
+    padding-top: 15px;
+    &--row {
+        table {
+            width: 100%;
+            margin-bottom: 0px;
+        }
+        max-width: 1920px;
+        margin: 0 auto;
+        background: $main-brown;
+        tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: $main-brown;
+            td {
+                padding: 0px;
+            }
+            img {
+                max-width: 100%;
+                display: block;
+                height: auto;
+            }
+        }
+    }
+}
+
+.gallery__button {
+    background: $main-brown;
+    width: 100%;
+    height: auto;
+    padding: 35px 0px;
+    &--text {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 2px solid white;
+        background-color: $main-brown;
+        @extend .parent-button;
+    }
+}
+
+
+/* ========     components-amenities-toprow.php     ======== */
+
+
+/* ========     components-amenities-bottomrow.php     ======== */
+
+.amenities__container {
+    margin: 50px 0px;
+    &--heading {
+        text-align: center;
+        margin: 0px 0px 30px 0px;
+    }
+    &--row {}
+    &--last--row {
+        margin-top: 30px;
+    }
+    .col-md-3 {}
+    p {
+        font-size: 0.9em;
+        margin-bottom: 0em;
+    }
+}

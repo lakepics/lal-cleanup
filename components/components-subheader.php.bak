@@ -1,0 +1,27 @@
+<?php
+ $blueheaders = get_field('blueheaders');
+ if ($blueheaders) {
+ 	  foreach ($blueheaders as $blueheader) {
+ 	echo 	'<div class="header__heading">
+ 				<div class="container">
+                <div class="col-md-12">
+                <div class="row">
+	 				<h1 class="header__heading--subheading">' . $blueheader['heading'] . 
+	 				'</h1>
+                </div>
+                </div>
+ 				</div>
+            </div>
+ 			    <div class="subheader-title">
+            	   <div class="container">
+                	   <div class="col-md-12">
+                       <div class="row">
+                    	<h2 class="header__heading--text">' . $blueheader['subheading'] . 
+                    	'</h2>
+                        </div>
+                    </div>
+                </div>
+        	</div>';
+ 		}
+	}
+?>

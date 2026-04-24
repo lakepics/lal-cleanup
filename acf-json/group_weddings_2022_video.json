@@ -1,0 +1,114 @@
+{
+  "key": "group_weddings_2022_video",
+  "title": "NOT_USED - Wedding Template 2022 Video Section",
+  "fields": [
+    {
+      "key": "field_weddings_2022_intro_video",
+      "label": "Intro Video Embed",
+      "name": "intro_video_embed",
+      "type": "oembed",
+      "instructions": "Paste the video URL or embed link.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "100",
+        "class": "",
+        "id": ""
+      },
+      "width": "",
+      "height": ""
+    },
+    {
+      "key": "field_weddings_2022_intro_heading",
+      "label": "Intro Heading",
+      "name": "intro_heading",
+      "type": "text",
+      "instructions": "Main heading text for the intro column.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "100",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "A Historic, Storybook Wedding Destination in Beautiful Lake Arrowhead",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_weddings_2022_intro_subheading",
+      "label": "Intro Subheading",
+      "name": "intro_subheading",
+      "type": "text",
+      "instructions": "Secondary heading text below the main heading.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "100",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "rustic charm, delightful cuisine and fantastic memories",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_weddings_2022_intro_button_label",
+      "label": "Intro Button Label",
+      "name": "intro_button_label",
+      "type": "text",
+      "instructions": "Button label for the intro action link.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "100",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "Download Look Book",
+      "prepend": "",
+      "append": "",
+      "maxlength": ""
+    },
+    {
+      "key": "field_weddings_2022_intro_button_url",
+      "label": "Intro Button URL",
+      "name": "intro_button_url",
+      "type": "url",
+      "instructions": "URL for the intro button.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "100",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "https://example.com",
+      "prepend": "",
+      "append": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_template",
+        "operator": "==",
+        "value": "template-weddings-2022.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "seamless",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Editable video section fields for the Wedding Template 2022."
+}

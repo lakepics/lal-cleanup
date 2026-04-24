@@ -1,0 +1,1514 @@
+@charset "utf-8";
+/* CSS Document */
+
+body.lacc-flush-footer footer {
+    margin-top: 0 !important;
+}
+
+body.page-template-template-flexible-sections section p,
+body.page-template-template-flexible-sections section li,
+body.page-template-template-flexible-sections section h1,
+body.page-template-template-flexible-sections section h2,
+body.page-template-template-flexible-sections section h3,
+body.page-template-template-flexible-sections section h4,
+body.page-template-template-flexible-sections section h5,
+body.page-template-template-flexible-sections section h6,
+body.page-template-template-flexible-sections section span {
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    -ms-hyphens: none !important;
+    word-break: normal;
+    overflow-wrap: normal;
+}
+
+.season-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.season-tag {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    opacity: 0.7;
+    border: 1px solid rgba(81, 83, 74, 0.22);
+}
+
+:root {
+    --lacc-color-ink: #51534a;
+    --lacc-color-accent: #9e7156;
+    --lacc-color-gold: #d4a441;
+    --lacc-color-gold-soft: #946E29;
+    --lacc-color-gold-bright: #f5b62b;
+    --lacc-color-gold-ink: #1f221d;
+    --lacc-color-cream: #f6f3ed;
+    --lacc-color-white: #ffffff;
+    --lacc-color-sky: #8dc5db;
+    --lacc-color-brand-blue: #6383a8;
+    --lacc-color-brand-blue-border: #7495b4;
+    --lacc-color-action-primary: #3f5f85;
+    --lacc-color-action-primary-hover: #324c6a;
+    --lacc-color-action-primary-active: #2a3f58;
+    --lacc-color-action-secondary: #7A5A1F;
+    --lacc-color-action-secondary-hover: #644a19;
+    --lacc-color-action-secondary-active: #533d15;
+    --lacc-color-action-gold-text: #7A5A1F;
+    --lacc-color-action-gold-text-hover: #644a19;
+    --lacc-color-action-gold-text-active: #533d15;
+    --lacc-color-action-ink: #51534a;
+    --lacc-color-action-ink-hover: #1f221d;
+    --lacc-color-action-ink-active: #1f221d;
+    --lacc-color-action-tertiary: #51534a;
+    --lacc-color-action-tertiary-hover: #3b3d37;
+    --lacc-color-action-focus: #7A5A1F;
+    --lacc-color-action-border-soft: #ddd4c8;
+}
+
+.section-featured-article .hero-button,
+.section-split-feature .hero-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .85em 1.45em;
+    border: 1px solid transparent;
+    border-radius: 0;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    line-height: 1.2;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.section-featured-article .hero-button:hover,
+.section-featured-article .hero-button:focus,
+.section-split-feature .hero-button:hover,
+.section-split-feature .hero-button:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12);
+}
+
+.section-featured-article .hero-button:focus-visible,
+.section-split-feature .hero-button:focus-visible {
+    outline: 2px solid var(--lacc-color-action-focus);
+    outline-offset: 3px;
+}
+
+.section-featured-article .hero-button--primary,
+.section-split-feature .hero-button--primary {
+    background: var(--lacc-color-action-primary);
+    border-color: var(--lacc-color-action-primary);
+    color: var(--lacc-color-white) !important;
+}
+
+.section-featured-article .hero-button--primary:hover,
+.section-featured-article .hero-button--primary:focus,
+.section-split-feature .hero-button--primary:hover,
+.section-split-feature .hero-button--primary:focus {
+    background: var(--lacc-color-action-primary-hover);
+    border-color: var(--lacc-color-action-primary-hover);
+    color: var(--lacc-color-white) !important;
+}
+
+.section-featured-article .hero-button--primary:active,
+.section-split-feature .hero-button--primary:active {
+    background: var(--lacc-color-action-primary-active);
+    border-color: var(--lacc-color-action-primary-active);
+}
+
+.section-featured-article .hero-button--gold-text,
+.section-split-feature .hero-button--gold-text {
+    background: var(--lacc-color-action-gold-text);
+    border-color: var(--lacc-color-action-gold-text);
+    color: var(--lacc-color-white) !important;
+}
+
+.section-featured-article .hero-button--gold-text:hover,
+.section-featured-article .hero-button--gold-text:focus,
+.section-split-feature .hero-button--gold-text:hover,
+.section-split-feature .hero-button--gold-text:focus {
+    background: var(--lacc-color-action-gold-text-hover);
+    border-color: var(--lacc-color-action-gold-text-hover);
+    color: var(--lacc-color-white) !important;
+}
+
+.section-featured-article .hero-button--gold-text:active,
+.section-split-feature .hero-button--gold-text:active {
+    background: var(--lacc-color-action-gold-text-active);
+    border-color: var(--lacc-color-action-gold-text-active);
+}
+
+.section-featured-article .hero-button--ink,
+.section-split-feature .hero-button--ink {
+    background: var(--lacc-color-action-ink);
+    border-color: var(--lacc-color-action-ink);
+    color: var(--lacc-color-white) !important;
+}
+
+.section-featured-article .hero-button--ink:hover,
+.section-featured-article .hero-button--ink:focus,
+.section-split-feature .hero-button--ink:hover,
+.section-split-feature .hero-button--ink:focus {
+    background: var(--lacc-color-action-ink-hover);
+    border-color: var(--lacc-color-action-ink-hover);
+    color: var(--lacc-color-white) !important;
+}
+
+.section-featured-article .hero-button--ink:active,
+.section-split-feature .hero-button--ink:active {
+    background: var(--lacc-color-action-ink-active);
+    border-color: var(--lacc-color-action-ink-active);
+}
+
+.section-featured-article .hero-button--outline-ink,
+.section-split-feature .hero-button--outline-ink {
+    background: transparent;
+    border-color: var(--lacc-color-action-ink);
+    color: var(--lacc-color-action-ink) !important;
+}
+
+.section-featured-article .hero-button--outline-ink:hover,
+.section-featured-article .hero-button--outline-ink:focus,
+.section-split-feature .hero-button--outline-ink:hover,
+.section-split-feature .hero-button--outline-ink:focus {
+    background: var(--lacc-color-action-ink-hover);
+    border-color: var(--lacc-color-action-ink-hover);
+    color: var(--lacc-color-white) !important;
+}
+
+.section-featured-article .hero-button--outline-ink:active,
+.section-split-feature .hero-button--outline-ink:active {
+    background: var(--lacc-color-action-ink-active);
+    border-color: var(--lacc-color-action-ink-active);
+}
+
+.section-featured-article .hero-button--secondary,
+.section-split-feature .hero-button--secondary {
+    background: transparent;
+    border-color: var(--lacc-color-action-secondary);
+    color: var(--lacc-color-action-secondary) !important;
+}
+
+.section-featured-article .hero-button--secondary:hover,
+.section-featured-article .hero-button--secondary:focus,
+.section-split-feature .hero-button--secondary:hover,
+.section-split-feature .hero-button--secondary:focus {
+    background: var(--lacc-color-action-secondary-hover);
+    border-color: var(--lacc-color-action-secondary-hover);
+    color: var(--lacc-color-white) !important;
+}
+
+.section-featured-article .hero-button--secondary:active,
+.section-split-feature .hero-button--secondary:active {
+    background: var(--lacc-color-action-secondary-active);
+    border-color: var(--lacc-color-action-secondary-active);
+}
+
+.section-featured-article .hero-button--outline-gold,
+.section-split-feature .hero-button--outline-gold,
+.section-split-feature .hero-button--outline-dark {
+    background: transparent;
+    border-color: var(--lacc-color-accent);
+    color: var(--lacc-color-accent) !important;
+}
+
+.section-featured-article .hero-button--outline-gold:hover,
+.section-featured-article .hero-button--outline-gold:focus,
+.section-split-feature .hero-button--outline-gold:hover,
+.section-split-feature .hero-button--outline-gold:focus,
+.section-split-feature .hero-button--outline-dark:hover,
+.section-split-feature .hero-button--outline-dark:focus {
+    background: var(--lacc-color-accent);
+    border-color: var(--lacc-color-accent);
+    color: var(--lacc-color-white) !important;
+}
+
+.section-featured-article .hero-button--outline-gold:active,
+.section-split-feature .hero-button--outline-gold:active,
+.section-split-feature .hero-button--outline-dark:active {
+    background: #644535;
+    border-color: #644535;
+}
+
+.section-featured-article .hero-button--brown,
+.section-featured-article .hero-button--outline-dark,
+.section-featured-article .hero-button--outline,
+.section-split-feature .hero-button--brown,
+.section-split-feature .hero-button--outline {
+    background: transparent;
+    border-color: var(--lacc-color-action-tertiary);
+    color: var(--lacc-color-action-tertiary) !important;
+}
+
+.section-featured-article .hero-button--brown:hover,
+.section-featured-article .hero-button--brown:focus,
+.section-featured-article .hero-button--outline-dark:hover,
+.section-featured-article .hero-button--outline-dark:focus,
+.section-featured-article .hero-button--outline:hover,
+.section-featured-article .hero-button--outline:focus,
+.section-split-feature .hero-button--brown:hover,
+.section-split-feature .hero-button--brown:focus,
+.section-split-feature .hero-button--outline:hover,
+.section-split-feature .hero-button--outline:focus {
+    background: rgba(81, 83, 74, 0.08);
+    border-color: var(--lacc-color-action-tertiary);
+    color: var(--lacc-color-action-tertiary-hover) !important;
+}
+
+.section-featured-article .hero-button--light,
+.section-split-feature .hero-button--light {
+    background: var(--lacc-color-white);
+    border-color: var(--lacc-color-white);
+    color: var(--lacc-color-ink) !important;
+}
+
+.section-featured-article .hero-button--light:hover,
+.section-featured-article .hero-button--light:focus,
+.section-split-feature .hero-button--light:hover,
+.section-split-feature .hero-button--light:focus {
+    background: var(--lacc-color-cream);
+    border-color: var(--lacc-color-action-border-soft);
+    color: var(--lacc-color-ink) !important;
+}
+
+.section-video-hero .hero-button:hover,
+.section-video-hero .hero-button:focus,
+.section-image-scroller .hero-button:hover,
+.section-image-scroller .hero-button:focus,
+.section-card-grid .hero-button:hover,
+.section-card-grid .hero-button:focus {
+    opacity: 1;
+    filter: none;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(81,83,74,0.16);
+    text-decoration: none !important;
+}
+
+.section-video-hero .hero-button:focus-visible,
+.section-image-scroller .hero-button:focus-visible,
+.section-card-grid .hero-button:focus-visible {
+    outline: 2px solid var(--lacc-color-action-focus);
+    outline-offset: 3px;
+}
+
+.section-video-hero .hero-button--primary,
+.section-image-scroller .hero-button--primary,
+.section-card-grid .hero-button--primary {
+    background: var(--lacc-color-action-primary) !important;
+    background-color: var(--lacc-color-action-primary) !important;
+    border-color: var(--lacc-color-action-primary) !important;
+    color: var(--lacc-color-white) !important;
+}
+
+.section-video-hero .hero-button--primary:hover,
+.section-video-hero .hero-button--primary:focus,
+.section-image-scroller .hero-button--primary:hover,
+.section-image-scroller .hero-button--primary:focus,
+.section-card-grid .hero-button--primary:hover,
+.section-card-grid .hero-button--primary:focus {
+    background: var(--lacc-color-action-primary-hover) !important;
+    background-color: var(--lacc-color-action-primary-hover) !important;
+    border-color: var(--lacc-color-action-primary-hover) !important;
+    color: var(--lacc-color-white) !important;
+}
+
+.section-video-hero .hero-button--gold-text,
+.section-image-scroller .hero-button--gold-text,
+.section-card-grid .hero-button--gold-text {
+    background: var(--lacc-color-action-gold-text) !important;
+    background-color: var(--lacc-color-action-gold-text) !important;
+    border-color: var(--lacc-color-action-gold-text) !important;
+    color: var(--lacc-color-white) !important;
+}
+
+.section-video-hero .hero-button--gold-text:hover,
+.section-video-hero .hero-button--gold-text:focus,
+.section-image-scroller .hero-button--gold-text:hover,
+.section-image-scroller .hero-button--gold-text:focus,
+.section-card-grid .hero-button--gold-text:hover,
+.section-card-grid .hero-button--gold-text:focus {
+    background: var(--lacc-color-action-gold-text-hover) !important;
+    background-color: var(--lacc-color-action-gold-text-hover) !important;
+    border-color: var(--lacc-color-action-gold-text-hover) !important;
+    color: var(--lacc-color-white) !important;
+}
+
+.section-video-hero .hero-button--ink,
+.section-image-scroller .hero-button--ink,
+.section-card-grid .hero-button--ink {
+    background: var(--lacc-color-action-ink) !important;
+    background-color: var(--lacc-color-action-ink) !important;
+    border-color: var(--lacc-color-action-ink) !important;
+    color: var(--lacc-color-white) !important;
+}
+
+.section-video-hero .hero-button--ink:hover,
+.section-video-hero .hero-button--ink:focus,
+.section-image-scroller .hero-button--ink:hover,
+.section-image-scroller .hero-button--ink:focus,
+.section-card-grid .hero-button--ink:hover,
+.section-card-grid .hero-button--ink:focus {
+    background: var(--lacc-color-action-ink-hover) !important;
+    background-color: var(--lacc-color-action-ink-hover) !important;
+    border-color: var(--lacc-color-action-ink-hover) !important;
+    color: var(--lacc-color-white) !important;
+}
+
+.section-video-hero .hero-button--outline-ink,
+.section-image-scroller .hero-button--outline-ink,
+.section-card-grid .hero-button--outline-ink {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-color: var(--lacc-color-action-ink) !important;
+    color: var(--lacc-color-action-ink) !important;
+}
+
+.section-video-hero .hero-button--outline-ink:hover,
+.section-video-hero .hero-button--outline-ink:focus,
+.section-image-scroller .hero-button--outline-ink:hover,
+.section-image-scroller .hero-button--outline-ink:focus,
+.section-card-grid .hero-button--outline-ink:hover,
+.section-card-grid .hero-button--outline-ink:focus {
+    background: var(--lacc-color-action-ink-hover) !important;
+    background-color: var(--lacc-color-action-ink-hover) !important;
+    border-color: var(--lacc-color-action-ink-hover) !important;
+    color: var(--lacc-color-white) !important;
+}
+
+.section-video-hero .hero-button--secondary,
+.section-video-hero .hero-button--brown,
+.section-video-hero .hero-button--outline-gold,
+.section-image-scroller .hero-button--secondary,
+.section-image-scroller .hero-button--brown,
+.section-image-scroller .hero-button--outline-gold,
+.section-card-grid .hero-button--secondary,
+.section-card-grid .hero-button--brown,
+.section-card-grid .hero-button--outline-gold {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-color: var(--lacc-color-action-secondary) !important;
+    color: var(--lacc-color-action-secondary) !important;
+}
+
+.section-video-hero .hero-button--secondary:hover,
+.section-video-hero .hero-button--secondary:focus,
+.section-video-hero .hero-button--brown:hover,
+.section-video-hero .hero-button--brown:focus,
+.section-video-hero .hero-button--outline-gold:hover,
+.section-video-hero .hero-button--outline-gold:focus,
+.section-image-scroller .hero-button--secondary:hover,
+.section-image-scroller .hero-button--secondary:focus,
+.section-image-scroller .hero-button--brown:hover,
+.section-image-scroller .hero-button--brown:focus,
+.section-image-scroller .hero-button--outline-gold:hover,
+.section-image-scroller .hero-button--outline-gold:focus,
+.section-card-grid .hero-button--secondary:hover,
+.section-card-grid .hero-button--secondary:focus,
+.section-card-grid .hero-button--brown:hover,
+.section-card-grid .hero-button--brown:focus,
+.section-card-grid .hero-button--outline-gold:hover,
+.section-card-grid .hero-button--outline-gold:focus {
+    background: var(--lacc-color-action-secondary) !important;
+    background-color: var(--lacc-color-action-secondary) !important;
+    border-color: var(--lacc-color-action-secondary) !important;
+    color: var(--lacc-color-white) !important;
+}
+
+.section-video-hero .hero-button--light,
+.section-image-scroller .hero-button--light,
+.section-card-grid .hero-button--light {
+    background: var(--lacc-color-cream) !important;
+    background-color: var(--lacc-color-cream) !important;
+    border-color: var(--lacc-color-action-border-soft) !important;
+    color: var(--lacc-color-ink) !important;
+}
+
+.section-video-hero .hero-button--light:hover,
+.section-video-hero .hero-button--light:focus,
+.section-image-scroller .hero-button--light:hover,
+.section-image-scroller .hero-button--light:focus,
+.section-card-grid .hero-button--light:hover,
+.section-card-grid .hero-button--light:focus {
+    background: #ebe2d5 !important;
+    background-color: #ebe2d5 !important;
+    border-color: var(--lacc-color-action-border-soft) !important;
+    color: var(--lacc-color-ink) !important;
+}
+
+.section-video-hero .hero-button--outline,
+.section-image-scroller .hero-button--outline,
+.section-card-grid .hero-button--outline {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-color: var(--lacc-color-white) !important;
+    color: var(--lacc-color-white) !important;
+}
+
+.section-video-hero .hero-button--outline:hover,
+.section-video-hero .hero-button--outline:focus,
+.section-image-scroller .hero-button--outline:hover,
+.section-image-scroller .hero-button--outline:focus,
+.section-card-grid .hero-button--outline:hover,
+.section-card-grid .hero-button--outline:focus {
+    background: rgba(255,255,255,0.12) !important;
+    background-color: rgba(255,255,255,0.12) !important;
+    border-color: var(--lacc-color-white) !important;
+    color: var(--lacc-color-white) !important;
+}
+
+.section-video-hero .hero-button--outline-dark,
+.section-image-scroller .hero-button--outline-dark,
+.section-card-grid .hero-button--outline-dark {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-color: var(--lacc-color-action-tertiary) !important;
+    color: var(--lacc-color-action-tertiary) !important;
+}
+
+.section-video-hero .hero-button--outline-dark:hover,
+.section-video-hero .hero-button--outline-dark:focus,
+.section-image-scroller .hero-button--outline-dark:hover,
+.section-image-scroller .hero-button--outline-dark:focus,
+.section-card-grid .hero-button--outline-dark:hover,
+.section-card-grid .hero-button--outline-dark:focus {
+    background: rgba(81,83,74,0.08) !important;
+    background-color: rgba(81,83,74,0.08) !important;
+    border-color: var(--lacc-color-action-tertiary) !important;
+    color: var(--lacc-color-action-tertiary-hover) !important;
+}
+
+.header__heading {
+    margin-top: 0;
+}
+.home .heading__container--subheading {
+	letter-spacing: .02em;
+}
+@media only screen and (min-width: 1024px){
+	.navbar-logo {
+		
+    position: relative;
+    top: -18px;
+	}
+img.navbar__logo {
+    margin-top: 20px;
+}
+}
+.bottom-logo img.logo-footer {
+    height: auto!important;
+    width: 360px;
+    margin-bottom: 48px;
+    margin-top: 24px;
+}
+#dabar {
+    background: #3f3f3f;
+		position: fixed;
+    color: #fff;
+    font-size: 16px;
+    top: 0px;
+    left: 0px;
+    width: 100% !important;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+		z-index: 100;
+}
+#dabar a {
+	color: #fff;
+}
+
+/* NEW LAL STYLES */
+
+	.bottom-logo img.logo-footer {
+    height: auto!important;
+    width: 360px;
+    margin-bottom: 48px;
+    margin-top: 24px;
+
+}
+.navbar .container-fluid {
+	padding: 0;
+}
+.navbar-default {
+    background-color: var(--lacc-color-brand-blue);
+    border: none;
+}
+.navbar-default {
+    margin: 0;
+    background-color: var(--lacc-color-brand-blue)!important;
+    padding: 12px 24px;
+	border-bottom: 1px solid var(--lacc-color-brand-blue-border);
+}
+body.home .navbar-default {
+	border-bottom: none;
+}
+@media only screen and (max-width: 1024px) {
+	.header__heading {
+    margin-top: 49px;
+}
+	.navbar-nav {
+    margin: 7.5px 0;
+}
+	
+.navbar .navbar-nav li.btn-outline a {
+    border: 2px solid #6a4426;
+    margin-left: 12px;
+    padding: 12px 32px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    background: #6a4426;
+}
+	body.home header.navbar.navbar-default.navbar-fixed-top {
+    border: none;
+    box-shadow: none;
+}
+.navbar-default {
+    margin: 0;
+    background-color: #6383a8!important;
+    padding: 12px;
+}
+.navbar-nav {
+    max-width: 100%!important;
+    width: 100%!important;
+}
+	.navbar-nav>li {
+    float: none;
+    width: 100%;
+}
+}
+.navbar .container .navbar-header .navbar-toggle .icon-bar, .navbar .maingrid__container .navbar-header .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+body.logged-in.admin-bar .navbar-fixed-top {
+	top: 32px;
+}
+.navbar-fixed-top {
+    top: 0;
+}
+header .nav>li>a {
+    padding: 14px 16px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.navbar .navbar-nav li.btn-outline a {
+    border: 2px solid #fff;
+    margin-left: 12px;
+    padding: 12px 32px;
+}
+.navbar-default .navbar-nav>li.btn-outline>a:hover {
+    color: #353535!important;
+}
+.navbar-brand .navbar-logo {
+    width: 350px;
+    height: auto;
+}
+@media only screen and (max-width: 1280px){
+.navbar-brand .navbar-logo {
+    width: 300px;
+    height: auto;
+}
+}
+@media only screen and (max-width: 1200px) and (min-width: 1024px){
+.navbar-brand .navbar-logo {
+    width: 260px;
+    height: auto;
+}
+	.navbar .navbar-nav li a {
+    padding: 10px 10px;
+    font-size: 12px;
+}
+	.navbar .navbar-nav li.btn-outline a {
+    border: 2px solid #fff;
+    margin-left: 12px;
+    padding: 8px 16px;
+}
+}
+body.home .navbar-default {
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#131313+0,000000+100&0.8+0,0+100 */
+background: -moz-linear-gradient(top, rgba(19,19,19,0.8) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(19,19,19,0.8) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(19,19,19,0.8) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc131313', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+	background-color: transparent!important;
+}
+body {
+    padding-top: 74px;
+}
+@media only screen and (max-width: 1024px){
+	body {
+			padding-top: 66px;
+	}
+}
+body.home {
+	padding-top: 0;
+}
+.hero-slider-container {
+    position: absolute;
+    left: 0;
+    padding-top: 160px;
+    text-align: left;
+    height: 100%;
+    width: 80%;
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#131313+0,000000+100&0.8+0,0+100 */
+background: -moz-linear-gradient(left, rgba(19,19,19,0.8) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, rgba(19,19,19,0.8) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, rgba(19,19,19,0.8) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc131313', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+}
+.section-hero-slider .hero-slider .hero .hero-slider-content {
+	background: transparent;
+}
+.hero-slider-btn {
+	float: left;
+	background: transparent;
+	border: 2px solid #fff;
+	margin-top: 8px;
+}
+.hero-slider-btn a {
+	text-transform: uppercase;
+	font-size: 14px; 
+	letter-spacing: 2px;
+}
+@media only screen and (max-width: 767px){
+	.navbar-brand .navbar-logo {
+		width: 200px;
+	}
+}
+@media only screen and (max-width: 1024px){
+.navbar-collapse {
+    margin: 0!important;
+	padding: 0 8%;
+    background-color: #f6f3ed!important;
+}
+}
+/* Video code */
+.video-container {
+position: relative;
+padding-bottom: 56.25%;
+padding-top: 0px;
+height: 0;
+overflow: hidden;
+}
+
+.video-container iframe {
+position: absolute;
+top:0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+.vid-container-overflow {
+    overflow: hidden;
+    height: 90vh;
+}
+
+.video-hero-text-background-overlay {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    left: 0;
+    padding-top: 160px;
+    text-align: left;
+    height: 90vh;
+    width: 80%;
+    background: -moz-linear-gradient(left, rgba(19,19,19,0.8) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(left, rgba(19,19,19,0.8) 0%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to right, rgba(19,19,19,0.8) 0%,rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc131313', endColorstr='#00000000',GradientType=1 );
+}
+.video-hero-text-container {
+	position: absolute;
+	width: 540px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	left: 50px;
+	padding-top: 70px;
+}
+.video-hero-text-container h1{
+	color: #fff;
+}
+.video-hero-text-container .hero-button {
+	color: #fff;
+	border: 2px solid #fff;
+	padding: 12px 24px;
+	margin-top: 12px;
+	display: inline-block;
+}
+/* normal video */
+.wistia_responsive_padding {
+    padding: 0!important;
+    height: 90vh!important;
+}
+
+	.video-container {
+    position: relative;
+    padding-bottom: 90vh;
+    padding-top: 0px;
+    height: 0;
+    overflow: hidden;
+}
+	.w-video-wrapper video {
+    width: 100%!important;
+		height: 100%!important;
+    object-fit: cover!important;
+    margin-left: 0;
+}
+	.video-hero-text-background-overlay {
+		width: 100%;
+	}
+
+	/* first level */
+	.wistia_embed,.wistia_embed > div, .wistia_embed > div > div >div:nth-child(2), .wistia_embed .w-chrome > div >div:nth-child(2) >div:nth-child(2) {
+    height: 90vh!important;
+}
+	.video-hero-text-background-overlay {
+		height: 90vh;
+	}
+/*end normal video */
+@media only screen and (max-width: 767px){
+.wistia_responsive_padding {
+    padding: 0!important;
+    height: 80vh!important;
+}
+
+	.video-container {
+    position: relative;
+    padding-bottom: 80vh;
+    padding-top: 0px;
+    height: 0;
+    overflow: hidden;
+}
+	.w-video-wrapper video {
+    width: auto!important;
+		height: 100%!important;
+    margin-left: -50%;
+}
+	.video-hero-text-background-overlay {
+		width: 100%;
+	}
+.video-hero-text-container {
+    position: absolute;
+    width: initial;
+    top: 60%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0;
+    padding: 0 4%;
+}
+	/* first level */
+	.wistia_embed,.wistia_embed > div, .wistia_embed > div > div >div:nth-child(2), .wistia_embed .w-chrome > div >div:nth-child(2) >div:nth-child(2) {
+    height: 80vh!important;
+}
+	.video-hero-text-background-overlay {
+		height: 80vh;
+	}
+}
+
+@media only screen and (max-width: 565px){
+		.w-video-wrapper video {
+    width: auto!important;
+		height: 100%!important;
+    margin-left: -65%;
+	}}
+/* book now page  */
+body.page-id-4959 .dine-page-wrapper {
+	max-width: 840px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+	
+	padding: 120px 0;
+}
+body.page-id-4959 .dine-page-wrapper h2 {
+	color: #fff;
+	margin: 0 auto;
+	max-width: 560px;
+	text-align: center;
+}
+body.page-id-4959 .dine-page-wrapper img {
+	width: 100%;
+	height: auto;
+	margin-bottom: 24px
+}
+/* Dining Page Styles */
+@media only screen and (min-width: 767px){
+body.page-id-4959 .container {
+    width: 100%!important;
+    margin: 0;
+    padding: 0;
+}
+}
+body.page-id-4959 .dine-page-wrapper-outer {
+    position: relative;
+	padding-top:70px;
+	background: url('https://lakearrowheadlodge.com/wp-content/uploads/2021/01/LAL_Film_Hero-Alt3-1.jpg') no-repeat;
+	background-size: cover;
+}
+
+body.page-id-4959 .dine-page-wrapper-outer > .overlay{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	background: rgba(0,0,0,.3);
+}
+body.page-id-4959 h1.ot-title {
+    color: #fff;
+}
+body.page-id-4959 .dining-overview-p {
+    background: #fffaf4;
+    position: relative;
+    z-index: 1;
+}
+
+body.page-id-4959 .dining-overview-p div {
+	max-width: 720px;
+		margin: 0 auto;
+	padding: 50px;
+	text-align: center;
+}
+h1.ot-title {
+    color: #fff!important;
+}
+
+/* Wedding template shared typography */
+.wedding-container h1,
+.wedding-container h2,
+.wedding-container h3,
+h1.callout__heading {
+    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
+    color: #51534a;
+    letter-spacing: .125em;
+}
+
+.wedding-container h1 {
+    font-size: 3em;
+    line-height: 1.25em;
+    margin: 1em auto;
+    text-align: center;
+}
+
+.wedding-container h2,
+.wedding-container h3 {
+    font-weight: bold;
+}
+
+.wedding-container p,
+.wedding-container span.gform_description {
+    margin: 1em auto;
+    color: #777777;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 1.4em;
+    hyphens: none;
+}
+
+h2.alt-heading,
+.callout__content h2 {
+    font-family: helvetica, arial, sans-serif;
+    font-weight: normal;
+    font-style: italic;
+    color: #8dc5db;
+    margin-bottom: 50px;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+.mb-50 {
+    margin-bottom: 50px;
+}
+
+.p-50 {
+    padding: 50px;
+}
+
+body.page-id-4959 .ot-dtp-picker.wide {
+    width: 840px;
+    margin: 0 auto;
+}
+body.page-id-4959 footer {
+	margin-top: 0;
+}
+body.page-id-4959 .dining-photos {
+	height: 240px;
+	width: 100%;
+	overflow: hidden;
+}
+body.page-id-4959 .dining-photos .dining-photos-inner-wrapper {
+	width: 2000px;
+}
+body.page-id-4959 .dining-photos img{
+	height: 240px;
+	float: left;
+	width: auto;
+	display: inline-block;
+}
+body.page-id-4959 a.reserve-btn {
+    display: block;
+    width: 200px;
+	margin: 0 auto;
+	background: #6383a8;
+	color: #fff;
+	padding: 16px;
+	margin-top: 24px;
+}
+/* Dine Page https://lakearrowheadlodge.com/wp-content/uploads/2021/01/LAL_Film_Hero-Alt3-1.jpg */
+body.page-id-4456 .dine-page-wrapper {
+	max-width: 840px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+	
+	padding: 120px 0;
+}
+body.page-id-4456 .dine-page-wrapper h2 {
+	color: #fff;
+	margin: 0 auto;
+	max-width: 560px;
+	text-align: center;
+}
+body.page-id-4456 .dine-page-wrapper img {
+	width: 100%;
+	height: auto;
+	margin-bottom: 24px
+}
+/* Dining Page Styles */
+@media only screen and (min-width: 767px){
+body.page-id-4456 .container {
+    width: 100%!important;
+    margin: 0;
+    padding: 0;
+}
+}
+.dine-page-wrapper-outer {
+    position: relative;
+	padding-top:70px;
+	background: url('https://lakearrowheadlodge.com/wp-content/uploads/2020/09/LunchGathering-2.jpg') no-repeat;
+	background-size: cover;
+}
+
+body.page-id-4456 .dine-page-wrapper-outer > .overlay{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	background: rgba(0,0,0,.3);
+}
+body.page-id-4456 h1.ot-title {
+    color: #fff;
+}
+body.page-id-4456 .dining-overview-p {
+    background: #fffaf4;
+    position: relative;
+    z-index: 1;
+}
+
+body.page-id-4456 .dining-overview-p div {
+	max-width: 720px;
+		margin: 0 auto;
+	padding: 50px;
+	text-align: center;
+}
+h1.ot-title {
+    color: #fff!important;
+}
+body.page-id-4456 .ot-dtp-picker.wide {
+    width: 840px;
+    margin: 0 auto;
+}
+body.page-id-4456 footer {
+	margin-top: 0;
+}
+body.page-id-4456 .dining-photos {
+	height: 240px;
+	width: 100%;
+	overflow: hidden;
+}
+body.page-id-4456 .dining-photos .dining-photos-inner-wrapper {
+	width: 2000px;
+}
+body.page-id-4456 .dining-photos img{
+	height: 240px;
+	float: left;
+	width: auto;
+	display: inline-block;
+}
+body.page-id-4456 a.reserve-btn {
+    display: block;
+    width: 200px;
+	margin: 0 auto;
+	background: #6383a8;
+	color: #fff;
+	padding: 16px;
+	margin-top: 24px;
+}
+@media only screen and (max-width: 840px){
+	.ot-powered-by {
+		display: none;
+	}
+	body.page-id-4456 .container {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	body.page-id-4456 .dine-page-wrapper {
+    padding: 60px 0;
+}
+	body.page-id-4456 .ot-dtp-picker.wide .ot-dtp-picker-form .ot-dtp-picker-button {
+    border-radius: 0 2px 2px 0;
+    width: 100%;
+    float: right;
+}
+	body.page-id-4456 .ot-dtp-picker.wide {
+    margin: 0 auto;
+    width: 90%;
+    background: #fff;
+		margin-top: 12px;
+			border-radius: 8px;
+}
+		body.page-id-4456 .ot-dtp-picker.wide .ot-title {
+   text-align: center;
+			color: #111!important;
+			font-size: 24px!important;
+}
+}
+.reserve-btn {
+    text-align: center;
+    padding: 50px 0;
+    background: #fffaf4;
+    border-top: 1px solid #ddd;
+}
+
+/* Dining Page Styles */
+body.page-id-156 .dine-page-wrapper {
+	max-width: 840px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+	
+	padding: 120px 0;
+}
+body.page-id-156 .dine-page-wrapper h2 {
+	color: #fff;
+	margin: 0 auto;
+	max-width: 560px;
+	text-align: center;
+}
+body.page-id-156 .dine-page-wrapper img {
+	width: 100%;
+	height: auto;
+	margin-bottom: 24px
+}
+/* @media only screen and (min-width: 767px){
+body.page-id-156 .container {
+    width: 100%!important;
+    margin: 0;
+    padding: 0;
+} 
+}*/
+.dine-page-wrapper-outer {
+    position: relative;
+	padding-top:70px;
+	background: url('https://lakearrowheadlodge.com/wp-content/uploads/2020/09/LunchGathering-2.jpg') no-repeat;
+	background-size: cover;
+}
+
+body.page-id-156 .dine-page-wrapper-outer > .overlay{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	background: rgba(0,0,0,.3);
+}
+body.page-id-156 h1.ot-title {
+    color: #fff;
+}
+body.page-id-156 .dining-overview-p {
+    background: #fffaf4;
+    position: relative;
+    z-index: 1;
+}
+
+body.page-id-156 .dining-overview-p div {
+	max-width: 720px;
+		margin: 0 auto;
+	padding: 50px;
+	text-align: center;
+}
+h1.ot-title {
+    color: #fff!important;
+}
+body.page-id-156 .ot-dtp-picker.wide {
+    width: 840px;
+    margin: 0 auto;
+}
+body.page-id-156 footer {
+	margin-top: 0;
+}
+/*
+body.page-id-156 .dining-photos {
+	height: 240px;
+	width: 100%;
+	overflow: hidden;
+}*/
+body.page-id-156 .dining-photos .dining-photos-inner-wrapper {
+	width: 2000px;
+}
+/*
+body.page-id-156 .dining-photos img{
+	height: 240px;
+	float: left;
+	width: auto;
+	display: inline-block;
+} */
+body.page-id-156 a.reserve-btn {
+    display: block;
+    width: 200px;
+	margin: 0 auto;
+	background: #6383a8;
+	color: #fff;
+	padding: 16px;
+	margin-top: 24px;
+}
+@media only screen and (max-width: 840px){
+	.ot-powered-by {
+		display: none;
+	}
+	/*
+	body.page-id-156 .container {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	} */
+	body.page-id-156 .dine-page-wrapper {
+    padding: 60px 0;
+}
+	body.page-id-156 .ot-dtp-picker.wide .ot-dtp-picker-form .ot-dtp-picker-button {
+    border-radius: 0 2px 2px 0;
+    width: 100%;
+    float: right;
+}
+	body.page-id-156 .ot-dtp-picker.wide {
+    margin: 0 auto;
+    width: 90%;
+    background: #fff;
+		margin-top: 12px;
+			border-radius: 8px;
+}
+		body.page-id-156 .ot-dtp-picker.wide .ot-title {
+   text-align: center;
+			color: #111!important;
+			font-size: 24px!important;
+}
+}
+.reserve-btn {
+    text-align: center;
+    padding: 50px 0;
+    background: #fffaf4;
+    border-top: 1px solid #ddd;
+}
+.am-small-icon {
+	max-width: 48px;
+}
+div#ta-widget img {
+    width: 100px;
+    opacity: .5;
+    margin: -28px 0 10px;
+    display: block;
+}
+div#ta-widget a:hover img {
+	opacity: 1;
+}
+/* Media Accomodations Page Code */
+
+#gform_35 ul {
+	padding-left: 0!important;
+	padding-top: 0!important;
+}
+#gform_35 ul li {
+	    list-style-type: none!important;
+}
+#input_35_1_3_container {
+	display:inline-block;
+}
+
+#input_35_1_3_container label {
+	float: left;
+    margin-right: 8px;
+}
+
+#input_35_1_6_container {
+	display:inline-block;
+}
+
+#input_35_1_6_container label {
+	float: left;
+    margin-right: 8px;
+}
+#gform_35 label.gfield_label {
+    font-weight: 700;
+}
+#gform_35 #input_35_4_1_container, #gform_35 #input_35_4_2_container {
+    display: block;
+}
+#gform_35 #input_35_4_1_container label, #gform_35 #input_35_4_2_container label {
+    display: block;
+	margin-bottom: 4px;
+}
+
+#gform_35 input#input_35_2, #gform_35 input#input_35_3 {
+    width: 50%;
+}
+#gform_35 input#input_35_4_1, #gform_35 input#input_35_4_2 {
+    width: 100%;
+}
+#gform_35 input#input_35_4_3_container, #gform_35 input#input_35_4_4_container, #gform_35 input#input_35_4_5_container, #gform_35 input#input_35_4_6_container {
+	width: 50%!important;
+	display: inline-block!important;
+}
+#gform_35 input#input_35_4_3_container label, #gform_35 input#input_35_4_4_container label, #gform_35 input#input_35_4_5_container label, #gform_35 input#input_35_4_6_container label {
+	width: 100%;
+	display: block;
+}
+#input_35_4_6_container {
+	margin-top: 8px;
+	display: block;
+}
+
+/* Fix navbar */
+    .navbar-brand {
+        height: 70px;
+    }
+.header__heading {
+		margin-top: 0;
+}
+    @media screen and (max-width: 1200px) {
+        .navbar-brand {
+            height: 54px;
+        }
+
+        .navbar-nav {
+            margin-right: 8px;
+            margin-top: 4px;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .navbar-nav {
+            margin-top: 8px;
+            margin-right: 16px;
+        }
+
+
+    }
+
+    @media screen and (max-width: 1024px) {
+        .navbar-brand {
+            padding: 0;
+            padding-left: 10px;
+        }
+
+        .navbar-brand .navbar-logo {
+            width: 270px;
+        }
+			.header__heading {
+		margin-top: 0;
+}
+    }
+
+    @media screen and (max-width: 767px) {
+        .navbar-brand .navbar-logo {
+            width: 250px;
+        }
+    }
+#tablepress-1 caption {display:none;}
+
+/* implement Haarlem sitewide */
+    @import url("//hello.myfonts.net/count/4383ff");
+
+    @font-face {
+        font-family: "HaarlemDeco";
+        src: url('/lal/wp-content/themes/LACC-sage-theme-master/dist/fonts/HaarlemDeco/font.woff2') format('woff2'), url('/lal/wp-content/themes/LACC-sage-theme-master/dist/fonts/HaarlemDeco/font.woff') format('woff');
+    }
+    h1,h2,h3 {
+      font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
+      letter-spacing: 0.1275rem;
+      text-transform: capitalize;
+    }
+    p, body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 16px;
+      line-height: 1.6em;
+    }
+.pmb-30 {
+	margin-bottom: 30px;
+	padding-bottom: 30px;
+}
+.border-bottom {
+	border-bottom: 1px solid #dedede;
+}
+
+/* individual faq/film location accordion tweaks */
+
+.page-template-template-faq-individual-acf .panel-title a,
+.page-template-template-film-location .panel-title a {
+font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
+color: #51534a;
+text-transform: uppercase;
+letter-spacing: .01275em;
+font-size: 18px;
+}
+
+.page-template-template-faq-individual-acf .panel-heading,
+.page-template-template-film-location .panel-heading {
+background-color: #ffffff;
+}
+
+.page-template-template-faq-individual-acf .wrap,
+.page-template-template-film-location .wrap {
+box-shadow: none;
+}
+
+.page-template-template-faq-individual-acf .panel-group,
+.page-template-template-film-location .panel-group {
+margin-bottom: 50px;
+}
+
+.page-template-template-faq-individual-acf #accordion .panel-heading a:before, 
+.page-template-template-faq-individual-acf #bs-collapse .panel-heading.active a:after, 
+.page-template-template-faq-individual-acf .panel-heading a:before,
+.page-template-template-film-location #accordion .panel-heading a:before, 
+.page-template-template-film-location #bs-collapse .panel-heading.active a:after, 
+.page-template-template-film-location .panel-heading a:before {
+    font-size: 16px;
+    top: 20px;
+}
+
+.page-template-template-faq-individual-acf .panel,
+.page-template-template-film-location .panel {
+border-bottom: 1px solid #b8b9b1;
+}
+
+.page-template-template-faq-individual-acf .panel-body,
+.page-template-template-film-location .panel-body {
+padding-bottom: 35px;
+}
+.btn--blue {
+    border: 1px solid var(--lacc-color-brand-blue);
+    background-color: var(--lacc-color-white);
+    color: var(--lacc-color-brand-blue);
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: all .5s ease-in-out;
+}
+ol.numbered {
+	list-style: numbers;
+	margin-left: 1em;
+	color: #777777;
+}
+
+/* blog articles */
+.articles-template .btn {
+    padding: .5em 1.25em;
+    font-size: 16px;
+    color: var(--lacc-color-white);
+    background-color: var(--lacc-color-ink);
+    letter-spacing: .125em;
+    text-transform: uppercase;
+    border: 2px solid var(--lacc-color-ink);
+    transition: all .5s ease-in-out;
+    border-radius: 0;
+}
+.articles-template .btn.lg {
+    font-size: 1.15em;
+}
+/* the events calendar */
+#page #header {display: none;}
+.tribe-events-header ul li, #tribe-events-footer ul li {
+	list-style-type: none;
+}
+
+/* buttons */
+
+.btn {
+    padding: .5em 1.25em;
+    font-size: 16px;
+    color: #FFFFFF;
+    background-color: #51534a;
+    letter-spacing: .125em;
+    text-transform: uppercase;
+    border: 2px solid #51534a;
+    transition: all .5s ease-in-out;
+    border-radius: 0;
+}
+  .btn.lg {
+    font-size: 1.15em;
+}
+
+.btn:hover {
+    color: var(--lacc-color-ink);
+    background-color: var(--lacc-color-white);
+}
+
+/* opt-in decorative lists */
+ul.lacc-keyline-list,
+ul.lacc-keyline-list--plain {
+    --lacc-list-line-color: rgba(148, 110, 41, 0.28);
+    --lacc-list-bullet-color: var(--lacc-color-gold-soft);
+    list-style: none !important;
+    margin: 0;
+    padding: 0 !important;
+    padding-left: 0 !important;
+}
+
+ul.lacc-keyline-list > li,
+ul.lacc-keyline-list--plain > li {
+    list-style: none !important;
+    position: relative;
+    margin: 0;
+    padding: .875em 0 .875em 2em;
+    border-bottom: 1px solid var(--lacc-list-line-color) !important;
+}
+
+ul.lacc-keyline-list > li:first-child,
+ul.lacc-keyline-list--plain > li:first-child {
+    border-top: 1px solid var(--lacc-list-line-color) !important;
+}
+
+ul.lacc-keyline-list > li::before {
+    content: '✦' !important;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: .875em;
+    width: .5em;
+    color: var(--lacc-list-bullet-color) !important;
+    font-size: 1em;
+    line-height: 1;
+}
+
+ul.lacc-keyline-list--plain > li {
+    padding-left: 0;
+}
+
+ul.lacc-keyline-list--plain > li::before {
+    content: none !important;
+}

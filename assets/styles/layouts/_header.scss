@@ -1,0 +1,291 @@
+//Header.scss
+
+/*=========-----     Logo and RFP Button     -----========= */
+
+header {
+    .container-fluid {
+        .col-md-12 {
+            .col-md-4 {
+                padding: 0px;
+                #logo {
+                    margin: 10px 0px;
+                }
+            }
+            .col-md-3.col-md-offset-5 {
+                padding: 0px;
+                .RFP-button {
+                    margin: 20px 0px;
+                    float: right;
+                    border: 2px solid $main-blue;
+                    background-color: $main-blue;
+                    @extend .parent-button;
+                    &:hover {
+                        a {
+                            color: $main-blue;
+                        }
+                    }
+                    .RFP-button-text {
+                        @extend .child-button;
+                        background-color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* =========-----     Navigation     -----========= */
+
+.dropdown-menu {
+    li {
+        list-style-type: none;
+    }
+    .menu-item {
+        list-style-type: none;
+    }
+}
+
+.dropdown {
+    padding: 0px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: white !important;
+}
+
+.dropdown {
+    margin: 0px;
+    a:hover {
+        background-color: transparent !important;
+    }
+}
+
+.dropdown-menu {
+    li {
+        a:hover {
+            background-color: $main-beige !important;
+            font-weight: 600;
+        }
+    }
+}
+
+.navbar-default {
+    background-color: $main-brown !important;
+    z-index: 10000;
+    .container {
+        padding: 0px;
+    }
+    .navbar-nav {
+        font-weight: 400;
+        li {
+            .dropdown {
+                padding: 0px;
+                a {
+                    &:hover {
+                        background-color: $main-beige !important;
+                    }
+                }
+            }
+            &:first-child {
+                margin-left: 0px !important;
+            }
+            &:last-child {
+                margin-right: 0px !important;
+            }
+            a:hover {
+                color: $main-text;
+            }
+            .dropdown {
+                color: white;
+            }
+            a:focus {
+                background-color: transparent;
+            }
+            ul {
+                margin: 0px;
+            }
+        }
+    }
+}
+
+nav {
+    li {
+        a {
+            &:hover {
+                background-color: $main-beige !important;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+// .navbar-default .navbar-nav>li>a, {
+//     color: white;
+// }
+
+/* =========-----     Dropdown     -----========= */
+
+header .dropdown {
+    margin: 0px 22px;
+    color: white;
+    .dropdown-toggle {
+        color: $main-text !important;
+        background-color: transparent !important;
+    }
+    .dropdown-menu {
+        background-color: none !important;
+        padding: 0px !important;
+        z-index: 1;
+    }
+}
+
+@media only screen and (min-width: 991px) and (max-width: 1200px) {
+    .navbar-nav {
+        li {
+            margin: 0px 10px;
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+    .navbar-nav li {
+        margin: 2px;
+    }
+}
+
+
+/* =========-----     Media Queries    -----========= */
+
+@media (min-width: 768px) {
+    .container-fluid {
+        .navbar-collapse {
+            margin-right: 20% !important;
+            margin-left: 20% !important;
+        }
+    }
+    .navbar-nav {
+        max-width: 1600px;
+        li {
+            a {
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+        }
+    }
+    .dropdown-menu {
+        box-shadow: 0 2px 1px 0 rgba(123, 123, 123, 0.5) !important;
+        li {
+            a {
+                display: block;
+                font-size: 15px;
+                line-height: 20px;
+                margin: 0;
+                min-height: 0px;
+                padding: 20px;
+                min-width: 250px;
+                padding: 20px !important;
+            }
+        }
+    }
+    .dropdown-toggle {
+        a {
+            background-color: transparent !important;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-brand {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .preheader {
+        display: none;
+    }
+}
+
+
+/* =========-----     Font Awesome     -----========= */
+
+.fa-envelope:before {
+    padding-top: 20px;
+    font-size: 18px;
+}
+
+.fa-phone:before {
+    padding-top: 20px;
+    font-size: 18px;
+}
+
+.fa-arrow-circle-right:before {
+    padding-left: 5px;
+    font-size: 16px;
+}
+.fa:before {
+    padding-left: 5px;
+    font-size: 16px;
+}
+
+.fa-file-pdf-o:before {
+    padding-left: 5px;
+    font-size: 16px;
+}
+
+#space {
+    margin-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+    .navbar-default {
+        margin: 0px;
+    }
+}
+
+@media (max-width: 768px) {
+    #menu-top-nav-menu {
+        display: none;
+    }
+    #logo {
+        display: none;
+    }
+    .rfp-button {
+        display: none;
+    }
+    .container-fluid {
+        .col-md-12 {
+            .container {
+                display: none;
+            }
+        }
+    }
+}
+// externallink-dropdown 
+
+    i.icon-tiny.icon-external-link {
+        color: #3f3f3f;
+        float: right;
+        margin-top: 3px;
+    }
+.icon-tiny[class^="icon-"] {
+    line-height: 15px !important;
+    height: 13px;
+    width: 15px;
+    margin-right: 5px;
+    font-size: 13px !important;
+    color: #888 !important;
+    background-color: transparent !important;
+}
+// Extra Small Devices, Phones
+@media only screen and (min-width: $extra-small-container-width) {}
+
+// Small Devices, Tablets
+@media only screen and (min-width: $small-container-width) {}
+
+// Medium Devices, Desktops
+@media only screen and (min-width: $medium-container-width) {}
+
+// Large Devices, Wide Screens
+@media only screen and (min-width: $large-container-width) {}

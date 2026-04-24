@@ -1,0 +1,31 @@
+
+<div class="vid-container-overflow">
+    <div class="video-container">
+    <script>
+        window._wq = window._wq || []; 
+        _wq.push({   id: "j0zjiluh2p",   
+            options: {     
+                videoFoam: true,     
+                endVideoBehavior: "loop",  
+            } 
+        }); 
+
+        </script>
+        <!--j0zjiluh2p-->
+        <script src="https://fast.wistia.com/embed/medias/4e2kjpftga.jsonp" async></script>
+        <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_4e2kjpftga seo=false videoFoam=true" style="height:100%;position:relative;width:100%">&nbsp;</div></div></div> 
+
+    </div>
+</div>
+<div class="video-hero-text-background-overlay">
+    <div class="video-hero-text-container">
+        <div class="hero-slider-content">
+            <h1 class="hero-slider-title" data-animation="animated">Get Away & Get Inspired</h1>
+            <h2 class="hero-slider-subheading" data-animation="animated">The UCLA Lake Arrowhead Lodge’s inspiring surroundings provide a unique environment for solo adventurers, vacationing couples and families, and those attending conferences and retreats. Book your overnight stay or event today!</h2>
+            <div class="closure-notice-container" style="margin-top: 25px !important;margin-bottom: 12px !important;opacity: 0.9;background: #1a1a1a9e;text-align: left;padding: 15px 20px 15px 20px;max-width: 600px;"><span style="opacity: 1; font-weight: 600; font-size: 18px; color: #fff; text-align: left;">Travel Advisory</span><p style="color: #fff !important; font-size:15px;margin-top:4px;">The health and well-being of our guests and team members is of critical importance. Please be sure to stay up-to-date and compliant with all federal, state and local travel advisories and safety orders before booking a reservation and/or traveling, as this information is changing frequently.
+ <a href="/coronavirus/" style="color: #fff; text-decoration: underline;">Learn more</a></p></div>
+            <a class="hero-button" href="https://reservations.travelclick.com/112652#/guestsandrooms" tabindex="0">Book Your Stay</a>
+        </div>
+    </div>
+</div>

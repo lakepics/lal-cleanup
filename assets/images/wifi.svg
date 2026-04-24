@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="55px" height="40px" viewBox="0 0 55 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>wifi</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Monday_due" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-weight="normal" font-family="FontAwesome" letter-spacing="0.400000006" font-size="50">
+        <g id="1--Homepage" transform="translate(-264.000000, -2031.000000)" fill="#AD8A5F">
+            <g id="body" transform="translate(-162.000000, 148.000000)">
+                <g id="Amenities" transform="translate(398.000000, 1769.000000)">
+                    <g id="icons" transform="translate(27.000000, 111.000000)">
+                        <g id="1">
+                            <g id="1-top">
+                                <text id="wifi">
+                                    <tspan x="0" y="43"></tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
