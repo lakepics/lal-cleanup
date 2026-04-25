@@ -9,6 +9,7 @@ Instruction layers in priority order:
 4. LocalWP tooling and preflight: .github/instructions/03-localwp-tooling.instructions.md
 5. Weekly review and handoff rhythm: .github/instructions/04-review-and-handoff.instructions.md
 6. Session checkpoint discipline: .github/instructions/05-session-memory.instructions.md
+7. Component promotion kickoff: .github/instructions/06-component-promotion-kickoff.instructions.md
 
 Operating rules:
 - Treat these files as the source of truth for process behavior.
