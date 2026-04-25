@@ -13,17 +13,11 @@ $landing_page_source_id = (int) get_option( 'page_on_front' );
 $landing_featured_article = $landing_page_source_id ? get_field( 'homepage_featured_article', $landing_page_source_id ) : null;
 $rendered_split_feature = false;
 $rendered_video_hero = false;
-$rendered_two_column = false;
-$rendered_card_grid = false;
 $sandbox_theme_uri = trailingslashit( get_stylesheet_directory_uri() );
 $sandbox_brand_assets = array(
     'logo_arrowhead' => $sandbox_theme_uri . 'brand/logos/LAL_Logo_Arrowhead_Horiz_Green.svg',
     'logo_ccfr' => $sandbox_theme_uri . 'brand/logos/LAL_Logo_CCFR_Horiz_Color+White.svg',
     'logo_tavern' => $sandbox_theme_uri . 'brand/logos/north-shore-tavern-at-ucla-lake-arrowhead-lodge-logo-brown.svg',
-);
-$sandbox_local_test_assets = array(
-    'two_col_primary' => $sandbox_theme_uri . 'brand/image.png',
-    'two_col_secondary' => $sandbox_theme_uri . 'brand/image2.png',
 );
 $sandbox_card_assets = array(
     'chalet_exterior' => 'https://lal.local/wp-content/uploads/2024/07/Chalet-Deck-Breakfast-1.jpg',
@@ -33,275 +27,7 @@ $sandbox_card_assets = array(
     'special_book_early' => 'https://lal.local/wp-content/uploads/2025/09/book-early-and-save-home.jpg',
     'special_first_responder' => 'https://lal.local/wp-content/uploads/2020/07/LACC_Specials_Conf2-1.jpg',
 );
-
-$sandbox_two_column_test_data = array(
-    'section_anchor_id' => 'sandbox-two-column-seeded',
-    'section_eyebrow' => 'Builder Test Section',
-    'eyebrow_text_transform' => 'uppercase',
-    'eyebrow_variant' => 'pill',
-    'eyebrow_font_family' => 'haarlem',
-    'eyebrow_alignment' => 'left',
-    'eyebrow_color' => '#946E29',
-    'eyebrow_fill_color' => '#f6f3ed',
-    'eyebrow_border_color' => '#b58a2d',
-    'eyebrow_border_width' => '1px',
-    'section_heading' => 'Seeded Two Column Specimen',
-    'section_intro' => '<p>This is temporary seeded content for rapid iteration while we lock promoted eyebrow and badge rules in the sandbox workflow.</p>',
-    'container_type' => 'container-fluid',
-    'column_ratio' => '60-40',
-    'column_gap' => '0',
-    'col_min_height' => '480px',
-    'content_alignment' => 'left',
-    'heading_font_family' => 'haarlem',
-    'heading_font_weight' => '400',
-    'section_heading_color' => '#51534a',
-    'background_color' => '',
-    'section_keyline_position' => '',
-    'section_keyline_color' => '#b8b9b1',
-    'padding_top' => '0',
-    'padding_bottom' => '0',
-    'section_classes' => 'section-two-column--sandbox-seeded',
-    'col_a_image' => array(
-        'url' => $sandbox_local_test_assets['two_col_primary'],
-        'alt' => 'Workspace seed image primary',
-    ),
-    'col_a_heading' => 'Gather Lakeside',
-    'col_a_copy' => '<p>Bring your team or family into a mountain setting that feels editorial, warm, and practical in equal measure.</p>',
-    'col_a_button_label' => 'Explore Stays',
-    'col_a_button_url' => '/accommodations/',
-    'col_a_button_style' => 'outline-gold',
-    'col_a_background_color' => '#f6f3ed',
-    'col_a_text_color' => '#51534a',
-    'col_b_image' => array(
-        'url' => $sandbox_local_test_assets['two_col_secondary'],
-        'alt' => 'Workspace seed image secondary',
-    ),
-    'col_b_heading' => 'Plan With Flexible Defaults',
-    'col_b_copy' => '<p>Use this seeded section to validate eyebrow variants, border treatment, and alignment behavior before final promotion.</p><p>Next step: iterate card-level badges inside the sandbox card audit lane, then promote a locked set.</p>',
-    'col_b_button_label' => 'Open Planning Guide',
-    'col_b_button_url' => '/conferences/',
-    'col_b_button_style' => 'outline-dark',
-    'col_b_background_color' => '#ffffff',
-    'col_b_text_color' => '#51534a',
-);
-
-$sandbox_card_grid_test_data = array(
-    'section_anchor_id' => 'sandbox-card-grid-seeded',
-    'section_eyebrow' => 'Builder Card Test',
-    'section_heading' => 'Seeded Card Grid Specimen',
-    'section_intro' => '<p>This seeded card grid is for badge-model QA before broader builder promotion.</p>',
-    'content_alignment' => 'left',
-    'container_type' => 'container',
-    'background_color' => '',
-    'background_image' => array(),
-    'background_gradient' => '',
-    'background_vertical_position' => 'center',
-    'background_parallax' => 0,
-    'use_scrollwork' => 0,
-    'scrollwork_side' => 'left',
-    'scrollwork_color' => '#8DC5DB',
-    'section_classes' => 'section-card-grid--sandbox-seeded',
-    'padding_top' => '0',
-    'padding_bottom' => '0',
-    'section_keyline_position' => '',
-    'section_keyline_color' => '#b8b9b1',
-    'section_intro_max_width' => '100%',
-    'section_intro_spacing_bottom' => '40px',
-    'heading_max_width' => '100%',
-    'card_padding' => '24px',
-    'card_padding_top' => '24px',
-    'card_padding_bottom' => '24px',
-    'card_gutter' => '30px',
-    'card_background_gradient' => 'linear-gradient(180deg, rgba(246,243,237,0.92) 0%, rgba(255,255,255,0.92) 100%)',
-    'card_border_color' => '',
-    'card_badge_variant' => 'pill',
-    'card_badge_alignment' => 'center',
-    'card_badge_type_color' => '#ffffff',
-    'card_badge_fill_color' => '#946E29',
-    'card_badge_border_color' => 'transparent',
-    'card_badge_border_width' => '0',
-    'card_badge_border_radius' => '999px',
-    'equalize_card_bottoms' => 1,
-    'enable_card_hover_effect' => 1,
-    'card_button_spacing' => '24px',
-    'card_button_alignment' => 'left',
-    'section_heading_color' => '#51534a',
-    'card_heading_font_size' => '',
-    'card_heading_color' => '#51534a',
-    'section_button_label' => '',
-    'section_button_url' => '',
-    'section_button_style' => 'outline-dark',
-    'section_button_alignment' => 'left',
-    'section_bottom_button_label' => '',
-    'section_bottom_button_url' => '',
-    'section_bottom_button_style' => 'outline-dark',
-    'section_bottom_button_alignment' => 'left',
-    'cta_text_size' => '16px',
-    'cta_padding' => '.75em 1.5em',
-    'cta_letter_spacing' => '.04em',
-    'post_grid_content' => '',
-    'post_content_max_width' => '100%',
-    'header_background_color' => '',
-    'header_width' => '100%',
-    'header_max_width' => '100%',
-    'header_padding_top' => '0',
-    'header_padding_right' => '0',
-    'header_padding_bottom' => '0',
-    'header_padding_left' => '0',
-    'heading_font_family' => 'haarlem',
-    'heading_font_weight' => '400',
-    'heading_size' => 'default',
-    'subheading_font_family' => 'haarlem',
-    'subheading_font_weight' => '400',
-    'card_heading_font_family' => 'haarlem',
-    'card_heading_font_weight' => '400',
-    'eyebrow_color' => '#946E29',
-    'eyebrow_font_family' => 'default',
-    'eyebrow_font_weight' => '600',
-    'eyebrow_font_size' => '12px',
-    'eyebrow_text_transform' => 'uppercase',
-    'eyebrow_background_color' => 'transparent',
-    'eyebrow_border' => '0',
-    'eyebrow_padding' => '0',
-    'eyebrow_border_radius' => '0',
-    'header_column_width' => '12',
-    'cards' => array(
-        array(
-            'card_desktop_width' => '4',
-            'card_heading' => 'Lakeside Cabin Weekend',
-            'card_badge' => 'Most Popular',
-            'card_heading_align' => 'left',
-            'card_body' => '<p>Built for rapid QA: promoted badge controls + local workspace image assets.</p>',
-            'card_image' => array(
-                'url' => $sandbox_local_test_assets['two_col_primary'],
-                'alt' => 'Seeded card image primary',
-            ),
-            'card_button_label' => 'View Details',
-            'card_button_url' => '/accommodations/',
-            'card_button_style' => 'outline-dark',
-        ),
-        array(
-            'card_desktop_width' => '4',
-            'card_heading' => 'Conference Retreat',
-            'card_badge' => 'Limited Dates',
-            'card_heading_align' => 'left',
-            'card_body' => '<p>Use this specimen to lock one badge model before introducing additional variants.</p>',
-            'card_image' => array(
-                'url' => $sandbox_local_test_assets['two_col_secondary'],
-                'alt' => 'Seeded card image secondary',
-            ),
-            'card_button_label' => 'Plan Now',
-            'card_button_url' => '/conferences/',
-            'card_button_style' => 'outline-gold',
-        ),
-        array(
-            'card_desktop_width' => '4',
-            'card_heading' => 'Family Escape Package',
-            'card_badge' => 'Editor Pick',
-            'card_heading_align' => 'left',
-            'card_body' => '<p>Fast seeded content helps us compare badge treatment against typography and CTA rhythm.</p>',
-            'card_image' => array(
-                'url' => $sandbox_local_test_assets['two_col_primary'],
-                'alt' => 'Seeded card image tertiary',
-            ),
-            'card_button_label' => 'Book Stay',
-            'card_button_url' => '/specials/',
-            'card_button_style' => 'primary',
-        ),
-    ),
-);
-
-$sandbox_two_column_eyebrow_matrix = array(
-    'haarlem-plain' => array(
-        'label' => 'Haarlem Plain',
-        'variant' => 'plain',
-        'font_family' => 'haarlem',
-        'eyebrow_fill_color' => 'transparent',
-        'eyebrow_border_color' => 'transparent',
-        'eyebrow_border_width' => '0',
-        'eyebrow_color' => '#946E29',
-    ),
-    'haarlem-pill' => array(
-        'label' => 'Haarlem Pill',
-        'variant' => 'pill',
-        'font_family' => 'haarlem',
-        'eyebrow_fill_color' => '#f6f3ed',
-        'eyebrow_border_color' => '#b58a2d',
-        'eyebrow_border_width' => '1px',
-        'eyebrow_color' => '#946E29',
-    ),
-    'haarlem-ink' => array(
-        'label' => 'Haarlem Ink',
-        'variant' => 'ink',
-        'font_family' => 'haarlem',
-        'eyebrow_fill_color' => '#51534a',
-        'eyebrow_border_color' => '#51534a',
-        'eyebrow_border_width' => '1px',
-        'eyebrow_color' => '#ffffff',
-    ),
-    'haarlem-fill-borderless' => array(
-        'label' => 'Haarlem Fill / No Border',
-        'variant' => 'pill',
-        'font_family' => 'haarlem',
-        'eyebrow_fill_color' => '#f6f3ed',
-        'eyebrow_border_color' => 'transparent',
-        'eyebrow_border_width' => '0',
-        'eyebrow_color' => '#946E29',
-    ),
-    'helvetica-plain' => array(
-        'label' => 'Helvetica Plain',
-        'variant' => 'plain',
-        'font_family' => 'helvetica',
-        'eyebrow_fill_color' => 'transparent',
-        'eyebrow_border_color' => 'transparent',
-        'eyebrow_border_width' => '0',
-        'eyebrow_color' => '#946E29',
-    ),
-    'helvetica-pill' => array(
-        'label' => 'Helvetica Pill',
-        'variant' => 'pill',
-        'font_family' => 'helvetica',
-        'eyebrow_fill_color' => '#f6f3ed',
-        'eyebrow_border_color' => '#b58a2d',
-        'eyebrow_border_width' => '1px',
-        'eyebrow_color' => '#946E29',
-    ),
-    'helvetica-ink' => array(
-        'label' => 'Helvetica Ink',
-        'variant' => 'ink',
-        'font_family' => 'helvetica',
-        'eyebrow_fill_color' => '#51534a',
-        'eyebrow_border_color' => '#51534a',
-        'eyebrow_border_width' => '1px',
-        'eyebrow_color' => '#ffffff',
-    ),
-    'helvetica-fill-borderless' => array(
-        'label' => 'Helvetica Fill / No Border',
-        'variant' => 'pill',
-        'font_family' => 'helvetica',
-        'eyebrow_fill_color' => '#f6f3ed',
-        'eyebrow_border_color' => 'transparent',
-        'eyebrow_border_width' => '0',
-        'eyebrow_color' => '#946E29',
-    ),
-);
-
-$sandbox_card_badge_variant_matrix = array(
-    'pill' => 'Pill',
-    'featured' => 'Featured',
-    'flag' => 'Flag',
-);
-$sandbox_gallery_source_id = 0;
-$sandbox_gallery_page = get_page_by_path( 'gallery' );
-if ( $sandbox_gallery_page instanceof WP_Post ) {
-    $sandbox_gallery_source_id = (int) $sandbox_gallery_page->ID;
-}
-
-if ( ! $sandbox_gallery_source_id ) {
-    $sandbox_gallery_source_id = 116;
-}
-
-$sandbox_gallery_images = get_field( 'images', $sandbox_gallery_source_id );
+$sandbox_gallery_images = get_field( 'images', 116 );
 
 if ( ! empty( $sandbox_gallery_images ) && is_array( $sandbox_gallery_images ) ) {
     $sandbox_gallery_matches = array();
@@ -349,33 +75,6 @@ if ( ! empty( $sandbox_gallery_images ) && is_array( $sandbox_gallery_images ) )
         $sandbox_card_assets['chalet_lounge'] = $sandbox_gallery_matches[3];
     }
 }
-
-// Keep seeded specimens photo-based by sourcing from gallery-derived card assets.
-$sandbox_local_test_assets['two_col_primary'] = $sandbox_card_assets['chalet_exterior'];
-$sandbox_local_test_assets['two_col_secondary'] = $sandbox_card_assets['chalet_room'];
-
-$sandbox_two_column_test_data['col_a_image'] = array(
-    'url' => $sandbox_local_test_assets['two_col_primary'],
-    'alt' => 'Gallery seed image primary',
-);
-$sandbox_two_column_test_data['col_b_image'] = array(
-    'url' => $sandbox_local_test_assets['two_col_secondary'],
-    'alt' => 'Gallery seed image secondary',
-);
-
-$sandbox_card_grid_test_data['cards'][0]['card_image'] = array(
-    'url' => $sandbox_card_assets['chalet_exterior'],
-    'alt' => 'Gallery seed card image one',
-);
-$sandbox_card_grid_test_data['cards'][1]['card_image'] = array(
-    'url' => $sandbox_card_assets['chalet_room'],
-    'alt' => 'Gallery seed card image two',
-);
-$sandbox_card_grid_test_data['cards'][2]['card_image'] = array(
-    'url' => $sandbox_card_assets['chalet_bath'],
-    'alt' => 'Gallery seed card image three',
-);
-
 $sandbox_illustration_files = glob( get_stylesheet_directory() . '/brand/illustrations/*.{svg,png,jpg,jpeg,webp}', GLOB_BRACE );
 $sandbox_illustration_assets = array();
 
@@ -465,65 +164,16 @@ if ( ! $landing_featured_article ) {
     --lacc-sandbox-green: rgb(var(--lacc-sandbox-green-rgb));
     --lacc-sandbox-ink: #51534a;
     --lacc-sandbox-ink-deep: #1f221d;
-    --lacc-sandbox-old-gold: #7a5a1f;
     --lacc-sandbox-gold: #d4a441;
     --lacc-sandbox-gold-accent: #c6922e;
     --lacc-sandbox-gold-decorative: #b58a2d;
-    --lacc-sandbox-brand-green: #60a57d;
     --lacc-sandbox-mist: #d9ddd6;
     --lacc-sandbox-taupe: #5a4f47;
     --lacc-sandbox-gradient-blue: linear-gradient(180deg, var(--lacc-sandbox-blue-deep), var(--lacc-sandbox-blue));
     --lacc-sandbox-gradient-cream: linear-gradient(180deg, var(--lacc-sandbox-cream), #ffffff);
     --lacc-sandbox-gradient-ink: linear-gradient(180deg, var(--lacc-sandbox-ink-deep), var(--lacc-sandbox-ink));
-    --lacc-sandbox-gradient-brand-green-pastel: radial-gradient(circle at top left, rgba(96,165,125,0.16), transparent 36%), linear-gradient(180deg, rgba(96,165,125,0.12), rgba(255,255,255,0.98));
-    --lacc-sandbox-gradient-evergreen-deep: linear-gradient(180deg, #5e8d5b 0%, #234534 100%);
-    --lacc-sandbox-gradient-illustration-mist: radial-gradient(circle at top left, rgba(255,255,255,0.32), transparent 36%), linear-gradient(180deg, rgba(63,95,133,0.14), rgba(255,255,255,0.92));
-    --lacc-sandbox-gradient-cue-gold: linear-gradient(180deg, rgba(247,242,232,0.98), rgba(255,255,255,0.96));
-    --lacc-sandbox-type-xl-h1-size: clamp(50px, 7vw, 92px);
-    --lacc-sandbox-type-h1-size: clamp(48px, 6vw, 76px);
-    --lacc-sandbox-type-h2-size: clamp(40px, 4.8vw, 58px);
-    --lacc-sandbox-type-xl-h1-letter-spacing: .025em;
-    --lacc-sandbox-type-h1-letter-spacing: .025em;
-    --lacc-sandbox-type-h2-letter-spacing: .025em;
-    --lacc-sandbox-type-h2-card-size: clamp(32px, 3.6vw, 44px);
-    --lacc-sandbox-type-h2-card-line-height: 1.02;
-    --lacc-sandbox-type-h2-card-letter-spacing: .025em;
-    --lacc-sandbox-type-accordion-question-family: "Freight Big Pro", Georgia, serif;
-    --lacc-sandbox-type-accordion-question-size: 20px;
-    --lacc-sandbox-type-accordion-question-weight: 400;
-    --lacc-sandbox-package-pattern-name-size: var(--lacc-sandbox-type-h2-card-size);
-    --lacc-sandbox-package-pattern-name-color: var(--lacc-sandbox-ink);
-    --lacc-sandbox-package-pattern-capacity-size: 18px;
-    --lacc-sandbox-package-pattern-capacity-color: var(--lacc-sandbox-old-gold);
-    --lacc-sandbox-package-pattern-capacity-tracking: .05em;
-    --lacc-sandbox-package-pattern-days-size: 18px;
-    --lacc-sandbox-package-pattern-days-color: var(--lacc-sandbox-ink);
-    --lacc-sandbox-package-pattern-days-tracking: .03em;
-    --lacc-sandbox-package-pattern-amount-size: 48px;
-    --lacc-sandbox-package-pattern-amount-color: var(--lacc-sandbox-old-gold);
-    --lacc-sandbox-package-pattern-label-size: 14px;
-    --lacc-sandbox-package-pattern-label-color: var(--lacc-sandbox-ink);
-    --lacc-sandbox-overlay-ink-carousel: linear-gradient(180deg, rgba(31,34,29,0), rgba(31,34,29,0.48));
-    --lacc-sandbox-overlay-ink-special: linear-gradient(180deg, rgba(31,34,29,0), rgba(31,34,29,0.22) 32%, rgba(31,34,29,0.82));
-    --lacc-sandbox-overlay-ink-package: linear-gradient(180deg, rgba(31,34,29,0.08), rgba(31,34,29,0.36));
-    --lacc-sandbox-overlay-ink-cta: linear-gradient(180deg, rgba(31,34,29,0.18), rgba(31,34,29,0.56));
-    --lacc-sandbox-overlay-ink-5up: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(31,34,29,0.36));
-    --lacc-sandbox-overlay-ink-5up-action: linear-gradient(180deg, rgba(31,34,29,0.16), rgba(31,34,29,0.62));
-    --lacc-sandbox-illustration-overlay-dark-stop: var(--lacc-sandbox-blue-deep);
-    --lacc-sandbox-eyebrow-min-height: 34px;
-    --lacc-sandbox-eyebrow-padding: 8px 16px;
-    --lacc-sandbox-eyebrow-border-color: rgba(181,138,45,0.28);
-    --lacc-sandbox-eyebrow-color: var(--lacc-sandbox-gold-decorative);
-    --lacc-sandbox-eyebrow-fill: rgba(246,243,237,0.92);
-    --lacc-sandbox-eyebrow-font-haarlem: HaarlemDeco, Arial, Helvetica, sans-serif;
-    --lacc-sandbox-eyebrow-font-helvetica: Helvetica, Arial, sans-serif;
-    --lacc-sandbox-eyebrow-size-haarlem: 16px;
-    --lacc-sandbox-eyebrow-size-helvetica: 14px;
-    --lacc-sandbox-eyebrow-weight-haarlem: 700;
-    --lacc-sandbox-eyebrow-weight-helvetica: 700;
-    --lacc-sandbox-eyebrow-tracking: .16em;
     padding: 36px 0 80px;
-    background: var(--lacc-sandbox-gradient-cream);
+    background: linear-gradient(180deg, rgba(246,243,237,0.94), rgba(255,255,255,0.96));
 }
 
 .lacc-sandbox__intro {
@@ -760,74 +410,6 @@ if ( ! $landing_featured_article ) {
     grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
-.lacc-sandbox__cards-row--offset-feature {
-    grid-template-columns: minmax(0, 1fr);
-}
-
-.lacc-sandbox__offset-row {
-    position: relative;
-    min-height: 800px;
-    overflow: hidden;
-    border: 1px solid rgba(81,83,74,0.14);
-    background: var(--lacc-sandbox-gradient-cream);
-    box-shadow: 0 14px 30px rgba(31,34,29,0.05);
-}
-
-.lacc-sandbox__offset-row-content {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    gap: 18px;
-    width: min(58%, 760px);
-    min-height: 100%;
-    padding: 72px 56px;
-    align-content: center;
-}
-
-.lacc-sandbox__offset-row-kicker {
-    margin: 0;
-    color: rgba(81,83,74,0.7);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-}
-
-.lacc-sandbox__offset-row-title {
-    margin: 0;
-    color: #51534a;
-    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
-    font-size: clamp(44px, 4.2vw, 68px);
-    line-height: .98;
-}
-
-.lacc-sandbox__offset-row-copy {
-    margin: 0;
-    color: #51534a;
-    font-size: 18px;
-    line-height: 1.62;
-    max-width: 42ch;
-}
-
-.lacc-sandbox__offset-row-media {
-    position: absolute;
-    top: 64px;
-    right: 0;
-    width: 33.333%;
-    height: calc(100% - 128px);
-    transform: translateX(10%);
-    overflow: hidden;
-    border-left: 1px solid rgba(81,83,74,0.14);
-    box-shadow: -12px 20px 34px rgba(31,34,29,0.14);
-}
-
-.lacc-sandbox__offset-row-media img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .lacc-sandbox__cards-row-head {
     display: flex;
     flex-wrap: wrap;
@@ -883,7 +465,7 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__list-card--editorial {
-    background: var(--lacc-sandbox-gradient-cream);
+    background: linear-gradient(180deg, rgba(246,243,237,0.96), rgba(255,255,255,0.96));
 }
 
 .lacc-sandbox__list-card--utility {
@@ -892,7 +474,7 @@ if ( ! $landing_featured_article ) {
 
 .lacc-sandbox__list-card--tables {
     grid-column: 1 / -1;
-    background: var(--lacc-sandbox-gradient-cream);
+    background: linear-gradient(180deg, rgba(63,95,133,0.07), rgba(255,255,255,0.94));
 }
 
 .lacc-sandbox__list-card-title {
@@ -930,16 +512,6 @@ if ( ! $landing_featured_article ) {
     padding-left: 18px;
 }
 
-.lacc-sandbox__editorial-list--keyline li {
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(81,83,74,0.14);
-}
-
-.lacc-sandbox__editorial-list--keyline li:last-child {
-    padding-bottom: 0;
-    border-bottom: 0;
-}
-
 .lacc-sandbox__editorial-list li::before {
     content: '✦';
     position: absolute;
@@ -955,12 +527,6 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__utility-list li:last-child {
-    padding-bottom: 0;
-    border-bottom: 0;
-}
-
-.lacc-sandbox__editorial-list--no-keylines li,
-.lacc-sandbox__utility-list--no-keylines li {
     padding-bottom: 0;
     border-bottom: 0;
 }
@@ -1138,8 +704,8 @@ if ( ! $landing_featured_article ) {
 
 .lacc-sandbox__type-row {
     display: grid;
-    grid-template-columns: minmax(108px, .28fr) minmax(0, 1fr);
-    gap: 18px;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 16px;
     align-items: start;
     padding-top: 14px;
     border-top: 1px solid rgba(81,83,74,0.1);
@@ -1174,24 +740,10 @@ if ( ! $landing_featured_article ) {
     color: #51534a;
 }
 
-.lacc-sandbox__type-sample[data-letter-spacing]::after {
-    content: "letter-spacing: " attr(data-letter-spacing);
-    display: block;
-    margin-top: 7px;
-    color: rgba(81,83,74,0.62);
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    font-size: 10px;
-    font-weight: 600;
-    line-height: 1.35;
-    letter-spacing: .02em;
-    text-transform: none;
-}
-
 .lacc-sandbox__type-sample--xl {
     font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
-    font-size: var(--lacc-sandbox-type-xl-h1-size);
+    font-size: clamp(50px, 7vw, 92px);
     font-weight: 400;
-    letter-spacing: var(--lacc-sandbox-type-xl-h1-letter-spacing);
     line-height: .96;
 }
 
@@ -1203,25 +755,20 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__type-sample--h1 {
-    font-size: var(--lacc-sandbox-type-h1-size);
-    letter-spacing: var(--lacc-sandbox-type-h1-letter-spacing);
+    font-size: clamp(48px, 6vw, 76px);
+    letter-spacing: .015em;
     line-height: .94;
 }
 
 .lacc-sandbox__type-sample--h2 {
-    font-size: var(--lacc-sandbox-type-h2-size);
-    letter-spacing: var(--lacc-sandbox-type-h2-letter-spacing);
+    font-size: clamp(40px, 4.8vw, 58px);
+    letter-spacing: .012em;
     line-height: .98;
 }
 
 .lacc-sandbox__type-sample--h3 {
-    font-size: var(--lacc-sandbox-type-h2-card-size);
-    letter-spacing: var(--lacc-sandbox-type-h2-card-letter-spacing);
-    line-height: var(--lacc-sandbox-type-h2-card-line-height);
-}
-
-.lacc-sandbox__specimen--type-audit {
-    grid-template-columns: minmax(138px, .22fr) minmax(0, 1fr);
+    font-size: clamp(32px, 3.6vw, 44px);
+    line-height: 1.02;
 }
 
 .lacc-sandbox__type-sample--h4,
@@ -1262,7 +809,7 @@ if ( ! $landing_featured_article ) {
 
 .lacc-sandbox__type-sample--lede {
     font-family: "Freight Big Pro", Georgia, serif;
-    font-size: clamp(20px, 2vw, 24px);
+    font-size: clamp(21px, 2.1vw, 26px);
     font-weight: 400;
     font-style: italic;
     line-height: 1.58;
@@ -1297,229 +844,6 @@ if ( ! $landing_featured_article ) {
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 16px;
-}
-
-.lacc-sandbox__palette-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-    margin-top: 16px;
-}
-
-.lacc-sandbox__palette-card {
-    border: 1px solid rgba(81,83,74,0.12);
-    background: rgba(255,255,255,0.94);
-}
-
-.lacc-sandbox__palette-chip {
-    width: 100%;
-    min-height: 0;
-    aspect-ratio: 1 / 1;
-    background: var(--palette-color);
-}
-
-.lacc-sandbox__palette-meta {
-    padding: 10px 12px 12px;
-}
-
-.lacc-sandbox__palette-name {
-    display: block;
-    color: #51534a;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-}
-
-.lacc-sandbox__palette-token {
-    margin-top: 4px;
-    color: rgba(81,83,74,0.76);
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    font-size: 11px;
-    line-height: 1.4;
-}
-
-.lacc-sandbox__factoid-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-    margin-top: 16px;
-}
-
-.lacc-sandbox__factoid-card {
-    padding: 14px 16px;
-    border: 1px solid rgba(81,83,74,0.12);
-    background: rgba(255,255,255,0.94);
-}
-
-.lacc-sandbox__factoid-card--hero {
-    grid-column: 1 / -1;
-}
-
-.lacc-sandbox__factoid-lockup {
-    display: block;
-    padding: 36px;
-    background: var(--lacc-sandbox-gradient-ink);
-}
-
-.lacc-sandbox__factoid-stat-row {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-}
-
-.lacc-sandbox__factoid-stat {
-    display: grid;
-    justify-items: center;
-    align-content: start;
-    gap: 8px;
-    text-align: center;
-}
-
-.lacc-sandbox__factoid-card--hero .lacc-sandbox__factoid-value {
-    margin: 0;
-    color: var(--lacc-sandbox-gold-decorative);
-    font-family: "freight-big-pro", "Freight Big Pro", Georgia, serif;
-    font-size: 72px;
-    font-style: italic;
-    font-weight: 600 !important;
-    letter-spacing: .01em;
-    line-height: .95;
-}
-
-.lacc-sandbox__factoid-card--hero .lacc-sandbox__factoid-label {
-    color: rgba(255,255,255,0.88);
-    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: .08em;
-    line-height: 1.15;
-}
-
-.lacc-sandbox__factoid-label {
-    display: block;
-    color: rgba(81,83,74,0.64);
-    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: .08em;
-    line-height: 1.2;
-    text-transform: uppercase;
-}
-
-.lacc-sandbox__factoid-value {
-    margin-top: 0;
-    margin-bottom: 8px;
-    color: #51534a;
-    font-family: "freight-big-pro", "Freight Big Pro", Georgia, serif;
-    font-size: clamp(22px, 2.3vw, 32px);
-    font-weight: 600 !important;
-    letter-spacing: .02em;
-    line-height: 1.08;
-}
-
-.lacc-sandbox__price-value {
-    margin-top: 0;
-    margin-bottom: 8px;
-    color: var(--lacc-sandbox-gold-accent);
-    font-family: "freight-big-pro", "Freight Big Pro", Georgia, serif;
-    font-size: clamp(32px, 3vw, 44px);
-    font-style: italic;
-    font-weight: 600 !important;
-    letter-spacing: .01em;
-    line-height: 1;
-}
-
-.lacc-sandbox__package-pattern-preview {
-    display: grid;
-    gap: 8px;
-    margin-top: 8px;
-}
-
-.lacc-sandbox__package-pattern-name {
-    color: var(--lacc-sandbox-package-pattern-name-color);
-    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
-    font-size: var(--lacc-sandbox-package-pattern-name-size);
-    line-height: 1;
-    letter-spacing: .01em;
-    text-transform: uppercase;
-}
-
-.lacc-sandbox__package-pattern-capacity {
-    color: var(--lacc-sandbox-package-pattern-capacity-color);
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: var(--lacc-sandbox-package-pattern-capacity-size);
-    font-weight: 700;
-    letter-spacing: var(--lacc-sandbox-package-pattern-capacity-tracking);
-    line-height: 1.2;
-    margin-bottom: 1em;
-    text-transform: uppercase;
-}
-
-.lacc-sandbox__package-pattern-days {
-    color: var(--lacc-sandbox-package-pattern-days-color);
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: var(--lacc-sandbox-package-pattern-days-size);
-    font-weight: 700;
-    letter-spacing: var(--lacc-sandbox-package-pattern-days-tracking);
-    line-height: 1.2;
-}
-
-.lacc-sandbox__package-pattern-amount {
-    color: var(--lacc-sandbox-package-pattern-amount-color);
-    font-family: "freight-big-pro", "Freight Big Pro", Georgia, serif;
-    font-size: var(--lacc-sandbox-package-pattern-amount-size);
-    font-style: italic;
-    font-weight: 600 !important;
-    letter-spacing: .01em;
-    line-height: 1;
-}
-
-.lacc-sandbox__package-pattern-label {
-    color: var(--lacc-sandbox-package-pattern-label-color);
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: var(--lacc-sandbox-package-pattern-label-size);
-    font-weight: 700;
-    letter-spacing: .12em;
-    line-height: 1.2;
-    text-transform: uppercase;
-}
-
-.lacc-sandbox__audit-card--pricing-tier .lacc-sandbox__audit-card-title,
-.lacc-sandbox__audit-card--package .lacc-sandbox__audit-card-title,
-.lacc-sandbox__audit-card--5up-rate .lacc-sandbox__audit-card-title {
-    color: var(--lacc-sandbox-package-pattern-name-color);
-    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
-    font-size: var(--lacc-sandbox-package-pattern-name-size);
-    line-height: 1;
-    letter-spacing: .01em;
-    text-transform: uppercase;
-}
-
-.lacc-sandbox__audit-card-tier-capacity {
-    color: var(--lacc-sandbox-package-pattern-capacity-color);
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: var(--lacc-sandbox-package-pattern-capacity-size);
-    font-weight: 700;
-    letter-spacing: var(--lacc-sandbox-package-pattern-capacity-tracking);
-    line-height: 1.2;
-    text-transform: uppercase;
-}
-
-.lacc-sandbox__audit-card-tier-kicker {
-    color: var(--lacc-sandbox-package-pattern-days-color);
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: var(--lacc-sandbox-package-pattern-days-size);
-    font-weight: 700;
-    letter-spacing: var(--lacc-sandbox-package-pattern-days-tracking);
-    line-height: 1.2;
-}
-
-.lacc-sandbox__factoid-note {
-    margin-top: 8px;
-    color: rgba(81,83,74,0.78);
-    font-size: 12px;
-    line-height: 1.5;
 }
 
 .lacc-sandbox__button {
@@ -1599,7 +923,7 @@ if ( ! $landing_featured_article ) {
     min-height: 48px;
     padding: 10px 20px;
     border-color: rgba(212,164,65,0.34);
-    background: var(--lacc-sandbox-gradient-ink);
+    background: linear-gradient(180deg, var(--lacc-sandbox-ink), var(--lacc-sandbox-ink-deep));
     color: var(--lacc-sandbox-gold-decorative);
     font-size: 13px;
     letter-spacing: .16em;
@@ -1669,90 +993,20 @@ if ( ! $landing_featured_article ) {
     accent-color: var(--lacc-sandbox-blue);
 }
 
-.lacc-sandbox__primitive-map-wrap {
-    margin-top: 16px;
-    overflow-x: auto;
-    border: 1px solid rgba(81,83,74,0.14);
-    background: rgba(255,255,255,0.96);
-}
-
-.lacc-sandbox__primitive-map {
-    width: 100%;
-    min-width: 860px;
-    border-collapse: collapse;
-    color: #51534a;
-    font-size: 12px;
-    line-height: 1.45;
-}
-
-.lacc-sandbox__primitive-map th,
-.lacc-sandbox__primitive-map td {
-    padding: 10px 12px;
-    border-bottom: 1px solid rgba(81,83,74,0.1);
-    text-align: left;
-    vertical-align: top;
-}
-
-.lacc-sandbox__primitive-map thead th {
-    background: rgba(81,83,74,0.08);
-    color: #51534a;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-}
-
-.lacc-sandbox__primitive-map tbody tr:nth-child(even) {
-    background: rgba(81,83,74,0.03);
-}
-
-.lacc-sandbox__primitive-map tbody tr:last-child td {
-    border-bottom: 0;
-}
-
-.lacc-sandbox__primitive-token {
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    font-size: 11px;
-    color: #3c3e38;
-}
-
-.lacc-sandbox__primitive-status {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 22px;
-    padding: 3px 8px;
-    border-radius: 999px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-}
-
-.lacc-sandbox__primitive-status--locked {
-    background: rgba(58,104,78,0.12);
-    color: #2b5c45;
-}
-
-.lacc-sandbox__primitive-status--exception {
-    background: rgba(148,110,41,0.12);
-    color: #7a5a1f;
-}
-
 .lacc-sandbox__eyebrow-sample {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: var(--lacc-sandbox-eyebrow-min-height);
-    padding: var(--lacc-sandbox-eyebrow-padding);
-    border: 1px solid var(--lacc-sandbox-eyebrow-border-color);
-    color: var(--lacc-sandbox-eyebrow-color);
-    font-family: var(--lacc-sandbox-eyebrow-font-haarlem);
+    min-height: 34px;
+    padding: 8px 16px;
+    border: 1px solid rgba(181,138,45,0.28);
+    color: var(--lacc-sandbox-gold-decorative);
+    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
     width: fit-content;
     max-width: 100%;
-    font-size: var(--lacc-sandbox-eyebrow-size-haarlem);
-    font-weight: var(--lacc-sandbox-eyebrow-weight-haarlem);
-    letter-spacing: var(--lacc-sandbox-eyebrow-tracking);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .12em;
     line-height: 1.1;
     text-transform: uppercase;
 }
@@ -1780,14 +1034,14 @@ if ( ! $landing_featured_article ) {
 
 .lacc-sandbox__eyebrow-sample--fill {
     border-radius: 999px;
-    background: var(--lacc-sandbox-eyebrow-fill);
+    background: rgba(246,243,237,0.92);
 }
 
 .lacc-sandbox__eyebrow-sample--helvetica {
-    font-family: var(--lacc-sandbox-eyebrow-font-helvetica);
-    font-size: var(--lacc-sandbox-eyebrow-size-helvetica);
-    font-weight: var(--lacc-sandbox-eyebrow-weight-helvetica);
-    letter-spacing: var(--lacc-sandbox-eyebrow-tracking);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .16em;
 }
 
 .lacc-sandbox__eyebrow-grid {
@@ -1845,7 +1099,7 @@ if ( ! $landing_featured_article ) {
     min-height: 132px;
     padding: 18px;
     border: 1px solid rgba(81,83,74,0.1);
-    background: var(--lacc-sandbox-gradient-cream);
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(246,243,237,0.96));
     overflow: hidden;
 }
 
@@ -1853,16 +1107,16 @@ if ( ! $landing_featured_article ) {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--lacc-sandbox-gradient-cream);
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.9), transparent 52%);
     pointer-events: none;
 }
 
 .lacc-sandbox__cue-study-card--blue {
-    background: var(--lacc-sandbox-gradient-brand-green-pastel);
+    background: linear-gradient(180deg, rgba(228,236,246,0.96), rgba(241,245,250,0.98));
 }
 
 .lacc-sandbox__cue-study-card--gold {
-    background: var(--lacc-sandbox-gradient-cue-gold);
+    background: linear-gradient(180deg, rgba(247,242,232,0.98), rgba(255,255,255,0.96));
 }
 
 .lacc-sandbox__cue-study-card .lacc-sandbox__arrow-banner {
@@ -1932,107 +1186,6 @@ if ( ! $landing_featured_article ) {
     clip-path: polygon(50% 0, 100% 100%, 0 100%);
     background: var(--lacc-sandbox-blue);
     opacity: .78;
-}
-
-.lacc-sandbox__graphic-elements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 24px;
-    align-items: start;
-}
-
-.lacc-sandbox__graphic-element-family {
-    display: grid;
-    gap: 10px;
-    text-align: center;
-}
-
-.lacc-sandbox__graphic-element-label {
-    display: block;
-    font-family: Haarlem, serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--lacc-sandbox-ink);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-}
-
-.lacc-sandbox__graphic-element-note {
-    font-size: 13px;
-    line-height: 1.42;
-    color: rgba(81,83,74,0.68);
-}
-
-.lacc-sandbox__graphic-swatch--vertical {
-    width: 24px;
-    height: 100px;
-    background-color: var(--lacc-sandbox-gold-accent);
-    -webkit-mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork-vertical.svg');
-    mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork-vertical.svg');
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-size: auto 100%;
-    mask-size: auto 100%;
-    margin: 0 auto;
-}
-
-.lacc-sandbox__graphic-swatch--split-seam {
-    width: 160px;
-    height: 12px;
-    background: linear-gradient(to right, var(--lacc-sandbox-gold-accent) 0%, var(--lacc-sandbox-gold-accent) 40%, transparent 40%, transparent 60%, var(--lacc-sandbox-gold-accent) 60%, var(--lacc-sandbox-gold-accent) 100%);
-    -webkit-mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork-split-seam.svg');
-    mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork-split-seam.svg');
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-position: center;
-    margin: 0 auto;
-}
-
-.lacc-sandbox__graphic-swatch--gallery-border {
-    width: 90px;
-    height: 90px;
-    border: 2px solid var(--lacc-sandbox-gold-accent);
-    border-radius: 2px;
-    background: transparent;
-    position: relative;
-}
-
-.lacc-sandbox__graphic-swatch--gallery-border::before,
-.lacc-sandbox__graphic-swatch--gallery-border::after {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border: 1px solid var(--lacc-sandbox-gold-accent);
-    background: var(--lacc-sandbox-cream);
-}
-
-.lacc-sandbox__graphic-swatch--gallery-border::before {
-    top: -6px;
-    left: -6px;
-}
-
-.lacc-sandbox__graphic-swatch--gallery-border::after {
-    bottom: -6px;
-    right: -6px;
-}
-
-.lacc-sandbox__graphic-swatch--trees {
-    width: 80px;
-    height: 80px;
-    background-color: var(--lacc-sandbox-gold-accent);
-    -webkit-mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork-trees.svg');
-    mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork-trees.svg');
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    margin: 0 auto;
 }
 
 .lacc-sandbox__logo-gallery,
@@ -2145,11 +1298,15 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__arrow-study--linework {
-    background: var(--lacc-sandbox-gradient-cream);
+    background:
+    var(--lacc-sandbox-gradient-cream),
+        radial-gradient(circle at top left, rgba(148,110,41,0.08), transparent 48%);
 }
 
 .lacc-sandbox__arrow-study--symbol {
-    background: var(--lacc-sandbox-gradient-cream);
+    background:
+        linear-gradient(180deg, rgba(81,83,74,0.04), rgba(81,83,74,0.1)),
+        linear-gradient(135deg, rgba(246,243,237,0.98), rgba(255,255,255,0.96));
 }
 
 .lacc-sandbox__arrow-study--symbol .lacc-sandbox__arrow-study-preview {
@@ -2202,7 +1359,7 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__arrow-study-preview--dark {
-    background: var(--lacc-sandbox-gradient-ink);
+    background: linear-gradient(135deg, var(--lacc-sandbox-ink), var(--lacc-sandbox-ink-deep));
     border-color: rgba(255,255,255,0.12);
 }
 
@@ -2419,7 +1576,9 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__control-card--atmospheric {
-    background: var(--lacc-sandbox-gradient-blue);
+    background:
+        linear-gradient(180deg, rgba(31,34,29,0.22), rgba(31,34,29,0.58)),
+        linear-gradient(120deg, #8ea5bb, #4f6981 40%, #2c3e4d 100%);
     border-color: rgba(255,255,255,0.16);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 16px 36px rgba(31,34,29,0.12);
 }
@@ -2622,7 +1781,7 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__audit-card--stay {
-    background: var(--lacc-sandbox-gradient-cream);
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(246,243,237,0.94));
 }
 
 .lacc-sandbox__audit-card--editorial {
@@ -2632,23 +1791,25 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__audit-card--utility {
-    background: var(--lacc-sandbox-gradient-cream);
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(246,243,237,0.9));
 }
 
 .lacc-sandbox__audit-card--package {
     border-color: rgba(122,90,31,0.18);
-    background: var(--lacc-sandbox-gradient-cue-gold);
+    background: linear-gradient(180deg, rgba(246,243,237,0.98), rgba(255,255,255,0.94));
 }
 
 .lacc-sandbox__audit-card--pricing-tier {
     position: relative;
     isolation: isolate;
     border-color: rgba(122,90,31,0.28);
-    background: var(--lacc-sandbox-gradient-cream);
+    background:
+        radial-gradient(circle at top center, rgba(255,255,255,0.92), rgba(255,255,255,0) 42%),
+        linear-gradient(180deg, rgba(246,243,237,0.98), rgba(255,255,255,0.96));
 }
 
 .lacc-sandbox__audit-card--cta {
-    background: var(--lacc-sandbox-gradient-ink);
+    background: linear-gradient(180deg, rgba(81,83,74,0.98), rgba(60,62,56,0.98));
     color: #ffffff;
 }
 
@@ -2662,84 +1823,59 @@ if ( ! $landing_featured_article ) {
     overflow: hidden;
 }
 
-.lacc-sandbox__illustration-card--featured {
-    grid-column: 1 / -1;
-    min-height: 600px;
-}
-
-.lacc-sandbox__illustration-card--featured .lacc-sandbox__illustration-preview {
-    min-height: 600px;
-    height: 600px;
-}
-
 .lacc-sandbox__illustration-preview {
     position: relative;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
     min-height: 220px;
-    height: 220px;
-    padding: 0;
-    overflow: hidden;
-    isolation: isolate;
-    background: var(--lacc-sandbox-gradient-cue-gold);
-}
-
-.lacc-sandbox__illustration-preview::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    background: var(--lacc-sandbox-illustration-overlay-tint, transparent);
-    opacity: .32;
-    mix-blend-mode: multiply;
-    pointer-events: none;
+    padding: 26px;
+    background:
+        radial-gradient(circle at top left, rgba(212,164,65,0.12), transparent 36%),
+        linear-gradient(180deg, rgba(246,243,237,0.9), rgba(255,255,255,0.96));
 }
 
 .lacc-sandbox__illustration-preview--cream {
-    background: var(--lacc-sandbox-gradient-cue-gold);
-    --lacc-sandbox-illustration-overlay-tint: rgba(122,90,31,0.72);
+    background:
+        radial-gradient(circle at top left, rgba(212,164,65,0.12), transparent 36%),
+        linear-gradient(180deg, rgba(246,243,237,0.94), rgba(255,255,255,0.96));
 }
 
 .lacc-sandbox__illustration-preview--white {
-    background: var(--lacc-sandbox-gradient-cream);
-    --lacc-sandbox-illustration-overlay-tint: rgba(81,83,74,0.54);
+    background:
+        radial-gradient(circle at top left, rgba(212,164,65,0.08), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(246,243,237,0.72));
 }
 
 .lacc-sandbox__illustration-preview--mist {
-    background: var(--lacc-sandbox-gradient-illustration-mist);
-    --lacc-sandbox-illustration-overlay-tint: rgba(50,76,106,0.66);
+    background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.32), transparent 36%),
+        linear-gradient(180deg, rgba(63,95,133,0.14), rgba(255,255,255,0.92));
 }
 
 .lacc-sandbox__illustration-preview::after {
     content: '';
     position: absolute;
     inset: 14px;
-    z-index: 4;
     border: 1px dashed rgba(81,83,74,0.12);
     pointer-events: none;
 }
 
-.lacc-sandbox__illustration-preview img,
-.lacc-sandbox__illustration-preview [data-illustration-preview-image] {
+.lacc-sandbox__illustration-preview img {
     position: relative;
     z-index: 1;
     display: block;
-    width: 85% !important;
-    height: 85% !important;
-    max-width: 85% !important;
-    max-height: none;
-    margin: 0 10px 10px 0;
+    width: 100%;
+    max-width: 260px;
+    max-height: 220px;
     object-fit: contain;
-    mix-blend-mode: normal;
-    opacity: .22;
 }
 
 .lacc-sandbox__illustration-preview-state {
     position: absolute;
     top: 16px;
     left: 16px;
-    z-index: 5;
+    z-index: 2;
     display: inline-flex;
     align-items: center;
     min-height: 28px;
@@ -2756,7 +1892,7 @@ if ( ! $landing_featured_article ) {
 
 .lacc-sandbox__illustration-surfaces {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
 }
 
@@ -2765,7 +1901,6 @@ if ( ! $landing_featured_article ) {
     min-height: 92px;
     overflow: hidden;
     border: 1px solid rgba(81,83,74,0.12);
-    background: var(--lacc-sandbox-illustration-surface-fill, #f6f3ed);
     cursor: pointer;
     transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
@@ -2780,28 +1915,31 @@ if ( ! $landing_featured_article ) {
 .lacc-sandbox__illustration-surface::before {
     content: '';
     position: absolute;
-    right: 4px;
-    bottom: 6px;
-    z-index: 1;
-    width: 85%;
-    height: 85%;
+    inset: 12px 10px 10px auto;
+    width: 72%;
     background-image: var(--illustration-url);
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: contain;
-    opacity: .22;
-    mix-blend-mode: normal;
+    opacity: .16;
     pointer-events: none;
 }
 
+.lacc-sandbox__illustration-surface--cream {
+    background: #f6f3ed;
+}
+
+.lacc-sandbox__illustration-surface--white {
+    background: #ffffff;
+}
+
 .lacc-sandbox__illustration-surface--mist {
-    --lacc-sandbox-illustration-surface-fill: var(--lacc-sandbox-gradient-illustration-mist);
-    --lacc-sandbox-illustration-surface-overlay-tint: rgba(50,76,106,0.66);
+    background: rgba(63,95,133,0.08);
 }
 
 .lacc-sandbox__illustration-surface-label {
     position: relative;
-    z-index: 3;
+    z-index: 1;
     display: inline-block;
     padding: 10px;
     color: rgba(81,83,74,0.72);
@@ -2810,27 +1948,6 @@ if ( ! $landing_featured_article ) {
     letter-spacing: .14em;
     line-height: 1;
     text-transform: uppercase;
-}
-
-.lacc-sandbox__illustration-surface--variant {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    background: rgba(81,83,74,0.06);
-}
-
-.lacc-sandbox__illustration-surface--variant::before {
-    display: none;
-}
-
-.lacc-sandbox__illustration-surface--variant::after {
-    display: none;
-}
-
-.lacc-sandbox__illustration-surface--variant .lacc-sandbox__illustration-surface-label {
-    color: rgba(81,83,74,0.78);
-    letter-spacing: .12em;
 }
 
 .lacc-sandbox__illustration-body {
@@ -2915,7 +2032,7 @@ if ( ! $landing_featured_article ) {
 
 .lacc-sandbox__audit-card-media {
     aspect-ratio: 1 / .72;
-    background: var(--lacc-sandbox-gradient-illustration-mist);
+    background: linear-gradient(135deg, rgba(63,95,133,0.14), rgba(148,110,41,0.12));
 }
 
 .lacc-sandbox__audit-card-media-kicker {
@@ -2974,7 +2091,9 @@ if ( ! $landing_featured_article ) {
 .lacc-sandbox__audit-card--editorial .lacc-sandbox__audit-card-media {
     position: relative;
     aspect-ratio: 1 / .88;
-    background: var(--lacc-sandbox-gradient-ink);
+    background:
+        linear-gradient(180deg, rgba(31,34,29,0.12), rgba(31,34,29,0.76)),
+    var(--lacc-sandbox-gradient-ink);
 }
 
 .lacc-sandbox__audit-card--stay .lacc-sandbox__audit-card-media,
@@ -2983,7 +2102,7 @@ if ( ! $landing_featured_article ) {
     aspect-ratio: 1 / .72;
     min-height: 0;
     padding: 0;
-    background: var(--lacc-sandbox-gradient-cream);
+    background: linear-gradient(180deg, rgba(246,243,237,0.9), rgba(255,255,255,0.92));
 }
 
 .lacc-sandbox__audit-card-carousel {
@@ -3016,7 +2135,7 @@ if ( ! $landing_featured_article ) {
     position: absolute;
     inset: auto 0 0 0;
     height: 36%;
-    background: var(--lacc-sandbox-overlay-ink-special);
+    background: linear-gradient(180deg, rgba(31,34,29,0), rgba(31,34,29,0.48));
     pointer-events: none;
 }
 
@@ -3107,27 +2226,25 @@ if ( ! $landing_featured_article ) {
 .lacc-sandbox__audit-card-stay-price {
     display: inline-flex;
     flex-wrap: wrap;
-    align-items: flex-end;
-    gap: 8px;
+    align-items: baseline;
+    gap: 10px;
 }
 
 .lacc-sandbox__audit-card-stay-price strong {
     color: var(--lacc-sandbox-gold);
     font-family: "freight-big-pro", "Freight Big Pro", Georgia, serif;
-    font-size: clamp(34px, 3vw, 48px);
+    font-size: clamp(30px, 2.6vw, 40px);
     font-style: italic;
     font-weight: 600 !important;
-    letter-spacing: .006em;
-    line-height: .94;
+    letter-spacing: .008em;
+    line-height: 1;
 }
 
 .lacc-sandbox__audit-card-stay-price span {
     color: rgba(81,83,74,0.72);
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: .16em;
-    line-height: 1.2;
+    letter-spacing: .14em;
     text-transform: uppercase;
 }
 
@@ -3136,37 +2253,25 @@ if ( ! $landing_featured_article ) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
     padding-top: 14px;
-    margin-bottom: 24px;
     border-top: 1px solid rgba(81,83,74,0.1);
 }
 
 .lacc-sandbox__audit-card-stay-facts span {
     display: block;
     color: rgba(81,83,74,0.68);
-    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: .08em;
-    line-height: 1.2;
+    letter-spacing: .14em;
     text-transform: uppercase;
 }
 
 .lacc-sandbox__audit-card-stay-facts strong {
     display: block;
-    margin-top: 0;
-    margin-bottom: 6px;
+    margin-top: 4px;
     color: #51534a;
-    font-family: "freight-big-pro", "Freight Big Pro", Georgia, serif;
-    font-size: clamp(24px, 2vw, 30px);
-    font-style: normal;
-    font-weight: 600 !important;
-    letter-spacing: .02em;
-    line-height: 1.1;
-}
-
-.lacc-sandbox__audit-card-stay-facts > div {
-    display: flex;
-    flex-direction: column;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
 }
 
 .lacc-sandbox__audit-card--stay .lacc-sandbox__audit-card-button {
@@ -3187,7 +2292,7 @@ if ( ! $landing_featured_article ) {
     position: absolute;
     inset: 64% 0 0 0;
     z-index: 1;
-    background: var(--lacc-sandbox-overlay-ink-special);
+    background: linear-gradient(180deg, rgba(31,34,29,0), rgba(31,34,29,0.22) 32%, rgba(31,34,29,0.82));
     pointer-events: none;
 }
 
@@ -3255,8 +2360,8 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__cards-row--2up .lacc-sandbox__audit-card-title {
-    font-size: var(--lacc-sandbox-type-h2-card-size);
-    line-height: var(--lacc-sandbox-type-h2-card-line-height);
+    font-size: clamp(32px, 3.6vw, 44px);
+    line-height: 1.02;
 }
 
 .lacc-sandbox__cards-row--2up .lacc-sandbox__audit-card-body {
@@ -3293,10 +2398,8 @@ if ( ! $landing_featured_article ) {
 
 .lacc-sandbox__audit-card--special p.lacc-sandbox__audit-card-copy strong {
     font-family: "Freight Big Pro", Georgia, serif;
-    font-size: clamp(20px, 2vw, 24px);
     font-weight: 500 !important;
     font-style: italic;
-    line-height: 1.58;
 }
 
 .lacc-sandbox__audit-card--special .lacc-sandbox__editorial-list li {
@@ -3353,7 +2456,10 @@ if ( ! $landing_featured_article ) {
     inset: auto 18px 18px 18px;
     height: 12px;
     border-radius: 999px;
-    background: radial-gradient(circle, rgba(255,255,255,0.96) 0 4px, transparent 5px) left center / 33% 12px no-repeat, radial-gradient(circle, rgba(255,255,255,0.45) 0 4px, transparent 5px) center center / 33% 12px no-repeat, radial-gradient(circle, rgba(255,255,255,0.45) 0 4px, transparent 5px) right center / 33% 12px no-repeat;
+    background:
+        radial-gradient(circle, rgba(255,255,255,0.96) 0 4px, transparent 5px) left center / 33% 12px no-repeat,
+        radial-gradient(circle, rgba(255,255,255,0.45) 0 4px, transparent 5px) center center / 33% 12px no-repeat,
+        radial-gradient(circle, rgba(255,255,255,0.45) 0 4px, transparent 5px) right center / 33% 12px no-repeat;
 }
 
 .lacc-sandbox__cards-row--3up .lacc-sandbox__audit-card--editorial .lacc-sandbox__audit-card-media::before,
@@ -3374,15 +2480,6 @@ if ( ! $landing_featured_article ) {
 .lacc-sandbox__cards-row--4up .lacc-sandbox__audit-card--editorial .lacc-sandbox__audit-card-media::before,
 .lacc-sandbox__cards-row--4up .lacc-sandbox__audit-card--editorial .lacc-sandbox__audit-card-media::after {
     display: none;
-}
-
-.lacc-sandbox__cards-row--4up .lacc-sandbox__audit-card--editorial {
-    border-color: rgba(35,69,52,0.18);
-    background: var(--lacc-sandbox-gradient-evergreen-deep);
-}
-
-.lacc-sandbox__cards-row--4up .lacc-sandbox__audit-card--editorial .lacc-sandbox__audit-card-media {
-    background: var(--lacc-sandbox-gradient-evergreen-deep);
 }
 
 .lacc-sandbox__cards-row--4up .lacc-sandbox__audit-card--editorial .lacc-sandbox__audit-card-carousel {
@@ -3436,7 +2533,9 @@ if ( ! $landing_featured_article ) {
     place-items: start start;
     padding: 18px;
     overflow: hidden;
-    background: var(--lacc-sandbox-gradient-cue-gold);
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.14)),
+        linear-gradient(135deg, rgba(122,90,31,0.18), rgba(246,243,237,0.96));
 }
 
 .lacc-sandbox__audit-card--package .lacc-sandbox__audit-card-media img {
@@ -3451,7 +2550,7 @@ if ( ! $landing_featured_article ) {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--lacc-sandbox-overlay-ink-package);
+    background: linear-gradient(180deg, rgba(31,34,29,0.08), rgba(31,34,29,0.36));
 }
 
 .lacc-sandbox__audit-card-price {
@@ -3466,22 +2565,20 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__audit-card-price strong {
-    color: var(--lacc-sandbox-package-pattern-amount-color);
+    color: var(--lacc-sandbox-gold);
     font-family: "freight-big-pro", "Freight Big Pro", Georgia, serif;
-    font-size: var(--lacc-sandbox-package-pattern-amount-size);
+    font-size: clamp(34px, 3vw, 44px);
     font-weight: 600 !important;
     font-style: italic;
-    letter-spacing: .01em;
+    letter-spacing: .008em;
     line-height: 1;
 }
 
 .lacc-sandbox__audit-card-price span {
-    color: var(--lacc-sandbox-package-pattern-label-color);
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: var(--lacc-sandbox-package-pattern-label-size);
+    color: rgba(81,83,74,0.7);
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: .12em;
-    line-height: 1.2;
+    letter-spacing: .14em;
     text-transform: uppercase;
 }
 
@@ -3549,17 +2646,15 @@ if ( ! $landing_featured_article ) {
 
 .lacc-sandbox__audit-card-tier-capacity,
 .lacc-sandbox__audit-card-tier-kicker {
-    color: var(--lacc-sandbox-package-pattern-capacity-color);
-    font-size: var(--lacc-sandbox-package-pattern-capacity-size);
+    color: #946E29;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: var(--lacc-sandbox-package-pattern-capacity-tracking);
+    letter-spacing: .18em;
     text-transform: uppercase;
 }
 
 .lacc-sandbox__audit-card-tier-kicker {
-    color: var(--lacc-sandbox-package-pattern-days-color);
-    font-size: var(--lacc-sandbox-package-pattern-days-size);
-    letter-spacing: var(--lacc-sandbox-package-pattern-days-tracking);
+    color: rgba(81,83,74,0.72);
 }
 
 .lacc-sandbox__audit-card--pricing-tier .lacc-sandbox__audit-card-price {
@@ -3570,13 +2665,11 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__audit-card--pricing-tier .lacc-sandbox__audit-card-price strong {
-    font-size: var(--lacc-sandbox-package-pattern-amount-size);
-    font-style: italic;
-    font-weight: 600 !important;
+    font-size: clamp(42px, 3.2vw, 56px);
 }
 
 .lacc-sandbox__audit-card--pricing-tier .lacc-sandbox__audit-card-price span {
-    font-size: var(--lacc-sandbox-package-pattern-label-size);
+    font-size: 12px;
 }
 
 .lacc-sandbox__audit-card-tier-subprice {
@@ -3586,8 +2679,8 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__cards-row--pricing .lacc-sandbox__audit-card-title {
-    font-size: var(--lacc-sandbox-package-pattern-name-size);
-    line-height: var(--lacc-sandbox-type-h2-card-line-height);
+    font-size: clamp(24px, 2.2vw, 34px);
+    line-height: .98;
     letter-spacing: .01em;
 }
 
@@ -3647,7 +2740,9 @@ if ( ! $landing_featured_article ) {
     overflow: hidden;
     aspect-ratio: auto;
     min-height: 136px;
-    background: var(--lacc-sandbox-gradient-blue);
+    background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.12), transparent 36%),
+        linear-gradient(135deg, rgba(63,95,133,0.34), rgba(81,83,74,0));
 }
 
 .lacc-sandbox__audit-card--cta .lacc-sandbox__audit-card-media img {
@@ -3662,7 +2757,7 @@ if ( ! $landing_featured_article ) {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--lacc-sandbox-overlay-ink-cta);
+    background: linear-gradient(180deg, rgba(31,34,29,0.18), rgba(31,34,29,0.56));
 }
 
 .lacc-sandbox__audit-card--cta .lacc-sandbox__audit-card-media::after {
@@ -3819,7 +2914,7 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__audit-card--list-column {
-    background: var(--lacc-sandbox-gradient-cream);
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(246,243,237,0.92));
 }
 
 .lacc-sandbox__audit-card--list-column .lacc-sandbox__audit-card-body {
@@ -3846,13 +2941,11 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__cards-row--5up .lacc-sandbox__audit-card-price {
-    padding: 0;
-    border: 0;
-    background: transparent;
+    padding: 12px 14px;
 }
 
 .lacc-sandbox__cards-row--5up .lacc-sandbox__audit-card-price strong {
-    font-size: var(--lacc-sandbox-package-pattern-amount-size);
+    font-size: clamp(28px, 2.4vw, 34px);
 }
 
 .lacc-sandbox__audit-card--5up-offer,
@@ -3864,7 +2957,7 @@ if ( ! $landing_featured_article ) {
 
 .lacc-sandbox__audit-card--5up-offer {
     border-color: rgba(122,90,31,0.18);
-    background: var(--lacc-sandbox-gradient-cream);
+    background: linear-gradient(180deg, rgba(246,243,237,0.98), rgba(255,255,255,0.96));
 }
 
 .lacc-sandbox__audit-card--5up-offer .lacc-sandbox__audit-card-media,
@@ -3888,7 +2981,7 @@ if ( ! $landing_featured_article ) {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--lacc-sandbox-overlay-ink-5up);
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(31,34,29,0.36));
 }
 
 .lacc-sandbox__audit-card--5up-offer .lacc-sandbox__audit-card-body {
@@ -3902,7 +2995,9 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__audit-card--5up-guide {
-    background: var(--lacc-sandbox-gradient-cue-gold);
+    background:
+        radial-gradient(circle at top right, rgba(212,164,65,0.12), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(246,243,237,0.92));
 }
 
 .lacc-sandbox__audit-card--5up-guide .lacc-sandbox__audit-card-body {
@@ -3921,7 +3016,8 @@ if ( ! $landing_featured_article ) {
 
 .lacc-sandbox__audit-card--5up-rate {
     border-color: rgba(122,90,31,0.18);
-    background: var(--lacc-sandbox-gradient-cream);
+    background:
+        linear-gradient(180deg, rgba(246,243,237,0.98), rgba(255,255,255,0.96));
 }
 
 .lacc-sandbox__audit-card--5up-rate .lacc-sandbox__audit-card-body {
@@ -3930,19 +3026,11 @@ if ( ! $landing_featured_article ) {
 
 .lacc-sandbox__audit-card--5up-rate .lacc-sandbox__audit-card-price {
     align-self: flex-start;
-    background: transparent;
+    background: rgba(255,255,255,0.86);
 }
 
 .lacc-sandbox__audit-card--5up-rate .lacc-sandbox__audit-card-copy {
     max-width: none;
-}
-
-.lacc-sandbox__cards-row--5up .lacc-sandbox__audit-card-copy,
-.lacc-sandbox__cards-row--5up .lacc-sandbox__audit-card-copy p,
-.lacc-sandbox__cards-row--5up .lacc-sandbox__audit-card-list li,
-.lacc-sandbox__cards-row--5up .lacc-sandbox__audit-card-list-column-items li {
-    font-size: 14px;
-    line-height: 1.6;
 }
 
 .lacc-sandbox__audit-card--5up-rate .lacc-sandbox__audit-card-meta-row {
@@ -3950,7 +3038,7 @@ if ( ! $landing_featured_article ) {
 }
 
 .lacc-sandbox__audit-card--5up-action {
-    background: var(--lacc-sandbox-gradient-ink);
+    background: linear-gradient(180deg, rgba(81,83,74,0.98), rgba(60,62,56,0.98));
     color: #ffffff;
 }
 
@@ -3958,32 +3046,7 @@ if ( ! $landing_featured_article ) {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--lacc-sandbox-overlay-ink-5up-action);
-}
-
-.lacc-sandbox__cards-row--4up .lacc-sandbox__audit-card--utility .lacc-sandbox__audit-card-media {
-    padding: 0;
-    overflow: hidden;
-    aspect-ratio: 1 / .72;
-}
-
-.lacc-sandbox__cards-row--4up .lacc-sandbox__audit-card--utility .lacc-sandbox__audit-card-media::before {
-    display: none;
-}
-
-.lacc-sandbox__cards-row--4up .lacc-sandbox__audit-card--package .lacc-sandbox__audit-card-title {
-    color: #51534a;
-    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
-    font-size: clamp(24px, 2.6vw, 34px);
-    font-weight: 400;
-    line-height: 1.02;
-    text-transform: none;
-}
-
-.lacc-sandbox__cards-row--4up .lacc-sandbox__audit-card--package .lacc-sandbox__audit-card-price {
-    padding: 0;
-    border: 0;
-    background: transparent;
+    background: linear-gradient(180deg, rgba(31,34,29,0.16), rgba(31,34,29,0.62));
 }
 
 .lacc-sandbox__audit-card--5up-action .lacc-sandbox__audit-card-body,
@@ -4063,6 +3126,107 @@ if ( ! $landing_featured_article ) {
     color: #51534a;
 }
 
+.lacc-sandbox__nav-active-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.lacc-sandbox__nav-active-card {
+    border: 1px solid rgba(81,83,74,0.16);
+    background: rgba(255,255,255,0.94);
+}
+
+.lacc-sandbox__nav-active-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(81,83,74,0.12);
+}
+
+.lacc-sandbox__nav-active-label {
+    margin: 0;
+    color: var(--lacc-sandbox-ink);
+    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 1.1;
+}
+
+.lacc-sandbox__nav-active-note {
+    margin: 0;
+    color: rgba(81,83,74,0.8);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.lacc-sandbox__nav-active-shell {
+    padding: 14px;
+    background: var(--lacc-sandbox-gradient-blue);
+}
+
+.lacc-sandbox__nav-active-menu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lacc-sandbox__nav-active-menu li,
+.lacc-sandbox__nav-active-menu a {
+    list-style: none;
+}
+
+.lacc-sandbox__nav-active-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 11px 16px;
+    color: #ffffff;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .11em;
+    line-height: 1.2;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .18s ease;
+}
+
+.lacc-sandbox__nav-active-link.is-active {
+    background: rgba(255,255,255,0.14);
+}
+
+.lacc-sandbox__nav-active-card--opt-1 .lacc-sandbox__nav-active-link.is-active {
+    background: transparent;
+    border-bottom: 3px solid rgba(255,255,255,0.84);
+    padding-bottom: 8px;
+}
+
+.lacc-sandbox__nav-active-card--opt-2 .lacc-sandbox__nav-active-link.is-active {
+    background: rgba(255,255,255,0.22);
+    border: 1px solid rgba(255,255,255,0.38);
+}
+
+.lacc-sandbox__nav-active-card--opt-3 .lacc-sandbox__nav-active-link.is-active {
+    border-left: 4px solid rgba(255,255,255,0.84);
+    padding-left: 12px;
+    background: rgba(255,255,255,0.08);
+}
+
+.lacc-sandbox__nav-active-card--opt-4 .lacc-sandbox__nav-active-link.is-active {
+    border: 1px solid rgba(255,255,255,0.84);
+    background: transparent;
+}
+
+.lacc-sandbox__nav-active-card--opt-5 .lacc-sandbox__nav-active-link.is-active {
+    background: rgba(255,255,255,0.14);
+    box-shadow: inset 0 0 16px rgba(255,255,255,0.12);
+}
+
 @media (max-width: 1080px) {
     .lacc-sandbox__criteria-grid,
     .lacc-sandbox__details-grid,
@@ -4113,29 +3277,6 @@ if ( ! $landing_featured_article ) {
     .lacc-sandbox__specimen--row,
     .lacc-sandbox__type-row {
         grid-template-columns: 1fr;
-    }
-
-    .lacc-sandbox__offset-row {
-        min-height: 800px;
-    }
-
-    .lacc-sandbox__offset-row-content {
-        width: 100%;
-        padding: 42px 26px 300px;
-        align-content: start;
-    }
-
-    .lacc-sandbox__offset-row-media {
-        top: auto;
-        right: auto;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 260px;
-        transform: none;
-        border-left: 0;
-        border-top: 1px solid rgba(81,83,74,0.14);
-        box-shadow: 0 -12px 24px rgba(31,34,29,0.12);
     }
 
     .lacc-sandbox__arrow-control--symbol {
@@ -4193,19 +3334,19 @@ if ( ! $landing_featured_article ) {
             <div class="lacc-sandbox__lane-head">
                 <div>
                     <span class="lacc-sandbox__lane-label">Foundations Audit</span>
-                    <h2 class="lacc-sandbox__lane-title">Typography, colors, gradients, utility details, and patterns</h2>
+                    <h2 class="lacc-sandbox__lane-title">Type, links, buttons, badges, and form controls</h2>
                 </div>
                 <div class="lacc-sandbox__lane-statuses">
                     <span class="lacc-sandbox__status lacc-sandbox__status--approved">Approved reference</span>
                 </div>
             </div>
             <div class="lacc-sandbox__lane-copy">
-                <p>These are the primitives that should settle first. If these drift, every section will keep speaking in slightly different dialects. Typography, colors, and utility details form the base language; graphic elements, patterns, and logos extend the system's voice.</p>
+                <p>These are the primitives that should settle first. If these drift, every section will keep speaking in slightly different dialects.</p>
             </div>
             <div class="lacc-sandbox__primitives-grid">
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row lacc-sandbox__specimen--type-audit">
+                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
                     <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Typography</span>
+                        <span class="lacc-sandbox__specimen-label">Type</span>
                         <div class="lacc-sandbox__specimen-copy">
                             <p>Give the system enough room to see the actual hierarchy. This row now shows display, editorial, utility, body, and inline-link behavior together.</p>
                         </div>
@@ -4213,136 +3354,75 @@ if ( ! $landing_featured_article ) {
                     <div class="lacc-sandbox__specimen-main">
                         <div class="lacc-sandbox__type-stack">
                             <div class="lacc-sandbox__type-row">
-                                <span class="lacc-sandbox__type-label">XL H1
-                                    <small>var(--lacc-sandbox-type-xl-h1-size) → clamp(50px, 7vw, 92px)</small>
-                                    <small>var(--lacc-sandbox-type-xl-h1-letter-spacing) → .025em</small>
-                                    <small>Used by: wireframe hero, video hero</small>
-                                </span>
+                                <span class="lacc-sandbox__type-label">XL H1<small>Wireframe hero, video hero / clamp(50px, 7vw, 92px)</small></span>
                                 <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--xl">Get Away.<br>Get Inspired.</p>
                             </div>
                             <div class="lacc-sandbox__type-row">
-                                <span class="lacc-sandbox__type-label">H1
-                                    <small>var(--lacc-sandbox-type-h1-size) → clamp(48px, 6vw, 76px)</small>
-                                    <small>var(--lacc-sandbox-type-h1-letter-spacing) → .025em</small>
-                                    <small>Used by: primary display heading</small>
-                                </span>
+                                <span class="lacc-sandbox__type-label">H1<small>Primary display / clamp(48px, 6vw, 76px)</small></span>
                                 <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--h1">A mountain stay with room to breathe</p>
                             </div>
                             <div class="lacc-sandbox__type-row">
-                                <span class="lacc-sandbox__type-label">H2
-                                    <small>var(--lacc-sandbox-type-h2-size) → clamp(40px, 4.8vw, 58px)</small>
-                                    <small>var(--lacc-sandbox-type-h2-letter-spacing) → .025em</small>
-                                    <small>Used by: section display heading</small>
-                                </span>
+                                <span class="lacc-sandbox__type-label">H2<small>Section display / clamp(40px, 4.8vw, 58px)</small></span>
                                 <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--h2">A place to gather, not just dine</p>
                             </div>
                             <div class="lacc-sandbox__type-row">
-                                <span class="lacc-sandbox__type-label">H3 / Card H2 Token
-                                    <small>var(--lacc-sandbox-type-h2-card-size) → clamp(32px, 3.6vw, 44px)</small>
-                                    <small>var(--lacc-sandbox-type-h2-card-letter-spacing) → .025em</small>
-                                    <small>Used by: 2-up card title, shared card heading</small>
-                                </span>
+                                <span class="lacc-sandbox__type-label">H3<small>Supporting display / clamp(32px, 3.6vw, 44px)</small></span>
                                 <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--h3">Find your kind of mountain time</p>
                             </div>
                             <div class="lacc-sandbox__type-row">
                                 <span class="lacc-sandbox__type-label">H4<small>Freight italic / clamp(28px, 3vw, 34px)</small></span>
-                                <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--h4" data-letter-spacing="normal">Freight Big Pro section heading</p>
+                                <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--h4">Freight Big Pro section heading</p>
                             </div>
                             <div class="lacc-sandbox__type-row">
                                 <span class="lacc-sandbox__type-label">H5<small>Freight italic / clamp(22px, 2.4vw, 28px)</small></span>
-                                <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--h5" data-letter-spacing="normal">Freight Big Pro supporting line</p>
+                                <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--h5">Freight Big Pro supporting line</p>
                             </div>
                             <div class="lacc-sandbox__type-row">
                                 <span class="lacc-sandbox__type-label">H6<small>Haarlem 16px / Helvetica 14px</small></span>
                                 <div>
-                                    <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--h6" data-letter-spacing=".14em">Haarlem utility heading</p>
-                                    <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--h6-helvetica" data-letter-spacing=".14em" style="margin-top:8px;">Helvetica utility heading</p>
+                                    <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--h6">Haarlem utility heading</p>
+                                    <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--h6-helvetica" style="margin-top:8px;">Helvetica utility heading</p>
                                 </div>
                             </div>
                             <div class="lacc-sandbox__type-row">
                                 <span class="lacc-sandbox__type-label">Lede<small>Editorial intro / clamp(21px, 2.1vw, 26px)</small></span>
-                                <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--lede" data-letter-spacing="normal">A slower, editorial opening line that adds warmth without taking over from the display heading.</p>
+                                <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--lede">A slower, editorial opening line that adds warmth without taking over from the display heading.</p>
                             </div>
                             <div class="lacc-sandbox__type-row">
                                 <span class="lacc-sandbox__type-label">Body<small>System copy / 16px</small></span>
-                                <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--body" data-letter-spacing="normal">Use the body style for the bulk of hospitality copy, then let an <a href="#" class="lacc-sandbox__inline-link">inline editorial link</a> or <a href="#" class="lacc-sandbox__inline-link lacc-sandbox__inline-link--gold">gold hospitality link</a> carry emphasis without turning the paragraph into a button row.</p>
+                                <p class="lacc-sandbox__type-sample lacc-sandbox__type-sample--body">Use the body style for the bulk of hospitality copy, then let an <a href="#" class="lacc-sandbox__inline-link">inline editorial link</a> or <a href="#" class="lacc-sandbox__inline-link lacc-sandbox__inline-link--gold">gold hospitality link</a> carry emphasis without turning the paragraph into a button row.</p>
                             </div>
                         </div>
                     </div>
                 </article>
                 <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
                     <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Color Palette</span>
+                        <span class="lacc-sandbox__specimen-label">Actions</span>
                         <div class="lacc-sandbox__specimen-copy">
-                            <p>These tokens are the only approved foundational colors for new section work. New gradients must be composed from this set, not ad-hoc values.</p>
+                            <p>Keep the live button set tight: one primary action, one ink utility fill, and one accessible gold fill using the darker old-gold tone.</p>
                         </div>
                     </div>
                     <div class="lacc-sandbox__specimen-main">
-                        <div class="lacc-sandbox__palette-grid">
-                            <article class="lacc-sandbox__palette-card">
-                                <div class="lacc-sandbox__palette-chip" style="--palette-color: var(--lacc-sandbox-ink);"></div>
-                                <div class="lacc-sandbox__palette-meta">
-                                    <span class="lacc-sandbox__palette-name">Ink</span>
-                                    <div class="lacc-sandbox__palette-token">--lacc-sandbox-ink (#51534a)</div>
-                                </div>
-                            </article>
-                            <article class="lacc-sandbox__palette-card">
-                                <div class="lacc-sandbox__palette-chip" style="--palette-color: var(--lacc-sandbox-ink-deep);"></div>
-                                <div class="lacc-sandbox__palette-meta">
-                                    <span class="lacc-sandbox__palette-name">Deep Ink</span>
-                                    <div class="lacc-sandbox__palette-token">--lacc-sandbox-ink-deep (#1f221d)</div>
-                                </div>
-                            </article>
-                            <article class="lacc-sandbox__palette-card">
-                                <div class="lacc-sandbox__palette-chip" style="--palette-color: var(--lacc-sandbox-cream);"></div>
-                                <div class="lacc-sandbox__palette-meta">
-                                    <span class="lacc-sandbox__palette-name">Cream</span>
-                                    <div class="lacc-sandbox__palette-token">--lacc-sandbox-cream (#f6f3ed)</div>
-                                </div>
-                            </article>
-                            <article class="lacc-sandbox__palette-card">
-                                <div class="lacc-sandbox__palette-chip" style="--palette-color: #ffffff;"></div>
-                                <div class="lacc-sandbox__palette-meta">
-                                    <span class="lacc-sandbox__palette-name">White</span>
-                                    <div class="lacc-sandbox__palette-token">#ffffff</div>
-                                </div>
-                            </article>
-                            <article class="lacc-sandbox__palette-card">
-                                <div class="lacc-sandbox__palette-chip" style="--palette-color: var(--lacc-sandbox-blue);"></div>
-                                <div class="lacc-sandbox__palette-meta">
-                                    <span class="lacc-sandbox__palette-name">Accessible Blue</span>
-                                    <div class="lacc-sandbox__palette-token">--lacc-sandbox-blue (#3f5f85)</div>
-                                </div>
-                            </article>
-                            <article class="lacc-sandbox__palette-card">
-                                <div class="lacc-sandbox__palette-chip" style="--palette-color: var(--lacc-sandbox-old-gold);"></div>
-                                <div class="lacc-sandbox__palette-meta">
-                                    <span class="lacc-sandbox__palette-name">Old Gold</span>
-                                    <div class="lacc-sandbox__palette-token">--lacc-sandbox-old-gold (#7a5a1f)</div>
-                                </div>
-                            </article>
-                            <article class="lacc-sandbox__palette-card">
-                                <div class="lacc-sandbox__palette-chip" style="--palette-color: var(--lacc-sandbox-gold);"></div>
-                                <div class="lacc-sandbox__palette-meta">
-                                    <span class="lacc-sandbox__palette-name">Decorative Gold</span>
-                                    <div class="lacc-sandbox__palette-token">--lacc-sandbox-gold (#d4a441)</div>
-                                </div>
-                            </article>
-                            <article class="lacc-sandbox__palette-card">
-                                <div class="lacc-sandbox__palette-chip" style="--palette-color: var(--lacc-sandbox-brand-green);"></div>
-                                <div class="lacc-sandbox__palette-meta">
-                                    <span class="lacc-sandbox__palette-name">Brand Green</span>
-                                    <div class="lacc-sandbox__palette-token">--lacc-sandbox-brand-green (#60a57d)</div>
-                                </div>
-                            </article>
-                        </div>
+                    <div class="lacc-sandbox__button-row">
+                        <a href="#" class="lacc-sandbox__button lacc-sandbox__button--primary">Primary</a>
+                        <a href="#" class="lacc-sandbox__button lacc-sandbox__button--ink">Ink Fill</a>
+                        <a href="#" class="lacc-sandbox__button lacc-sandbox__button--gold">Gold Fill</a>
+                    </div>
+                    <div class="lacc-sandbox__link-row">
+                        <a href="#" class="lacc-sandbox__inline-link">Editorial link</a>
+                        <a href="#" class="lacc-sandbox__inline-link lacc-sandbox__inline-link--gold">Hospitality link</a>
+                    </div>
+                    <div class="lacc-sandbox__badge-row">
+                        <span class="lacc-sandbox__badge">ACF+</span>
+                        <span class="lacc-sandbox__badge">New</span>
+                    </div>
                     </div>
                 </article>
                 <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
                     <div class="lacc-sandbox__specimen-intro">
                         <span class="lacc-sandbox__specimen-label">Gradients</span>
                         <div class="lacc-sandbox__specimen-copy">
-                            <p>Approved gradient set: three original brand gradients plus three light/pastel background gradients for softer surface treatments.</p>
+                            <p>Keep gradients locked to three approved transitions only so depth feels intentional rather than decorative improvisation.</p>
                         </div>
                     </div>
                     <div class="lacc-sandbox__specimen-main">
@@ -4371,30 +3451,6 @@ if ( ! $landing_featured_article ) {
                                     <p class="lacc-sandbox__gradient-note">Use for dramatic editorial surfaces, dark atmospheric cards, and ink-led panels that need depth without shifting blue.</p>
                                 </div>
                             </article>
-                            <article class="lacc-sandbox__gradient-card">
-                                <div class="lacc-sandbox__gradient-swatch" style="--gradient-fill: var(--lacc-sandbox-gradient-evergreen-deep);"></div>
-                                <div class="lacc-sandbox__gradient-card-body">
-                                    <h3 class="lacc-sandbox__gradient-name">Deep Green To Green</h3>
-                                    <div class="lacc-sandbox__gradient-spec">#234534 to #5E8D5B</div>
-                                    <p class="lacc-sandbox__gradient-note">Use for stronger green editorial fields and card families where a richer forest-to-evergreen transition provides depth.</p>
-                                </div>
-                            </article>
-                            <article class="lacc-sandbox__gradient-card">
-                                <div class="lacc-sandbox__gradient-swatch" style="--gradient-fill: var(--lacc-sandbox-gradient-illustration-mist);"></div>
-                                <div class="lacc-sandbox__gradient-card-body">
-                                    <h3 class="lacc-sandbox__gradient-name">Illustration Mist</h3>
-                                    <div class="lacc-sandbox__gradient-spec">white mist radial + blue-tint wash</div>
-                                    <p class="lacc-sandbox__gradient-note">Use for soft atmospheric backgrounds behind icons, illustrations, and modular UI samples that need gentle depth.</p>
-                                </div>
-                            </article>
-                            <article class="lacc-sandbox__gradient-card">
-                                <div class="lacc-sandbox__gradient-swatch" style="--gradient-fill: var(--lacc-sandbox-gradient-cue-gold);"></div>
-                                <div class="lacc-sandbox__gradient-card-body">
-                                    <h3 class="lacc-sandbox__gradient-name">Cue Gold Light</h3>
-                                    <div class="lacc-sandbox__gradient-spec">#F7F2E8 to #FFFFFF</div>
-                                    <p class="lacc-sandbox__gradient-note">Use for warm hospitality backgrounds and highlighted content wells that should stay bright and editorial.</p>
-                                </div>
-                            </article>
                         </div>
                     </div>
                 </article>
@@ -4409,8 +3465,8 @@ if ( ! $landing_featured_article ) {
                         <div class="lacc-sandbox__list-study">
                             <article class="lacc-sandbox__list-card lacc-sandbox__list-card--editorial">
                                 <span class="lacc-sandbox__specimen-label">Editorial</span>
-                                <h3 class="lacc-sandbox__list-card-title">Gold-star editorial list with keylines</h3>
-                                <ul class="lacc-sandbox__editorial-list lacc-sandbox__editorial-list--keyline">
+                                <h3 class="lacc-sandbox__list-card-title">Gold-star editorial list</h3>
+                                <ul class="lacc-sandbox__editorial-list">
                                     <li>Pair with ledes, split features, and article-adjacent copy.</li>
                                     <li>Use the gold star marker we have already been carrying elsewhere in the system.</li>
                                     <li>Best when each item reads like a complete sentence.</li>
@@ -4420,24 +3476,6 @@ if ( ! $landing_featured_article ) {
                                 <span class="lacc-sandbox__specimen-label">Utility</span>
                                 <h3 class="lacc-sandbox__list-card-title">Keyline utility list</h3>
                                 <ul class="lacc-sandbox__utility-list">
-                                    <li>Arrival windows and parking instructions</li>
-                                    <li>Conference planning requirements</li>
-                                    <li>Family stay preparation notes</li>
-                                </ul>
-                            </article>
-                            <article class="lacc-sandbox__list-card lacc-sandbox__list-card--editorial">
-                                <span class="lacc-sandbox__specimen-label">Editorial</span>
-                                <h3 class="lacc-sandbox__list-card-title">Gold-star editorial list without keylines</h3>
-                                <ul class="lacc-sandbox__editorial-list lacc-sandbox__editorial-list--no-keylines">
-                                    <li>Pair with ledes, split features, and article-adjacent copy.</li>
-                                    <li>Use the gold star marker we have already been carrying elsewhere in the system.</li>
-                                    <li>Best when each item reads like a complete sentence.</li>
-                                </ul>
-                            </article>
-                            <article class="lacc-sandbox__list-card lacc-sandbox__list-card--utility">
-                                <span class="lacc-sandbox__specimen-label">Utility</span>
-                                <h3 class="lacc-sandbox__list-card-title">Utility list without keylines</h3>
-                                <ul class="lacc-sandbox__utility-list lacc-sandbox__utility-list--no-keylines">
                                     <li>Arrival windows and parking instructions</li>
                                     <li>Conference planning requirements</li>
                                     <li>Family stay preparation notes</li>
@@ -4569,6 +3607,34 @@ if ( ! $landing_featured_article ) {
                         </div>
                     </div>
                 </article>
+                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
+                    <div class="lacc-sandbox__specimen-intro">
+                        <span class="lacc-sandbox__specimen-label">Form Fields</span>
+                        <div class="lacc-sandbox__specimen-copy">
+                            <p>Text fields are in a good place. This row expands the audit to the controls that usually drift last: select carets, radios, and checkboxes.</p>
+                        </div>
+                    </div>
+                    <div class="lacc-sandbox__specimen-main">
+                    <div class="lacc-sandbox__form-stack">
+                        <input class="lacc-sandbox__field" type="text" value="Guest name">
+                        <select class="lacc-sandbox__select">
+                            <option>Choose a stay type</option>
+                        </select>
+                        <textarea class="lacc-sandbox__textarea">A field tone check for forms and inquiries.</textarea>
+                        <div class="lacc-sandbox__choice-grid">
+                            <label class="lacc-sandbox__choice"><input type="checkbox" checked> Receive lodge updates</label>
+                            <label class="lacc-sandbox__choice"><input type="checkbox"> Include dining offers</label>
+                        </div>
+                        <div class="lacc-sandbox__choice-grid">
+                            <label class="lacc-sandbox__choice"><input type="radio" name="sandbox-stay" checked> Leisure stay</label>
+                            <label class="lacc-sandbox__choice"><input type="radio" name="sandbox-stay"> Event planning</label>
+                        </div>
+                    </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
 
     <div class="lacc-sandbox__lane">
         <div class="lacc-sandbox__lane-card">
@@ -4674,38 +3740,16 @@ if ( ! $landing_featured_article ) {
                 </article>
                 <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
                     <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Graphic Elements</span>
+                        <span class="lacc-sandbox__specimen-label">Graphic Language</span>
                         <div class="lacc-sandbox__specimen-copy">
-                            <p>Decorative scrollwork elements should separate, frame, or punctuate sections. Vertical dividers for side panels, horizontal for section breaks, split seam for layered depth, gallery borders for image framing, and tree elements for seasonal/organic moments. None should behave like a headline.</p>
+                            <p>Scrollwork, dividers, and arrow cues should separate, frame, or punctuate. If any one of them starts to behave like a headline, it is doing too much.</p>
                         </div>
                     </div>
                     <div class="lacc-sandbox__specimen-main">
-                        <div class="lacc-sandbox__graphic-elements-grid">
-                            <div class="lacc-sandbox__graphic-element-family">
-                                <span class="lacc-sandbox__graphic-element-label">Vertical Scrollwork</span>
-                                <span class="lacc-sandbox__graphic-swatch lacc-sandbox__graphic-swatch--vertical" aria-hidden="true"></span>
-                                <p class="lacc-sandbox__graphic-element-note">Use for left/right panel dividers and sidebar framing.</p>
-                            </div>
-                            <div class="lacc-sandbox__graphic-element-family">
-                                <span class="lacc-sandbox__graphic-element-label">Horizontal Scrollwork</span>
-                                <span class="lacc-sandbox__graphic-divider" aria-hidden="true"></span>
-                                <p class="lacc-sandbox__graphic-element-note">Use for section breaks and content transitions.</p>
-                            </div>
-                            <div class="lacc-sandbox__graphic-element-family">
-                                <span class="lacc-sandbox__graphic-element-label">Split Seam</span>
-                                <span class="lacc-sandbox__graphic-swatch lacc-sandbox__graphic-swatch--split-seam" aria-hidden="true"></span>
-                                <p class="lacc-sandbox__graphic-element-note">Use for layered depth and overlapping sections.</p>
-                            </div>
-                            <div class="lacc-sandbox__graphic-element-family">
-                                <span class="lacc-sandbox__graphic-element-label">Gallery Border</span>
-                                <span class="lacc-sandbox__graphic-swatch lacc-sandbox__graphic-swatch--gallery-border" aria-hidden="true"></span>
-                                <p class="lacc-sandbox__graphic-element-note">Use for framing galleries and image collections.</p>
-                            </div>
-                            <div class="lacc-sandbox__graphic-element-family">
-                                <span class="lacc-sandbox__graphic-element-label">Trees</span>
-                                <span class="lacc-sandbox__graphic-swatch lacc-sandbox__graphic-swatch--trees" aria-hidden="true"></span>
-                                <p class="lacc-sandbox__graphic-element-note">Use for seasonal moments and organic composition.</p>
-                            </div>
+                        <div class="lacc-sandbox__graphic-stack">
+                            <span class="lacc-sandbox__graphic-swatch" aria-hidden="true"></span>
+                            <span class="lacc-sandbox__graphic-divider" aria-hidden="true"></span>
+                            <span class="lacc-sandbox__graphic-arrow" aria-hidden="true"></span>
                         </div>
                     </div>
                 </article>
@@ -4828,71 +3872,6 @@ if ( ! $landing_featured_article ) {
                 </article>
                 <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
                     <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Factoids &amp; Pricing</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>These sit between pure primitives and components. Factoids stay Freight semibold with wide tracking; package prices stay Freight medium italic in old gold. These are now explicit utility elements.</p>
-                        </div>
-                    </div>
-                    <div class="lacc-sandbox__specimen-main">
-                        <div class="lacc-sandbox__factoid-grid">
-                            <article class="lacc-sandbox__factoid-card lacc-sandbox__factoid-card--hero">
-                                <div class="lacc-sandbox__factoid-lockup">
-                                    <div class="lacc-sandbox__factoid-stat-row">
-                                        <div class="lacc-sandbox__factoid-stat">
-                                            <div class="lacc-sandbox__factoid-value">50</div>
-                                            <span class="lacc-sandbox__factoid-label">Acres</span>
-                                        </div>
-                                        <div class="lacc-sandbox__factoid-stat">
-                                            <div class="lacc-sandbox__factoid-value">150</div>
-                                            <span class="lacc-sandbox__factoid-label">Max Guests</span>
-                                        </div>
-                                        <div class="lacc-sandbox__factoid-stat">
-                                            <div class="lacc-sandbox__factoid-value">10,000</div>
-                                            <span class="lacc-sandbox__factoid-label">SQFT of Event Space</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="lacc-sandbox__factoid-note">Freight semibold, .06em tracking, uppercase utility context.</p>
-                            </article>
-                            <article class="lacc-sandbox__factoid-card">
-                                <span class="lacc-sandbox__factoid-label">Package Price</span>
-                                <div class="lacc-sandbox__package-pattern-preview">
-                                    <div class="lacc-sandbox__package-pattern-name">Open Chalet</div>
-                                    <div class="lacc-sandbox__package-pattern-capacity">Up to 100 Guests</div>
-                                    <div class="lacc-sandbox__package-pattern-days">Fri &ndash; Sat</div>
-                                    <div class="lacc-sandbox__package-pattern-amount">$16,500</div>
-                                    <div class="lacc-sandbox__package-pattern-label">Package Rate</div>
-                                </div>
-                                <p class="lacc-sandbox__factoid-note">Pattern preview for package pricing hierarchy and typography lock.</p>
-                            </article>
-                        </div>
-                    </div>
-                </article>
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Actions</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>Keep the live button set tight: one primary action, one ink utility fill, and one accessible gold fill using the darker old-gold tone.</p>
-                        </div>
-                    </div>
-                    <div class="lacc-sandbox__specimen-main">
-                    <div class="lacc-sandbox__button-row">
-                        <a href="#" class="lacc-sandbox__button lacc-sandbox__button--primary">Primary</a>
-                        <a href="#" class="lacc-sandbox__button lacc-sandbox__button--ink">Ink Fill</a>
-                        <a href="#" class="lacc-sandbox__button lacc-sandbox__button--gold">Gold Fill</a>
-                    </div>
-                    <div class="lacc-sandbox__link-row">
-                        <a href="#" class="lacc-sandbox__inline-link">Editorial link</a>
-                        <a href="#" class="lacc-sandbox__inline-link lacc-sandbox__inline-link--gold">Hospitality link</a>
-                    </div>
-                    <div class="lacc-sandbox__badge-row">
-                        <span class="lacc-sandbox__badge">ACF+</span>
-                        <span class="lacc-sandbox__badge">New</span>
-                    </div>
-                    </div>
-                </article>
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
                         <span class="lacc-sandbox__specimen-label">Pause / Play</span>
                         <div class="lacc-sandbox__specimen-copy">
                             <p>Media controls should inherit our button language rather than introducing a new anonymous control family. The icon changes, but the shell stays in-system.</p>
@@ -4917,385 +3896,6 @@ if ( ! $landing_featured_article ) {
                                 </div>
                                 <p class="lacc-sandbox__media-note">Use the same button shells as the rest of the system so pause and play feel native to the page rather than like third-party video chrome.</p>
                             </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Form Fields</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>Text fields are in a good place. This row expands the audit to the controls that usually drift last: select carets, radios, and checkboxes.</p>
-                        </div>
-                    </div>
-                    <div class="lacc-sandbox__specimen-main">
-                    <div class="lacc-sandbox__form-stack">
-                        <input class="lacc-sandbox__field" type="text" value="Guest name">
-                        <select class="lacc-sandbox__select">
-                            <option>Choose a stay type</option>
-                        </select>
-                        <textarea class="lacc-sandbox__textarea">A field tone check for forms and inquiries.</textarea>
-                        <div class="lacc-sandbox__choice-grid">
-                            <label class="lacc-sandbox__choice"><input type="checkbox" checked> Receive lodge updates</label>
-                            <label class="lacc-sandbox__choice"><input type="checkbox"> Include dining offers</label>
-                        </div>
-                        <div class="lacc-sandbox__choice-grid">
-                            <label class="lacc-sandbox__choice"><input type="radio" name="sandbox-stay" checked> Leisure stay</label>
-                            <label class="lacc-sandbox__choice"><input type="radio" name="sandbox-stay"> Event planning</label>
-                        </div>
-                    </div>
-                    </div>
-                </article>
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Locked Primitive Map</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>Use this as the release checklist for new sections: inherit locked primitives first, then log any justified exceptions.</p>
-                        </div>
-                    </div>
-                    <div class="lacc-sandbox__specimen-main">
-                        <div class="lacc-sandbox__primitive-map-wrap">
-                            <table class="lacc-sandbox__primitive-map">
-                                <thead>
-                                    <tr>
-                                        <th>Token / Primitive</th>
-                                        <th>Owner</th>
-                                        <th>Default</th>
-                                        <th>Allowed Exceptions</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><span class="lacc-sandbox__primitive-token">--lacc-sandbox-ink|blue|gold|old-gold|brand-green (+ gradient tokens)</span></td>
-                                        <td>Foundations Audit: Color Palette + Gradients</td>
-                                        <td>8-color palette: Ink, Deep Ink, Cream, White, Accessible Blue, Old Gold, Decorative Gold, Brand Green</td>
-                                        <td>Campaign-only art direction with explicit exception log</td>
-                                        <td><span class="lacc-sandbox__primitive-status lacc-sandbox__primitive-status--locked">Locked</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="lacc-sandbox__primitive-token">--lacc-sandbox-type-h2-card-size</span><br>2-up card title + Foundations H3/Card H2 token sample</td>
-                                        <td>Foundations Audit: Type</td>
-                                        <td>clamp(32px, 3.6vw, 44px), line-height 1.02</td>
-                                        <td>Pricing/special card families only when explicitly scoped</td>
-                                        <td><span class="lacc-sandbox__primitive-status lacc-sandbox__primitive-status--locked">Locked</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="lacc-sandbox__primitive-token">.lacc-sandbox__factoid-value</span> / <span class="lacc-sandbox__primitive-token">.lacc-sandbox__price-value</span></td>
-                                        <td>Utility Details: Factoids &amp; Pricing</td>
-                                        <td>Factoid: Freight semibold .06em; Price: Freight medium italic old-gold</td>
-                                        <td>High-density comparison tables only when readability requires</td>
-                                        <td><span class="lacc-sandbox__primitive-status lacc-sandbox__primitive-status--locked">Locked</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="lacc-sandbox__primitive-token">--lacc-sandbox-eyebrow-*</span><br>padding, family, size, fill, border</td>
-                                        <td>Utility Details: Eyebrows</td>
-                                        <td>Haarlem + Helvetica families across Plain/Pill/Ink/Fill-No-Border</td>
-                                        <td>None by default; new variant requires explicit promotion</td>
-                                        <td><span class="lacc-sandbox__primitive-status lacc-sandbox__primitive-status--locked">Locked</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="lacc-sandbox__primitive-token">.lacc-sandbox__inline-link</span> / <span class="lacc-sandbox__primitive-token">--lacc-sandbox-blue</span></td>
-                                        <td>Utility Details: Actions</td>
-                                        <td>Editorial link (blue) + hospitality link (gold accent)</td>
-                                        <td>Dark-surface overrides when contrast requires</td>
-                                        <td><span class="lacc-sandbox__primitive-status lacc-sandbox__primitive-status--locked">Locked</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="lacc-sandbox__primitive-token">.lacc-sandbox__button--primary|--ink|--gold</span></td>
-                                        <td>Utility Details: Actions</td>
-                                        <td>Primary blue, ink fill, old-gold fill</td>
-                                        <td>Campaign-only CTA treatments via explicit exception class</td>
-                                        <td><span class="lacc-sandbox__primitive-status lacc-sandbox__primitive-status--locked">Locked</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="lacc-sandbox__primitive-token">.lacc-sandbox__badge</span> + <span class="lacc-sandbox__primitive-token">.lacc-sandbox__badge--featured</span></td>
-                                        <td>Utility Details: Actions</td>
-                                        <td>Pill utility badge + featured medallion badge</td>
-                                        <td>Card-grid variant matrix (pill/featured/flag) in seeded QA lane</td>
-                                        <td><span class="lacc-sandbox__primitive-status lacc-sandbox__primitive-status--locked">Locked</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="lacc-sandbox__primitive-token">.lacc-sandbox__field|__select|__textarea|__choice</span></td>
-                                        <td>Foundations Audit: Form Fields</td>
-                                        <td>15px control text, 14px labels, blue accent checks/radios</td>
-                                        <td>Long-form or legal workflows with explicit readability requirements</td>
-                                        <td><span class="lacc-sandbox__primitive-status lacc-sandbox__primitive-status--locked">Locked</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="lacc-sandbox__primitive-token">Exception Register</span></td>
-                                        <td>Section-specific (documented)</td>
-                                        <td>No implicit overrides</td>
-                                        <td>Pricing, legacy template parity, campaign art direction</td>
-                                        <td><span class="lacc-sandbox__primitive-status lacc-sandbox__primitive-status--exception">Track</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-
-    <!-- Component Locking Queue -->
-    <div class="lacc-sandbox__lane">
-        <div class="lacc-sandbox__lane-card">
-            <div class="lacc-sandbox__lane-head">
-                <div>
-                    <span class="lacc-sandbox__lane-label">Accordions (Locked)</span>
-                    <h2 class="lacc-sandbox__lane-title">Accordion component specification and locked behavior</h2>
-                </div>
-                <div class="lacc-sandbox__lane-statuses">
-                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Component locking in progress</span>
-                </div>
-            </div>
-            <div class="lacc-sandbox__lane-copy">
-                <p>Accordion patterns inherit type scale, button styles, and color primitives from Foundations Audit. Locked roles: header typography, trigger button state, content copy size, expanded/collapsed spacing.</p>
-            </div>
-        </div>
-        <?php get_template_part( 'components/components', 'section-faq-accordion' ); ?>
-    </div>
-
-    <div class="lacc-sandbox__lane">
-        <div class="lacc-sandbox__lane-card">
-            <div class="lacc-sandbox__lane-head">
-                <div>
-                    <span class="lacc-sandbox__lane-label">Primary Navbar (Locked)</span>
-                    <h2 class="lacc-sandbox__lane-title">Primary navigation component specification</h2>
-                </div>
-                <div class="lacc-sandbox__lane-statuses">
-                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Component locking in progress</span>
-                </div>
-            </div>
-            <div class="lacc-sandbox__lane-copy">
-                <p>Primary navbar inherits typography (H6), button primitives, and color palette. Locked roles: link color, hover states, active states, responsive breakpoints.</p>
-            </div>
-            <div class="lacc-sandbox__primitives-grid">
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Specimen Placeholder</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>Primary navbar specimens and locked primitive mapping to be added.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-
-    <div class="lacc-sandbox__lane">
-        <div class="lacc-sandbox__lane-card">
-            <div class="lacc-sandbox__lane-head">
-                <div>
-                    <span class="lacc-sandbox__lane-label">InPage Navbar (Locked)</span>
-                    <h2 class="lacc-sandbox__lane-title">InPage navigation component specification</h2>
-                </div>
-                <div class="lacc-sandbox__lane-statuses">
-                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Component locking in progress</span>
-                </div>
-            </div>
-            <div class="lacc-sandbox__lane-copy">
-                <p>InPage navbar (secondary navigation, breadcrumbs) inherits link styles and eyebrow primitives. Locked roles: typography, link treatment, scroll-spy active states.</p>
-            </div>
-            <div class="lacc-sandbox__primitives-grid">
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Specimen Placeholder</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>InPage navbar specimens and locked primitive mapping to be added.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-
-    <div class="lacc-sandbox__lane">
-        <div class="lacc-sandbox__lane-card">
-            <div class="lacc-sandbox__lane-head">
-                <div>
-                    <span class="lacc-sandbox__lane-label">Footer (Locked)</span>
-                    <h2 class="lacc-sandbox__lane-title">Footer component specification and locked patterns</h2>
-                </div>
-                <div class="lacc-sandbox__lane-statuses">
-                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Component locking in progress</span>
-                </div>
-            </div>
-            <div class="lacc-sandbox__lane-copy">
-                <p>Footer inherits type scale, link primitives, and color palette. Locked roles: footer heading size, link color, background treatment, spacing grid.</p>
-            </div>
-            <div class="lacc-sandbox__primitives-grid">
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Specimen Placeholder</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>Footer specimens and locked primitive mapping to be added.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-
-    <div class="lacc-sandbox__lane">
-        <div class="lacc-sandbox__lane-card">
-            <div class="lacc-sandbox__lane-head">
-                <div>
-                    <span class="lacc-sandbox__lane-label">Heros (Locked)</span>
-                    <h2 class="lacc-sandbox__lane-title">Hero section component specification</h2>
-                </div>
-                <div class="lacc-sandbox__lane-statuses">
-                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Component locking in progress</span>
-                </div>
-            </div>
-            <div class="lacc-sandbox__lane-copy">
-                <p>Hero sections inherit type scale (XL H1, H2 display), button primitives, and gradient palette. Locked roles: display typography sizes, button styles, overlay treatment, media aspect ratios.</p>
-            </div>
-            <div class="lacc-sandbox__primitives-grid">
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Specimen Placeholder</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>Hero section specimens and locked primitive mapping to be added.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-
-    <div class="lacc-sandbox__lane">
-        <div class="lacc-sandbox__lane-card">
-            <div class="lacc-sandbox__lane-head">
-                <div>
-                    <span class="lacc-sandbox__lane-label">Two Column Specimens (Locked)</span>
-                    <h2 class="lacc-sandbox__lane-title">Two-column section component specification</h2>
-                </div>
-                <div class="lacc-sandbox__lane-statuses">
-                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Component locking in progress</span>
-                </div>
-            </div>
-            <div class="lacc-sandbox__lane-copy">
-                <p>Two-column sections inherit eyebrow primitives, heading typography (H2/H3), button styles, and color palette. Locked roles: eyebrow font family and variants, column ratio, heading size, CTA button treatment.</p>
-            </div>
-            <div class="lacc-sandbox__primitives-grid">
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Specimen Placeholder</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>Two-column section specimens and locked primitive mapping to be added.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-
-    <div class="lacc-sandbox__lane">
-        <div class="lacc-sandbox__lane-card">
-            <div class="lacc-sandbox__lane-head">
-                <div>
-                    <span class="lacc-sandbox__lane-label">Featured Article (Locked)</span>
-                    <h2 class="lacc-sandbox__lane-title">Featured article card component specification</h2>
-                </div>
-                <div class="lacc-sandbox__lane-statuses">
-                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Component locking in progress</span>
-                </div>
-            </div>
-            <div class="lacc-sandbox__lane-copy">
-                <p>Featured article cards inherit eyebrow variants, type scale (Lede + body), link primitives, and badge styles. Locked roles: eyebrow treatment, headline size, copy typography, image aspect ratio, call-to-action link color.</p>
-            </div>
-            <div class="lacc-sandbox__primitives-grid">
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Specimen Placeholder</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>Featured article specimens and locked primitive mapping to be added.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-
-    <div class="lacc-sandbox__lane">
-        <div class="lacc-sandbox__lane-card">
-            <div class="lacc-sandbox__lane-head">
-                <div>
-                    <span class="lacc-sandbox__lane-label">Cards (Locked)</span>
-                    <h2 class="lacc-sandbox__lane-title">Card family and density matrix specification</h2>
-                </div>
-                <div class="lacc-sandbox__lane-statuses">
-                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Component locking in progress</span>
-                </div>
-            </div>
-            <div class="lacc-sandbox__lane-copy">
-                <p>Cards inherit type scale (H2 card token, body, factoids), badge primitives, button styles, and color palette. Locked roles: title size (--lacc-sandbox-type-h2-card-size), price typography, badge variants (pill/featured/flag), CTA button styles, density ratios (2-up/3-up/4-up).</p>
-            </div>
-            <div class="lacc-sandbox__primitives-grid">
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Specimen Placeholder</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>Card family specimens (density matrix) and locked primitive mapping to be added.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-
-    <div class="lacc-sandbox__lane">
-        <div class="lacc-sandbox__lane-card">
-            <div class="lacc-sandbox__lane-head">
-                <div>
-                    <span class="lacc-sandbox__lane-label">Image Scrollers (Locked)</span>
-                    <h2 class="lacc-sandbox__lane-title">Image scroller component specification</h2>
-                </div>
-                <div class="lacc-sandbox__lane-statuses">
-                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Component locking in progress</span>
-                </div>
-            </div>
-            <div class="lacc-sandbox__lane-copy">
-                <p>Image scrollers inherit carousel control primitives (linework arrows), page indicator primitives, and eyebrow styles. Locked roles: arrow control styling (linework vs symbol), page dot styling, count typography, image aspect ratio.</p>
-            </div>
-            <div class="lacc-sandbox__primitives-grid">
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Specimen Placeholder</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>Image scroller specimens and locked primitive mapping to be added.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-
-    <div class="lacc-sandbox__lane">
-        <div class="lacc-sandbox__lane-card">
-            <div class="lacc-sandbox__lane-head">
-                <div>
-                    <span class="lacc-sandbox__lane-label">Interactive Image Collage (Locked)</span>
-                    <h2 class="lacc-sandbox__lane-title">Interactive image collage component specification</h2>
-                </div>
-                <div class="lacc-sandbox__lane-statuses">
-                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Component locking in progress</span>
-                </div>
-            </div>
-            <div class="lacc-sandbox__lane-copy">
-                <p>Interactive image collages inherit carousel controls, badge primitives, and color palette. Locked roles: trigger button styling, carousel arrow styling, badge treatment on overlay, text hierarchy and typography sizes.</p>
-            </div>
-            <div class="lacc-sandbox__primitives-grid">
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Specimen Placeholder</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>Interactive image collage specimens and locked primitive mapping to be added.</p>
                         </div>
                     </div>
                 </article>
@@ -5701,7 +4301,6 @@ if ( ! $landing_featured_article ) {
                     <div class="lacc-sandbox__cards-cell">
                         <article class="lacc-sandbox__audit-card lacc-sandbox__audit-card--utility">
                             <div class="lacc-sandbox__audit-card-media">
-                                <span class="lacc-sandbox__arrow-banner lacc-sandbox__arrow-banner--blue lacc-sandbox__audit-card-media-banner">Planning Guide</span>
                                 <img src="<?php echo esc_url( $sandbox_card_assets['chalet_bath'] ); ?>" alt="4-up utility card planning image from gallery">
                             </div>
                             <div class="lacc-sandbox__audit-card-body">
@@ -5720,13 +4319,13 @@ if ( ! $landing_featured_article ) {
                         <article class="lacc-sandbox__audit-card lacc-sandbox__audit-card--package">
                             <div class="lacc-sandbox__audit-card-media">
                                 <img src="<?php echo esc_url( $sandbox_card_assets['chalet_room'] ); ?>" alt="4-up package card offer image from gallery">
-                            </div>
-                            <div class="lacc-sandbox__audit-card-body">
-                                <h3 class="lacc-sandbox__audit-card-title">Offer card</h3>
                                 <div class="lacc-sandbox__audit-card-price">
                                     <strong>$245</strong>
                                     <span>Starting Rate</span>
                                 </div>
+                            </div>
+                            <div class="lacc-sandbox__audit-card-body">
+                                <h3 class="lacc-sandbox__audit-card-title">Offer card</h3>
                                 <p class="lacc-sandbox__audit-card-copy">Shorter package read for grouped promotions.</p>
                             </div>
                         </article>
@@ -5822,11 +4421,11 @@ if ( ! $landing_featured_article ) {
                     <div class="lacc-sandbox__cards-cell">
                         <article class="lacc-sandbox__audit-card lacc-sandbox__audit-card--5up-rate">
                             <div class="lacc-sandbox__audit-card-body">
-                                <h3 class="lacc-sandbox__audit-card-title">Chalet Rate</h3>
                                 <div class="lacc-sandbox__audit-card-price">
                                     <strong>$245</strong>
                                     <span>from / night</span>
                                 </div>
+                                <h3 class="lacc-sandbox__audit-card-title">Chalet Rate</h3>
                                 <p class="lacc-sandbox__audit-card-copy">Best when pricing needs to land before the details do.</p>
                                 <div class="lacc-sandbox__audit-card-meta-row">
                                     <span class="lacc-sandbox__audit-card-pill">2-night stay</span>
@@ -5861,25 +4460,6 @@ if ( ! $landing_featured_article ) {
                         </div>
                     </div>
                 </div>
-
-                <div class="lacc-sandbox__cards-row-head">
-                    <h3 class="lacc-sandbox__cards-row-title">Full-row offset image example</h3>
-                    <p class="lacc-sandbox__cards-row-note">Row is locked to at least 800px tall, with the image offset and constrained to one-third of the total row area.</p>
-                </div>
-                <div class="lacc-sandbox__cards-row lacc-sandbox__cards-row--offset-feature">
-                    <article class="lacc-sandbox__offset-row">
-                        <div class="lacc-sandbox__offset-row-content">
-                            <p class="lacc-sandbox__offset-row-kicker">Offset Composition</p>
-                            <h3 class="lacc-sandbox__offset-row-title">One-third media lane with a full-height narrative field</h3>
-                            <p class="lacc-sandbox__offset-row-copy">Use this when you want a hero-like row that preserves generous copy room while keeping imagery present but secondary. The image lane is intentionally offset so it hangs outside the main canvas edge.</p>
-                            <a href="#" class="lacc-sandbox__audit-card-button lacc-sandbox__audit-card-button--gold">Explore Layout</a>
-                        </div>
-                        <div class="lacc-sandbox__offset-row-media">
-                            <img src="<?php echo esc_url( $sandbox_card_assets['chalet_exterior'] ); ?>" alt="Offset row image lane showing chalet exterior">
-                        </div>
-                    </article>
-                </div>
-
             </div>
         </div>
     </div>
@@ -5897,25 +4477,14 @@ if ( ! $landing_featured_article ) {
             </div>
             <div class="lacc-sandbox__lane-copy">
                 <p>Keep illustration exports here until they prove they can hold their texture, scale cleanly, and stay decorative when screened into a container background. Only promote the strongest motifs into the reference library after the source format and usage rules are settled.</p>
-                <p>These are treated as static section embellishments, not interactive card backgrounds. Surface chips are for QA-only background comparison.</p>
             </div>
             <?php if ( ! empty( $sandbox_illustration_assets ) ) : ?>
-                <?php
-                $sandbox_featured_illustration_index = 0;
-
-                foreach ( $sandbox_illustration_assets as $sandbox_featured_candidate_index => $sandbox_featured_candidate ) {
-                    if ( 'PNG' === $sandbox_featured_candidate['format'] ) {
-                        $sandbox_featured_illustration_index = (int) $sandbox_featured_candidate_index;
-                        break;
-                    }
-                }
-                ?>
                 <div class="lacc-sandbox__illustration-grid">
-                    <?php foreach ( $sandbox_illustration_assets as $sandbox_illustration_index => $sandbox_illustration_asset ) : ?>
-                        <article class="lacc-sandbox__illustration-card<?php echo $sandbox_featured_illustration_index === (int) $sandbox_illustration_index ? ' lacc-sandbox__illustration-card--featured' : ''; ?>">
+                    <?php foreach ( $sandbox_illustration_assets as $sandbox_illustration_asset ) : ?>
+                        <article class="lacc-sandbox__illustration-card">
                             <div class="lacc-sandbox__illustration-preview lacc-sandbox__illustration-preview--cream" data-illustration-preview>
                                 <span class="lacc-sandbox__illustration-preview-state" data-illustration-preview-state>Cream</span>
-                                <img src="<?php echo esc_url( $sandbox_illustration_asset['src'] ); ?>" alt="<?php echo esc_attr( $sandbox_illustration_asset['label'] ); ?> illustration export preview" data-illustration-preview-image>
+                                <img src="<?php echo esc_url( $sandbox_illustration_asset['src'] ); ?>" alt="<?php echo esc_attr( $sandbox_illustration_asset['label'] ); ?> illustration export preview">
                             </div>
                             <div class="lacc-sandbox__illustration-body">
                                 <div class="lacc-sandbox__illustration-meta">
@@ -6078,121 +4647,8 @@ if ( ! $landing_featured_article ) {
                 <?php get_template_part( 'components/components', 'section-split-feature' ); ?>
                 <?php $rendered_split_feature = true; ?>
             <?php endif; ?>
-            <?php if ( ! $rendered_two_column && 'section_two_column' === get_row_layout() ) : ?>
-                <div class="lacc-sandbox__lane">
-                    <div class="lacc-sandbox__lane-card">
-                        <div class="lacc-sandbox__lane-head">
-                            <div>
-                                <span class="lacc-sandbox__lane-label">Builder Pattern Candidate</span>
-                                <h2 class="lacc-sandbox__lane-title">Two-column section specimen</h2>
-                            </div>
-                            <div class="lacc-sandbox__lane-statuses">
-                                <span class="lacc-sandbox__status lacc-sandbox__status--builder">Builder-ready candidate</span>
-                            </div>
-                        </div>
-                        <div class="lacc-sandbox__lane-copy">
-                            <p>This preview pulls the flexible-builder Two Column layout so we can assess ratio, imagery, and copy rhythm before promoting final defaults to the design-system reference.</p>
-                        </div>
-                    </div>
-                </div>
-                <?php get_template_part( 'components/components', 'section-two-column' ); ?>
-                <?php $rendered_two_column = true; ?>
-            <?php endif; ?>
-            <?php if ( ! $rendered_card_grid && 'section_card_grid' === get_row_layout() ) : ?>
-                <?php get_template_part( 'components/components', 'section-card-grid' ); ?>
-                <?php $rendered_card_grid = true; ?>
-            <?php endif; ?>
         <?php endwhile; ?>
     <?php endif; ?>
-
-    <?php if ( ! $rendered_two_column ) : ?>
-        <div class="lacc-sandbox__lane">
-            <div class="lacc-sandbox__lane-card">
-                <div class="lacc-sandbox__lane-head">
-                    <div>
-                        <span class="lacc-sandbox__lane-label">Builder Pattern Candidate</span>
-                        <h2 class="lacc-sandbox__lane-title">Two-column section specimen</h2>
-                    </div>
-                    <div class="lacc-sandbox__lane-statuses">
-                        <span class="lacc-sandbox__status lacc-sandbox__status--builder">Needs source content</span>
-                    </div>
-                </div>
-                <div class="lacc-sandbox__lane-copy">
-                    <p>No <strong>Two Column</strong> row was found on the Flex source page yet. Add a <strong>Two Column</strong> block to that page's Page Sections field to preview it here.</p>
-                </div>
-            </div>
-        </div>
-        <div class="lacc-sandbox__lane">
-            <div class="lacc-sandbox__lane-card">
-                <div class="lacc-sandbox__lane-head">
-                    <div>
-                        <span class="lacc-sandbox__lane-label">Builder Test Seed</span>
-                        <h2 class="lacc-sandbox__lane-title">Seeded Two Column eyebrow variant matrix</h2>
-                    </div>
-                    <div class="lacc-sandbox__lane-statuses">
-                        <span class="lacc-sandbox__status lacc-sandbox__status--builder">Ready for visual QA</span>
-                    </div>
-                </div>
-                <div class="lacc-sandbox__lane-copy">
-                    <p>This seeded specimen matrix renders locked eyebrow treatments from Foundations + Utility Details (Haarlem and Helvetica families) with identical content so differences are immediately comparable.</p>
-                </div>
-            </div>
-        </div>
-        <?php foreach ( $sandbox_two_column_eyebrow_matrix as $sandbox_eyebrow_variant => $sandbox_eyebrow_spec ) : ?>
-            <?php
-            $sandbox_two_column_variant_data = $sandbox_two_column_test_data;
-            $sandbox_two_column_variant_data['section_anchor_id'] = 'sandbox-two-column-seeded-' . $sandbox_eyebrow_variant;
-            $sandbox_two_column_variant_data['section_eyebrow'] = 'Eyebrow Variant: ' . $sandbox_eyebrow_spec['label'];
-            $sandbox_two_column_variant_data['section_heading'] = 'Seeded Two Column Specimen - ' . $sandbox_eyebrow_spec['label'] . ' Eyebrow';
-            $sandbox_two_column_variant_data['eyebrow_variant'] = $sandbox_eyebrow_spec['variant'];
-            $sandbox_two_column_variant_data['eyebrow_font_family'] = $sandbox_eyebrow_spec['font_family'];
-            $sandbox_two_column_variant_data['eyebrow_color'] = $sandbox_eyebrow_spec['eyebrow_color'];
-            $sandbox_two_column_variant_data['eyebrow_fill_color'] = $sandbox_eyebrow_spec['eyebrow_fill_color'];
-            $sandbox_two_column_variant_data['eyebrow_border_color'] = $sandbox_eyebrow_spec['eyebrow_border_color'];
-            $sandbox_two_column_variant_data['eyebrow_border_width'] = $sandbox_eyebrow_spec['eyebrow_border_width'];
-            ?>
-            <?php set_query_var( 'lacc_two_column_test_data', $sandbox_two_column_variant_data ); ?>
-            <?php get_template_part( 'components/components', 'section-two-column' ); ?>
-            <?php set_query_var( 'lacc_two_column_test_data', null ); ?>
-        <?php endforeach; ?>
-    <?php endif; ?>
-
-    <div class="lacc-sandbox__lane">
-        <div class="lacc-sandbox__lane-card">
-            <div class="lacc-sandbox__lane-head">
-                <div>
-                    <span class="lacc-sandbox__lane-label">Builder Test Seed</span>
-                    <h2 class="lacc-sandbox__lane-title">Seeded Card Grid badge variant matrix</h2>
-                </div>
-                <div class="lacc-sandbox__lane-statuses">
-                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Ready for badge QA</span>
-                </div>
-            </div>
-            <div class="lacc-sandbox__lane-copy">
-                <p>This seeded card-grid matrix renders Pill, Featured, and Flag badge variants with identical cards so each promoted treatment can be compared side-by-side in one pass.</p>
-            </div>
-        </div>
-    </div>
-    <?php foreach ( $sandbox_card_badge_variant_matrix as $sandbox_badge_variant => $sandbox_badge_label ) : ?>
-        <?php
-        $sandbox_card_grid_variant_data = $sandbox_card_grid_test_data;
-        $sandbox_card_grid_variant_data['section_anchor_id'] = 'sandbox-card-grid-seeded-' . $sandbox_badge_variant;
-        $sandbox_card_grid_variant_data['section_eyebrow'] = 'Badge Variant: ' . $sandbox_badge_label;
-        $sandbox_card_grid_variant_data['section_heading'] = 'Seeded Card Grid Specimen - ' . $sandbox_badge_label . ' Badge';
-        $sandbox_card_grid_variant_data['card_badge_variant'] = $sandbox_badge_variant;
-        $sandbox_card_grid_variant_data['card_badge_border_radius'] = ( 'pill' === $sandbox_badge_variant ) ? '999px' : '0';
-        if ( 'flag' === $sandbox_badge_variant ) {
-            $sandbox_card_grid_variant_data['card_badge_alignment'] = 'left';
-            $sandbox_card_grid_variant_data['card_badge_fill_color'] = '#2f6b59';
-            $sandbox_card_grid_variant_data['card_badge_type_color'] = '#ffffff';
-            $sandbox_card_grid_variant_data['card_badge_border_color'] = 'transparent';
-            $sandbox_card_grid_variant_data['card_badge_border_width'] = '0';
-        }
-        ?>
-        <?php set_query_var( 'lacc_card_grid_test_data', $sandbox_card_grid_variant_data ); ?>
-        <?php get_template_part( 'components/components', 'section-card-grid' ); ?>
-        <?php set_query_var( 'lacc_card_grid_test_data', null ); ?>
-    <?php endforeach; ?>
 
     <?php if ( $landing_featured_article && $landing_page_source_id ) : ?>
         <div class="lacc-sandbox__lane">
@@ -6218,5 +4674,118 @@ if ( ! $landing_featured_article ) {
 
     <?php get_template_part( 'components/components', 'section-image-collage' ); ?>
     <?php get_template_part( 'components/components', 'section-split-collage' ); ?>
+    <?php get_template_part( 'components/components', 'section-faq-accordion' ); ?>
+
+    <div class="lacc-sandbox__lane">
+        <div class="lacc-sandbox__lane-card">
+            <div class="lacc-sandbox__lane-head">
+                <div>
+                    <span class="lacc-sandbox__lane-label">Primary Navbar Active States</span>
+                    <h2 class="lacc-sandbox__lane-title">Staged parent-menu active treatments</h2>
+                </div>
+                <div class="lacc-sandbox__lane-statuses">
+                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Variant review</span>
+                </div>
+            </div>
+            <div class="lacc-sandbox__lane-copy">
+                <p>These are the five active-state directions staged side by side. The active parent item is <strong>Explore</strong> in each specimen to keep comparison clean.</p>
+            </div>
+            <div class="lacc-sandbox__nav-active-grid">
+                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-active-card--opt-1">
+                    <div class="lacc-sandbox__nav-active-head">
+                        <h3 class="lacc-sandbox__nav-active-label">Option 1: Bottom Border Accent</h3>
+                        <p class="lacc-sandbox__nav-active-note">Minimal, directional indicator.</p>
+                    </div>
+                    <div class="lacc-sandbox__nav-active-shell">
+                        <ul class="lacc-sandbox__nav-active-menu">
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Rooms</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Experience</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-active-card--opt-2">
+                    <div class="lacc-sandbox__nav-active-head">
+                        <h3 class="lacc-sandbox__nav-active-label">Option 2: Elevated Fill + Border</h3>
+                        <p class="lacc-sandbox__nav-active-note">Stronger contrast and pressed state.</p>
+                    </div>
+                    <div class="lacc-sandbox__nav-active-shell">
+                        <ul class="lacc-sandbox__nav-active-menu">
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Rooms</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Experience</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-active-card--opt-3">
+                    <div class="lacc-sandbox__nav-active-head">
+                        <h3 class="lacc-sandbox__nav-active-label">Option 3: Left Border Accent</h3>
+                        <p class="lacc-sandbox__nav-active-note">Structured category marker.</p>
+                    </div>
+                    <div class="lacc-sandbox__nav-active-shell">
+                        <ul class="lacc-sandbox__nav-active-menu">
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Rooms</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Experience</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-active-card--opt-4">
+                    <div class="lacc-sandbox__nav-active-head">
+                        <h3 class="lacc-sandbox__nav-active-label">Option 4: Outline Only</h3>
+                        <p class="lacc-sandbox__nav-active-note">Minimal and lightweight.</p>
+                    </div>
+                    <div class="lacc-sandbox__nav-active-shell">
+                        <ul class="lacc-sandbox__nav-active-menu">
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Rooms</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Experience</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-active-card--opt-5">
+                    <div class="lacc-sandbox__nav-active-head">
+                        <h3 class="lacc-sandbox__nav-active-label">Option 5: Subtle Glow</h3>
+                        <p class="lacc-sandbox__nav-active-note">Soft depth without heavy edges.</p>
+                    </div>
+                    <div class="lacc-sandbox__nav-active-shell">
+                        <ul class="lacc-sandbox__nav-active-menu">
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Rooms</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Experience</a></li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="lacc-sandbox__lane">
+        <div class="lacc-sandbox__lane-card">
+            <div class="lacc-sandbox__lane-head">
+                <div>
+                    <span class="lacc-sandbox__lane-label">Reference Library</span>
+                    <h2 class="lacc-sandbox__lane-title">Promoted inventory</h2>
+                </div>
+                <div class="lacc-sandbox__lane-statuses">
+                    <span class="lacc-sandbox__status lacc-sandbox__status--approved">Approved reference</span>
+                </div>
+            </div>
+            <div class="lacc-sandbox__lane-copy">
+                <p>The design system below should only contain patterns we think are named correctly, visually consistent, and stable enough to standardize. Illustration exports stay in the staging lane above until the source format and usage guidance are stable.</p>
+            </div>
+        </div>
+    </div>
+
+    <?php get_template_part( 'components/components', 'design-system-library' ); ?>
 </div>
 <?php endwhile; ?>

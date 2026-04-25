@@ -27,9 +27,6 @@ foreach ($sage_includes as $file) {
 }
 unset($file, $filepath);
 
-// Add Default Bootstrap Nav // Register Custom Navigation Walker
-require_once('wp-bootstrap-navwalker.php');
-
 function register_top_nav_menu() {
   register_nav_menu('top-nav-menu',__( 'Top Nav Menu' ));
 }

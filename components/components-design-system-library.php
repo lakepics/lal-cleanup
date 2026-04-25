@@ -58,6 +58,7 @@ $library_assets = array(
     --library-white: #ffffff;
     --library-blue: #3f5f85;
     --library-blue-deep: #324c6a;
+    --library-gradient-blue: linear-gradient(180deg, #3f5f85, #324c6a);
     --library-gold: #d4a441;
     --library-old-gold: #7a5a1f;
     --library-gold-accent: #946e29;
@@ -430,17 +431,31 @@ $library_assets = array(
     padding: .9em 1.45em;
     border: 1px solid transparent;
     color: var(--library-white);
-    font-size: 15px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: .08em;
+    letter-spacing: .1em;
     line-height: 1.2;
     text-decoration: none;
     text-transform: uppercase;
+    transition: background-color .2s ease, background-image .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.design-library__button:hover,
+.design-library__button:focus,
+.design-library__button:focus-visible {
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.design-library__button:focus-visible {
+    outline: 2px solid rgba(255,255,255,0.92);
+    outline-offset: 2px;
 }
 
 .design-library__button--primary {
     border-color: var(--library-blue);
-    background: var(--library-blue);
+    background: var(--library-gradient-blue);
 }
 
 .design-library__button--secondary {
@@ -457,6 +472,34 @@ $library_assets = array(
 .design-library__button--gold {
     border-color: var(--library-old-gold);
     background: var(--library-old-gold);
+}
+
+.design-library__button--outline-light {
+    border-color: rgba(255,255,255,0.72);
+    background: transparent;
+    color: var(--library-white);
+}
+
+.design-library__button--outline-light:hover,
+.design-library__button--outline-light:focus,
+.design-library__button--outline-light:focus-visible {
+    border-color: rgba(255,255,255,0.96);
+    background-image: var(--library-gradient-blue);
+    color: var(--library-white);
+}
+
+.design-library__button--outline-ink {
+    border-color: rgba(31,34,29,0.22);
+    background: transparent;
+    color: var(--library-ink-strong);
+}
+
+.design-library__button--outline-ink:hover,
+.design-library__button--outline-ink:focus,
+.design-library__button--outline-ink:focus-visible {
+    border-color: var(--library-blue-deep);
+    background-image: var(--library-gradient-blue);
+    color: var(--library-white);
 }
 
 .design-library__factoid {
@@ -1013,7 +1056,7 @@ $library_assets = array(
 }
 
 .design-library__navbar-surface--primary {
-    background: linear-gradient(180deg, rgba(246,243,237,0.96), rgba(255,255,255,0.96));
+    background: var(--library-gradient-blue);
 }
 
 .design-library__navbar-surface--secondary {
@@ -1030,13 +1073,17 @@ $library_assets = array(
 }
 
 .design-library__primary-nav {
-    border-bottom: 1px solid rgba(81,83,74,0.12);
+    position: relative;
+    gap: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.16);
+    color: var(--library-white);
 }
 
 .design-library__primary-nav-brand {
     display: flex;
     align-items: center;
     gap: 16px;
+    min-width: 0;
 }
 
 .design-library__primary-nav-brand img {
@@ -1044,8 +1091,197 @@ $library_assets = array(
     height: auto;
 }
 
+.design-library__primary-nav-shell {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    min-width: 0;
+}
+
+.design-library__primary-nav-toggle {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255,255,255,0.34);
+    background: transparent;
+    color: var(--library-white);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.design-library__primary-nav-toggle:hover,
+.design-library__primary-nav-toggle:focus,
+.design-library__primary-nav-toggle:focus-visible {
+    background-image: var(--library-gradient-blue);
+    border-color: rgba(255,255,255,0.8);
+}
+
+.design-library__primary-nav-toggle:focus-visible,
+.design-library__primary-nav-link:focus-visible,
+.design-library__primary-nav-subtoggle:focus-visible,
+.design-library__primary-nav-submenu a:focus-visible {
+    outline: 2px solid rgba(255,255,255,0.92);
+    outline-offset: 2px;
+}
+
+.design-library__primary-nav-toggle-bars {
+    display: inline-grid;
+    gap: 4px;
+}
+
+.design-library__primary-nav-toggle-bars span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+}
+
+.design-library__primary-nav-panel {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    min-width: 0;
+}
+
+.design-library__primary-nav-list {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.design-library__primary-nav-item {
+    position: relative;
+}
+
+.design-library__primary-nav-entry {
+    display: flex;
+    align-items: stretch;
+    border-radius: 999px;
+}
+
+.design-library__primary-nav-link,
+.design-library__primary-nav-subtoggle {
+    border: 0;
+    background: transparent;
+    color: var(--library-white);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .11em;
+    line-height: 1.2;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.design-library__primary-nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 11px 16px;
+    border-radius: 999px;
+}
+
+.design-library__primary-nav-subtoggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    min-height: 44px;
+    padding: 11px 12px 11px 4px;
+    border-radius: 999px;
+}
+
+.design-library__primary-nav-link:hover,
+.design-library__primary-nav-link:focus,
+.design-library__primary-nav-link[aria-current="page"],
+.design-library__primary-nav-subtoggle:hover,
+.design-library__primary-nav-subtoggle:focus,
+.design-library__primary-nav-item.is-open > .design-library__primary-nav-entry .design-library__primary-nav-link,
+.design-library__primary-nav-item.is-open > .design-library__primary-nav-entry .design-library__primary-nav-subtoggle {
+    background: rgba(255,255,255,0.14);
+    color: var(--library-white);
+}
+
+.design-library__primary-nav-subtoggle svg {
+    width: 12px;
+    height: 12px;
+    transition: transform .2s ease;
+}
+
+.design-library__primary-nav-item.is-open > .design-library__primary-nav-entry .design-library__primary-nav-subtoggle svg {
+    transform: rotate(180deg);
+}
+
+.design-library__primary-nav-submenu {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    z-index: 5;
+    display: grid;
+    gap: 6px;
+    min-width: 260px;
+    margin: 0;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,0.16);
+    background-image: var(--library-gradient-blue);
+    box-shadow: 0 20px 40px rgba(15,20,27,0.28);
+    list-style: none;
+}
+
+.design-library__primary-nav-submenu[hidden] {
+    display: none;
+}
+
+.design-library__primary-nav-submenu a {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 16px;
+    color: var(--library-white);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    line-height: 1.45;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.design-library__primary-nav-submenu a:hover,
+.design-library__primary-nav-submenu a:focus,
+.design-library__primary-nav-submenu a:focus-visible {
+    background: rgba(255,255,255,0.14);
+    color: var(--library-white);
+}
+
+.design-library__primary-nav-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.design-library__primary-nav-actions .design-library__button {
+    min-width: 0;
+}
+
 .design-library__navbar-brand {
     font-size: 24px;
+    color: inherit;
 }
 
 .design-library__nav-links {
@@ -1204,6 +1440,74 @@ $library_assets = array(
         align-items: flex-start;
     }
 
+    .design-library__primary-nav {
+        gap: 14px;
+    }
+
+    .design-library__primary-nav-shell {
+        width: 100%;
+        display: grid;
+        gap: 12px;
+    }
+
+    .design-library__primary-nav-toggle {
+        display: inline-flex;
+        justify-self: end;
+    }
+
+    .design-library__primary-nav-panel {
+        width: 100%;
+        display: none;
+        padding: 14px;
+        border: 1px solid rgba(255,255,255,0.18);
+        background-image: var(--library-gradient-blue);
+        box-shadow: 0 16px 32px rgba(15,20,27,0.22);
+    }
+
+    .design-library__primary-nav.is-open .design-library__primary-nav-panel {
+        display: grid;
+        gap: 14px;
+    }
+
+    .design-library__primary-nav-list,
+    .design-library__primary-nav-actions {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .design-library__primary-nav-list {
+        display: grid;
+        gap: 10px;
+    }
+
+    .design-library__primary-nav-entry {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        border: 1px solid rgba(255,255,255,0.16);
+        background: rgba(255,255,255,0.08);
+    }
+
+    .design-library__primary-nav-link,
+    .design-library__primary-nav-subtoggle {
+        border-radius: 0;
+    }
+
+    .design-library__primary-nav-submenu {
+        position: static;
+        min-width: 0;
+        margin-top: 8px;
+        box-shadow: none;
+    }
+
+    .design-library__primary-nav-actions {
+        display: grid;
+        gap: 10px;
+    }
+
+    .design-library__primary-nav-actions .design-library__button {
+        width: 100%;
+    }
+
     .design-library__scale-row {
         grid-template-columns: 1fr;
     }
@@ -1238,6 +1542,16 @@ $library_assets = array(
                 <a href="#library-graphics">Graphics</a>
                 <a href="#library-logos">Logos</a>
                 <a href="#library-navbars">Navbars</a>
+                <a href="#library-accordion">Accordions</a>
+                <a href="#library-primary-nav-spec">Primary Nav</a>
+                <a href="#library-inpage-nav">Inpage Nav</a>
+                <a href="#library-footer">Footer</a>
+                <a href="#library-hero">Hero</a>
+                <a href="#library-two-column">Two-Column</a>
+                <a href="#library-featured-article">Featured Article</a>
+                <a href="#library-card-family">Card Family</a>
+                <a href="#library-image-scrollers">Image Scrollers</a>
+                <a href="#library-interactive-collage">Image Collage</a>
                 <a href="#library-patterns">Builder Patterns</a>
             </nav>
 
@@ -1308,10 +1622,10 @@ $library_assets = array(
                         <h4 class="design-library__subsection-title">Primary roles</h4>
                         <div class="design-library__button-row">
                             <a href="#" class="design-library__button design-library__button--primary">Primary</a>
-                            <a href="#" class="design-library__button design-library__button--ink">Ink Fill</a>
-                            <a href="#" class="design-library__button design-library__button--gold">Old Gold Fill</a>
+                            <a href="#" class="design-library__button design-library__button--outline-ink">Outline Ink</a>
+                            <a href="#" class="design-library__button design-library__button--outline-light" style="color: var(--library-blue-deep); border-color: rgba(63,95,133,0.28);">Outline Light</a>
                         </div>
-                        <p class="design-library__note">Buttons should stay calm. Keep the approved set to primary, ink, and old-gold fills so utility actions do not multiply into near-duplicate variants.</p>
+                        <p class="design-library__note">Button copy should use Helvetica, and the working nav direction favors outline variants for high-frequency utility actions instead of stacking too many filled buttons beside the logo.</p>
                     </article>
 
                     <article class="design-library__showcase">
@@ -1654,19 +1968,59 @@ $library_assets = array(
                     <article class="design-library__navbar">
                         <span class="design-library__label">Primary Navbar</span>
                         <div class="design-library__navbar-surface design-library__navbar-surface--primary">
-                            <div class="design-library__primary-nav">
+                            <nav class="design-library__primary-nav" aria-label="Primary navigation specimen" data-primary-nav>
                                 <div class="design-library__primary-nav-brand">
                                     <img src="<?php echo esc_url( $library_assets['logo_header'] ); ?>" alt="Lake Arrowhead Lodge header logo">
                                     <div class="design-library__navbar-brand">Lake Arrowhead Lodge</div>
                                 </div>
-                                <div class="design-library__nav-links">
-                                    <a href="#">Stay</a>
-                                    <a href="#">Meet</a>
-                                    <a href="#">Dine</a>
-                                    <a href="#">Weddings</a>
-                                    <a href="#">Contact</a>
+                                <div class="design-library__primary-nav-shell">
+                                    <button type="button" class="design-library__primary-nav-toggle" aria-expanded="false" aria-controls="design-library-primary-nav-panel">
+                                        <span>Menu</span>
+                                        <span class="design-library__primary-nav-toggle-bars" aria-hidden="true">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </span>
+                                    </button>
+                                    <div class="design-library__primary-nav-panel" id="design-library-primary-nav-panel">
+                                        <ul class="design-library__primary-nav-list">
+                                            <li class="design-library__primary-nav-item"><a href="#" class="design-library__primary-nav-link" aria-current="page">Rooms</a></li>
+                                            <li class="design-library__primary-nav-item" data-nav-item>
+                                                <div class="design-library__primary-nav-entry">
+                                                    <a href="#" class="design-library__primary-nav-link">Explore</a>
+                                                    <button type="button" class="design-library__primary-nav-subtoggle" aria-expanded="false" aria-controls="design-library-submenu-explore" aria-label="Toggle Explore submenu">
+                                                        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.25 6 8l4-3.75" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                    </button>
+                                                </div>
+                                                <ul class="design-library__primary-nav-submenu" id="design-library-submenu-explore" hidden>
+                                                    <li><a href="#">Dining &amp; Taverns</a></li>
+                                                    <li><a href="#">Seasonal Activities</a></li>
+                                                    <li><a href="#">Property Map</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="design-library__primary-nav-item"><a href="#" class="design-library__primary-nav-link">Meet</a></li>
+                                            <li class="design-library__primary-nav-item" data-nav-item>
+                                                <div class="design-library__primary-nav-entry">
+                                                    <a href="#" class="design-library__primary-nav-link">Celebrate</a>
+                                                    <button type="button" class="design-library__primary-nav-subtoggle" aria-expanded="false" aria-controls="design-library-submenu-celebrate" aria-label="Toggle Celebrate submenu">
+                                                        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.25 6 8l4-3.75" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                    </button>
+                                                </div>
+                                                <ul class="design-library__primary-nav-submenu" id="design-library-submenu-celebrate" hidden>
+                                                    <li><a href="#">Weddings</a></li>
+                                                    <li><a href="#">Retreat Weekends</a></li>
+                                                    <li><a href="#">Private Dining</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="design-library__primary-nav-item"><a href="#" class="design-library__primary-nav-link">Contact</a></li>
+                                        </ul>
+                                        <div class="design-library__primary-nav-actions">
+                                            <a href="#" class="design-library__button design-library__button--outline-light">Book Your Stay</a>
+                                            <a href="#" class="design-library__button design-library__button--outline-light">Plan Your Event</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </nav>
                         </div>
                     </article>
 
@@ -1684,6 +2038,231 @@ $library_assets = array(
                             </div>
                         </div>
                     </article>
+                </div>
+            </section>
+
+            <section id="library-accordion" class="design-library__section">
+                <div class="design-library__section-head">
+                    <div>
+                        <span class="design-library__section-kicker">Accordions (Locked)</span>
+                        <h3 class="design-library__section-title">Accordion component specification and locked behavior</h3>
+                        <p class="design-library__section-summary">Accordion patterns inherit type scale, button styles, and color primitives from the library. Locked rules: header typography fixed at Haarlem Deco, open state darker drawer tint, and consistent icon rotation on toggle.</p>
+                    </div>
+                    <p class="design-library__meta">Sandbox match: Browser topics; Reservations & Arrival question set; Guest rooms inventory; Events & activities menu item specs.</p>
+                </div>
+
+                <div class="design-library__pattern-card">
+                    <p class="design-library__section-summary"><strong>Specification & Locked Behavior</strong></p>
+                    <ul class="design-library__rule-list">
+                        <li><strong>Closed state:</strong> Haarlem Deco headline with light drawer tint, and conditional close icon (rotate 180°).</li>
+                        <li><strong>Open state:</strong> Darker drawer state, and answer copy stays ≤15px line-height body rhythm.</li>
+                        <li><strong>Button style:</strong> Rounded button sits inside heading; click triggers aria-expanded + hidden attribute flip.</li>
+                        <li><strong>Answer copy:</strong> 15px body rhythm with standard margin & padding cadence.</li>
+                        <li><strong>Playground accessibility:</strong> Expanded/Collapsed state clearly announced; icon rotation visible on toggle.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="library-primary-nav-spec" class="design-library__section">
+                <div class="design-library__section-head">
+                    <div>
+                        <span class="design-library__section-kicker">Primary Navigation (Locked)</span>
+                        <h3 class="design-library__section-title">Primary navigation component specification</h3>
+                        <p class="design-library__section-summary">Primary navbar approximates and hyperlinks on display and supports nested disclosure via dedicated children buttons. Locked rules: deep blue gradient background, Helvetica uppercase nav links, outline CTA styles, and focus-visible outlines.</p>
+                    </div>
+                    <p class="design-library__meta">Specifications & advancement: Brand treatment, logo sizing, responsive behaviors, focus-visible outline treatment, and mobile disclosure panel.</p>
+                </div>
+
+                <div class="design-library__pattern-card">
+                    <p class="design-library__section-summary"><strong>Specification & Locked Behavior</strong></p>
+                    <ul class="design-library__rule-list">
+                        <li><strong>Shell:</strong> Fixed position, full-width deep blue gradient background with consistent shadow; primary brand lockup on left; menu links flex right.</li>
+                        <li><strong>Links:</strong> Helvetica Bold Uppercase, 13px. Active state uses lighter fill background; focus-visible applies 2px outline offset.</li>
+                        <li><strong>Children disclosure:</strong> Dedicated submenu toggle button with aria-expanded & aria-controls; submenu hidden by default; keyboard/click/hover/escape closing.</li>
+                        <li><strong>CTA treatment:</strong> Last two menu items render as outline-styled buttons; desktop float right; no rounded corners (square buttons).</li>
+                        <li><strong>Mobile:</strong> Menu toggle button expands panel below navbar; submenu items remain keyboard accessible; panel closes on Escape or outside click.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="library-inpage-nav" class="design-library__section">
+                <div class="design-library__section-head">
+                    <div>
+                        <span class="design-library__section-kicker">Inpage Navigation (Locked)</span>
+                        <h3 class="design-library__section-title">Inpage navigation component specification</h3>
+                        <p class="design-library__section-summary">Secondary in-page navigation appears as section jump links and breadcrumb-style anchors. Locked rules: inline link typography, consistent spacing, and visual separator treatment between links.</p>
+                    </div>
+                    <p class="design-library__meta">Usage: Design System library jump nav, section anchors, and hierarchical breadcrumb navigation.</p>
+                </div>
+
+                <div class="design-library__pattern-card">
+                    <p class="design-library__section-summary"><strong>Specification & Locked Behavior</strong></p>
+                    <ul class="design-library__rule-list">
+                        <li><strong>Container:</strong> Horizontal flex layout; padding and gap consistent with other navbar structures.</li>
+                        <li><strong>Link style:</strong> Freight Big Pro serif for in-page nav titles; 15px. Hover applies text decoration and slight opacity change.</li>
+                        <li><strong>Separator:</strong> Pipe character (|) or visual keyline between link groups.</li>
+                        <li><strong>Current state:</strong> Current section link uses active styling (darker or underlined) to signal position on page.</li>
+                        <li><strong>Accessibility:</strong> Links are semantic `<a>` elements with clear labeling; smooth scroll behavior optional on hash navigation.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="library-footer" class="design-library__section">
+                <div class="design-library__section-head">
+                    <div>
+                        <span class="design-library__section-kicker">Footer (Locked)</span>
+                        <h3 class="design-library__section-title">Footer component specification and locked patterns</h3>
+                        <p class="design-library__section-summary">Footer creates page closure with brand treatment, contact info, utility links, and community partner references. Locked rules: Deep Ink background, white reversed copy, consistent column padding, and structured link hierarchy.</p>
+                    </div>
+                    <p class="design-library__meta">Footer specifications and locked primitive mapping to be added.</p>
+                </div>
+
+                <div class="design-library__pattern-card">
+                    <p class="design-library__section-summary"><strong>Specification & Locked Behavior</strong></p>
+                    <ul class="design-library__rule-list">
+                        <li><strong>Background:</strong> Deep Ink (#1F221D) solid fill or subtle gradient; footer logo asset on left; contact info and utility columns on right grid.</li>
+                        <li><strong>Logo treatment:</strong> Footer brand lockup reversed to white; maintained proportions across mobile/desktop.</li>
+                        <li><strong>Column structure:</strong> Contact column (phone, email, address); Links column (social, legal, accessibility); Partner column (community logos or text links).</li>
+                        <li><strong>Link style:</strong> White hyperlinks with standard underline on hover; utility links (Privacy, Accessibility, etc.) in smaller type.</li>
+                        <li><strong>Mobile:</strong> Columns stack vertically; logo and contact info reorder to top; utility links compact into smaller rows.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="library-hero" class="design-library__section">
+                <div class="design-library__section-head">
+                    <div>
+                        <span class="design-library__section-kicker">Hero Section (Locked)</span>
+                        <h3 class="design-library__section-title">Hero section component specification</h3>
+                        <p class="design-library__section-summary">Hero sections embed full-bleed imagery with overlay text, button primitives, and optional gradient panels. Locked rules: Display typography scales; overlay color consistency; button treatment; and responsive image handling.</p>
+                    </div>
+                    <p class="design-library__meta">Hero specimens: full-bleed image + copy overlay; button placement and safe-zone guidance; gradient panel sizing and z-index stacking.</p>
+                </div>
+
+                <div class="design-library__pattern-card">
+                    <p class="design-library__section-summary"><strong>Specification & Locked Behavior</strong></p>
+                    <ul class="design-library__rule-list">
+                        <li><strong>Image treatment:</strong> Full-bleed background image, object-fit cover, with min-height on desktop; responsive aspect ratio on mobile.</li>
+                        <li><strong>Overlay:</strong> Dark gradient scrim (rgba) to ensure text contrast; scrim sits above image, below copy.</li>
+                        <li><strong>Display text:</strong> Haarlem Deco title uses font-weight 400; text shadows or layered background for legibility on any image.</li>
+                        <li><strong>Buttons:</strong> CTA button uses outline or filled style; positioned in bottom-left safe zone or centered depending on layout mode.</li>
+                        <li><strong>Mobile:</strong> Hero height reduces to maintain viewport balance; text sizing scales with clamp() for responsive rhythm; buttons remain touchable (min-height 44px).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="library-two-column" class="design-library__section">
+                <div class="design-library__section-head">
+                    <div>
+                        <span class="design-library__section-kicker">Two-Column Specimen (Locked)</span>
+                        <h3 class="design-library__section-title">Two-column editorial storytelling section</h3>
+                        <p class="design-library__section-summary">Two-column sections inherit eyebrow typography (H2/H3), button styles, and color palette. Locked rules: eyebrow font family and variants, column ratio, heading size, CTA button treatment.</p>
+                    </div>
+                    <p class="design-library__meta">Two-column section specimens and locked primitive mapping to be added.</p>
+                </div>
+
+                <div class="design-library__pattern-card">
+                    <p class="design-library__section-summary"><strong>Specification & Locked Behavior</strong></p>
+                    <ul class="design-library__rule-list">
+                        <li><strong>Container:</strong> Two-column layout with image on left (60%), copy on right (40%); responsive reflow to single column below breakpoint.</li>
+                        <li><strong>Eyebrow:</strong> Freight Big Pro serif, 15px, capped color; sits above display heading.</li>
+                        <li><strong>Heading:</strong> Haarlem Deco, font-weight 400; responsive sizing with clamp(); line-height &lt;1.1 for density.</li>
+                        <li><strong>Body copy:</strong> Standard 15px body rhythm; max-width enforced on text column for readability.</li>
+                        <li><strong>CTA button:</strong> Outline or filled style; positioned in bottom-left of copy area.</li>
+                        <li><strong>Mobile:</strong> Columns stack; image sits above copy; heading and copy center-align or left-align based on design intent.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="library-featured-article" class="design-library__section">
+                <div class="design-library__section-head">
+                    <div>
+                        <span class="design-library__section-kicker">Featured Article (Locked)</span>
+                        <h3 class="design-library__section-title">Featured article card component specification</h3>
+                        <p class="design-library__section-summary">Featured article cards inherit eyebrow variants, type scale (Ladie + body), link primitives, and badge styles. Locked rules: eyebrow treatment, headline size, copy typography, image aspect ratio, call-to-action link color.</p>
+                    </div>
+                    <p class="design-library__meta">Featured article specimens and locked primitive mapping to be added.</p>
+                </div>
+
+                <div class="design-library__pattern-card">
+                    <p class="design-library__section-summary"><strong>Specification & Locked Behavior</strong></p>
+                    <ul class="design-library__rule-list">
+                        <li><strong>Card shell:</strong> Framed surface with modest shadow and consistent padding rhythm (16-24px internal spacing).</li>
+                        <li><strong>Image:</strong> Full-width banner inside card; aspect ratio 16:9 (locked); object-fit cover.</li>
+                        <li><strong>Eyebrow:</strong> All-caps, small type; Freight or brand secondary; sits above headline.</li>
+                        <li><strong>Headline:</strong> Haarlem Deco or serif at H4 size (18-22px); line-height 1.2-1.3.</li>
+                        <li><strong>Body copy:</strong> 15px body rhythm, ≤3 lines; optional badge or numeric emphasis below headline.</li>
+                        <li><strong>CTA link:</strong> Read-more link in brand primary color; visited state uses desaturated color.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="library-card-family" class="design-library__section">
+                <div class="design-library__section-head">
+                    <div>
+                        <span class="design-library__section-kicker">Card Family (Locked)</span>
+                        <h3 class="design-library__section-title">Card family and density matrix specification</h3>
+                        <p class="design-library__section-summary">Cards inherit type scale (H2 card token, body, badge), link primitives, button styles, and color palette. Locked rules: like size (16-card token, bodily, Bodily), badge primitives, button styles, density ratio (2-up/3-up/4-up), price typography, Badge variants.</p>
+                    </div>
+                    <p class="design-library__meta">Card family specimens (density matrix) and locked primitive mapping to be added.</p>
+                </div>
+
+                <div class="design-library__pattern-card">
+                    <p class="design-library__section-summary"><strong>Specification & Locked Behavior</strong></p>
+                    <ul class="design-library__rule-list">
+                        <li><strong>Card base:</strong> Consistent framing, shadow depth, internal padding rhythm across all card density tiers.</li>
+                        <li><strong>Image:</strong> Square aspect ratio (locked, 1:1); object-fit cover; optional overlay or gradient scrim.</li>
+                        <li><strong>Headline:</strong> H4 / card token size; line-height 1.3; title limited to 2 lines with ellipsis.</li>
+                        <li><strong>Body copy:</strong> 15px body rhythm; optional summary text (1-2 lines max); truncated with ellipsis if needed.</li>
+                        <li><strong>Badge / metadata:</strong> Small 11px type; color-coded status or category (e.g., price, category badge).</li>
+                        <li><strong>Density matrix:</strong> 2-up (50% width), 3-up (33% width), 4-up (25% width) grid layouts; consistent gap sizing (16-24px).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="library-image-scrollers" class="design-library__section">
+                <div class="design-library__section-head">
+                    <div>
+                        <span class="design-library__section-kicker">Image Scrollers (Locked)</span>
+                        <h3 class="design-library__section-title">Image scroller component specification</h3>
+                        <p class="design-library__section-summary">Image scrollers inherit carousel control primitives (fretwork arrows), page indicator primitives, and eyebrow styles. Locked rules: arrow control styling (fretwork vs symbol), page indicator styling, touch-drag and keyboard nav, roundtrip looping behavior.</p>
+                    </div>
+                    <p class="design-library__meta">Image scroller specimens and locked primitive mapping to be added.</p>
+                </div>
+
+                <div class="design-library__pattern-card">
+                    <p class="design-library__section-summary"><strong>Specification & Locked Behavior</strong></p>
+                    <ul class="design-library__rule-list">
+                        <li><strong>Container:</strong> Full-width or constrained carousel shell; aspect ratio 16:9 or 21:9 (locked per use case).</li>
+                        <li><strong>Image carousel:</strong> SVG or image files; object-fit cover; preload next/prev for smooth transitions.</li>
+                        <li><strong>Arrow controls:</strong> Fretwork ornament arrows (left/right); positioned inside carousel; scale appropriately for mobile vs desktop.</li>
+                        <li><strong>Page indicators:</strong> Dot or numeral indicators below carousel; show current position (e.g., 1/5, dot highlight).</li>
+                        <li><strong>Navigation:</strong> Click arrows to advance; optional keyboard arrow keys (left/right); touch drag on mobile; optional auto-advance timer (5-8s intervals).</li>
+                        <li><strong>Behavior:</strong> Loop to first slide after last; smooth transition (300-500ms); pause auto-advance on hover/focus.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="library-interactive-collage" class="design-library__section">
+                <div class="design-library__section-head">
+                    <div>
+                        <span class="design-library__section-kicker">Interactive Image Collage (Locked)</span>
+                        <h3 class="design-library__section-title">Interactive image collage component specification</h3>
+                        <p class="design-library__section-summary">Interactive image collages inherit carousel controls (carousel arrow styling), trigger button styling, and eyebrow styles. Locked rules: trigger button styling, carousel arrow styling, collage treatment on overlay, text hierarchy and typography areas.</p>
+                    </div>
+                    <p class="design-library__meta">Interactive image collage specimens and locked primitive mapping to be added.</p>
+                </div>
+
+                <div class="design-library__pattern-card">
+                    <p class="design-library__section-summary"><strong>Specification & Locked Behavior</strong></p>
+                    <ul class="design-library__rule-list">
+                        <li><strong>Layout:</strong> Static image grid or collage with interactive hover/focus states; optional full-width modal or lightbox overlay on click.</li>
+                        <li><strong>Grid items:</strong> Uniform or varied aspect ratios (e.g., 2:3, 1:1, 4:3 mix); object-fit cover on images.</li>
+                        <li><strong>Trigger buttons:</strong> Styled button overlay on grid items (e.g., View, Expand); opacity 0 by default; appears on hover/focus.</li>
+                        <li><strong>Carousel arrow styling:</strong> Same fretwork ornaments used in image scrollers; navigate between selected images in modal/lightbox.</li>
+                        <li><strong>Modal/lightbox:</strong> Full viewport or constrained width modal; close button (X) in top-right; keyboard Escape closes.</li>
+                        <li><strong>Typography areas:</strong> Optional image caption, location, or metadata displayed in lightbox; heading and copy hierarchy.</li>
+                    </ul>
                 </div>
             </section>
 
@@ -1773,3 +2352,125 @@ $library_assets = array(
         </div>
     </div>
 </section>
+
+<script>
+(function () {
+    var navs = document.querySelectorAll('[data-primary-nav]');
+
+    function closeItem(item) {
+        var button = item.querySelector('.design-library__primary-nav-subtoggle');
+        var menu = item.querySelector('.design-library__primary-nav-submenu');
+
+        if (!button || !menu) {
+            return;
+        }
+
+        item.classList.remove('is-open');
+        button.setAttribute('aria-expanded', 'false');
+        menu.hidden = true;
+    }
+
+    function openItem(item) {
+        var button = item.querySelector('.design-library__primary-nav-subtoggle');
+        var menu = item.querySelector('.design-library__primary-nav-submenu');
+
+        if (!button || !menu) {
+            return;
+        }
+
+        item.classList.add('is-open');
+        button.setAttribute('aria-expanded', 'true');
+        menu.hidden = false;
+    }
+
+    function closeSiblings(item) {
+        var parent = item.parentElement;
+        if (!parent) {
+            return;
+        }
+
+        parent.querySelectorAll('[data-nav-item]').forEach(function (sibling) {
+            if (sibling !== item) {
+                closeItem(sibling);
+            }
+        });
+    }
+
+    navs.forEach(function (nav) {
+        var toggle = nav.querySelector('.design-library__primary-nav-toggle');
+        var panel = nav.querySelector('.design-library__primary-nav-panel');
+        var items = nav.querySelectorAll('[data-nav-item]');
+
+        if (toggle && panel) {
+            toggle.addEventListener('click', function () {
+                var isOpen = nav.classList.toggle('is-open');
+                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+                if (!isOpen) {
+                    items.forEach(closeItem);
+                }
+            });
+        }
+
+        items.forEach(function (item) {
+            var button = item.querySelector('.design-library__primary-nav-subtoggle');
+            var entry = item.querySelector('.design-library__primary-nav-entry');
+
+            if (!button || !entry) {
+                return;
+            }
+
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                var shouldOpen = button.getAttribute('aria-expanded') !== 'true';
+                closeSiblings(item);
+                if (shouldOpen) {
+                    openItem(item);
+                } else {
+                    closeItem(item);
+                }
+            });
+
+            item.addEventListener('mouseenter', function () {
+                if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                    closeSiblings(item);
+                    openItem(item);
+                }
+            });
+
+            item.addEventListener('mouseleave', function () {
+                if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                    closeItem(item);
+                }
+            });
+
+            entry.addEventListener('focusout', function (event) {
+                if (!item.contains(event.relatedTarget)) {
+                    closeItem(item);
+                }
+            });
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!nav.contains(event.target)) {
+                items.forEach(closeItem);
+                nav.classList.remove('is-open');
+                if (toggle) {
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+
+        nav.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                items.forEach(closeItem);
+                nav.classList.remove('is-open');
+                if (toggle) {
+                    toggle.setAttribute('aria-expanded', 'false');
+                    toggle.focus();
+                }
+            }
+        });
+    });
+}());
+</script>
