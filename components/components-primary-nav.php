@@ -190,7 +190,8 @@ $lacc_primary_nav_menu_args = array(
 .lacc-primary-nav__menu > li:hover > .lacc-primary-nav__entry > .lacc-primary-nav__subtoggle,
 .lacc-primary-nav__menu > li.is-open > .lacc-primary-nav__entry > .lacc-primary-nav__subtoggle {
     background: rgba(255,255,255,0.14);
-    color: #ffffff;
+    box-shadow: inset 0 0 16px rgba(255,255,255,0.12);
+    color: #f6f3ed;
     font-weight: 700 !important;
 }
 
@@ -234,7 +235,8 @@ $lacc_primary_nav_menu_args = array(
 .lacc-primary-nav__menu .sub-menu a:focus-visible,
 .lacc-primary-nav__menu .sub-menu .current-menu-item > a {
     background: rgba(255,255,255,0.14);
-    color: #ffffff;
+    box-shadow: inset 0 0 12px rgba(255,255,255,0.12);
+    color: #f6f3ed;
     font-weight: 700 !important;
 }
 

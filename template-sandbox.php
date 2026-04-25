@@ -4821,7 +4821,7 @@ if ( ! $landing_featured_article ) {
                 </div>
             </div>
             <div class="lacc-sandbox__lane-copy">
-                <p>These are the five active-state directions staged side by side. The active parent item is <strong>Explore</strong> in each specimen to keep comparison clean.</p>
+                <p>These are the five active-state directions staged side by side. The active parent item is <strong>Explore</strong> in each specimen to keep comparison clean. <strong>Option 5 (Subtle Glow with cream color shift) is approved for the live primary navbar.</strong></p>
             </div>
             <div class="lacc-sandbox__nav-active-grid">
                 <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-active-card--opt-1">
