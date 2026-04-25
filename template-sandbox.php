@@ -3137,6 +3137,14 @@ if ( ! $landing_featured_article ) {
     background: rgba(255,255,255,0.94);
 }
 
+.lacc-sandbox__nav-dropdown-card {
+    margin-bottom: 104px;
+}
+
+.lacc-sandbox__nav-dropdown-card:last-child {
+    margin-bottom: 0;
+}
+
 .lacc-sandbox__nav-active-head {
     display: flex;
     align-items: baseline;
@@ -3178,6 +3186,15 @@ if ( ! $landing_featured_article ) {
 .lacc-sandbox__nav-active-menu li,
 .lacc-sandbox__nav-active-menu a {
     list-style: none;
+}
+
+.lacc-sandbox__nav-active-menu > li {
+    position: relative;
+}
+
+.lacc-sandbox__nav-dropdown-card .lacc-sandbox__nav-active-shell {
+    position: relative;
+    overflow: visible;
 }
 
 .lacc-sandbox__nav-active-link {
@@ -3233,151 +3250,101 @@ if ( ! $landing_featured_article ) {
     gap: 0;
     margin: 0;
     padding: 0;
+    min-width: 220px;
     list-style: none;
 }
 
-.lacc-sandbox__nav-dropdown-link {
-    display: inline-flex;
+.lacc-sandbox__nav-dropdown-menu > li {
+    display: flex;
     align-items: center;
-    min-height: 40px;
-    padding: 10px 16px;
+    min-height: 42px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.lacc-sandbox__nav-dropdown-link {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    padding: 0 16px;
     color: rgba(255,255,255,0.84);
     font-family: Helvetica, Arial, sans-serif;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: .1em;
-    line-height: 1.2;
+    line-height: 1;
     text-decoration: none;
     text-transform: uppercase;
     transition: all .18s ease;
     border: none;
     background: transparent;
+    box-sizing: border-box;
+    transform: translateY(1px);
 }
 
 .lacc-sandbox__nav-dropdown-link:hover,
 .lacc-sandbox__nav-dropdown-link:focus {
-    color: #ffffff;
     text-decoration: none;
 }
 
-/* Dropdown Option 1: Flush Reveal */
-.lacc-sandbox__nav-dropdown-card--opt-1 .lacc-sandbox__nav-dropdown-menu {
+.lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 14px);
     left: 0;
     z-index: 10;
-    background: rgba(255,255,255,0.14);
-    margin-top: 0;
-    border-radius: 0;
 }
 
-.lacc-sandbox__nav-dropdown-card--opt-1 .lacc-sandbox__nav-dropdown-link {
-    border-bottom: 1px solid rgba(255,255,255,0.12);
+.lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-menu {
+    animation: lacc-sandbox-dropdown-enter .34s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.lacc-sandbox__nav-dropdown-card--opt-1 .lacc-sandbox__nav-dropdown-link:last-child {
-    border-bottom: none;
-}
-
-.lacc-sandbox__nav-dropdown-card--opt-1 .lacc-sandbox__nav-dropdown-link:hover,
-.lacc-sandbox__nav-dropdown-card--opt-1 .lacc-sandbox__nav-dropdown-link:focus {
-    background: rgba(255,255,255,0.22);
-}
-
-/* Dropdown Option 2: Subtle Panel */
-.lacc-sandbox__nav-dropdown-card--opt-2 .lacc-sandbox__nav-dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 10;
-    background: rgba(255,255,255,0.08);
-    margin-top: 2px;
-    padding: 8px 0;
-    border-radius: 0;
-    border: 1px solid rgba(255,255,255,0.16);
-}
-
-.lacc-sandbox__nav-dropdown-card--opt-2 .lacc-sandbox__nav-dropdown-link {
-    padding: 10px 20px;
-    color: rgba(255,255,255,0.92);
-}
-
-.lacc-sandbox__nav-dropdown-card--opt-2 .lacc-sandbox__nav-dropdown-link:hover,
-.lacc-sandbox__nav-dropdown-card--opt-2 .lacc-sandbox__nav-dropdown-link:focus {
-    background: rgba(255,255,255,0.14);
-    color: #ffffff;
-}
-
-/* Dropdown Option 3: Indented Column */
-.lacc-sandbox__nav-dropdown-card--opt-3 .lacc-sandbox__nav-dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 10;
-    margin-top: 0;
-    margin-left: 24px;
-    padding-left: 12px;
-    border-left: 2px solid rgba(255,255,255,0.34);
-}
-
-.lacc-sandbox__nav-dropdown-card--opt-3 .lacc-sandbox__nav-dropdown-link {
-    padding-left: 12px;
-    color: rgba(255,255,255,0.88);
-}
-
-.lacc-sandbox__nav-dropdown-card--opt-3 .lacc-sandbox__nav-dropdown-link:hover,
-.lacc-sandbox__nav-dropdown-card--opt-3 .lacc-sandbox__nav-dropdown-link:focus {
-    background: transparent;
-    color: #ffffff;
-    border-left: 3px solid #ffffff;
-    padding-left: 9px;
-}
-
-/* Dropdown Option 4: Glass Panel */
-.lacc-sandbox__nav-dropdown-card--opt-4 .lacc-sandbox__nav-dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 10;
-    background: rgba(31,34,29,0.64);
-    margin-top: 4px;
-    padding: 12px 0;
-    border-radius: 0;
-    border: 1px solid rgba(255,255,255,0.12);
-    backdrop-filter: blur(12px);
-}
-
-.lacc-sandbox__nav-dropdown-card--opt-4 .lacc-sandbox__nav-dropdown-link {
-    padding: 12px 20px;
-    color: rgba(255,255,255,0.96);
-}
-
-.lacc-sandbox__nav-dropdown-card--opt-4 .lacc-sandbox__nav-dropdown-link:hover,
-.lacc-sandbox__nav-dropdown-card--opt-4 .lacc-sandbox__nav-dropdown-link:focus {
-    background: rgba(255,255,255,0.12);
-    color: #ffffff;
+@keyframes lacc-sandbox-dropdown-enter {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Dropdown Option 5: Accent Reveal */
 .lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 10;
-    margin-top: 0;
+    background: #ffffff;
+    border: 1px solid rgba(81,83,74,0.16);
     border-top: 3px solid rgba(212,164,65,0.54);
+    box-shadow: 0 12px 28px rgba(31,34,29,0.14);
 }
 
 .lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-link {
-    padding: 8px 16px;
-    color: rgba(255,255,255,0.88);
+    color: #324c6a;
     font-size: 11px;
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-link:visited {
+    color: #324c6a;
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-menu > li + li {
+    border-top: 1px solid rgba(81,83,74,0.25);
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-menu > li:hover,
+.lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-menu > li:focus-within {
+    background: var(--lacc-sandbox-gradient-cream);
 }
 
 .lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-link:hover,
 .lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-link:focus {
-    background: rgba(255,255,255,0.12);
-    color: #ffffff;
+    color: #1f3552;
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-link:focus-visible {
+    color: #1f3552;
 }
 
 @media (max-width: 1080px) {
@@ -4930,97 +4897,17 @@ if ( ! $landing_featured_article ) {
                     <h2 class="lacc-sandbox__lane-title">Alternate child-item dropdown styles</h2>
                 </div>
                 <div class="lacc-sandbox__lane-statuses">
-                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Variant review</span>
+                    <span class="lacc-sandbox__status lacc-sandbox__status--approved">Production candidate</span>
                 </div>
             </div>
             <div class="lacc-sandbox__lane-copy">
-                <p>These dropdown specimens show child items beneath the <strong>Explore</strong> parent in each variant direction. The goal is to find a dropdown presentation that feels native to the parent active state and doesn't fight for attention.</p>
+                <p>This stage now locks a single dropdown direction beneath the <strong>Explore</strong> parent as the production candidate.</p>
             </div>
             <div class="lacc-sandbox__nav-active-grid">
-                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-dropdown-card lacc-sandbox__nav-dropdown-card--opt-1">
-                    <div class="lacc-sandbox__nav-active-head">
-                        <h3 class="lacc-sandbox__nav-active-label">Dropdown 1: Flush Reveal</h3>
-                        <p class="lacc-sandbox__nav-active-note">Children inherit parent background, minimal separation.</p>
-                    </div>
-                    <div class="lacc-sandbox__nav-active-shell">
-                        <ul class="lacc-sandbox__nav-active-menu">
-                            <li>
-                                <a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a>
-                                <ul class="lacc-sandbox__nav-dropdown-menu">
-                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">getaways</a></li>
-                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">nature trails</a></li>
-                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">seasonal activities</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-dropdown-card lacc-sandbox__nav-dropdown-card--opt-2">
-                    <div class="lacc-sandbox__nav-active-head">
-                        <h3 class="lacc-sandbox__nav-active-label">Dropdown 2: Subtle Panel</h3>
-                        <p class="lacc-sandbox__nav-active-note">Slightly elevated with light background separation.</p>
-                    </div>
-                    <div class="lacc-sandbox__nav-active-shell">
-                        <ul class="lacc-sandbox__nav-active-menu">
-                            <li>
-                                <a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a>
-                                <ul class="lacc-sandbox__nav-dropdown-menu">
-                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">getaways</a></li>
-                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">nature trails</a></li>
-                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">seasonal activities</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-dropdown-card lacc-sandbox__nav-dropdown-card--opt-3">
-                    <div class="lacc-sandbox__nav-active-head">
-                        <h3 class="lacc-sandbox__nav-active-label">Dropdown 3: Indented Column</h3>
-                        <p class="lacc-sandbox__nav-active-note">Children offset with left padding, distinct from parent.</p>
-                    </div>
-                    <div class="lacc-sandbox__nav-active-shell">
-                        <ul class="lacc-sandbox__nav-active-menu">
-                            <li>
-                                <a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a>
-                                <ul class="lacc-sandbox__nav-dropdown-menu">
-                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">getaways</a></li>
-                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">nature trails</a></li>
-                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">seasonal activities</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-dropdown-card lacc-sandbox__nav-dropdown-card--opt-4">
-                    <div class="lacc-sandbox__nav-active-head">
-                        <h3 class="lacc-sandbox__nav-active-label">Dropdown 4: Glass Panel</h3>
-                        <p class="lacc-sandbox__nav-active-note">Higher opacity darker background, floating card feel.</p>
-                    </div>
-                    <div class="lacc-sandbox__nav-active-shell">
-                        <ul class="lacc-sandbox__nav-active-menu">
-                            <li>
-                                <a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a>
-                                <ul class="lacc-sandbox__nav-dropdown-menu">
-                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">getaways</a></li>
-                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">nature trails</a></li>
-                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">seasonal activities</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
-                        </ul>
-                    </div>
-                </article>
-
                 <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-dropdown-card lacc-sandbox__nav-dropdown-card--opt-5">
                     <div class="lacc-sandbox__nav-active-head">
-                        <h3 class="lacc-sandbox__nav-active-label">Dropdown 5: Accent Reveal</h3>
-                        <p class="lacc-sandbox__nav-active-note">Children with accent border top, compact vertical stack.</p>
+                        <h3 class="lacc-sandbox__nav-active-label">Dropdown 5: Accent Reveal (Production)</h3>
+                        <p class="lacc-sandbox__nav-active-note">Cream-gradient hover, ink hairlines, and balanced child-link centering.</p>
                     </div>
                     <div class="lacc-sandbox__nav-active-shell">
                         <ul class="lacc-sandbox__nav-active-menu">
