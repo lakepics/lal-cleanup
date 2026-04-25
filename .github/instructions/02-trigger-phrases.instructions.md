@@ -9,11 +9,12 @@ Trigger phrase rules:
 
 Scoped publish flow:
 1. Review status and changed files.
-2. Summarize what will be included.
+2. Summarize what will be included and call out anything intentionally excluded.
 3. Commit with a clear message.
 4. Push to the active remote branch.
 
 Safety constraints:
 - Do not revert unrelated changes.
+- Do not sweep unrelated staged changes into the publish step.
 - Do not amend commits unless explicitly requested.
 - Call out blockers before pushing.

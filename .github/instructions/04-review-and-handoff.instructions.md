@@ -15,3 +15,5 @@ Handoff expectations:
 - Separate facts from assumptions.
 - Keep summaries concise and actionable.
 - Call out deployment gaps explicitly, especially assets vs dist mismatches.
+- Call out unresolved overlap explicitly, especially duplicate CSS between migrated files and older bundles.
+- Call out any temporary probes, debug markers, or reversible patches that still need removal.

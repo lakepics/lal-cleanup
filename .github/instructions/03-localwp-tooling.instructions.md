@@ -6,7 +6,9 @@ applyTo: "**/*.{php,scss,css,js,md}"
 LocalWP preflight:
 - Verify tools needed for the task are available: git, rg, node, npm, sass, wp or local wp-cli wrapper.
 - If wp fails with DB connection, switch to Local wrapper pattern using socket flags.
+- Before DB-connected wp-cli work, detect the active Local runtime/socket path instead of assuming an older identifier still applies.
 - Prefer direct frontend verification after CSS or Customizer-related changes.
+- After CSS changes, verify the frontend is serving the updated asset path used by WordPress.
 
 Known Local wrapper pattern for this site:
 - Use Local wp-cli phar at /Applications/Local.app/Contents/Resources/extraResources/bin/wp-cli/wp-cli.phar
