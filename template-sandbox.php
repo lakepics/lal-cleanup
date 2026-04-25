@@ -3262,9 +3262,13 @@ if ( ! $landing_featured_article ) {
 
 /* Dropdown Option 1: Flush Reveal */
 .lacc-sandbox__nav-dropdown-card--opt-1 .lacc-sandbox__nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
     background: rgba(255,255,255,0.14);
-    margin-top: 2px;
-    border-radius: 0 0 4px 4px;
+    margin-top: 0;
+    border-radius: 0;
 }
 
 .lacc-sandbox__nav-dropdown-card--opt-1 .lacc-sandbox__nav-dropdown-link {
@@ -3282,10 +3286,14 @@ if ( ! $landing_featured_article ) {
 
 /* Dropdown Option 2: Subtle Panel */
 .lacc-sandbox__nav-dropdown-card--opt-2 .lacc-sandbox__nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
     background: rgba(255,255,255,0.08);
-    margin-top: 6px;
+    margin-top: 2px;
     padding: 8px 0;
-    border-radius: 4px;
+    border-radius: 0;
     border: 1px solid rgba(255,255,255,0.16);
 }
 
@@ -3302,7 +3310,11 @@ if ( ! $landing_featured_article ) {
 
 /* Dropdown Option 3: Indented Column */
 .lacc-sandbox__nav-dropdown-card--opt-3 .lacc-sandbox__nav-dropdown-menu {
-    margin-top: 2px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    margin-top: 0;
     margin-left: 24px;
     padding-left: 12px;
     border-left: 2px solid rgba(255,255,255,0.34);
@@ -3323,10 +3335,14 @@ if ( ! $landing_featured_article ) {
 
 /* Dropdown Option 4: Glass Panel */
 .lacc-sandbox__nav-dropdown-card--opt-4 .lacc-sandbox__nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
     background: rgba(31,34,29,0.64);
-    margin-top: 8px;
+    margin-top: 4px;
     padding: 12px 0;
-    border-radius: 6px;
+    border-radius: 0;
     border: 1px solid rgba(255,255,255,0.12);
     backdrop-filter: blur(12px);
 }
@@ -3344,7 +3360,11 @@ if ( ! $landing_featured_article ) {
 
 /* Dropdown Option 5: Accent Reveal */
 .lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-menu {
-    margin-top: 2px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    margin-top: 0;
     border-top: 3px solid rgba(212,164,65,0.54);
 }
 

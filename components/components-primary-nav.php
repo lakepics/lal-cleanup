@@ -157,7 +157,7 @@ $lacc_primary_nav_menu_args = array(
 
 .lacc-primary-nav__menu > li > a {
     padding: 11px 16px;
-    border-radius: 999px;
+    border-radius: 0;
 }
 
 .lacc-primary-nav__menu > li:nth-last-child(-n + 2):not(.menu-item-has-children) > a {
@@ -175,7 +175,7 @@ $lacc_primary_nav_menu_args = array(
     justify-content: center;
     min-width: 42px;
     padding: 11px 12px 11px 4px;
-    border-radius: 999px;
+    border-radius: 0;
 }
 
 .lacc-primary-nav__menu > li > a:hover,
