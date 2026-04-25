@@ -1366,9 +1366,8 @@ div#ta-widget a:hover img {
 	border-bottom: 1px solid #dedede;
 }
 
-/* individual faq/film location accordion tweaks */
+/* legacy film location accordion tweaks */
 
-.page-template-template-faq-individual-acf .panel-title a,
 .page-template-template-film-location .panel-title a {
 font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
 color: #51534a;
@@ -1377,24 +1376,18 @@ letter-spacing: .01275em;
 font-size: 18px;
 }
 
-.page-template-template-faq-individual-acf .panel-heading,
 .page-template-template-film-location .panel-heading {
 background-color: #ffffff;
 }
 
-.page-template-template-faq-individual-acf .wrap,
 .page-template-template-film-location .wrap {
 box-shadow: none;
 }
 
-.page-template-template-faq-individual-acf .panel-group,
 .page-template-template-film-location .panel-group {
 margin-bottom: 50px;
 }
 
-.page-template-template-faq-individual-acf #accordion .panel-heading a:before, 
-.page-template-template-faq-individual-acf #bs-collapse .panel-heading.active a:after, 
-.page-template-template-faq-individual-acf .panel-heading a:before,
 .page-template-template-film-location #accordion .panel-heading a:before, 
 .page-template-template-film-location #bs-collapse .panel-heading.active a:after, 
 .page-template-template-film-location .panel-heading a:before {
@@ -1402,12 +1395,10 @@ margin-bottom: 50px;
     top: 20px;
 }
 
-.page-template-template-faq-individual-acf .panel,
 .page-template-template-film-location .panel {
 border-bottom: 1px solid #b8b9b1;
 }
 
-.page-template-template-faq-individual-acf .panel-body,
 .page-template-template-film-location .panel-body {
 padding-bottom: 35px;
 }

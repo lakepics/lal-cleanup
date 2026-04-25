@@ -180,6 +180,10 @@ $section_styles = array(
     '--sfaq-heading-font:' . $section_heading_font_css,
     '--sfaq-heading-weight:' . $section_heading_font_weight,
     '--sfaq-accordion-font:' . $accordion_heading_font_css,
+    '--sfaq-accordion-question-font:' . $accordion_heading_font_css,
+    '--sfaq-accordion-question-size:20px',
+    '--sfaq-accordion-question-weight:400',
+    '--sfaq-accordion-answer-open-bg:rgba(246,243,237,0.25)',
 );
 
 if ( 'top' === $section_keyline_position ) {
@@ -215,13 +219,10 @@ foreach ( $groups as $group ) {
     }
 }
 
-$faq_schema = array();
 if ( ! empty( $faq_schema_entities ) ) {
-    $faq_schema = array(
-        '@context' => 'https://schema.org',
-        '@type' => 'FAQPage',
-        'mainEntity' => $faq_schema_entities,
-    );
+    if ( function_exists( 'lacc_register_faq_schema_entities' ) ) {
+        lacc_register_faq_schema_entities( $faq_schema_entities );
+    }
 }
 
 $allowed_heading_html = array(
@@ -291,7 +292,7 @@ $allowed_heading_html = array(
     list-style: none !important;
     margin: 0;
     margin-left: 0;
-    max-width: 460px;
+    max-width: 640px;
     padding: 0 !important;
     padding-left: 0 !important;
 }
@@ -303,6 +304,11 @@ $allowed_heading_html = array(
     padding-top: .75em;
     padding-bottom: .75em;
     padding-left: 0;
+    border-bottom: 1px solid var(--sfaq-keyline, #b8b9b1);
+}
+
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories-list li:last-child {
+    border-bottom: 0;
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories-list li::before {
@@ -311,19 +317,20 @@ $allowed_heading_html = array(
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories-list a {
     display: block;
-    color: #6483a6;
+    color: #6383a8;
     text-decoration: none;
     transition: color .2s ease, opacity .2s ease;
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__category-link-title {
     display: block;
-    color: #6483a6;
-    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
-    font-size: clamp(22px, 2vw, 28px);
-    font-weight: 400;
-    line-height: 1.12;
-    text-decoration: underline;
+    color: #6383a8;
+    font-family: var(--sfaq-accordion-question-font, var(--sfaq-accordion-font, "Freight Big Pro", Georgia, serif));
+    font-style: normal;
+    font-size: var(--sfaq-accordion-question-size, 20px);
+    font-weight: var(--sfaq-accordion-question-weight, 400);
+    line-height: 1.16;
+    text-decoration: none;
     text-decoration-thickness: 1px;
     text-underline-offset: .14em;
 }
@@ -332,19 +339,21 @@ $allowed_heading_html = array(
     display: block;
     margin-top: 6px;
     color: #51534a;
-    font-family: Helvetica, Arial, Roboto, sans-serif;
+    font-family: "Freight Big Pro", Georgia, serif;
+    font-style: italic;
     font-size: 14px;
     line-height: 1.5;
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories-list a:hover,
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories-list a:focus {
-    color: #51534a;
+    color: #4a6a8f;
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories-list a:hover .section-faq-accordion__category-link-title,
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories-list a:focus .section-faq-accordion__category-link-title {
-    color: #51534a;
+    color: #4a6a8f;
+    text-decoration: underline;
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories-copy {
@@ -354,6 +363,11 @@ $allowed_heading_html = array(
     font-family: Helvetica, Arial, Roboto, sans-serif;
     font-size: 16px;
     line-height: 1.6;
+}
+
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__inner {
+    max-width: 1020px;
+    margin: 0 auto;
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__group {
@@ -375,48 +389,79 @@ $allowed_heading_html = array(
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panels {
     margin-bottom: 0;
-    box-shadow: none;
 }
 
-#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panels .panel {
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panel {
     border-bottom: 1px solid var(--sfaq-keyline, #b8b9b1);
-    box-shadow: none;
 }
 
-#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panels .panel-heading {
-    background-color: transparent;
-    padding-left: 0;
-    padding-right: 0;
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panel-heading {
+    margin: 0;
 }
 
-#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panels .panel-title a {
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panel-title {
+    margin: 0;
+}
+
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__trigger {
     display: block;
+    position: relative;
+    width: 100%;
     padding: 14px 36px 14px 0;
+    border: 0;
+    background: transparent;
     color: #51534a;
-    font-family: var(--sfaq-accordion-font, "Freight Big Pro", Georgia, serif);
-    font-size: clamp(18px, 1.6vw, 20px);
-    font-weight: 500;
+    font-family: var(--sfaq-accordion-question-font, var(--sfaq-accordion-font, "Freight Big Pro", Georgia, serif));
+    font-size: var(--sfaq-accordion-question-size, 20px);
+    font-weight: var(--sfaq-accordion-question-weight, 400);
     letter-spacing: .01em;
-    line-height: 1.35;
+    line-height: 1.16;
+    text-align: left;
     text-decoration: none;
     text-transform: none;
+    cursor: pointer;
 }
 
-#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panels .panel-heading a:before,
-#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panels .panel-heading.active a:after {
-    top: 19px;
-    font-size: 16px;
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__trigger:before {
+    content: none !important;
 }
 
-#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panels .panel-body {
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__trigger:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #51534a;
+    border-bottom: 2px solid #51534a;
+    transform: translateY(-50%) rotate(-45deg);
+    transform-origin: 50% 50%;
+    transition: transform .2s ease;
+}
+
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panel.is-open .section-faq-accordion__trigger:after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__answer[hidden] {
+    display: none;
+}
+
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panel-body {
     padding: 1em 0 28px 1em;
+    background: transparent;
     color: #51534a;
     font-family: Helvetica, Arial, Roboto, sans-serif;
     font-size: 16px;
     line-height: 1.7;
 }
 
-#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panels .panel-body p:last-child {
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panel.is-open .section-faq-accordion__panel-body {
+    background: var(--sfaq-accordion-answer-open-bg, rgba(246,243,237,0.25));
+}
+
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__panel-body p:last-child {
     margin-bottom: 0;
 }
 
@@ -455,8 +500,7 @@ $categories_intro_output = function_exists( 'lacc_strip_component_inline_styles'
             </div>
         <?php endif; ?>
 
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-xs-12">
+        <div class="section-faq-accordion__inner">
                 <?php if ( count( $groups ) > 1 || ! empty( $categories_intro ) ) : ?>
                     <div class="section-faq-accordion__categories">
                         <?php if ( count( $groups ) > 1 ) : ?>
@@ -486,39 +530,74 @@ $categories_intro_output = function_exists( 'lacc_strip_component_inline_styles'
                     <div id="<?php echo esc_attr( $group['anchor'] ); ?>" class="section-faq-accordion__group">
                         <h3 class="section-faq-accordion__group-title"><?php echo esc_html( $group['title'] ); ?></h3>
 
-                        <div class="panel-group wrap section-faq-accordion__panels" id="<?php echo esc_attr( $accordion_id ); ?>">
+                        <div class="section-faq-accordion__panels" id="<?php echo esc_attr( $accordion_id ); ?>" data-sfaq-group>
                             <?php foreach ( $group['faqs'] as $faq_index => $faq ) : ?>
                                 <?php $panel_id = $accordion_id . '-panel-' . $faq_index; ?>
                                 <?php $faq_answer_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_strip_component_inline_styles( $faq['answer'] ) : $faq['answer']; ?>
-                                <div class="panel">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title"><a class="collapsed" data-toggle="collapse" data-parent="#<?php echo esc_attr( $accordion_id ); ?>" href="#<?php echo esc_attr( $panel_id ); ?>" aria-expanded="false"><?php echo esc_html( $faq['question'] ); ?></a></h4>
+                                <div class="section-faq-accordion__panel">
+                                    <div class="section-faq-accordion__panel-heading">
+                                        <h4 class="section-faq-accordion__panel-title"><button type="button" class="section-faq-accordion__trigger" aria-expanded="false" aria-controls="<?php echo esc_attr( $panel_id ); ?>"><?php echo esc_html( $faq['question'] ); ?></button></h4>
                                     </div>
-                                    <div id="<?php echo esc_attr( $panel_id ); ?>" class="panel-collapse collapse">
-                                        <div class="panel-body"><?php echo wp_kses_post( $faq_answer_output ); ?></div>
+                                    <div id="<?php echo esc_attr( $panel_id ); ?>" class="section-faq-accordion__answer" hidden>
+                                        <div class="section-faq-accordion__panel-body"><?php echo wp_kses_post( $faq_answer_output ); ?></div>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
                         </div>
                     </div>
                 <?php endforeach; ?>
-            </div>
         </div>
     </div>
 </section>
 
-<?php if ( ! empty( $faq_schema ) ) : ?>
-<script type="application/ld+json"><?php echo wp_json_encode( $faq_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); ?></script>
+<?php if ( ! empty( $faq_schema_entities ) ) : ?>
+<script type="application/ld+json"><?php echo wp_json_encode( array( '@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $faq_schema_entities ), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); ?></script>
 <?php endif; ?>
 
 <script>
-jQuery(function($) {
-    var $section = $('#<?php echo esc_js( $section_id ); ?>');
+document.addEventListener('DOMContentLoaded', function () {
+    var section = document.getElementById('<?php echo esc_js( $section_id ); ?>');
 
-    $section.find('.panel-collapse').on('show.bs.collapse', function() {
-        $(this).prev('.panel-heading').addClass('active');
-    }).on('hide.bs.collapse', function() {
-        $(this).prev('.panel-heading').removeClass('active');
+    if (!section) {
+        return;
+    }
+
+    var groups = section.querySelectorAll('[data-sfaq-group]');
+
+    groups.forEach(function (group) {
+        var panels = group.querySelectorAll('.section-faq-accordion__panel');
+
+        panels.forEach(function (panel) {
+            var trigger = panel.querySelector('.section-faq-accordion__trigger');
+            var answer = panel.querySelector('.section-faq-accordion__answer');
+
+            if (!trigger || !answer) {
+                return;
+            }
+
+            trigger.addEventListener('click', function () {
+                var isOpen = panel.classList.contains('is-open');
+
+                panels.forEach(function (otherPanel) {
+                    var otherTrigger = otherPanel.querySelector('.section-faq-accordion__trigger');
+                    var otherAnswer = otherPanel.querySelector('.section-faq-accordion__answer');
+
+                    if (!otherTrigger || !otherAnswer) {
+                        return;
+                    }
+
+                    otherPanel.classList.remove('is-open');
+                    otherTrigger.setAttribute('aria-expanded', 'false');
+                    otherAnswer.hidden = true;
+                });
+
+                if (!isOpen) {
+                    panel.classList.add('is-open');
+                    trigger.setAttribute('aria-expanded', 'true');
+                    answer.hidden = false;
+                }
+            });
+        });
     });
 });
 </script>

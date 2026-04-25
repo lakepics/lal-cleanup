@@ -186,6 +186,113 @@ function lacc_strip_component_inline_styles( $html ) {
     return (string) preg_replace( '/\sstyle=("|\').*?\1/i', '', $html );
 }
 
+function lacc_register_faq_schema_entities( $entities ) {
+    if ( empty( $entities ) || ! is_array( $entities ) ) {
+        return;
+    }
+
+    if ( ! isset( $GLOBALS['lacc_faq_schema_entities'] ) || ! is_array( $GLOBALS['lacc_faq_schema_entities'] ) ) {
+        $GLOBALS['lacc_faq_schema_entities'] = array();
+    }
+
+    foreach ( $entities as $entity ) {
+        if ( ! is_array( $entity ) || empty( $entity['name'] ) || empty( $entity['acceptedAnswer'] ) ) {
+            continue;
+        }
+
+        $GLOBALS['lacc_faq_schema_entities'][] = $entity;
+    }
+}
+
+function lacc_has_registered_faq_schema_entities() {
+    return isset( $GLOBALS['lacc_faq_schema_entities'] )
+        && is_array( $GLOBALS['lacc_faq_schema_entities'] )
+        && ! empty( $GLOBALS['lacc_faq_schema_entities'] );
+}
+
+function lacc_collect_faq_schema_for_current_request() {
+    if ( is_admin() || ! function_exists( 'get_field' ) || ! function_exists( 'is_singular' ) || ! is_singular() ) {
+        return;
+    }
+
+    $post_id = get_queried_object_id();
+    if ( ! $post_id ) {
+        return;
+    }
+
+    $sections = get_field( 'page_sections', $post_id );
+    if ( empty( $sections ) || ! is_array( $sections ) ) {
+        return;
+    }
+
+    $entities = array();
+
+    foreach ( $sections as $section ) {
+        if ( ! is_array( $section ) || ( isset( $section['acf_fc_layout'] ) && 'section_faq_accordion' !== $section['acf_fc_layout'] ) ) {
+            continue;
+        }
+
+        $groups = isset( $section['faq_groups'] ) && is_array( $section['faq_groups'] ) ? $section['faq_groups'] : array();
+        foreach ( $groups as $group ) {
+            if ( ! is_array( $group ) || empty( $group['faqs'] ) || ! is_array( $group['faqs'] ) ) {
+                continue;
+            }
+
+            foreach ( $group['faqs'] as $faq ) {
+                if ( ! is_array( $faq ) ) {
+                    continue;
+                }
+
+                $question = isset( $faq['question'] ) ? trim( wp_strip_all_tags( (string) $faq['question'] ) ) : '';
+                $answer = isset( $faq['answer'] ) ? trim( wp_strip_all_tags( (string) $faq['answer'] ) ) : '';
+
+                if ( '' === $question || '' === $answer ) {
+                    continue;
+                }
+
+                $entities[] = array(
+                    '@type' => 'Question',
+                    'name' => $question,
+                    'acceptedAnswer' => array(
+                        '@type' => 'Answer',
+                        'text' => $answer,
+                    ),
+                );
+            }
+        }
+    }
+
+    if ( ! empty( $entities ) ) {
+        lacc_register_faq_schema_entities( $entities );
+    }
+}
+add_action( 'wp', 'lacc_collect_faq_schema_for_current_request', 20 );
+
+function lacc_render_faq_schema_head() {
+    if ( is_admin() ) {
+        return;
+    }
+
+    $entities = isset( $GLOBALS['lacc_faq_schema_entities'] ) && is_array( $GLOBALS['lacc_faq_schema_entities'] )
+        ? $GLOBALS['lacc_faq_schema_entities']
+        : array();
+
+    if ( empty( $entities ) ) {
+        return;
+    }
+
+    $faq_schema = array(
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => array_values( $entities ),
+    );
+
+    echo '<script type="application/ld+json">';
+    echo wp_json_encode( $faq_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+    echo '</script>';
+}
+add_action( 'wp_head', 'lacc_render_faq_schema_head', 99 );
+
 function lacc_get_design_system_route_paths() {
     return array( 'design-system', 'design-system-library', 'design-system-test-strip' );
 }

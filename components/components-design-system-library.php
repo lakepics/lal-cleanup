@@ -533,7 +533,77 @@ $library_assets = array(
 
 .design-library__accordion-row {
     display: grid;
-    gap: 10px;
+    gap: 0;
+}
+
+.design-library__accordion-menu {
+    margin: 0 0 32px;
+}
+
+.design-library__accordion-menu-title {
+    margin: 0 0 12px;
+    color: var(--library-ink);
+    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
+    font-size: clamp(24px, 2.2vw, 30px);
+    font-weight: 400;
+    line-height: 1.08;
+}
+
+.design-library__accordion-menu-list {
+    margin: 0;
+    max-width: 640px;
+    padding: 0;
+    list-style: none;
+}
+
+.design-library__accordion-menu-list li {
+    margin: 0;
+    padding: 0 0 10px;
+    border-bottom: 1px solid rgba(81,83,74,0.2);
+    list-style: none;
+}
+
+.design-library__accordion-menu-list li + li {
+    margin-top: 12px;
+}
+
+.design-library__accordion-menu-link {
+    display: block;
+    color: var(--library-blue);
+    text-decoration: none;
+}
+
+.design-library__accordion-menu-link-title {
+    display: block;
+    color: var(--library-blue);
+    font-family: "Freight Big Pro", Georgia, serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.16;
+}
+
+.design-library__accordion-menu-link-summary {
+    display: block;
+    margin-top: 6px;
+    color: rgba(81,83,74,0.84);
+    font-family: "Freight Big Pro", Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.45;
+}
+
+.design-library__accordion-section + .design-library__accordion-section {
+    margin-top: 30px;
+}
+
+.design-library__accordion-section-title {
+    margin: 0 0 10px;
+    color: var(--library-ink);
+    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
+    font-size: clamp(28px, 2.4vw, 36px);
+    font-weight: 400;
+    line-height: 1.08;
 }
 
 .design-library__accordion-item {
@@ -545,20 +615,39 @@ $library_assets = array(
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 18px 0;
+    padding: 14px 0;
     color: var(--library-ink);
-    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
-    font-size: 26px;
-    line-height: 1.04;
+    font-family: "Freight Big Pro", Georgia, serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.16;
 }
 
 .design-library__accordion-question::after {
-    content: '+';
-    font-size: 18px;
+    content: '';
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid var(--library-ink);
+    border-bottom: 2px solid var(--library-ink);
+    transform: rotate(-45deg);
+    flex-shrink: 0;
 }
 
 .design-library__accordion-answer {
-    padding: 0 0 18px;
+    display: none;
+    padding: 12px 14px 16px;
+    background: rgba(246,243,237,0.25);
+    color: var(--library-ink);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.design-library__accordion-item--open .design-library__accordion-question::after {
+    transform: rotate(45deg);
+}
+
+.design-library__accordion-item--open .design-library__accordion-answer {
+    display: block;
 }
 
 .design-library__detail-grid {
@@ -1352,19 +1441,71 @@ $library_assets = array(
 
                     <article class="design-library__detail">
                         <span class="design-library__label">Accordion</span>
-                        <h4 class="design-library__subsection-title">Question row treatment</h4>
-                        <div class="design-library__accordion-row">
-                            <div class="design-library__accordion-item">
-                                <div class="design-library__accordion-question">What makes this different from other Lake Arrowhead hotels?</div>
-                                <div class="design-library__accordion-answer">The cream surface, utility typography, and restrained keylines keep this component aligned with the broader system rather than turning it into a separate card language.</div>
+                        <h4 class="design-library__subsection-title">Grouped FAQ and topic index</h4>
+                        <div class="design-library__accordion-menu">
+                            <h5 class="design-library__accordion-menu-title">Categories:</h5>
+                            <ul class="design-library__accordion-menu-list">
+                                <li>
+                                    <a href="#" class="design-library__accordion-menu-link">
+                                        <span class="design-library__accordion-menu-link-title">Reservation &amp; Arrival</span>
+                                        <span class="design-library__accordion-menu-link-summary">Check-in timing, access expectations, and the basics to know before you arrive.</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="design-library__accordion-menu-link">
+                                        <span class="design-library__accordion-menu-link-title">Guest Rooms</span>
+                                        <span class="design-library__accordion-menu-link-summary">Room-type guidance, property views, and what to expect from overnight stays.</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="design-library__accordion-menu-link">
+                                        <span class="design-library__accordion-menu-link-title">Activities &amp; Events</span>
+                                        <span class="design-library__accordion-menu-link-summary">Weddings, on-property experiences, and how guests typically use the site.</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="design-library__accordion-section">
+                            <h5 class="design-library__accordion-section-title">Reservation &amp; Arrival</h5>
+                            <div class="design-library__accordion-row">
+                                <div class="design-library__accordion-item design-library__accordion-item--open">
+                                    <div class="design-library__accordion-question">What time is check-in?</div>
+                                    <div class="design-library__accordion-answer">Guest check-in begins at 4 p.m. If you expect to arrive later in the evening, the front desk can still help coordinate arrival details in advance.</div>
+                                </div>
+                                <div class="design-library__accordion-item">
+                                    <div class="design-library__accordion-question">Can I bring my pet?</div>
+                                    <div class="design-library__accordion-answer">Only service animals are permitted on property.</div>
+                                </div>
+                                <div class="design-library__accordion-item">
+                                    <div class="design-library__accordion-question">Do I need to be affiliated with UCLA to stay at the lodge?</div>
+                                    <div class="design-library__accordion-answer">No. Outside of Bruin Woods summer dates, the lodge welcomes a broad mix of guests, groups, and event attendees.</div>
+                                </div>
                             </div>
-                            <div class="design-library__accordion-item">
-                                <div class="design-library__accordion-question">When should we use Freight in the accordion?</div>
-                                <div class="design-library__accordion-answer">Use Freight for longer editorial support inside the answer if needed, but keep the question row itself closer to the display system.</div>
+                        </div>
+                        <div class="design-library__accordion-section">
+                            <h5 class="design-library__accordion-section-title">Guest Rooms</h5>
+                            <div class="design-library__accordion-row">
+                                <div class="design-library__accordion-item">
+                                    <div class="design-library__accordion-question">Which room type should I book?</div>
+                                    <div class="design-library__accordion-answer">That depends on your group size and whether you want a more private chalet-style stay or a simpler guest room.</div>
+                                </div>
+                                <div class="design-library__accordion-item">
+                                    <div class="design-library__accordion-question">Will my room have a lake view?</div>
+                                    <div class="design-library__accordion-answer">Most guest rooms have forest views, while key public areas across the property open up to wider lake and mountain scenery.</div>
+                                </div>
                             </div>
-                            <div class="design-library__accordion-item">
-                                <div class="design-library__accordion-question">How much ornament should live here?</div>
-                                <div class="design-library__accordion-answer">Very little. The scan pattern matters more than decoration in this lane.</div>
+                        </div>
+                        <div class="design-library__accordion-section">
+                            <h5 class="design-library__accordion-section-title">Activities &amp; Events</h5>
+                            <div class="design-library__accordion-row">
+                                <div class="design-library__accordion-item">
+                                    <div class="design-library__accordion-question">Do you host weddings?</div>
+                                    <div class="design-library__accordion-answer">Yes. The current builder work is aimed at supporting stronger wedding landing pages with reusable section patterns.</div>
+                                </div>
+                                <div class="design-library__accordion-item">
+                                    <div class="design-library__accordion-question">What can guests do on property?</div>
+                                    <div class="design-library__accordion-answer">Depending on the season, guests can enjoy trails, lake views, lawn games, gathering spaces, and curated event programming.</div>
+                                </div>
                             </div>
                         </div>
                     </article>

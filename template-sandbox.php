@@ -488,6 +488,9 @@ if ( ! $landing_featured_article ) {
     --lacc-sandbox-type-h2-card-size: clamp(32px, 3.6vw, 44px);
     --lacc-sandbox-type-h2-card-line-height: 1.02;
     --lacc-sandbox-type-h2-card-letter-spacing: .025em;
+    --lacc-sandbox-type-accordion-question-family: "Freight Big Pro", Georgia, serif;
+    --lacc-sandbox-type-accordion-question-size: 20px;
+    --lacc-sandbox-type-accordion-question-weight: 400;
     --lacc-sandbox-package-pattern-name-size: var(--lacc-sandbox-type-h2-card-size);
     --lacc-sandbox-package-pattern-name-color: var(--lacc-sandbox-ink);
     --lacc-sandbox-package-pattern-capacity-size: 18px;
@@ -5053,17 +5056,8 @@ if ( ! $landing_featured_article ) {
             <div class="lacc-sandbox__lane-copy">
                 <p>Accordion patterns inherit type scale, button styles, and color primitives from Foundations Audit. Locked roles: header typography, trigger button state, content copy size, expanded/collapsed spacing.</p>
             </div>
-            <div class="lacc-sandbox__primitives-grid">
-                <article class="lacc-sandbox__specimen lacc-sandbox__specimen--row">
-                    <div class="lacc-sandbox__specimen-intro">
-                        <span class="lacc-sandbox__specimen-label">Specimen Placeholder</span>
-                        <div class="lacc-sandbox__specimen-copy">
-                            <p>Accordion specimens and locked primitive mapping to be added.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
         </div>
+        <?php get_template_part( 'components/components', 'section-faq-accordion' ); ?>
     </div>
 
     <div class="lacc-sandbox__lane">
@@ -6224,6 +6218,5 @@ if ( ! $landing_featured_article ) {
 
     <?php get_template_part( 'components/components', 'section-image-collage' ); ?>
     <?php get_template_part( 'components/components', 'section-split-collage' ); ?>
-    <?php get_template_part( 'components/components', 'section-faq-accordion' ); ?>
 </div>
 <?php endwhile; ?>
