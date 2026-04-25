@@ -9,6 +9,8 @@ Core standing orders:
 - Preserve unrelated work in a dirty tree; do not revert unrelated changes.
 - Flag remaining Bootstrap classes or dependencies when touching files.
 - Do not introduce new Bootstrap classes, JS dependencies, or patterns in new work unless explicitly required.
+- Prefer extending known patterns over creating duplicate implementations.
+- Every substantive change must map to a known pattern or a documented requirement.
 - Prefer CSS that is versioned in theme files over wp-admin Additional CSS.
 - After stylesheet changes, verify the served asset path and not only the source stylesheet.
 - Keep comments concise and only where logic is not obvious.
