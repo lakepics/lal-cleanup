@@ -3227,6 +3227,139 @@ if ( ! $landing_featured_article ) {
     box-shadow: inset 0 0 16px rgba(255,255,255,0.12);
 }
 
+.lacc-sandbox__nav-dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lacc-sandbox__nav-dropdown-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 10px 16px;
+    color: rgba(255,255,255,0.84);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    line-height: 1.2;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .18s ease;
+    border: none;
+    background: transparent;
+}
+
+.lacc-sandbox__nav-dropdown-link:hover,
+.lacc-sandbox__nav-dropdown-link:focus {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Dropdown Option 1: Flush Reveal */
+.lacc-sandbox__nav-dropdown-card--opt-1 .lacc-sandbox__nav-dropdown-menu {
+    background: rgba(255,255,255,0.14);
+    margin-top: 2px;
+    border-radius: 0 0 4px 4px;
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-1 .lacc-sandbox__nav-dropdown-link {
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-1 .lacc-sandbox__nav-dropdown-link:last-child {
+    border-bottom: none;
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-1 .lacc-sandbox__nav-dropdown-link:hover,
+.lacc-sandbox__nav-dropdown-card--opt-1 .lacc-sandbox__nav-dropdown-link:focus {
+    background: rgba(255,255,255,0.22);
+}
+
+/* Dropdown Option 2: Subtle Panel */
+.lacc-sandbox__nav-dropdown-card--opt-2 .lacc-sandbox__nav-dropdown-menu {
+    background: rgba(255,255,255,0.08);
+    margin-top: 6px;
+    padding: 8px 0;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.16);
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-2 .lacc-sandbox__nav-dropdown-link {
+    padding: 10px 20px;
+    color: rgba(255,255,255,0.92);
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-2 .lacc-sandbox__nav-dropdown-link:hover,
+.lacc-sandbox__nav-dropdown-card--opt-2 .lacc-sandbox__nav-dropdown-link:focus {
+    background: rgba(255,255,255,0.14);
+    color: #ffffff;
+}
+
+/* Dropdown Option 3: Indented Column */
+.lacc-sandbox__nav-dropdown-card--opt-3 .lacc-sandbox__nav-dropdown-menu {
+    margin-top: 2px;
+    margin-left: 24px;
+    padding-left: 12px;
+    border-left: 2px solid rgba(255,255,255,0.34);
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-3 .lacc-sandbox__nav-dropdown-link {
+    padding-left: 12px;
+    color: rgba(255,255,255,0.88);
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-3 .lacc-sandbox__nav-dropdown-link:hover,
+.lacc-sandbox__nav-dropdown-card--opt-3 .lacc-sandbox__nav-dropdown-link:focus {
+    background: transparent;
+    color: #ffffff;
+    border-left: 3px solid #ffffff;
+    padding-left: 9px;
+}
+
+/* Dropdown Option 4: Glass Panel */
+.lacc-sandbox__nav-dropdown-card--opt-4 .lacc-sandbox__nav-dropdown-menu {
+    background: rgba(31,34,29,0.64);
+    margin-top: 8px;
+    padding: 12px 0;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-4 .lacc-sandbox__nav-dropdown-link {
+    padding: 12px 20px;
+    color: rgba(255,255,255,0.96);
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-4 .lacc-sandbox__nav-dropdown-link:hover,
+.lacc-sandbox__nav-dropdown-card--opt-4 .lacc-sandbox__nav-dropdown-link:focus {
+    background: rgba(255,255,255,0.12);
+    color: #ffffff;
+}
+
+/* Dropdown Option 5: Accent Reveal */
+.lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-menu {
+    margin-top: 2px;
+    border-top: 3px solid rgba(212,164,65,0.54);
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-link {
+    padding: 8px 16px;
+    color: rgba(255,255,255,0.88);
+    font-size: 11px;
+}
+
+.lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-link:hover,
+.lacc-sandbox__nav-dropdown-card--opt-5 .lacc-sandbox__nav-dropdown-link:focus {
+    background: rgba(255,255,255,0.12);
+    color: #ffffff;
+}
+
 @media (max-width: 1080px) {
     .lacc-sandbox__criteria-grid,
     .lacc-sandbox__details-grid,
@@ -4762,6 +4895,124 @@ if ( ! $landing_featured_article ) {
                             <li><a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a></li>
                             <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
                             <li><a href="#" class="lacc-sandbox__nav-active-link">Experience</a></li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="lacc-sandbox__lane">
+        <div class="lacc-sandbox__lane-card">
+            <div class="lacc-sandbox__lane-head">
+                <div>
+                    <span class="lacc-sandbox__lane-label">Primary Navbar Dropdown Presentations</span>
+                    <h2 class="lacc-sandbox__lane-title">Alternate child-item dropdown styles</h2>
+                </div>
+                <div class="lacc-sandbox__lane-statuses">
+                    <span class="lacc-sandbox__status lacc-sandbox__status--builder">Variant review</span>
+                </div>
+            </div>
+            <div class="lacc-sandbox__lane-copy">
+                <p>These dropdown specimens show child items beneath the <strong>Explore</strong> parent in each variant direction. The goal is to find a dropdown presentation that feels native to the parent active state and doesn't fight for attention.</p>
+            </div>
+            <div class="lacc-sandbox__nav-active-grid">
+                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-dropdown-card lacc-sandbox__nav-dropdown-card--opt-1">
+                    <div class="lacc-sandbox__nav-active-head">
+                        <h3 class="lacc-sandbox__nav-active-label">Dropdown 1: Flush Reveal</h3>
+                        <p class="lacc-sandbox__nav-active-note">Children inherit parent background, minimal separation.</p>
+                    </div>
+                    <div class="lacc-sandbox__nav-active-shell">
+                        <ul class="lacc-sandbox__nav-active-menu">
+                            <li>
+                                <a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a>
+                                <ul class="lacc-sandbox__nav-dropdown-menu">
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">getaways</a></li>
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">nature trails</a></li>
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">seasonal activities</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-dropdown-card lacc-sandbox__nav-dropdown-card--opt-2">
+                    <div class="lacc-sandbox__nav-active-head">
+                        <h3 class="lacc-sandbox__nav-active-label">Dropdown 2: Subtle Panel</h3>
+                        <p class="lacc-sandbox__nav-active-note">Slightly elevated with light background separation.</p>
+                    </div>
+                    <div class="lacc-sandbox__nav-active-shell">
+                        <ul class="lacc-sandbox__nav-active-menu">
+                            <li>
+                                <a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a>
+                                <ul class="lacc-sandbox__nav-dropdown-menu">
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">getaways</a></li>
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">nature trails</a></li>
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">seasonal activities</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-dropdown-card lacc-sandbox__nav-dropdown-card--opt-3">
+                    <div class="lacc-sandbox__nav-active-head">
+                        <h3 class="lacc-sandbox__nav-active-label">Dropdown 3: Indented Column</h3>
+                        <p class="lacc-sandbox__nav-active-note">Children offset with left padding, distinct from parent.</p>
+                    </div>
+                    <div class="lacc-sandbox__nav-active-shell">
+                        <ul class="lacc-sandbox__nav-active-menu">
+                            <li>
+                                <a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a>
+                                <ul class="lacc-sandbox__nav-dropdown-menu">
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">getaways</a></li>
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">nature trails</a></li>
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">seasonal activities</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-dropdown-card lacc-sandbox__nav-dropdown-card--opt-4">
+                    <div class="lacc-sandbox__nav-active-head">
+                        <h3 class="lacc-sandbox__nav-active-label">Dropdown 4: Glass Panel</h3>
+                        <p class="lacc-sandbox__nav-active-note">Higher opacity darker background, floating card feel.</p>
+                    </div>
+                    <div class="lacc-sandbox__nav-active-shell">
+                        <ul class="lacc-sandbox__nav-active-menu">
+                            <li>
+                                <a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a>
+                                <ul class="lacc-sandbox__nav-dropdown-menu">
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">getaways</a></li>
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">nature trails</a></li>
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">seasonal activities</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="lacc-sandbox__nav-active-card lacc-sandbox__nav-dropdown-card lacc-sandbox__nav-dropdown-card--opt-5">
+                    <div class="lacc-sandbox__nav-active-head">
+                        <h3 class="lacc-sandbox__nav-active-label">Dropdown 5: Accent Reveal</h3>
+                        <p class="lacc-sandbox__nav-active-note">Children with accent border top, compact vertical stack.</p>
+                    </div>
+                    <div class="lacc-sandbox__nav-active-shell">
+                        <ul class="lacc-sandbox__nav-active-menu">
+                            <li>
+                                <a href="#" class="lacc-sandbox__nav-active-link is-active">Explore</a>
+                                <ul class="lacc-sandbox__nav-dropdown-menu">
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">getaways</a></li>
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">nature trails</a></li>
+                                    <li><a href="#" class="lacc-sandbox__nav-dropdown-link">seasonal activities</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="lacc-sandbox__nav-active-link">Meet</a></li>
                         </ul>
                     </div>
                 </article>
