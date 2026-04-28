@@ -412,41 +412,27 @@ if ( 'bottom' === $section_keyline_position ) {
     right: calc(50% - 500px);
 }
 
-.section-card-grid .col-md-15 {
-    position: relative;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-}
-
-@media (min-width: 992px) {
-    .section-card-grid .col-md-15 {
-        float: left;
-        width: 20%;
-    }
-}
-
-@media (max-width: 991px) {
-    .section-card-grid .col-md-15 {
-        float: left;
-        width: 50%;
-    }
-}
-
-@media (max-width: 767px) {
-    .section-card-grid .col-md-15 {
-        width: 100%;
-    }
-}
-
 .section-card-grid .section-card-grid__cards-row {
+    display: flex;
+    flex-wrap: wrap;
     margin-left: calc(-1 * var(--scg-card-gutter, 30px) / 2);
     margin-right: calc(-1 * var(--scg-card-gutter, 30px) / 2);
 }
 
 .section-card-grid .section-card-grid__card-column {
+    flex: 0 0 var(--scg-col-width, 33.3333%);
+    max-width: var(--scg-col-width, 33.3333%);
+    margin-left: var(--scg-col-offset, 0);
     padding-left: calc(var(--scg-card-gutter, 30px) / 2);
     padding-right: calc(var(--scg-card-gutter, 30px) / 2);
+}
+
+@media (max-width: 767px) {
+    .section-card-grid .section-card-grid__card-column {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-left: 0;
+    }
 }
 
 .section-card-grid__header {
@@ -1101,30 +1087,26 @@ if ( 'bottom' === $section_keyline_position ) {
 <section<?php echo $section_anchor_id ? ' id="' . esc_attr( $section_anchor_id ) . '"' : ''; ?> class="<?php echo esc_attr( implode( ' ', $section_class_list ) ); ?>"<?php echo $section_styles ? ' style="' . esc_attr( implode( ';', $section_styles ) ) . '"' : ''; ?>>
     <div class="<?php echo esc_attr( $container_type ); ?>">
         <?php if ( $section_eyebrow || $section_heading || $section_intro || ( $section_button_label && $section_button_url ) ) : ?>
-            <div class="row">
-                <div class="<?php echo esc_attr( $header_column_class ); ?>">
-                    <div class="section-card-grid__header" style="<?php echo esc_attr( $header_style_attr ); ?>;">
-                        <?php if ( $section_eyebrow ) : ?>
-                            <span class="section-card-grid__eyebrow"><?php echo esc_html( $section_eyebrow ); ?></span>
-                        <?php endif; ?>
-                        <?php if ( $section_heading ) : ?>
-                            <h2><?php echo wp_kses( $section_heading, $allowed_heading_html ); ?></h2>
-                        <?php endif; ?>
-                        <?php if ( $section_intro ) : ?>
-                            <div class="section-card-grid__intro"><?php echo $section_intro_output; ?></div>
-                        <?php endif; ?>
-                        <?php if ( $section_button_label && $section_button_url ) : ?>
-                            <div class="section-card-grid__intro-cta">
-                                <a class="hero-button hero-button--<?php echo esc_attr( $section_button_style ); ?>" href="<?php echo esc_url( $section_button_url ); ?>"><?php echo esc_html( $section_button_label ); ?></a>
-                            </div>
-                        <?php endif; ?>
+            <div class="section-card-grid__header" style="<?php echo esc_attr( $header_style_attr ); ?>;">
+                <?php if ( $section_eyebrow ) : ?>
+                    <span class="section-card-grid__eyebrow"><?php echo esc_html( $section_eyebrow ); ?></span>
+                <?php endif; ?>
+                <?php if ( $section_heading ) : ?>
+                    <h2><?php echo wp_kses( $section_heading, $allowed_heading_html ); ?></h2>
+                <?php endif; ?>
+                <?php if ( $section_intro ) : ?>
+                    <div class="section-card-grid__intro"><?php echo $section_intro_output; ?></div>
+                <?php endif; ?>
+                <?php if ( $section_button_label && $section_button_url ) : ?>
+                    <div class="section-card-grid__intro-cta">
+                        <a class="hero-button hero-button--<?php echo esc_attr( $section_button_style ); ?>" href="<?php echo esc_url( $section_button_url ); ?>"><?php echo esc_html( $section_button_label ); ?></a>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
 
         <?php if ( is_array( $cards_data ) && ! empty( $cards_data ) ) : ?>
-            <div class="row section-card-grid__cards-row">
+            <div class="section-card-grid__cards-row">
                 <?php foreach ( $cards_data as $card_item ) : ?>
                     <?php
                     $card_width = $card_item['card_desktop_width'] ?? '4';
@@ -1155,13 +1137,13 @@ if ( 'bottom' === $section_keyline_position ) {
                     $card_badge_text_color = 'light' === $card_button_style ? 'var(--lacc-color-ink, #51534a)' : 'var(--lacc-color-white, #ffffff)';
                     $resolved_card_badge_bg = $card_badge_fill_color ?: $card_badge_bg;
                     $resolved_card_badge_text = $card_badge_type_color ?: $card_badge_text_color;
-                    $column_class = '15' === (string) $card_width ? 'col-md-15' : 'col-md-' . preg_replace( '/[^0-9]/', '', (string) $card_width );
+                    $col_num = '15' === (string) $card_width ? '15' : preg_replace( '/[^0-9]/', '', (string) $card_width );
+                    $col_percent = '15' === $col_num ? '20%' : round( (int) $col_num / 12 * 100, 4 ) . '%';
+                    $col_offset_num = ( $card_offset && '15' !== $col_num ) ? preg_replace( '/[^0-9]/', '', (string) $card_offset ) : '';
+                    $col_inline = '--scg-col-width:' . $col_percent . ';' . ( $col_offset_num ? '--scg-col-offset:' . round( (int) $col_offset_num / 12 * 100, 4 ) . '%;' : '' );
                     $card_body_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_strip_component_inline_styles( $card_body ) : $card_body;
-                    if ( $card_offset && '15' !== (string) $card_width ) {
-                        $column_class .= ' col-md-offset-' . preg_replace( '/[^0-9]/', '', (string) $card_offset );
-                    }
                     ?>
-                    <div class="<?php echo esc_attr( $column_class ); ?> section-card-grid__card-column">
+                    <div class="section-card-grid__card-column" style="<?php echo esc_attr( $col_inline ); ?>">
                         <div class="section-card-grid__card section-card-grid__card--align-<?php echo esc_attr( $card_heading_align ); ?>">
                             <?php if ( $card_badge ) : ?>
                                 <div class="section-card-grid__card-badge-wrap">
@@ -1196,7 +1178,7 @@ if ( 'bottom' === $section_keyline_position ) {
                 <?php endforeach; ?>
             </div>
         <?php elseif ( have_rows( 'cards' ) ) : ?>
-            <div class="row section-card-grid__cards-row">
+            <div class="section-card-grid__cards-row">
                 <?php while ( have_rows( 'cards' ) ) : the_row(); ?>
                     <?php
                     $card_width = get_sub_field( 'card_desktop_width' ) ?: '4';
@@ -1227,13 +1209,13 @@ if ( 'bottom' === $section_keyline_position ) {
                     $card_badge_text_color = 'light' === $card_button_style ? 'var(--lacc-color-ink, #51534a)' : 'var(--lacc-color-white, #ffffff)';
                     $resolved_card_badge_bg = $card_badge_fill_color ?: $card_badge_bg;
                     $resolved_card_badge_text = $card_badge_type_color ?: $card_badge_text_color;
-                    $column_class = '15' === (string) $card_width ? 'col-md-15' : 'col-md-' . preg_replace( '/[^0-9]/', '', (string) $card_width );
+                    $col_num = '15' === (string) $card_width ? '15' : preg_replace( '/[^0-9]/', '', (string) $card_width );
+                    $col_percent = '15' === $col_num ? '20%' : round( (int) $col_num / 12 * 100, 4 ) . '%';
+                    $col_offset_num = ( $card_offset && '15' !== $col_num ) ? preg_replace( '/[^0-9]/', '', (string) $card_offset ) : '';
+                    $col_inline = '--scg-col-width:' . $col_percent . ';' . ( $col_offset_num ? '--scg-col-offset:' . round( (int) $col_offset_num / 12 * 100, 4 ) . '%;' : '' );
                     $card_body_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_strip_component_inline_styles( $card_body ) : $card_body;
-                    if ( $card_offset && '15' !== (string) $card_width ) {
-                        $column_class .= ' col-md-offset-' . preg_replace( '/[^0-9]/', '', (string) $card_offset );
-                    }
                     ?>
-                    <div class="<?php echo esc_attr( $column_class ); ?> section-card-grid__card-column">
+                    <div class="section-card-grid__card-column" style="<?php echo esc_attr( $col_inline ); ?>">
                         <div class="section-card-grid__card section-card-grid__card--align-<?php echo esc_attr( $card_heading_align ); ?>">
                             <?php if ( $card_badge ) : ?>
                                 <div class="section-card-grid__card-badge-wrap">
