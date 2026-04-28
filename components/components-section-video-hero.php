@@ -101,10 +101,10 @@ $hero_heading_color = $hero_heading_color ?: 'var(--lacc-color-cream)';
 $hero_subheading_color = $hero_subheading_color ?: 'rgba(246,243,237,0.82)';
 $eyebrow_color = $eyebrow_color ?: 'var(--lacc-color-gold-soft)';
 $eyebrow_background_color = $eyebrow_background_color ?: 'transparent';
-$eyebrow_border = $eyebrow_border ?: '1px solid rgba(81,83,74,0.28)';
-$eyebrow_padding = $eyebrow_padding ?: '6px 12px';
-$eyebrow_font_size = $eyebrow_font_size ?: '11px';
-$eyebrow_border_radius = $eyebrow_border_radius ?: '0';
+$eyebrow_border = $eyebrow_border ?: '1px solid rgba(201,151,58,0.35)';
+$eyebrow_padding = $eyebrow_padding ?: '8px 16px';
+$eyebrow_font_size = $eyebrow_font_size ?: '12px';
+$eyebrow_border_radius = $eyebrow_border_radius ?: '3px';
 $factoid_value_color = $factoid_value_color ?: 'var(--lacc-color-gold-soft)';
 $factoid_label_color = $factoid_label_color ?: 'rgba(246,243,237,0.78)';
 $heading_max_width = $heading_max_width ?: '100%';
@@ -399,18 +399,18 @@ if ( $hero_background_image_url ) {
     max-width: var(--svh-title-max-width, 100%);
     color: var(--svh-title-color, var(--lacc-color-cream));
     font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
-    font-size: clamp(48px, 6vw, 76px);
+    font-size: clamp(48px, 6vw, 84px);
     font-weight: 400;
-    line-height: 1.05;
-    letter-spacing: .008em;
-    margin: 0 auto 18px;
+    line-height: 1.1;
+    letter-spacing: -.015em;
+    margin: 0 auto 24px;
     text-align: center;
     text-transform: uppercase;
 }
 
 .section-video-hero .hero-slider-subheading {
-    margin: 0 auto 28px;
-    max-width: 780px;
+    margin: 0 auto 32px;
+    max-width: 840px;
     text-align: center;
 }
 
@@ -471,10 +471,11 @@ if ( $hero_background_image_url ) {
     color: var(--svh-factoid-label-color, rgba(246,243,237,0.78));
     font-family: var(--svh-factoid-label-font, inherit) !important;
     font-weight: var(--svh-factoid-label-weight, 600) !important;
-    letter-spacing: .18em;
-    font-size: 11px;
-    line-height: 1.4;
-    text-transform: capitalize;
+    letter-spacing: .14em;
+    font-size: 13px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    margin-top: 6px;
 }
 
 .section-video-hero .hero-button-group {
@@ -569,16 +570,16 @@ if ( $hero_background_image_url ) {
 .section-video-hero__eyebrow {
     display: inline-block;
     margin-bottom: 28px;
-    padding: 6px 12px;
-    border: var(--svh-eyebrow-border, 1px solid rgba(81,83,74,0.28));
-    border-radius: 0;
-    letter-spacing: .11em;
-    font-size: 11px;
+    padding: var(--svh-eyebrow-padding, 8px 16px);
+    border: var(--svh-eyebrow-border, 1px solid rgba(201,151,58,0.35));
+    border-radius: var(--svh-eyebrow-radius, 3px);
+    letter-spacing: .12em;
+    font-size: 12px;
     line-height: 1.2;
     font-family: var(--svh-eyebrow-font, inherit);
-    font-weight: 700;
+    font-weight: var(--svh-eyebrow-weight, 700);
     text-transform: uppercase;
-    color: var(--svh-eyebrow-color, var(--lacc-color-text-primary));
+    color: var(--svh-eyebrow-color, var(--lacc-color-gold-soft));
     background: var(--svh-eyebrow-bg, transparent);
 }
 
