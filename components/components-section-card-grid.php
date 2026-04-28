@@ -773,6 +773,41 @@ if ( 'bottom' === $section_keyline_position ) {
     -ms-hyphens: none;
 }
 
+.section-card-grid__card--pricing .section-card-grid__card-body {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px 24px 32px;
+    overflow: hidden;
+}
+
+.section-card-grid__card--pricing .section-card-grid__card-body::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    width: 100%;
+    height: 60px;
+    transform: translateX(-50%);
+    background-image: url('/wp-content/themes/LACC-sage-theme-master/brand/scrollwork-horizontal.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 60px;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.section-card-grid__card--pricing.section-card-grid__card--has-badge .section-card-grid__card-body::before {
+    opacity: 0.25;
+}
+
+.section-card-grid__card--pricing .section-card-grid__card-body > * {
+    position: relative;
+    z-index: 1;
+}
+
 .section-card-grid--has-badges .section-card-grid__card-body {
     padding-top: calc(var(--scg-card-padding-top, var(--scg-card-padding, 24px)) + 44px);
 }
@@ -808,7 +843,8 @@ if ( 'bottom' === $section_keyline_position ) {
 }
 
 .section-card-grid__card-copy .lacc-pkg-kicker,
-.section-card-grid__card-copy .pkg-kicker {
+.section-card-grid__card-copy .pkg-kicker,
+.section-card-grid__card-copy .lacc-pricing-kicker {
     margin: 0 0 1em;
     font-size: 12px;
     font-weight: 700;
@@ -819,7 +855,8 @@ if ( 'bottom' === $section_keyline_position ) {
 }
 
 .section-card-grid__card-copy .lacc-pkg-price-label,
-.section-card-grid__card-copy .pkg-price-label {
+.section-card-grid__card-copy .pkg-price-label,
+.section-card-grid__card-copy .lacc-pricing-price-label {
     margin: 0 0 .35em;
     font-size: 12px;
     font-weight: 600;
@@ -831,15 +868,18 @@ if ( 'bottom' === $section_keyline_position ) {
 }
 
 .section-card-grid__card-copy .lacc-pkg-price-row,
-.section-card-grid__card-copy .pkg-price-row {
+.section-card-grid__card-copy .pkg-price-row,
+.section-card-grid__card-copy .lacc-pricing-price-row {
     margin: 1.25em 0 .35em;
 }
 
 .section-card-grid__card-copy .lacc-pkg-price,
-.section-card-grid__card-copy .pkg-price {
+.section-card-grid__card-copy .pkg-price,
+.section-card-grid__card-copy .lacc-pricing-price {
     margin: 0 0 .3em;
     font-family: "Freight Big Pro", Georgia, serif !important;
     font-weight: 500;
+    font-style: italic;
     letter-spacing: .03em;
     font-size: clamp(30px, 2.4vw, 42px);
     line-height: 1;
@@ -848,7 +888,8 @@ if ( 'bottom' === $section_keyline_position ) {
 
 .section-card-grid__card-copy .lacc-pkg-note,
 .section-card-grid__card-copy .pkg-note,
-.section-card-grid__card-copy .pkg-price-note {
+.section-card-grid__card-copy .pkg-price-note,
+.section-card-grid__card-copy .lacc-pricing-note {
     margin: 0 0 1.25em;
     font-size: 14px;
     line-height: 1.5;
@@ -856,7 +897,8 @@ if ( 'bottom' === $section_keyline_position ) {
 }
 
 .section-card-grid__card-copy .lacc-pkg-divider,
-.section-card-grid__card-copy .pkg-divider {
+.section-card-grid__card-copy .pkg-divider,
+.section-card-grid__card-copy .lacc-pricing-divider {
     display: block;
     width: 100%;
     height: 0;
@@ -870,7 +912,9 @@ if ( 'bottom' === $section_keyline_position ) {
 }
 
 .section-card-grid__card-copy ul.lacc-keyline-list,
-.section-card-grid__card-copy ul.lacc-keyline-list--plain {
+.section-card-grid__card-copy ul.lacc-keyline-list--plain,
+.section-card-grid__card-copy ul.lacc-pricing-list,
+.section-card-grid__card-copy ul.lacc-pricing-list--plain {
     --lacc-list-line-color: rgba(148, 110, 41, 0.28);
     --lacc-list-bullet-color: var(--lacc-color-gold-soft);
     padding: 0 !important;
@@ -880,7 +924,9 @@ if ( 'bottom' === $section_keyline_position ) {
 }
 
 .section-card-grid__card-copy ul.lacc-keyline-list > li,
-.section-card-grid__card-copy ul.lacc-keyline-list--plain > li {
+.section-card-grid__card-copy ul.lacc-keyline-list--plain > li,
+.section-card-grid__card-copy ul.lacc-pricing-list > li,
+.section-card-grid__card-copy ul.lacc-pricing-list--plain > li {
     list-style: none !important;
     min-height: 36px;
     padding-top: .5em;
@@ -893,11 +939,13 @@ if ( 'bottom' === $section_keyline_position ) {
     padding-left: 1.25em;
 }
 
-.section-card-grid__card-copy ul.lacc-keyline-list--plain > li {
+.section-card-grid__card-copy ul.lacc-keyline-list--plain > li,
+.section-card-grid__card-copy ul.lacc-pricing-list--plain > li {
     padding-left: 0;
 }
 
-.section-card-grid__card-copy ul.lacc-keyline-list > li::before {
+.section-card-grid__card-copy ul.lacc-keyline-list > li::before,
+.section-card-grid__card-copy ul.lacc-pricing-list > li::before {
     content: '✦' !important;
     position: absolute;
     left: 0;
@@ -908,9 +956,19 @@ if ( 'bottom' === $section_keyline_position ) {
     color: var(--lacc-list-bullet-color) !important;
 }
 
-.section-card-grid__card-copy ul.lacc-keyline-list--plain > li::before {
+.section-card-grid__card-copy ul.lacc-keyline-list--plain > li::before,
+.section-card-grid__card-copy ul.lacc-pricing-list--plain > li::before {
     content: none !important;
     margin-right: 0;
+}
+
+.section-card-grid__card--pricing .section-card-grid__card-button-wrap {
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.section-card-grid__card--pricing .section-card-grid__card-button {
+    width: 100%;
 }
 
 .section-card-grid__card-title,
@@ -1095,6 +1153,30 @@ if ( 'bottom' === $section_keyline_position ) {
     padding: .75em 1.5em;
     letter-spacing: .04em;
 }
+
+.section-card-grid .section-card-grid__card--pricing .section-card-grid__card-button-wrap {
+    width: 100%;
+}
+
+.section-card-grid .section-card-grid__card--pricing .section-card-grid__card-button {
+    display: flex !important;
+    flex: 1 1 100%;
+    width: 100% !important;
+    max-width: none;
+    min-height: 54px;
+    background: var(--lacc-color-accent-gold, #d4a441) !important;
+    border-color: var(--lacc-color-accent-gold, #d4a441) !important;
+    color: var(--lacc-color-white, #ffffff) !important;
+    font-size: 13px;
+    letter-spacing: .12em;
+}
+
+.section-card-grid .section-card-grid__card--pricing .section-card-grid__card-button:hover,
+.section-card-grid .section-card-grid__card--pricing .section-card-grid__card-button:focus {
+    background: var(--lacc-color-accent-old-gold, #7a5a1f) !important;
+    border-color: var(--lacc-color-accent-old-gold, #7a5a1f) !important;
+    color: var(--lacc-color-white, #ffffff) !important;
+}
 </style>
 
 <?php $section_intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_strip_component_inline_styles( $section_intro ) : $section_intro; ?>
@@ -1137,6 +1219,10 @@ if ( 'bottom' === $section_keyline_position ) {
                     $card_button_url = $card_item['card_button_url'] ?? '';
                     $card_button_style = strtolower( str_replace( '_', '-', trim( (string) ( $card_item['card_button_style'] ?? '' ) ) ) );
                     $card_button_style = in_array( $card_button_style, $allowed_button_styles, true ) ? $card_button_style : 'primary';
+                    $is_pricing_card = false !== stripos( (string) $card_body, 'lacc-pkg-price' )
+                        || false !== stripos( (string) $card_body, 'pkg-price' )
+                        || false !== stripos( (string) $card_body, 'lacc-pricing-price' )
+                        || false !== stripos( (string) $card_body, 'lacc-pricing-tier' );
                     $card_badge_color_map = array(
                         'primary' => 'var(--lacc-color-ink, #51534a)',
                         'secondary' => 'var(--lacc-color-action-primary, #3f5f85)',
@@ -1157,10 +1243,16 @@ if ( 'bottom' === $section_keyline_position ) {
                     $col_percent = '15' === $col_num ? '20%' : round( (int) $col_num / 12 * 100, 4 ) . '%';
                     $col_offset_num = ( $card_offset && '15' !== $col_num ) ? preg_replace( '/[^0-9]/', '', (string) $card_offset ) : '';
                     $col_inline = '--scg-col-width:' . $col_percent . ';' . ( $col_offset_num ? '--scg-col-offset:' . round( (int) $col_offset_num / 12 * 100, 4 ) . '%;' : '' );
+                    $card_class_list = array( 'section-card-grid__card', 'section-card-grid__card--align-' . $card_heading_align );
+                    if ( $is_pricing_card ) {
+                        $card_class_list[] = 'section-card-grid__card--pricing';
+                    }
+                    $card_class_list[] = $card_badge ? 'section-card-grid__card--has-badge' : 'section-card-grid__card--no-badge';
+                    $card_copy_class = $is_pricing_card ? 'section-card-grid__card-copy section-card-grid__card-copy--pricing' : 'section-card-grid__card-copy';
                     $card_body_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_strip_component_inline_styles( $card_body ) : $card_body;
                     ?>
                     <div class="section-card-grid__card-column" style="<?php echo esc_attr( $col_inline ); ?>">
-                        <div class="section-card-grid__card section-card-grid__card--align-<?php echo esc_attr( $card_heading_align ); ?>">
+                        <div class="<?php echo esc_attr( implode( ' ', $card_class_list ) ); ?>">
                             <?php if ( $card_badge ) : ?>
                                 <div class="section-card-grid__card-badge-wrap">
                                     <span class="section-card-grid__card-badge section-card-grid__card-badge--<?php echo esc_attr( $card_badge_variant ); ?>" style="--scg-badge-bg: <?php echo esc_attr( $resolved_card_badge_bg ); ?>; --scg-badge-text: <?php echo esc_attr( $resolved_card_badge_text ); ?>;"><?php echo esc_html( $card_badge ); ?></span>
@@ -1176,7 +1268,7 @@ if ( 'bottom' === $section_keyline_position ) {
                                     <h3 class="section-card-grid__card-title"><?php echo esc_html( $card_heading ); ?></h3>
                                 <?php endif; ?>
                                 <?php if ( $card_body ) : ?>
-                                    <div class="section-card-grid__card-copy"><?php echo $card_body_output; ?></div>
+                                    <div class="<?php echo esc_attr( $card_copy_class ); ?>"><?php echo $card_body_output; ?></div>
                                 <?php endif; ?>
                                 <?php if ( $card_gravity_form_id && function_exists( 'gravity_form' ) ) : ?>
                                     <div class="section-card-grid__card-form">
@@ -1209,6 +1301,10 @@ if ( 'bottom' === $section_keyline_position ) {
                     $card_button_url = get_sub_field( 'card_button_url' );
                     $card_button_style = strtolower( str_replace( '_', '-', trim( (string) get_sub_field( 'card_button_style' ) ) ) );
                     $card_button_style = in_array( $card_button_style, $allowed_button_styles, true ) ? $card_button_style : 'primary';
+                    $is_pricing_card = false !== stripos( (string) $card_body, 'lacc-pkg-price' )
+                        || false !== stripos( (string) $card_body, 'pkg-price' )
+                        || false !== stripos( (string) $card_body, 'lacc-pricing-price' )
+                        || false !== stripos( (string) $card_body, 'lacc-pricing-tier' );
                     $card_badge_color_map = array(
                         'primary' => 'var(--lacc-color-ink, #51534a)',
                         'secondary' => 'var(--lacc-color-action-primary, #3f5f85)',
@@ -1229,10 +1325,16 @@ if ( 'bottom' === $section_keyline_position ) {
                     $col_percent = '15' === $col_num ? '20%' : round( (int) $col_num / 12 * 100, 4 ) . '%';
                     $col_offset_num = ( $card_offset && '15' !== $col_num ) ? preg_replace( '/[^0-9]/', '', (string) $card_offset ) : '';
                     $col_inline = '--scg-col-width:' . $col_percent . ';' . ( $col_offset_num ? '--scg-col-offset:' . round( (int) $col_offset_num / 12 * 100, 4 ) . '%;' : '' );
+                    $card_class_list = array( 'section-card-grid__card', 'section-card-grid__card--align-' . $card_heading_align );
+                    if ( $is_pricing_card ) {
+                        $card_class_list[] = 'section-card-grid__card--pricing';
+                    }
+                    $card_class_list[] = $card_badge ? 'section-card-grid__card--has-badge' : 'section-card-grid__card--no-badge';
+                    $card_copy_class = $is_pricing_card ? 'section-card-grid__card-copy section-card-grid__card-copy--pricing' : 'section-card-grid__card-copy';
                     $card_body_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_strip_component_inline_styles( $card_body ) : $card_body;
                     ?>
                     <div class="section-card-grid__card-column" style="<?php echo esc_attr( $col_inline ); ?>">
-                        <div class="section-card-grid__card section-card-grid__card--align-<?php echo esc_attr( $card_heading_align ); ?>">
+                        <div class="<?php echo esc_attr( implode( ' ', $card_class_list ) ); ?>">
                             <?php if ( $card_badge ) : ?>
                                 <div class="section-card-grid__card-badge-wrap">
                                     <span class="section-card-grid__card-badge section-card-grid__card-badge--<?php echo esc_attr( $card_badge_variant ); ?>" style="--scg-badge-bg: <?php echo esc_attr( $resolved_card_badge_bg ); ?>; --scg-badge-text: <?php echo esc_attr( $resolved_card_badge_text ); ?>;"><?php echo esc_html( $card_badge ); ?></span>
@@ -1248,7 +1350,7 @@ if ( 'bottom' === $section_keyline_position ) {
                                     <h3 class="section-card-grid__card-title"><?php echo esc_html( $card_heading ); ?></h3>
                                 <?php endif; ?>
                                 <?php if ( $card_body ) : ?>
-                                    <div class="section-card-grid__card-copy"><?php echo $card_body_output; ?></div>
+                                    <div class="<?php echo esc_attr( $card_copy_class ); ?>"><?php echo $card_body_output; ?></div>
                                 <?php endif; ?>
                                 <?php if ( $card_gravity_form_id && function_exists( 'gravity_form' ) ) : ?>
                                     <div class="section-card-grid__card-form">
