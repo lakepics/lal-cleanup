@@ -1,0 +1,779 @@
+// _custom.scss
+// Migrated from assets/styles/customizer.css on 2026-04-25.
+// Bootstrap-era .navbar-* rules removed (archived with _header.scss).
+// Source: customizer.css.archived-2026-04-25
+
+// ============================================================
+// FONT — HaarlemDeco
+// Note: the MyFonts tracking beacon below must remain a plain
+// CSS @import so the browser makes the HTTP request.
+// ============================================================
+
+// @import url("//hello.myfonts.net/count/4383ff"); — moved to head.php <link>
+
+@font-face {
+    font-family: "HaarlemDeco";
+    src: url('/lal/wp-content/themes/LACC-sage-theme-master/dist/fonts/HaarlemDeco/font.woff2') format('woff2'),
+         url('/lal/wp-content/themes/LACC-sage-theme-master/dist/fonts/HaarlemDeco/font.woff') format('woff');
+}
+
+// ============================================================
+// GLOBAL TYPOGRAPHY
+// ============================================================
+
+h1, h2, h3 {
+    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
+    letter-spacing: 0.1275rem;
+    text-transform: capitalize;
+}
+
+p, body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 1.6em;
+}
+
+// ============================================================
+// LAYOUT — Body padding for fixed nav
+// ============================================================
+
+body {
+    padding-top: 74px;
+}
+
+@media only screen and (max-width: 1024px) {
+    body {
+        padding-top: 66px;
+    }
+}
+
+body.home {
+    padding-top: 0;
+}
+
+// ============================================================
+// NOTIFICATION BAR — #dabar
+// ============================================================
+
+#dabar {
+    background: #3f3f3f;
+    position: fixed;
+    color: #fff;
+    font-size: 16px;
+    top: 0px;
+    left: 0px;
+    width: 100% !important;
+    padding: 10px;
+    text-align: center;
+    z-index: 100;
+
+    a {
+        color: #fff;
+    }
+}
+
+// ============================================================
+// FOOTER LOGO
+// ============================================================
+
+.bottom-logo img.logo-footer {
+    height: auto !important;
+    width: 360px;
+    margin-bottom: 48px;
+    margin-top: 24px;
+}
+
+.header__heading {
+    margin-top: 0;
+}
+
+// ============================================================
+// HERO SLIDER
+// ============================================================
+
+.hero-slider-container {
+    position: absolute;
+    left: 0;
+    padding-top: 160px;
+    text-align: left;
+    height: 100%;
+    width: 80%;
+    background: -moz-linear-gradient(left, rgba(19,19,19,0.8) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(left, rgba(19,19,19,0.8) 0%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to right, rgba(19,19,19,0.8) 0%,rgba(0,0,0,0) 100%);
+}
+
+.section-hero-slider .hero-slider .hero .hero-slider-content {
+    background: transparent;
+}
+
+.hero-slider-btn {
+    float: left;
+    background: transparent;
+    border: 2px solid #fff;
+    margin-top: 8px;
+
+    a {
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .hero-slider-btn {
+        margin-top: 0;
+    }
+}
+
+// ============================================================
+// VIDEO — containers and Wistia hero
+// ============================================================
+
+.video-container {
+    position: relative;
+    padding-bottom: 90vh;
+    padding-top: 0;
+    height: 0;
+    overflow: hidden;
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.vid-container-overflow {
+    overflow: hidden;
+    height: 90vh;
+}
+
+.video-hero-text-background-overlay {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    padding-top: 160px;
+    text-align: left;
+    height: 90vh;
+    width: 80%;
+    background: -moz-linear-gradient(left, rgba(19,19,19,0.8) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(left, rgba(19,19,19,0.8) 0%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to right, rgba(19,19,19,0.8) 0%,rgba(0,0,0,0) 100%);
+}
+
+.video-hero-text-container {
+    position: absolute;
+    width: 540px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50px;
+    padding-top: 70px;
+
+    h1 {
+        color: #fff;
+    }
+
+    .hero-button {
+        color: #fff;
+        border: 2px solid #fff;
+        padding: 12px 24px;
+        margin-top: 12px;
+        display: inline-block;
+    }
+}
+
+// Wistia embed
+.wistia_responsive_padding {
+    padding: 0 !important;
+    height: 90vh !important;
+}
+
+.wistia_embed,
+.wistia_embed > div,
+.wistia_embed > div > div > div:nth-child(2),
+.wistia_embed .w-chrome > div > div:nth-child(2) > div:nth-child(2) {
+    height: 90vh !important;
+}
+
+.w-video-wrapper video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    margin-left: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .wistia_responsive_padding {
+        padding: 0 !important;
+        height: 80vh !important;
+    }
+
+    .video-container {
+        padding-bottom: 80vh;
+    }
+
+    .w-video-wrapper video {
+        width: auto !important;
+        height: 100% !important;
+        margin-left: -50%;
+    }
+
+    .video-hero-text-background-overlay {
+        width: 100%;
+        height: 80vh;
+    }
+
+    .video-hero-text-container {
+        width: initial;
+        top: 60%;
+        left: 0;
+        padding: 0 4%;
+    }
+
+    .wistia_embed,
+    .wistia_embed > div,
+    .wistia_embed > div > div > div:nth-child(2),
+    .wistia_embed .w-chrome > div > div:nth-child(2) > div:nth-child(2) {
+        height: 80vh !important;
+    }
+}
+
+@media only screen and (max-width: 565px) {
+    .w-video-wrapper video {
+        width: auto !important;
+        height: 100% !important;
+        margin-left: -65%;
+    }
+}
+
+// ============================================================
+// WEDDING TEMPLATE TYPOGRAPHY
+// ============================================================
+
+.wedding-container h1,
+.wedding-container h2,
+.wedding-container h3,
+h1.callout__heading {
+    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
+    color: #51534a;
+    letter-spacing: .125em;
+}
+
+.wedding-container h1 {
+    font-size: 3em;
+    line-height: 1.25em;
+    margin: 1em auto;
+    text-align: center;
+}
+
+.wedding-container h2,
+.wedding-container h3 {
+    font-weight: bold;
+}
+
+.wedding-container p,
+.wedding-container span.gform_description {
+    margin: 1em auto;
+    color: #777777;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 1.4em;
+    hyphens: none;
+}
+
+h2.alt-heading,
+.callout__content h2 {
+    font-family: helvetica, arial, sans-serif;
+    font-weight: normal;
+    font-style: italic;
+    color: #8dc5db;
+    margin-bottom: 50px;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+// ============================================================
+// DINING PAGES (page-id scoped)
+// ============================================================
+
+// Shared outer wrapper
+.dine-page-wrapper-outer {
+    position: relative;
+    padding-top: 70px;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    > .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        background: rgba(0,0,0,.3);
+    }
+}
+
+h1.ot-title {
+    color: #fff !important;
+}
+
+// Shared reserve button
+.reserve-btn {
+    text-align: center;
+    padding: 50px 0;
+    background: #fffaf4;
+    border-top: 1px solid #ddd;
+}
+
+// Shared dining wrapper (page 4959, 4456, 156)
+body.page-id-4959,
+body.page-id-4456,
+body.page-id-156 {
+    .dine-page-wrapper {
+        max-width: 840px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        padding: 120px 0;
+
+        h2 {
+            color: #fff;
+            margin: 0 auto;
+            max-width: 560px;
+            text-align: center;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 24px;
+        }
+    }
+
+    h1.ot-title {
+        color: #fff;
+    }
+
+    .dining-overview-p {
+        background: #fffaf4;
+        position: relative;
+        z-index: 1;
+
+        div {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 50px;
+            text-align: center;
+        }
+    }
+
+    footer {
+        margin-top: 0;
+    }
+
+    a.reserve-btn {
+        display: block;
+        width: 200px;
+        margin: 0 auto;
+        background: #6383a8;
+        color: #fff;
+        padding: 16px;
+        margin-top: 24px;
+    }
+}
+
+// Page 4959 — OpenTable booking page
+body.page-id-4959 {
+    .dine-page-wrapper-outer {
+        background-image: url('https://lakearrowheadlodge.com/wp-content/uploads/2021/01/LAL_Film_Hero-Alt3-1.jpg');
+        padding-top: 70px;
+    }
+
+    .ot-dtp-picker.wide {
+        width: 840px;
+        margin: 0 auto;
+    }
+
+    @media only screen and (min-width: 767px) {
+        .container {
+            width: 100% !important;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
+// Page 4456 — Dine page
+body.page-id-4456 {
+    .dine-page-wrapper-outer {
+        background-image: url('https://lakearrowheadlodge.com/wp-content/uploads/2020/09/LunchGathering-2.jpg');
+    }
+
+    .dining-photos {
+        height: 240px;
+        width: 100%;
+        overflow: hidden;
+
+        .dining-photos-inner-wrapper {
+            width: 2000px;
+        }
+
+        img {
+            height: 240px;
+            float: left;
+            width: auto;
+            display: inline-block;
+        }
+    }
+
+    .ot-dtp-picker.wide {
+        width: 840px;
+        margin: 0 auto;
+    }
+
+    @media only screen and (min-width: 767px) {
+        .container {
+            width: 100% !important;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    @media only screen and (max-width: 840px) {
+        .dine-page-wrapper {
+            padding: 60px 0;
+        }
+
+        .ot-dtp-picker.wide {
+            margin: 0 auto;
+            width: 90%;
+            background: #fff;
+            margin-top: 12px;
+            border-radius: 8px;
+
+            .ot-title {
+                text-align: center;
+                color: #111 !important;
+                font-size: 24px !important;
+            }
+
+            .ot-dtp-picker-form .ot-dtp-picker-button {
+                border-radius: 0 2px 2px 0;
+                width: 100%;
+                float: right;
+            }
+        }
+    }
+}
+
+// Page 156 — Main dining page
+body.page-id-156 {
+    .dine-page-wrapper-outer {
+        background-image: url('https://lakearrowheadlodge.com/wp-content/uploads/2020/09/LunchGathering-2.jpg');
+    }
+
+    .dining-photos .dining-photos-inner-wrapper {
+        width: 2000px;
+    }
+
+    .ot-dtp-picker.wide {
+        width: 840px;
+        margin: 0 auto;
+    }
+
+    @media only screen and (max-width: 840px) {
+        .dine-page-wrapper {
+            padding: 60px 0;
+        }
+
+        .ot-dtp-picker.wide {
+            margin: 0 auto;
+            width: 90%;
+            background: #fff;
+            margin-top: 12px;
+            border-radius: 8px;
+
+            .ot-title {
+                text-align: center;
+                color: #111 !important;
+                font-size: 24px !important;
+            }
+
+            .ot-dtp-picker-form .ot-dtp-picker-button {
+                border-radius: 0 2px 2px 0;
+                width: 100%;
+                float: right;
+            }
+        }
+    }
+}
+
+.ot-powered-by {
+    @media only screen and (max-width: 840px) {
+        display: none;
+    }
+}
+
+// ============================================================
+// TRIPADVISOR WIDGET
+// ============================================================
+
+.am-small-icon {
+    max-width: 48px;
+}
+
+div#ta-widget img {
+    width: 100px;
+    opacity: .5;
+    margin: -28px 0 10px;
+    display: block;
+}
+
+div#ta-widget a:hover img {
+    opacity: 1;
+}
+
+// ============================================================
+// TABLEPRESS
+// ============================================================
+
+#tablepress-1 caption {
+    display: none;
+}
+
+// ============================================================
+// GRAVITY FORMS — gform_35 (Accommodations Media)
+// ============================================================
+
+#gform_35 {
+    ul {
+        padding-left: 0 !important;
+        padding-top: 0 !important;
+
+        li {
+            list-style-type: none !important;
+        }
+    }
+
+    label.gfield_label {
+        font-weight: 700;
+    }
+
+    #input_35_4_1_container,
+    #input_35_4_2_container {
+        display: block;
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+        }
+    }
+
+    input#input_35_2,
+    input#input_35_3 {
+        width: 50%;
+    }
+
+    input#input_35_4_1,
+    input#input_35_4_2 {
+        width: 100%;
+    }
+}
+
+#input_35_1_3_container,
+#input_35_1_6_container {
+    display: inline-block;
+
+    label {
+        float: left;
+        margin-right: 8px;
+    }
+}
+
+#input_35_4_6_container {
+    margin-top: 8px;
+    display: block;
+}
+
+// ============================================================
+// FILM LOCATION TEMPLATE — accordion overrides
+// ============================================================
+
+.page-template-template-film-location {
+    .panel-title a {
+        font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
+        color: #51534a;
+        text-transform: uppercase;
+        letter-spacing: .01275em;
+        font-size: 18px;
+    }
+
+    .panel-heading {
+        background-color: #ffffff;
+    }
+
+    .wrap {
+        box-shadow: none;
+    }
+
+    .panel-group {
+        margin-bottom: 50px;
+    }
+
+    #accordion .panel-heading a:before,
+    #bs-collapse .panel-heading.active a:after,
+    .panel-heading a:before {
+        font-size: 16px;
+        top: 20px;
+    }
+
+    .panel {
+        border-bottom: 1px solid #b8b9b1;
+    }
+
+    .panel-body {
+        padding-bottom: 35px;
+    }
+}
+
+// ============================================================
+// THE EVENTS CALENDAR
+// ============================================================
+
+#page #header {
+    display: none;
+}
+
+.tribe-events-header ul li,
+#tribe-events-footer ul li {
+    list-style-type: none;
+}
+
+// ============================================================
+// BUTTONS
+// ============================================================
+
+.btn--blue {
+    border: 1px solid var(--lacc-color-brand-blue);
+    background-color: var(--lacc-color-white);
+    color: var(--lacc-color-brand-blue);
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: all .5s ease-in-out;
+}
+
+.btn {
+    display: inline-block;
+    padding: .5em 1.25em;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #51534a;
+    letter-spacing: .125em;
+    text-transform: uppercase;
+    border: 2px solid #51534a;
+    transition: all .5s ease-in-out;
+    border-radius: 0;
+    text-decoration: none;
+
+    &.lg {
+        font-size: 1.15em;
+    }
+
+    &:hover {
+        color: var(--lacc-color-ink);
+        background-color: var(--lacc-color-white);
+    }
+}
+
+.articles-template .btn {
+    color: var(--lacc-color-white);
+    background-color: var(--lacc-color-ink);
+    border-color: var(--lacc-color-ink);
+}
+
+// ============================================================
+// DECORATIVE LISTS — .lacc-keyline-list
+// ============================================================
+
+ul.lacc-keyline-list,
+ul.lacc-keyline-list--plain {
+    --lacc-list-line-color: rgba(148, 110, 41, 0.28);
+    --lacc-list-bullet-color: var(--lacc-color-gold-soft);
+    list-style: none !important;
+    margin: 0;
+    padding: 0 !important;
+}
+
+ul.lacc-keyline-list > li,
+ul.lacc-keyline-list--plain > li {
+    list-style: none !important;
+    position: relative;
+    margin: 0;
+    padding: .875em 0 .875em 2em;
+    border-bottom: 1px solid var(--lacc-list-line-color) !important;
+
+    &:first-child {
+        border-top: 1px solid var(--lacc-list-line-color) !important;
+    }
+}
+
+ul.lacc-keyline-list > li::before {
+    content: '✦' !important;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: .875em;
+    width: .5em;
+    color: var(--lacc-list-bullet-color) !important;
+    font-size: 1em;
+    line-height: 1;
+}
+
+ul.lacc-keyline-list--plain > li {
+    padding-left: 0;
+
+    &::before {
+        content: none !important;
+    }
+}
+
+// ============================================================
+// NUMBERED LISTS
+// ============================================================
+
+ol.numbered {
+    list-style: decimal;
+    margin-left: 1em;
+    color: #777777;
+}
+
+// ============================================================
+// UTILITY CLASSES
+// ============================================================
+
+.pmb-30 {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #dedede;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+.mb-50 {
+    margin-bottom: 50px;
+}
+
+.p-50 {
+    padding: 50px;
+}

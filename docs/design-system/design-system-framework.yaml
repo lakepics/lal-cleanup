@@ -1,0 +1,77 @@
+design_system:
+  project: Lake Arrowhead Lodge
+  purpose:
+    - align brand, UI, and web implementation
+    - reduce drift across design, content, and development
+    - create reusable foundations, components, and patterns
+  layers:
+    - foundations
+    - elements
+    - components
+    - patterns
+    - templates
+    - implementation_rules
+  foundations:
+    - design_tokens
+    - typography
+    - color
+    - gradients
+    - grid
+    - spacing
+    - sizing
+    - radii
+    - borders
+    - shadows
+    - motion
+    - breakpoints
+  elements:
+    - buttons
+    - links
+    - form_controls
+    - tags
+    - badges
+    - dividers
+    - icons
+  components:
+    - cards
+    - banners
+    - heroes
+    - navigation
+    - gallery
+    - accordion
+    - quote_block
+    - media_text
+    - feature_list
+    - cta_band
+    - footer
+  patterns:
+    - homepage_storytelling
+    - accommodations_listing
+    - room_detail_intro
+    - amenities_overview
+    - dining_or_experience_feature
+    - event_promo
+    - about_story_section
+    - contact_inquiry
+    - faq
+    - seasonal_landing
+  templates:
+    - homepage
+    - standard_interior
+    - landing_page
+    - room_listing
+    - room_detail
+    - offer_page
+    - amenity_page
+    - event_page
+    - editorial_page
+    - contact_page
+  requirements:
+    - accessibility
+    - responsive_behavior
+    - cms_mapping
+    - content_constraints
+    - semantic_naming
+    - decision_logging
+
+

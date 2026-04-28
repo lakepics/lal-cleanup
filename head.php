@@ -8,4 +8,6 @@
       margin-top: 0 !important;
     }
   </style>
+    <!-- MyFonts beacon (HaarlemDeco license tracking) — migrated from customizer.css 2026-04-25 -->
+    <link rel="stylesheet" href="//hello.myfonts.net/count/4383ff">
 </head>

@@ -45,7 +45,7 @@ $library_assets = array(
     'logo_arrowhead' => '/wp-content/themes/LACC-sage-theme-master/brand/logos/LAL_Logo_Arrowhead_Horiz_Green.svg',
     'logo_ccfr' => '/wp-content/themes/LACC-sage-theme-master/brand/logos/LAL_Logo_CCFR_Horiz_Color+White.svg',
     'logo_tavern' => '/wp-content/themes/LACC-sage-theme-master/brand/logos/north-shore-tavern-at-ucla-lake-arrowhead-lodge-logo-brown.svg',
-    'logo_header' => '/wp-content/themes/LACC-sage-theme-master/assets/images/logo_top.svg',
+    'logo_header' => '/wp-content/themes/LACC-sage-theme-master/brand/logos/LAL_Logo_CCFR_Horiz_Color+White.svg',
     'logo_footer' => '/wp-content/themes/LACC-sage-theme-master/assets/images/logo_v3_white.svg',
 );
 ?>

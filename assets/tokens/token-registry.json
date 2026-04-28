@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "name": "Lake Arrowhead Lodge Design System Tokens",
+    "version": "1.0.0",
+    "created": "2026-04-27",
+    "status": "in-progress",
+    "description": "Machine-readable token definitions for Lake Arrowhead Lodge design system. Source of truth for runtime CSS vars and component styling.",
+    "documentation": "See docs/design-system/ for layer-by-layer governance and usage rules."
+  },
+  "token-files": {
+    "color": {
+      "file": "assets/tokens/color.json",
+      "status": "approved",
+      "last-updated": "2026-04-27",
+      "owner": "design-system",
+      "layers": ["foundations", "elements", "components"]
+    },
+    "typography": {
+      "file": "assets/tokens/typography.json",
+      "status": "in-progress",
+      "last-updated": "2026-04-27",
+      "owner": "design-system",
+      "layers": ["foundations", "elements"]
+    }
+  },
+  "pending-token-files": {
+    "spacing": { "file": "assets/tokens/spacing.json", "status": "blocked", "reason": "requires layout decision" },
+    "sizing": { "file": "assets/tokens/sizing.json", "status": "blocked", "reason": "requires component contract" },
+    "motion": { "file": "assets/tokens/motion.json", "status": "proposed" },
+    "shadows": { "file": "assets/tokens/shadows.json", "status": "proposed" }
+  },
+  "runtime-mapping": {
+    "templates/head.php": {
+      "role": "Global CSS custom property declarations at :root",
+      "status": "in-progress",
+      "next-action": "Regenerate from color.json and typography.json tokens after approval"
+    },
+    "dist/styles/main.css": {
+      "role": "Compiled frontend CSS using runtime tokens",
+      "status": "pending",
+      "next-action": "Rebuild after templates/head.php is updated"
+    }
+  },
+  "governance": {
+    "drift-prevention": "All new token values must be registered here before component use",
+    "review-gate": "Token changes require update to both JSON source and documentation",
+    "approval-hierarchy": "Foundation approval -> semantic token lock -> runtime implementation",
+    "upward-feedback-loop": "Components may raise token requests when needs are unmet; requests must be resolved before component lock",
+    "lock-rule": "No component can be marked locked/approved with unresolved token requests"
+  },
+  "approved-token-additions": {
+    "2026-04-27": {
+      "source": [
+        "docs/design-system/04-color.md",
+        "design-system-specimens.html"
+      ],
+      "primitives": [
+        "color.primitive.gold-deep (#7a5a1f)",
+        "color.primitive.green (#60a57d)",
+        "color.primitive.green-deep (#4b8767)"
+      ],
+      "semantic": [
+        "color.semantic.bg.brand-deep",
+        "color.semantic.accent.old-gold",
+        "color.semantic.accent.gold-deep",
+        "color.semantic.accent.green",
+        "color.semantic.accent.green-deep"
+      ],
+      "gradients": [
+        "blue-to-deep-blue (#3f5f85 -> #324c6a)",
+        "white-to-cream (#ffffff -> #f6f3ed)",
+        "ink-to-deep-ink (#51534a -> #1f221d)",
+        "gold-to-deep-gold (#d4a441 -> #7a5a1f)",
+        "green-to-deep-green (#60a57d -> #4b8767)"
+      ]
+    }
+  },
+  "token-request-workflow": {
+    "required-fields": [
+      "request-id",
+      "originating-component",
+      "requested-token-name",
+      "role-description",
+      "candidate-value",
+      "affected-states",
+      "accessibility-impact",
+      "decision-status"
+    ],
+    "statuses": ["proposed", "approved", "rejected", "deferred"],
+    "queue-file": "docs/design-system/19-change-log.md"
+  }
+}

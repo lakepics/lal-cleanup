@@ -1,15 +1,31 @@
-// Search form
+// Search form — Bootstrap @extend references removed 2026-04-25
 .search-form {
-  @extend .form-inline;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 .search-form label {
   font-weight: normal;
-  @extend .form-group;
+  margin-bottom: 0;
 }
 .search-form .search-field {
-  @extend .form-control;
+  display: block;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 .search-form .search-submit {
-  @extend .btn;
-  @extend .btn-default;
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }

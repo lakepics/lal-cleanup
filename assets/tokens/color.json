@@ -1,0 +1,50 @@
+{
+  "color": {
+    "primitive": {
+      "blue": { "value": "#3f5f85", "description": "Brand primary blue" },
+      "blue-deep": { "value": "#324c6a", "description": "Brand primary blue, darker" },
+      "blue-border": { "value": "#4c6d93", "description": "Brand blue for borders and dividers" },
+      "cream": { "value": "#f6f3ed", "description": "Off-white, soft background" },
+      "ink": { "value": "#51534a", "description": "Primary text color" },
+      "ink-deep": { "value": "#1f221d", "description": "Strong text and headings" },
+      "gold": { "value": "#d4a441", "description": "Accent gold" },
+      "gold-deep": { "value": "#7a5a1f", "description": "Accent gold, deep endpoint" },
+      "gold-accent": { "value": "#c6922e", "description": "Accent gold, muted" },
+      "gold-decorative": { "value": "#b58a2d", "description": "Accent gold, deepest" },
+      "green": { "value": "#60a57d", "description": "Brand green accent" },
+      "green-deep": { "value": "#4b8767", "description": "Brand green, deep endpoint" },
+      "white": { "value": "#ffffff", "description": "Pure white" }
+    },
+    "semantic": {
+      "bg": {
+        "page": { "value": "{color.primitive.white}", "description": "Primary page background" },
+        "soft": { "value": "{color.primitive.cream}", "description": "Secondary/featured background" },
+        "brand": { "value": "{color.primitive.blue}", "description": "Brand background (primary nav, features)" },
+        "brand-deep": { "value": "{color.primitive.blue-deep}", "description": "Brand depth background and overlays" }
+      },
+      "text": {
+        "primary": { "value": "{color.primitive.ink}", "description": "Default body text" },
+        "strong": { "value": "{color.primitive.ink-deep}", "description": "Headings and emphasis" },
+        "inverse": { "value": "{color.primitive.white}", "description": "Text on dark backgrounds" },
+        "brand": { "value": "{color.primitive.blue-deep}", "description": "Text with brand intent" }
+      },
+      "border": {
+        "brand": { "value": "{color.primitive.blue-border}", "description": "Branded dividers and edges" },
+        "subtle": { "value": "rgba(81, 83, 74, 0.14)", "description": "Subtle dividers on light backgrounds" }
+      },
+      "action": {
+        "primary": { "value": "{color.primitive.blue}", "description": "Primary button/link" },
+        "primary-hover": { "value": "{color.primitive.blue-deep}", "description": "Primary button/link hover state" },
+        "on-primary": { "value": "{color.primitive.white}", "description": "Text on primary action background" }
+      },
+      "accent": {
+        "gold": { "value": "{color.primitive.gold}", "description": "Primary accent" },
+        "old-gold": { "value": "{color.primitive.gold-deep}", "description": "Utility accent and outlined emphasis" },
+        "gold-deep": { "value": "{color.primitive.gold-deep}", "description": "Deep gold endpoint for gradients" },
+        "green": { "value": "{color.primitive.green}", "description": "Environmental accent role" },
+        "green-deep": { "value": "{color.primitive.green-deep}", "description": "Deep green endpoint for gradients" },
+        "gold-support": { "value": "{color.primitive.gold-accent}", "description": "Secondary accent" }
+      }
+    }
+  }
+}

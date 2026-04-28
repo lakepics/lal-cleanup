@@ -3756,6 +3756,104 @@ if ( ! $landing_featured_article ) {
         </div>
     </div>
 
+    <!-- Component Specimens: Button (Locked 2026-04-27) -->
+    <div class="lacc-sandbox__lane">
+        <div class="lacc-sandbox__lane-card">
+            <div class="lacc-sandbox__lane-head">
+                <div>
+                    <span class="lacc-sandbox__lane-label">Component: Button</span>
+                    <h2 class="lacc-sandbox__lane-title">Button Variants (Locked 2026-04-27)</h2>
+                </div>
+                <div class="lacc-sandbox__lane-statuses">
+                    <span class="lacc-sandbox__status lacc-sandbox__status--approved">approved</span>
+                </div>
+            </div>
+            <div class="lacc-sandbox__lane-copy">
+                <p><strong>Purpose:</strong> Primary interactive element carrying brand intent through color, typography, and state feedback.</p>
+                <p><strong>Tokens:</strong> color-action-primary, color-action-primary-hover, color-action-on-primary, type-family-ui</p>
+                <p><strong>Status:</strong> Contract locked in docs/design-system/components/button.md. Sandbox specimens ready for visual QA. Ready for promotion gate validation.</p>
+            </div>
+        </div>
+        <div class="lacc-sandbox__specimen-main" style="padding: 24px 28px; border: 1px solid rgba(81,83,74,0.14); background: rgba(255,255,255,0.88);">
+            <h3 style="margin: 0 0 16px; font-size: 18px; font-weight: 700;">Variant: Primary (Default)</h3>
+            <div class="lacc-sandbox__button-row">
+                <a href="#" class="lacc-sandbox__button lacc-sandbox__button--primary">Standard</a>
+                <a href="#" class="lacc-sandbox__button lacc-sandbox__button--primary" style="font-size: 16px; padding: 1em 1.8em;">Large</a>
+                <a href="#" class="lacc-sandbox__button lacc-sandbox__button--primary" style="font-size: 12px; padding: 0.7em 1.2em;">Small</a>
+            </div>
+
+            <h3 style="margin: 24px 0 16px; font-size: 18px; font-weight: 700;">Variant: Secondary (Outlined)</h3>
+            <div class="lacc-sandbox__button-row">
+                <a href="#" class="lacc-sandbox__button" style="border: 1px solid #3f5f85; color: #3f5f85; background: transparent;">Standard</a>
+                <a href="#" class="lacc-sandbox__button" style="font-size: 16px; padding: 1em 1.8em; border: 1px solid #3f5f85; color: #3f5f85; background: transparent;">Large</a>
+                <a href="#" class="lacc-sandbox__button" style="font-size: 12px; padding: 0.7em 1.2em; border: 1px solid #3f5f85; color: #3f5f85; background: transparent;">Small</a>
+            </div>
+
+            <h3 style="margin: 24px 0 16px; font-size: 18px; font-weight: 700;">Variant: Tertiary (Text Only)</h3>
+            <div class="lacc-sandbox__button-row">
+                <a href="#" class="lacc-sandbox__button" style="border: none; color: #3f5f85; background: transparent; text-decoration: underline;">Standard</a>
+                <a href="#" class="lacc-sandbox__button" style="font-size: 16px; padding: 1em 1.8em; border: none; color: #3f5f85; background: transparent; text-decoration: underline;">Large</a>
+                <a href="#" class="lacc-sandbox__button" style="font-size: 12px; padding: 0.7em 1.2em; border: none; color: #3f5f85; background: transparent; text-decoration: underline;">Small</a>
+            </div>
+
+            <h3 style="margin: 24px 0 16px; font-size: 18px; font-weight: 700;">State: Hover/Focus</h3>
+            <div class="lacc-sandbox__button-row">
+                <a href="#" class="lacc-sandbox__button lacc-sandbox__button--primary" style="background: #324c6a; cursor: pointer;">Primary Hover</a>
+                <a href="#" class="lacc-sandbox__button" style="border: 1px solid #324c6a; color: #324c6a; background: #f6f3ed; cursor: pointer;">Secondary Hover</a>
+                <a href="#" class="lacc-sandbox__button" style="border: none; color: #324c6a; background: transparent; text-decoration: underline; cursor: pointer;">Tertiary Hover</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Component Specimens: Navigation (Locked 2026-04-27) -->
+    <div class="lacc-sandbox__lane">
+        <div class="lacc-sandbox__lane-card">
+            <div class="lacc-sandbox__lane-head">
+                <div>
+                    <span class="lacc-sandbox__lane-label">Component: Navigation</span>
+                    <h2 class="lacc-sandbox__lane-title">Navigation Component (Locked 2026-04-27)</h2>
+                </div>
+                <div class="lacc-sandbox__lane-statuses">
+                    <span class="lacc-sandbox__status lacc-sandbox__status--approved">contract locked</span>
+                    <span class="lacc-sandbox__status lacc-sandbox__status--criteria">accessibility pending</span>
+                </div>
+            </div>
+            <div class="lacc-sandbox__lane-copy">
+                <p><strong>Purpose:</strong> Primary site navigation with desktop horizontal menu, mobile collapsible panel, and submenu support.</p>
+                <p><strong>File:</strong> components/components-primary-nav.php</p>
+                <p><strong>Tokens:</strong> color-brand-primary, color-brand-primary-deep, color-bg-soft, color-text-inverse, type-family-ui</p>
+                <p><strong>Status:</strong> Contract documented in docs/design-system/components/navigation.md. Desktop/mobile behavior implemented. Next: accessibility full pass (keyboard, screen reader, focus management).</p>
+            </div>
+        </div>
+        <div class="lacc-sandbox__specimen-main" style="padding: 24px 28px; border: 1px solid rgba(81,83,74,0.14); background: rgba(255,255,255,0.88);">
+            <h3 style="margin: 0 0 16px; font-size: 18px; font-weight: 700;">Specimen: Desktop Navigation Preview</h3>
+            <p style="margin: 0 0 16px; color: #51534a; font-size: 14px;">Current implementation at lal.local/ - scroll to top. Shows: fixed gradient bar, brand logo, horizontal menu items, white text, hover states with cream background on secondary items.</p>
+            <iframe src="<?php echo esc_url( home_url( '/' ) ); ?>" style="width: 100%; height: 180px; border: 1px solid #ddd; border-radius: 2px; display: block;" title="Desktop Navigation Preview"></iframe>
+
+            <h3 style="margin: 24px 0 16px; font-size: 18px; font-weight: 700;">Specimen: Mobile Navigation States</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div style="border: 1px solid #ddd; border-radius: 2px; overflow: hidden; background: #f9f9f9;">
+                    <div style="padding: 12px; background: linear-gradient(180deg, #3f5f85, #324c6a); color: #fff; font-size: 12px; font-weight: 700; text-transform: uppercase;">
+                        Mobile: Closed
+                    </div>
+                    <div style="padding: 16px; text-align: center; font-size: 14px; color: #51534a;">
+                        Hamburger menu visible, panel hidden, call CTA in panel (hidden)
+                    </div>
+                </div>
+                <div style="border: 1px solid #ddd; border-radius: 2px; overflow: hidden; background: #f9f9f9;">
+                    <div style="padding: 12px; background: linear-gradient(180deg, #3f5f85, #324c6a); color: #fff; font-size: 12px; font-weight: 700; text-transform: uppercase;">
+                        Mobile: Expanded Menu
+                    </div>
+                    <div style="padding: 16px; font-size: 13px; color: #51534a; max-height: 200px; overflow-y: auto;">
+                        <div style="padding: 12px; background: rgba(241,239,233,0.98); margin-bottom: 8px; font-size: 22px; font-weight: 600; letter-spacing: .03em;">Menu Item</div>
+                        <div style="padding: 8px 12px; color: #324c6a; font-size: 17px; font-weight: 500;">Submenu Item</div>
+                        <div style="padding: 12px; background: linear-gradient(180deg, #3f5f85, #324c6a); color: #fff; font-size: 14px; font-weight: 700; letter-spacing: .1em; text-align: center; margin-top: 16px;">Call 909-337-2478</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="lacc-sandbox__lane">
         <div class="lacc-sandbox__lane-card">
             <div class="lacc-sandbox__lane-head">

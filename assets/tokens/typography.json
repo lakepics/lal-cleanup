@@ -1,0 +1,43 @@
+{
+  "typography": {
+    "font-family": {
+      "display": { "value": "HaarlemDeco, Arial, Helvetica, sans-serif", "description": "Primary display and heading family" },
+      "editorial": { "value": "\"Freight Big Pro\", Georgia, serif", "description": "Editorial serif for long-form content" },
+      "ui": { "value": "Helvetica, Arial, sans-serif", "description": "UI labels, utility text, navigation" },
+      "body-fallback": { "value": "Arial, Helvetica, sans-serif", "description": "Default body text fallback" }
+    },
+    "size": {
+      "display-xl": { "value": "clamp(50px, 7vw, 92px)", "description": "Largest display heading" },
+      "h1": { "value": "clamp(48px, 6vw, 76px)", "description": "Primary heading" },
+      "h2": { "value": "clamp(40px, 4.8vw, 58px)", "description": "Secondary heading" },
+      "h3": { "value": "clamp(32px, 3.6vw, 44px)", "description": "Tertiary heading" },
+      "h4-editorial": { "value": "clamp(28px, 3vw, 34px)", "description": "Editorial subheading (serif)" },
+      "h5-editorial": { "value": "clamp(22px, 2.4vw, 28px)", "description": "Editorial subsection (serif)" },
+      "h6-caps": { "value": "16px", "description": "Uppercase label heading" },
+      "utility-caps": { "value": "14px", "description": "Uppercase utility label" },
+      "lede": { "value": "clamp(21px, 2.1vw, 26px)", "description": "Editorial introduction text" },
+      "body": { "value": "16px", "description": "Default body text size" },
+      "body-small": { "value": "14px", "description": "Compact body text (forms, lists)" }
+    },
+    "line-height": {
+      "tight": { "value": "0.96", "description": "Display headings" },
+      "display": { "value": "1.02", "description": "Heading-level content" },
+      "normal": { "value": "1.2", "description": "Utility and labels" },
+      "comfortable": { "value": "1.6", "description": "Default body reading" },
+      "relaxed": { "value": "1.72", "description": "Long-form editorial" },
+      "editorial": { "value": "1.58", "description": "Editorial serif lede" }
+    },
+    "letter-spacing": {
+      "tight": { "value": "0.012em", "description": "Minimal tracking" },
+      "display": { "value": "0.015em", "description": "Heading tracking" },
+      "normal": { "value": "0.03em", "description": "Editorial serif tracking" },
+      "loose": { "value": "0.14em", "description": "Uppercase label tracking" },
+      "extra-loose": { "value": "0.16em", "description": "Eyebrow/badge tracking" }
+    },
+    "weight": {
+      "regular": { "value": "400", "description": "Regular weight" },
+      "medium": { "value": "500", "description": "Medium weight (editorial serif)" },
+      "bold": { "value": "700", "description": "Bold weight" }
+    }
+  }
+}
