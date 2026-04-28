@@ -735,19 +735,19 @@ if ( 'bottom' === $section_keyline_position ) {
     max-width: 100%;
     background: var(--scg-badge-bg);
     color: var(--scg-badge-text);
-    padding: 12px 18px;
+    padding: 8px 16px;
     border: var(--scg-card-badge-border-width, 0) solid var(--scg-card-badge-border-color, transparent);
     border-radius: var(--scg-card-badge-radius, 999px);
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: .12em;
-    line-height: 1.1;
+    letter-spacing: .11em;
+    line-height: 1;
     text-transform: uppercase;
 }
 
 .section-card-grid__card-badge--featured {
-    font-size: 13px;
-    letter-spacing: .14em;
+    font-size: 12px;
+    letter-spacing: .11em;
 }
 
 .section-card-grid__card-badge--flag {
