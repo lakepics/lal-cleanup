@@ -140,7 +140,7 @@ if ( ! in_array( $eyebrow_font_weight, array( '400', '500', '600', '700' ), true
 }
 
 if ( ! in_array( $eyebrow_text_transform, array( 'capitalize', 'uppercase', 'none' ), true ) ) {
-    $eyebrow_text_transform = 'capitalize';
+    $eyebrow_text_transform = 'uppercase';
 }
 
 if ( ! in_array( $header_column_width, array( '4', '5', '6', '7', '8', '9', '10', '11', '12' ), true ) ) {
@@ -178,8 +178,8 @@ if ( is_page( 'flex' ) && 'freight-big-pro' === $subheading_font_family ) {
 $default_surface_gradient = function_exists( 'lacc_get_default_surface_gradient' ) ? lacc_get_default_surface_gradient() : 'linear-gradient(180deg, rgba(246,243,237,0.92) 0%, rgba(255,255,255,0.92) 100%)';
 $section_intro_max_width = $section_intro_max_width ?: '100%';
 $heading_max_width = $heading_max_width ?: '100%';
-$heading_size_value = 'xxl' === $heading_size ? 'clamp(36px, 4.8vw, 68px)' : '36px';
-$heading_line_height_value = 'xxl' === $heading_size ? '.98' : '1.02';
+$heading_size_value = 'xxl' === $heading_size ? 'clamp(36px, 4.8vw, 68px)' : 'clamp(40px, 4.8vw, 58px)';
+$heading_line_height_value = 'xxl' === $heading_size ? '.98' : '1.05';
 $eyebrow_color = $eyebrow_color ?: 'var(--lacc-color-sky)';
 $eyebrow_background_color = $eyebrow_background_color ?: 'transparent';
 $eyebrow_border = $eyebrow_border ?: '0';
@@ -210,9 +210,9 @@ $card_heading_color = $card_heading_color ?: $section_heading_color;
 $section_keyline_position = in_array( $section_keyline_position, array( 'top', 'bottom' ), true ) ? $section_keyline_position : '';
 $section_keyline_color = $section_keyline_color ?: $section_heading_color;
 $scrollwork_color = $scrollwork_color ?: '#8DC5DB';
-$cta_text_size = $cta_text_size ?: '16px';
-$cta_padding = $cta_padding ?: '.75em 1.5em';
-$cta_letter_spacing = $cta_letter_spacing ?: '.04em';
+$cta_text_size = $cta_text_size ?: '13px';
+$cta_padding = $cta_padding ?: '.85em 1.45em';
+$cta_letter_spacing = $cta_letter_spacing ?: '.08em';
 $post_content_max_width = $post_content_max_width ?: '100%';
 $allowed_button_styles = array( 'primary', 'secondary', 'gold-text', 'ink', 'outline-ink', 'brown', 'light', 'outline', 'outline-dark', 'outline-gold' );
 $allowed_heading_html = array(
@@ -500,10 +500,10 @@ if ( 'bottom' === $section_keyline_position ) {
     font-family: var(--scg-heading-font, HaarlemDeco, Arial, Helvetica, sans-serif) !important;
     font-weight: var(--scg-heading-weight, 600) !important;
     letter-spacing: var(--scg-heading-letter-spacing, 0.1275rem);
-    font-size: var(--scg-heading-size, 36px);
-    line-height: var(--scg-heading-line-height, 1.02);
+    font-size: var(--scg-heading-size, clamp(40px, 4.8vw, 58px));
+    line-height: var(--scg-heading-line-height, 1.05);
     color: var(--scg-heading-color, var(--lacc-color-ink)) !important;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 
 .section-card-grid__header h3,
@@ -599,35 +599,69 @@ if ( 'bottom' === $section_keyline_position ) {
     min-width: 0;
     min-height: 0;
     width: auto;
-    padding: var(--scg-cta-padding, .75em 1.5em);
+    padding: .85em 1.45em;
     border: 1px solid transparent;
     border-radius: 0;
     background-image: none !important;
-    text-transform: none;
-    letter-spacing: var(--scg-cta-letter-spacing, .04em);
-    font-size: var(--scg-cta-font-size, 16px);
-    font-weight: 600;
-    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
     text-decoration: none !important;
     box-shadow: none;
-    transform: translateY(0);
-    transition: all .35s ease-in-out;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.section-card-grid .hero-button:focus-visible {
+    outline: 2px solid var(--lacc-color-action-primary, #3f5f85);
+    outline-offset: 2px;
+}
+
+.section-card-grid .hero-button--primary:hover,
+.section-card-grid .hero-button--primary:focus {
+    background: var(--lacc-color-action-primary-hover, #324c6a) !important;
+    border-color: var(--lacc-color-action-primary-hover, #324c6a) !important;
+    color: var(--lacc-color-action-on-primary, #ffffff) !important;
+}
+
+.section-card-grid .hero-button--secondary:hover,
+.section-card-grid .hero-button--secondary:focus {
+    background: var(--lacc-color-bg-soft, #f6f3ed) !important;
+    border-color: var(--lacc-color-action-primary, #3f5f85) !important;
+    color: var(--lacc-color-action-primary, #3f5f85) !important;
+}
+
+.section-card-grid .hero-button--gold-text:hover,
+.section-card-grid .hero-button--gold-text:focus,
+.section-card-grid .hero-button--brown:hover,
+.section-card-grid .hero-button--brown:focus {
+    background: var(--lacc-color-accent-old-gold, #7a5a1f) !important;
+    border-color: var(--lacc-color-accent-old-gold, #7a5a1f) !important;
+    color: var(--lacc-color-text-inverse, #ffffff) !important;
+}
+
+.section-card-grid .hero-button--ink:hover,
+.section-card-grid .hero-button--ink:focus {
+    background: var(--lacc-color-text-strong, #1f221d) !important;
+    border-color: var(--lacc-color-text-strong, #1f221d) !important;
+    color: var(--lacc-color-text-inverse, #ffffff) !important;
 }
 
 .section-card-grid__eyebrow {
     display: inline-block;
     margin-bottom: 12px;
-    letter-spacing: .2em;
-    font-size: var(--scg-eyebrow-size, 12px);
+    letter-spacing: .11em;
+    font-size: 11px;
     line-height: 1.2;
-    color: var(--scg-eyebrow-color, var(--lacc-color-sky));
+    color: var(--scg-eyebrow-color, var(--lacc-color-text-primary));
     font-family: var(--scg-eyebrow-font, inherit);
-    font-weight: var(--scg-eyebrow-weight, 600);
-    text-transform: var(--scg-eyebrow-transform, capitalize);
+    font-weight: 700;
+    text-transform: uppercase;
     background: var(--scg-eyebrow-bg, transparent);
-    border: var(--scg-eyebrow-border, 0);
-    padding: var(--scg-eyebrow-padding, 0);
-    border-radius: var(--scg-eyebrow-radius, 0);
+    border: var(--scg-eyebrow-border, 1px solid rgba(81,83,74,0.28));
+    padding: 6px 12px;
+    border-radius: 0;
 }
 
 .section-card-grid__card {
@@ -1107,15 +1141,15 @@ if ( 'bottom' === $section_keyline_position ) {
                     $card_button_style = in_array( $card_button_style, $allowed_button_styles, true ) ? $card_button_style : 'primary';
                     $card_badge_color_map = array(
                         'primary' => 'var(--lacc-color-ink, #51534a)',
-                        'secondary' => 'var(--lacc-color-accent, #9e7156)',
-                        'gold-text' => 'var(--lacc-color-action-gold-text, #7A5A1F)',
+                        'secondary' => 'var(--lacc-color-action-primary, #3f5f85)',
+                        'gold-text' => 'var(--lacc-color-accent-old-gold, #7a5a1f)',
                         'ink' => 'var(--lacc-color-ink, #51534a)',
                         'outline-ink' => 'var(--lacc-color-ink, #51534a)',
-                        'brown' => '#946E29',
+                        'brown' => 'var(--lacc-color-accent-old-gold, #7a5a1f)',
                         'light' => 'var(--lacc-color-cream, #f6f3ed)',
                         'outline' => 'var(--lacc-color-white, #ffffff)',
                         'outline-dark' => 'var(--lacc-color-ink, #51534a)',
-                        'outline-gold' => 'var(--lacc-color-gold-bright, #f5b62b)'
+                        'outline-gold' => 'var(--lacc-color-accent-gold, #d4a441)'
                     );
                     $card_badge_bg = isset( $card_badge_color_map[ $card_button_style ] ) ? $card_badge_color_map[ $card_button_style ] : 'var(--lacc-color-gold-soft, #946E29)';
                     $card_badge_text_color = 'light' === $card_button_style ? 'var(--lacc-color-ink, #51534a)' : 'var(--lacc-color-white, #ffffff)';
@@ -1179,15 +1213,15 @@ if ( 'bottom' === $section_keyline_position ) {
                     $card_button_style = in_array( $card_button_style, $allowed_button_styles, true ) ? $card_button_style : 'primary';
                     $card_badge_color_map = array(
                         'primary' => 'var(--lacc-color-ink, #51534a)',
-                        'secondary' => 'var(--lacc-color-accent, #9e7156)',
-                        'gold-text' => 'var(--lacc-color-action-gold-text, #7A5A1F)',
+                        'secondary' => 'var(--lacc-color-action-primary, #3f5f85)',
+                        'gold-text' => 'var(--lacc-color-accent-old-gold, #7a5a1f)',
                         'ink' => 'var(--lacc-color-ink, #51534a)',
                         'outline-ink' => 'var(--lacc-color-ink, #51534a)',
-                        'brown' => '#946E29',
+                        'brown' => 'var(--lacc-color-accent-old-gold, #7a5a1f)',
                         'light' => 'var(--lacc-color-cream, #f6f3ed)',
                         'outline' => 'var(--lacc-color-white, #ffffff)',
                         'outline-dark' => 'var(--lacc-color-ink, #51534a)',
-                        'outline-gold' => 'var(--lacc-color-gold-bright, #f5b62b)'
+                        'outline-gold' => 'var(--lacc-color-accent-gold, #d4a441)'
                     );
                     $card_badge_bg = isset( $card_badge_color_map[ $card_button_style ] ) ? $card_badge_color_map[ $card_button_style ] : 'var(--lacc-color-gold-soft, #946E29)';
                     $card_badge_text_color = 'light' === $card_button_style ? 'var(--lacc-color-ink, #51534a)' : 'var(--lacc-color-white, #ffffff)';

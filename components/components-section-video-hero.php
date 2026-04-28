@@ -90,7 +90,7 @@ if ( ! in_array( $eyebrow_font_weight, array( '400', '500', '600', '700' ), true
 }
 
 if ( ! in_array( $eyebrow_text_transform, array( 'capitalize', 'uppercase', 'none' ), true ) ) {
-    $eyebrow_text_transform = 'capitalize';
+    $eyebrow_text_transform = 'uppercase';
 }
 
 $subheading_font_stack = 'freight-big-pro' === $subheading_font_family ? '"Freight Big Pro", Georgia, serif' : 'HaarlemDeco, Arial, Helvetica, sans-serif';
@@ -101,16 +101,16 @@ $hero_heading_color = $hero_heading_color ?: 'var(--lacc-color-cream)';
 $hero_subheading_color = $hero_subheading_color ?: 'rgba(246,243,237,0.82)';
 $eyebrow_color = $eyebrow_color ?: 'var(--lacc-color-gold-soft)';
 $eyebrow_background_color = $eyebrow_background_color ?: 'transparent';
-$eyebrow_border = $eyebrow_border ?: '1px solid rgba(201,151,58,0.40)';
-$eyebrow_padding = $eyebrow_padding ?: '8px 18px';
+$eyebrow_border = $eyebrow_border ?: '1px solid rgba(81,83,74,0.28)';
+$eyebrow_padding = $eyebrow_padding ?: '6px 12px';
 $eyebrow_font_size = $eyebrow_font_size ?: '11px';
-$eyebrow_border_radius = $eyebrow_border_radius ?: '999px';
+$eyebrow_border_radius = $eyebrow_border_radius ?: '0';
 $factoid_value_color = $factoid_value_color ?: 'var(--lacc-color-gold-soft)';
 $factoid_label_color = $factoid_label_color ?: 'rgba(246,243,237,0.78)';
 $heading_max_width = $heading_max_width ?: '100%';
-$cta_text_size = $cta_text_size ?: '16px';
-$cta_padding = $cta_padding ?: '.75em 1.5em';
-$cta_letter_spacing = $cta_letter_spacing ?: '.04em';
+$cta_text_size = $cta_text_size ?: '13px';
+$cta_padding = $cta_padding ?: '.85em 1.45em';
+$cta_letter_spacing = $cta_letter_spacing ?: '.08em';
 
 if ( ! in_array( $background_video_button_style, array( 'primary', 'secondary', 'gold-text', 'ink', 'outline-ink', 'brown', 'light', 'outline', 'outline-dark', 'outline-gold' ), true ) ) {
     $background_video_button_style = 'primary';
@@ -399,13 +399,13 @@ if ( $hero_background_image_url ) {
     max-width: var(--svh-title-max-width, 100%);
     color: var(--svh-title-color, var(--lacc-color-cream));
     font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
-    font-size: clamp(52px, 8vw, 96px);
-    font-weight: 300;
-    line-height: 0.98;
-    letter-spacing: .04em;
+    font-size: clamp(48px, 6vw, 76px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: .008em;
     margin: 0 auto 18px;
     text-align: center;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 
 .section-video-hero .hero-slider-subheading {
@@ -487,6 +487,23 @@ if ( $hero_background_image_url ) {
 
 .section-video-hero .hero-button {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 0;
+    width: auto;
+    padding: .85em 1.45em;
+    border: 1px solid transparent;
+    border-radius: 0;
+    letter-spacing: .08em;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
 
 .section-video-hero__closure-notice {
     margin-top: 25px;
@@ -497,22 +514,33 @@ if ( $hero_background_image_url ) {
     opacity: .9;
     text-align: left;
 }
-    align-items: center;
-    justify-content: center;
-    min-width: 0;
-    min-height: 0;
-    width: auto;
-    padding: var(--svh-cta-padding, .75em 1.5em);
-    border: 1px solid transparent;
-    border-radius: 0;
-    letter-spacing: var(--svh-cta-letter-spacing, .04em);
-    font-size: var(--svh-cta-font-size, 16px);
-    font-weight: 600;
-    line-height: 1;
-    text-decoration: none;
-    box-shadow: none;
-    transform: translateY(0);
-    transition: all .35s ease-in-out;
+
+.section-video-hero .hero-button:focus-visible {
+    outline: 2px solid var(--lacc-color-action-primary, #3f5f85);
+    outline-offset: 2px;
+}
+
+.section-video-hero .hero-button--primary:hover,
+.section-video-hero .hero-button--primary:focus {
+    background: var(--lacc-color-action-primary-hover, #324c6a);
+    border-color: var(--lacc-color-action-primary-hover, #324c6a);
+    color: var(--lacc-color-action-on-primary, #ffffff);
+}
+
+.section-video-hero .hero-button--secondary:hover,
+.section-video-hero .hero-button--secondary:focus {
+    background: var(--lacc-color-bg-soft, #f6f3ed);
+    border-color: var(--lacc-color-action-primary, #3f5f85);
+    color: var(--lacc-color-action-primary, #3f5f85);
+}
+
+.section-video-hero .hero-button--gold-text:hover,
+.section-video-hero .hero-button--gold-text:focus,
+.section-video-hero .hero-button--brown:hover,
+.section-video-hero .hero-button--brown:focus {
+    background: var(--lacc-color-accent-old-gold, #7a5a1f);
+    border-color: var(--lacc-color-accent-old-gold, #7a5a1f);
+    color: var(--lacc-color-text-inverse, #ffffff);
 }
 
 .section-video-hero .background-video-toggle {
@@ -520,29 +548,37 @@ if ( $hero_background_image_url ) {
     bottom: 16px;
     right: 16px;
     z-index: 30;
-    padding: 12px 14px;
+    padding: 10px 12px;
     background: rgba(0,0,0,0.65);
     color: var(--lacc-color-white);
-    border: 0;
-    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.58);
+    border-radius: 0;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
     line-height: 1;
+    text-transform: uppercase;
+}
+
+.section-video-hero .background-video-toggle:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
 }
 
 .section-video-hero__eyebrow {
     display: inline-block;
     margin-bottom: 28px;
-    padding: var(--svh-eyebrow-padding, 8px 18px);
-    border: var(--svh-eyebrow-border, 1px solid rgba(201,151,58,0.40));
-    border-radius: var(--svh-eyebrow-radius, 999px);
-    letter-spacing: .24em;
-    font-size: var(--svh-eyebrow-size, 11px);
+    padding: 6px 12px;
+    border: var(--svh-eyebrow-border, 1px solid rgba(81,83,74,0.28));
+    border-radius: 0;
+    letter-spacing: .11em;
+    font-size: 11px;
     line-height: 1.2;
     font-family: var(--svh-eyebrow-font, inherit);
-    font-weight: var(--svh-eyebrow-weight, 600);
-    text-transform: var(--svh-eyebrow-transform, capitalize);
-    color: var(--svh-eyebrow-color, var(--lacc-color-gold-soft));
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--svh-eyebrow-color, var(--lacc-color-text-primary));
     background: var(--svh-eyebrow-bg, transparent);
 }
 

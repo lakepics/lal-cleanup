@@ -1,9 +1,9 @@
 @import "common/variables";
-// Automatically injected Bower dependencies via wiredep (never manually edit this block)
+// Bower dependencies — bower_components removed 2026-04-25, imports commented out pending Bootstrap removal
 // bower:scss
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-@import "../../bower_components/font-awesome/scss/font-awesome.scss";
-@import "../../bower_components/slick-carousel/slick/slick.scss";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss"; // TODO: remove after all .navbar-*, .col-md-*, .panel-* classes purged from templates
+// @import "../../bower_components/font-awesome/scss/font-awesome.scss"; // TODO: check if any templates still use icon- classes
+// @import "../../bower_components/slick-carousel/slick/slick.scss"; // hero slider — already inlined in layouts/_slick.scss
 // endbower
 
 
@@ -11,8 +11,10 @@
 @import "common/global";
 @import "common/fonts";
 @import "common/buttons";
+// Bootstrap Grid Bandaid – temporary shim while migrating col-md-* classes to flexbox
+@import "../../scss/components/bootstrap-bandaid";
 @import "components/forms";
-@import "components/grid";
+// @import "components/grid"; // ARCHIVED 2026-04-25 — Bootstrap make-sm-column mixins
 @import "components/wp-classes";
 @import "components/accordion";
 
@@ -28,7 +30,7 @@
 //Template Layouts
 @import "layouts/subpages";
 @import "layouts/components";
-@import "layouts/header";
+// @import "layouts/header"; // ARCHIVED 2026-04-25 — Bootstrap-era nav styles
 @import "layouts/hero";
 @import "layouts/footer";
 @import "layouts/gallery";
@@ -39,3 +41,7 @@
 //CSS Libraries
 @import "layouts/fontawesome";
 @import "layouts/fancybox";
+
+// Custom — migrated from customizer.css 2026-04-25
+// Bootstrap .navbar-* rules from customizer.css were discarded (archived with _header.scss)
+@import "layouts/custom";

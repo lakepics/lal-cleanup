@@ -1,0 +1,73 @@
+// Bootstrap Grid Bandaid – Temporary CSS shim for col-md-* classes
+// Purpose: Provide flexbox equivalents to Bootstrap grid classes while templates are gradually migrated
+// Migration strategy: Remove col-md-* classes from component templates incrementally; delete this file when no longer referenced
+// Last updated: 2026-04-27
+
+// --lacc-gutter-x: horizontal gutter between columns (one side)
+// Maps to Bootstrap's .row > [class*='col-'] default gutter
+$gutter-x: 0.75rem;
+
+// Column width mixins for consistent calc patterns
+@mixin col-size($cols, $total: 12) {
+  flex: 0 0 calc(#{percentage($cols / $total)} - #{$gutter-x});
+}
+
+@mixin col-offset($cols, $total: 12) {
+  margin-left: calc(#{percentage($cols / $total)} + #{$gutter-x});
+}
+
+// Column width classes – directly replaces Bootstrap col-md-* grid
+.col-md-1  { @include col-size(1); }
+.col-md-2  { @include col-size(2); }
+.col-md-3  { @include col-size(3); }
+.col-md-4  { @include col-size(4); }
+.col-md-5  { @include col-size(5); }
+.col-md-6  { @include col-size(6); }
+.col-md-7  { @include col-size(7); }
+.col-md-8  { @include col-size(8); }
+.col-md-9  { @include col-size(9); }
+.col-md-10 { @include col-size(10); }
+.col-md-11 { @include col-size(11); }
+.col-md-12 { @include col-size(12); }
+
+// Custom column sizes (non-standard 12-column grid)
+.col-md-15 { @include col-size(5, 12); } // 5 out of 12 = 41.667%
+
+// Offset classes – push columns to the right
+.col-md-offset-1  { @include col-offset(1); }
+.col-md-offset-2  { @include col-offset(2); }
+.col-md-offset-3  { @include col-offset(3); }
+.col-md-offset-4  { @include col-offset(4); }
+.col-md-offset-5  { @include col-offset(5); }
+.col-md-offset-6  { @include col-offset(6); }
+.col-md-offset-7  { @include col-offset(7); }
+.col-md-offset-8  { @include col-offset(8); }
+
+// Container wrapper for flexbox row behavior
+// Parent of col-md-* elements should have this structure
+.row,
+.row-bandaid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -#{$gutter-x};
+  margin-right: -#{$gutter-x};
+  
+  > [class*="col-md-"],
+  > [class*="col-"] {
+    padding-left: $gutter-x;
+    padding-right: $gutter-x;
+  }
+}
+
+// Responsive breakpoint override for small screens
+// Disable col-md-* sizing and stack vertically
+@media (max-width: 767px) {
+  [class*="col-md-"] {
+    flex: 0 0 100%;
+    margin-left: 0;
+  }
+  
+  [class*="col-md-offset-"] {
+    margin-left: 0;
+  }
+}
