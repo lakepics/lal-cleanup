@@ -130,6 +130,53 @@ if ( ! function_exists( 'lacc_primary_nav_build_fallback_menu' ) ) {
     }
 }
 
+if ( ! function_exists( 'lacc_primary_nav_strip_legacy_bootstrap_classes' ) ) {
+    function lacc_primary_nav_strip_legacy_bootstrap_classes( $markup ) {
+        if ( empty( $markup ) || ! is_string( $markup ) ) {
+            return $markup;
+        }
+
+        $legacy_classes = array(
+            'dropdown',
+            'dropdown-menu',
+            'dropdown-toggle',
+            'open',
+            'navbar',
+            'navbar-nav',
+            'btn-outline',
+        );
+
+        $sanitized = preg_replace_callback(
+            '/class=("|\')(.*?)\1/',
+            static function ( $matches ) use ( $legacy_classes ) {
+                $quote = $matches[1];
+                $class_tokens = preg_split( '/\s+/', trim( (string) $matches[2] ) );
+                if ( empty( $class_tokens ) ) {
+                    return $matches[0];
+                }
+
+                $class_tokens = array_values(
+                    array_filter(
+                        $class_tokens,
+                        static function ( $class_name ) use ( $legacy_classes ) {
+                            return '' !== $class_name && ! in_array( $class_name, $legacy_classes, true );
+                        }
+                    )
+                );
+
+                if ( empty( $class_tokens ) ) {
+                    return '';
+                }
+
+                return 'class=' . $quote . esc_attr( implode( ' ', $class_tokens ) ) . $quote;
+            },
+            $markup
+        );
+
+        return is_string( $sanitized ) ? $sanitized : $markup;
+    }
+}
+
 $lacc_primary_nav_markup = wp_nav_menu( array_merge( $lacc_primary_nav_menu_args, array( 'echo' => false ) ) );
 
 if ( false === strpos( (string) $lacc_primary_nav_markup, 'sub-menu' ) ) {
@@ -138,6 +185,8 @@ if ( false === strpos( (string) $lacc_primary_nav_markup, 'sub-menu' ) ) {
         $lacc_primary_nav_markup = $lacc_primary_nav_fallback_markup;
     }
 }
+
+$lacc_primary_nav_markup = lacc_primary_nav_strip_legacy_bootstrap_classes( $lacc_primary_nav_markup );
 ?>
 
 <style>
@@ -204,7 +253,6 @@ body.home .lacc-primary-nav::after {
 .lacc-primary-nav__brand img {
     display: block;
     width: auto;
-    max-width: 100%;
     height: 68px;
 }
 
@@ -250,6 +298,17 @@ body.home .lacc-primary-nav::after {
     width: 18px;
     height: 2px;
     background: currentColor;
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden !important;
+}
+
+html.lacc-nav-open,
+body.lacc-nav-open {
+    overflow-x: hidden !important;
 }
 
 .lacc-primary-nav__panel {
@@ -315,7 +374,6 @@ body.home .lacc-primary-nav::after {
     font-synthesis: none;
     text-rendering: geometricPrecision;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     letter-spacing: .11em;
     line-height: 1.35;
     text-decoration: none;
@@ -328,7 +386,6 @@ body.home .lacc-primary-nav::after {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 44px;
     border: 0;
     background: transparent;
     color: #ffffff;
@@ -394,11 +451,11 @@ body.home .lacc-primary-nav::after {
     box-shadow: none;
 }
 
-.lacc-primary-nav__menu > li:not(.btn-outline) > a:hover,
-.lacc-primary-nav__menu > li:not(.btn-outline) > a:focus,
-.lacc-primary-nav__menu > li:not(.btn-outline).current-menu-item > a,
-.lacc-primary-nav__menu > li:not(.btn-outline).current-menu-parent > a,
-.lacc-primary-nav__menu > li:not(.btn-outline).current_page_parent > a,
+.lacc-primary-nav__menu > li > a:hover,
+.lacc-primary-nav__menu > li > a:focus,
+.lacc-primary-nav__menu > li.current-menu-item > a,
+.lacc-primary-nav__menu > li.current-menu-parent > a,
+.lacc-primary-nav__menu > li.current_page_parent > a,
 .lacc-primary-nav__menu > li.current-menu-item > .lacc-primary-nav__entry > a,
 .lacc-primary-nav__menu > li.current-menu-parent > .lacc-primary-nav__entry > a,
 .lacc-primary-nav__menu > li.current_page_parent > .lacc-primary-nav__entry > a,
@@ -461,14 +518,6 @@ body.home .lacc-primary-nav::after {
     transform: translateY(0);
 }
 
-.lacc-primary-nav__menu > li:focus-within > .sub-menu {
-    display: grid !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-    transform: translateY(0) !important;
-}
-
 .lacc-primary-nav__menu .sub-menu a {
     display: flex;
     align-items: center;
@@ -501,6 +550,18 @@ body.home .lacc-primary-nav::after {
     opacity: 1;
 }
 
+/* Suppress legacy/global left-side external-link markers inside primary nav */
+.lacc-primary-nav__menu a[target="_blank"]::before {
+    content: none !important;
+    display: none !important;
+}
+
+.lacc-primary-nav__menu a[target="_blank"] .fa-external-link,
+.lacc-primary-nav__menu a[target="_blank"] .fa-external-link-alt,
+.lacc-primary-nav__menu a[target="_blank"] .glyphicon-new-window {
+    display: none !important;
+}
+
 .lacc-primary-nav__menu .sub-menu a:visited {
     color: #324c6a;
 }
@@ -531,6 +592,14 @@ body.home .lacc-primary-nav::after {
         pointer-events: auto !important;
         transform: translateY(0) !important;
     }
+
+    .lacc-primary-nav__menu > li:focus-within > .sub-menu {
+        display: grid !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: translateY(0) !important;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -538,49 +607,91 @@ body.home .lacc-primary-nav::after {
         background: transparent;
         box-shadow: none;
         overflow: hidden;
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .lacc-primary-nav__bar {
-        flex-wrap: wrap;
-        gap: 12px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto !important;
+        align-items: center;
+        column-gap: 14px !important;
+        row-gap: 10px;
         min-height: 76px;
-        padding: 12px 14px;
+        padding: 10px 14px !important;
         background: linear-gradient(180deg, rgba(18,29,43,0.76), rgba(18,29,43,0.34));
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
 
     .lacc-primary-nav__brand {
-        max-width: 232px;
+        min-width: 0;
+        max-width: 205px !important;
     }
 
     .lacc-primary-nav__brand img {
-        height: 34px;
+        width: 100%;
+        max-width: 232px;
+        height: auto;
     }
 
     .lacc-primary-nav__toggle {
         display: inline-flex;
-        min-height: 40px;
-        padding: 8px 11px;
+        flex: 0 0 auto;
+        margin-left: auto !important;
+        justify-self: end !important;
+        min-height: 38px;
+        min-width: 38px;
+        width: 38px;
+        padding: 8px !important;
         border-color: rgba(255,255,255,0.52);
         background: rgba(16,26,38,0.34);
+        white-space: nowrap;
+        font-size: 0 !important;
+        letter-spacing: 0 !important;
+        line-height: 0 !important;
+        text-indent: -9999px;
+        overflow: hidden;
+        color: transparent !important;
     }
 
-    .lacc-primary-nav__toggle span:first-child {
-        font-size: 11px;
-        letter-spacing: .13em;
+    .lacc-primary-nav__toggle::before,
+    .lacc-primary-nav__toggle::after {
+        content: none !important;
+        display: none !important;
+    }
+
+    .lacc-primary-nav__toggle .lacc-primary-nav__toggle-bars {
+        display: inline-grid !important;
+        color: #ffffff !important;
+        text-indent: 0;
     }
 
     .lacc-primary-nav__panel {
         display: none;
+        grid-column: 1 / -1;
+        position: relative;
+        left: 0;
         width: 100%;
+        max-width: 100%;
         max-height: calc(100vh - 92px);
+        margin: 0;
         padding: 8px;
         border: 0;
         border-radius: 0 0 4px 4px;
         background: linear-gradient(180deg, rgba(18,29,43,0.9), rgba(18,29,43,0.72));
         box-shadow: 0 16px 30px rgba(6,11,18,0.3);
         overflow: hidden;
+        overflow-x: clip;
+        align-items: stretch;
+        box-sizing: border-box;
+        min-width: 0;
     }
 
     .lacc-primary-nav.is-open .lacc-primary-nav__panel {
@@ -589,21 +700,61 @@ body.home .lacc-primary-nav::after {
         gap: 10px;
     }
 
+    .lacc-primary-nav.is-open .lacc-primary-nav__panel > .lacc-primary-nav__menu {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        justify-content: stretch !important;
+        justify-items: stretch !important;
+        align-content: start !important;
+        align-self: stretch !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        float: none !important;
+    }
+
+    .lacc-primary-nav.is-open .lacc-primary-nav__panel > .lacc-primary-nav__menu > li,
+    .lacc-primary-nav.is-open .lacc-primary-nav__panel > .lacc-primary-nav__menu > li > a,
+    .lacc-primary-nav.is-open .lacc-primary-nav__panel > .lacc-primary-nav__menu > li > .lacc-primary-nav__entry > a {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        justify-content: flex-start !important;
+        text-align: left !important;
+    }
+
     .lacc-primary-nav__menu {
         width: 100%;
+        max-width: 100%;
         display: grid;
+        grid-template-columns: minmax(0, 1fr);
         gap: 0;
+        justify-content: stretch;
         justify-items: stretch;
+        align-content: start;
+        flex: 0 0 auto;
+        min-width: 0;
+        margin: 0;
         padding: 0;
         border: 1px solid rgba(255,255,255,0.2);
         background: rgba(255,255,255,0.04);
         box-shadow: none;
         overflow-y: auto;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
 
     .lacc-primary-nav__menu > li {
         width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        margin: 0;
         border-top: 1px solid rgba(255,255,255,0.12);
+        text-align: left;
+        overflow: hidden;
+        box-sizing: border-box;
     }
 
     .lacc-primary-nav__menu > li:first-child {
@@ -616,13 +767,17 @@ body.home .lacc-primary-nav::after {
 
     .lacc-primary-nav__entry {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-columns: minmax(0, 1fr) 54px;
         width: 100%;
+        max-width: 100%;
+        min-width: 0;
         min-height: 52px;
         border: 0;
         background: transparent;
         border-radius: 0;
         overflow: hidden;
+        justify-items: stretch;
+        box-sizing: border-box;
     }
 
     .lacc-primary-nav__menu > li:not(.menu-item-has-children) > a {
@@ -640,6 +795,17 @@ body.home .lacc-primary-nav::after {
         justify-content: flex-start;
         text-align: left;
         box-shadow: none;
+        box-sizing: border-box;
+    }
+
+    .lacc-primary-nav__menu > li > a,
+    .lacc-primary-nav__menu > li > .lacc-primary-nav__entry > a,
+    .lacc-primary-nav__menu .sub-menu a {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        justify-content: flex-start;
+        text-align: left;
     }
 
     .lacc-primary-nav__menu > li > a,
@@ -676,11 +842,25 @@ body.home .lacc-primary-nav::after {
     .lacc-primary-nav__subtoggle {
         display: inline-flex;
         width: 54px;
+        max-width: 54px;
         min-width: 54px;
         min-height: 52px;
+        padding: 0;
+        margin: 0;
         border-radius: 0;
         color: #ffffff;
         border-left: 0;
+        background: transparent;
+        box-shadow: none;
+        flex: 0 0 54px;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .lacc-primary-nav__menu > li > .lacc-primary-nav__entry > a {
+        -webkit-tap-highlight-color: transparent;
     }
 
     .lacc-primary-nav__menu > li > a {
@@ -704,9 +884,13 @@ body.home .lacc-primary-nav::after {
         display: none;
     }
 
-    .lacc-primary-nav__menu > li:hover > .sub-menu,
-    .lacc-primary-nav__menu > li:focus-within > .sub-menu {
-        display: none;
+    .lacc-primary-nav__menu > li:not(.is-open):hover > .sub-menu,
+    .lacc-primary-nav__menu > li:not(.is-open):focus-within > .sub-menu {
+        display: none !important;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
     }
 
     .lacc-primary-nav__menu > li.is-open > .sub-menu {
@@ -729,6 +913,15 @@ body.home .lacc-primary-nav::after {
         color: rgba(255,255,255,0.92);
     }
 
+    .lacc-primary-nav__menu > li > a:visited,
+    .lacc-primary-nav__menu > li > .lacc-primary-nav__entry > a:visited,
+    .lacc-primary-nav__menu .sub-menu a:visited {
+        color: rgba(255,255,255,0.92) !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        text-decoration: none !important;
+    }
+
     .lacc-primary-nav__menu > li > a:hover,
     .lacc-primary-nav__menu > li > a:focus,
     .lacc-primary-nav__menu > li.current-menu-item > a,
@@ -738,12 +931,27 @@ body.home .lacc-primary-nav::after {
     .lacc-primary-nav__menu > li.current-menu-parent > .lacc-primary-nav__entry > a,
     .lacc-primary-nav__menu > li.current_page_parent > .lacc-primary-nav__entry > a,
     .lacc-primary-nav__menu > li:hover > .lacc-primary-nav__entry > a,
-    .lacc-primary-nav__menu > li.is-open > .lacc-primary-nav__entry > a,
+    .lacc-primary-nav__menu > li.is-open > .lacc-primary-nav__entry > a {
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .lacc-primary-nav__menu > li:hover > .lacc-primary-nav__entry,
+    .lacc-primary-nav__menu > li.is-open > .lacc-primary-nav__entry {
+        background: rgba(255,255,255,0.1);
+    }
+
     .lacc-primary-nav__subtoggle:hover,
     .lacc-primary-nav__subtoggle:focus,
-    .lacc-primary-nav__menu > li:hover > .lacc-primary-nav__entry > .lacc-primary-nav__subtoggle,
+    .lacc-primary-nav__subtoggle:focus-visible,
+    .lacc-primary-nav__subtoggle:active,
+    .lacc-primary-nav__menu > li:hover > .lacc-primary-nav__entry > .lacc-primary-nav__subtoggle {
+        background: transparent !important;
+        box-shadow: none;
+    }
+
     .lacc-primary-nav__menu > li.is-open > .lacc-primary-nav__entry > .lacc-primary-nav__subtoggle {
-        background: rgba(255,255,255,0.1);
+        background: transparent !important;
         box-shadow: none;
     }
 
@@ -768,6 +976,7 @@ body.home .lacc-primary-nav::after {
         width: 100%;
         min-height: 50px;
         margin-top: auto;
+        box-sizing: border-box;
         border: 1px solid rgba(255,255,255,0.45);
         background: rgba(255,255,255,0.06);
         color: #ffffff;
@@ -788,16 +997,28 @@ body.home .lacc-primary-nav::after {
     }
 }
 
+@media (max-width: 374px) {
+    .lacc-primary-nav__brand {
+        max-width: none;
+    }
+
+    .lacc-primary-nav__toggle {
+        padding: 8px;
+    }
+}
+
 /* ---- Override compiled legacy _header.scss rules still present in main.css ---- */
 /* main.css contains: nav li a:hover { background-color: #f6f3ed !important; font-weight: 400 !important; }  */
 /* and: .dropdown-menu li a:hover { background-color: #f6f3ed !important; font-weight: 600; }               */
-/* Higher specificity + !important wins when both are author-origin.                                         */
-.lacc-primary-nav__menu > li:not(.btn-outline) > a:hover,
-.lacc-primary-nav__menu > li:not(.btn-outline) > a:focus,
-.lacc-primary-nav__menu > li:not(.btn-outline) > .lacc-primary-nav__entry > a:hover,
-.lacc-primary-nav__menu > li:not(.btn-outline) > .lacc-primary-nav__entry > a:focus {
-    background-color: transparent !important;
-    font-weight: inherit !important;
+/* Keep this neutralizer desktop-only so mobile open-state row highlighting remains unified.                  */
+@media (min-width: 1025px) {
+    .lacc-primary-nav__menu > li > a:hover,
+    .lacc-primary-nav__menu > li > a:focus,
+    .lacc-primary-nav__menu > li > .lacc-primary-nav__entry > a:hover,
+    .lacc-primary-nav__menu > li > .lacc-primary-nav__entry > a:focus {
+        background-color: transparent !important;
+        font-weight: inherit !important;
+    }
 }
 </style>
 
@@ -807,8 +1028,7 @@ body.home .lacc-primary-nav::after {
             <img src="<?php echo esc_url( get_template_directory_uri() . '/dist/images/LAL_Logo_Color_WhiteText_Horiz_CCFR.svg' ); ?>" alt="<?php bloginfo( 'name' ); ?>">
         </a>
 
-        <button type="button" class="lacc-primary-nav__toggle" aria-expanded="false" aria-controls="<?php echo esc_attr( $lacc_primary_nav_id ); ?>">
-            <span>Menu</span>
+        <button type="button" class="lacc-primary-nav__toggle" aria-expanded="false" aria-controls="<?php echo esc_attr( $lacc_primary_nav_id ); ?>" aria-label="Toggle navigation menu">
             <span class="lacc-primary-nav__toggle-bars" aria-hidden="true">
                 <span></span>
                 <span></span>
@@ -955,9 +1175,61 @@ body.home .lacc-primary-nav::after {
 
     document.querySelectorAll('[data-lacc-primary-nav]').forEach(function (nav) {
         var panel = nav.querySelector('.lacc-primary-nav__panel');
+        var bar = nav.querySelector('.lacc-primary-nav__bar');
+        var brand = nav.querySelector('.lacc-primary-nav__brand');
         var toggle = nav.querySelector('.lacc-primary-nav__toggle');
         var isHomeNav = document.body.classList.contains('home');
         var scrollTicking = false;
+
+        function openNav() {
+            nav.classList.add('is-open');
+            setGlobalNavOpenState(true);
+            if (toggle) {
+                toggle.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        function closeNav() {
+            nav.classList.remove('is-open');
+            setGlobalNavOpenState(false);
+            if (toggle) {
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+            items.forEach(closeItem);
+        }
+
+        function enforceMobileLayoutStyles() {
+            if (!bar || !brand || !toggle) {
+                return;
+            }
+
+            if (window.innerWidth <= 1024) {
+                bar.style.display = 'grid';
+                bar.style.gridTemplateColumns = 'minmax(0, 1fr) auto';
+                bar.style.columnGap = '14px';
+                bar.style.alignItems = 'center';
+                bar.style.overflowX = 'hidden';
+                brand.style.maxWidth = '205px';
+                toggle.style.marginLeft = 'auto';
+                toggle.style.justifySelf = 'end';
+                toggle.style.padding = '8px';
+            } else {
+                bar.style.removeProperty('display');
+                bar.style.removeProperty('grid-template-columns');
+                bar.style.removeProperty('column-gap');
+                bar.style.removeProperty('align-items');
+                bar.style.removeProperty('overflow-x');
+                brand.style.removeProperty('max-width');
+                toggle.style.removeProperty('margin-left');
+                toggle.style.removeProperty('justify-self');
+                toggle.style.removeProperty('padding');
+            }
+        }
+
+        function setGlobalNavOpenState(isOpen) {
+            document.documentElement.classList.toggle('lacc-nav-open', !!isOpen);
+            document.body.classList.toggle('lacc-nav-open', !!isOpen);
+        }
 
         enhanceMenu(nav);
 
@@ -968,8 +1240,10 @@ body.home .lacc-primary-nav::after {
         }
 
         function syncOpenStateToViewport() {
+            enforceMobileLayoutStyles();
             if (isDesktopNavMode()) {
                 nav.classList.remove('is-open');
+                setGlobalNavOpenState(false);
                 if (toggle) {
                     toggle.setAttribute('aria-expanded', 'false');
                 }
@@ -1012,6 +1286,7 @@ body.home .lacc-primary-nav::after {
 
         updateHomeNavProgress();
         syncOpenStateToViewport();
+        setGlobalNavOpenState(false);
 
         if (isHomeNav) {
             window.addEventListener('scroll', queueHomeNavProgress, { passive: true });
@@ -1022,54 +1297,92 @@ body.home .lacc-primary-nav::after {
         window.addEventListener('resize', syncOpenStateToViewport);
 
         if (toggle && panel) {
-            toggle.addEventListener('click', function () {
-                var isOpen = nav.classList.toggle('is-open');
-                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            toggle.addEventListener('click', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
 
-                if (!isOpen) {
-                    items.forEach(closeItem);
+                if (nav.classList.contains('is-open')) {
+                    closeNav();
+                } else {
+                    openNav();
                 }
             });
         }
 
         items.forEach(function (item) {
+            var entry = item.querySelector(':scope > .lacc-primary-nav__entry');
             var button = item.querySelector(':scope > .lacc-primary-nav__entry > .lacc-primary-nav__subtoggle');
             var submenu = item.querySelector(':scope > .sub-menu');
             var parentLink = item.querySelector(':scope > .lacc-primary-nav__entry > a');
             var submenuLinks = submenu ? submenu.querySelectorAll('a') : [];
 
+            function isParentRowToggleTarget(target) {
+                var targetElement = target && target.nodeType === 1 ? target : (target && target.parentElement ? target.parentElement : null);
+
+                if (!targetElement) {
+                    return false;
+                }
+
+                if (button && targetElement.closest('.lacc-primary-nav__subtoggle') === button) {
+                    return true;
+                }
+
+                if (parentLink && targetElement.closest('a') === parentLink) {
+                    return true;
+                }
+
+                return false;
+            }
+
+            function toggleParentItem() {
+                var isExpanded = item.classList.contains('is-open');
+
+                if (!isExpanded && button.getAttribute('aria-expanded') === 'true') {
+                    isExpanded = true;
+                }
+
+                if (!isExpanded && parentLink && parentLink.getAttribute('aria-expanded') === 'true') {
+                    isExpanded = true;
+                }
+
+                if (isExpanded) {
+                    closeItem(item);
+                    return;
+                }
+
+                items.forEach(function (otherItem) {
+                    if (otherItem !== item) {
+                        closeItem(otherItem);
+                    }
+                });
+                openItem(item);
+            }
+
+            function handleParentToggleEvent(event) {
+                if (isDesktopNavMode() || !nav.classList.contains('is-open')) {
+                    return;
+                }
+
+                if (!isParentRowToggleTarget(event.target)) {
+                    return;
+                }
+
+                event.preventDefault();
+                event.stopPropagation();
+                toggleParentItem();
+            }
+
             if (!button) {
                 return;
             }
 
-            button.addEventListener('click', function (event) {
-                event.preventDefault();
-                var shouldOpen = button.getAttribute('aria-expanded') !== 'true';
-                closeSiblings(item);
-                if (shouldOpen) {
-                    openItem(item);
-                } else {
-                    closeItem(item);
-                }
-            });
+            if (entry) {
+                entry.addEventListener('click', handleParentToggleEvent);
+            }
 
             if (parentLink) {
                 parentLink.addEventListener('focus', function () {
                     if (isDesktopNavMode()) {
-                        closeSiblings(item);
-                        openItem(item);
-                    }
-                });
-
-                parentLink.addEventListener('click', function (event) {
-                    var isTouchContext = !isDesktopNavMode();
-
-                    if (!isTouchContext) {
-                        return;
-                    }
-
-                    if (!item.classList.contains('is-open')) {
-                        event.preventDefault();
                         closeSiblings(item);
                         openItem(item);
                     }
@@ -1141,6 +1454,10 @@ body.home .lacc-primary-nav::after {
             }
 
             item.addEventListener('focusout', function (event) {
+                if (!isDesktopNavMode()) {
+                    return;
+                }
+
                 if (!item.contains(event.relatedTarget)) {
                     closeItem(item);
                 }
@@ -1149,30 +1466,20 @@ body.home .lacc-primary-nav::after {
 
         document.addEventListener('click', function (event) {
             if (!nav.contains(event.target)) {
-                items.forEach(closeItem);
-                nav.classList.remove('is-open');
-                if (toggle) {
-                    toggle.setAttribute('aria-expanded', 'false');
-                }
+                closeNav();
             }
         });
 
         document.addEventListener('focusin', function (event) {
             if (!nav.contains(event.target)) {
-                items.forEach(closeItem);
-                nav.classList.remove('is-open');
-                if (toggle) {
-                    toggle.setAttribute('aria-expanded', 'false');
-                }
+                closeNav();
             }
         });
 
         nav.addEventListener('keydown', function (event) {
             if (event.key === 'Escape') {
-                items.forEach(closeItem);
-                nav.classList.remove('is-open');
+                closeNav();
                 if (toggle) {
-                    toggle.setAttribute('aria-expanded', 'false');
                     if (window.getComputedStyle(toggle).display !== 'none') {
                         toggle.focus();
                     } else {

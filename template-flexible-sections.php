@@ -5,8 +5,6 @@
 ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
-  <?php get_template_part('components/templates', 'header'); ?>
-
   <?php $is_flex_demo_page = is_page( 'flex' ); ?>
   <?php $did_skip_flex_demo_split_feature = false; ?>
 

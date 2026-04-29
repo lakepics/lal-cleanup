@@ -41,6 +41,25 @@ function stop_admin_forms_css_frontend() {
 }
 add_action('wp_enqueue_scripts', 'stop_admin_forms_css_frontend', 100);
 
+function lacc_enqueue_footer_icon_styles() {
+    if (!is_admin()) {
+        wp_enqueue_style(
+            'font-awesome-local',
+            get_template_directory_uri() . '/assets/vendor/fontawesome/css/all.min.css',
+            array(),
+            '7.2.0'
+        );
+
+        wp_enqueue_style(
+            'font-awesome-local-v4-shims',
+            get_template_directory_uri() . '/assets/vendor/fontawesome/css/v4-shims.min.css',
+            array( 'font-awesome-local' ),
+            '7.2.0'
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'lacc_enqueue_footer_icon_styles', 110);
+
 // Add support for Luskin Gallery Template
 function createSlug($string)
 {
@@ -611,6 +630,37 @@ function my_custom_sidebar() {
             'after_title' => '</h3>',
         )
     );
+
+    // Footer widget areas — used by templates/footer.php
+    register_sidebar( array(
+        'name'          => __( 'Footer: Explore', 'lacc' ),
+        'id'            => 'footer-column-3',
+        'description'   => __( 'Links shown in the Explore column of the site footer.', 'lacc' ),
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '',
+        'after_title'   => '',
+    ) );
+
+    register_sidebar( array(
+        'name'          => __( 'Footer: Community & Social', 'lacc' ),
+        'id'            => 'footer-column-4',
+        'description'   => __( 'Links shown in the Community & Social column of the site footer.', 'lacc' ),
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '',
+        'after_title'   => '',
+    ) );
+
+    register_sidebar( array(
+        'name'          => __( 'Footer: Plan & Connect', 'lacc' ),
+        'id'            => 'footer-column-5',
+        'description'   => __( 'Content shown in the Plan & Connect column of the site footer (TripAdvisor badge, etc.).', 'lacc' ),
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '',
+        'after_title'   => '',
+    ) );
 }
 add_action( 'widgets_init', 'my_custom_sidebar' );
 

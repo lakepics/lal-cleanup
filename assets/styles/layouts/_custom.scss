@@ -87,6 +87,25 @@ body.home {
 
 .header__heading {
     margin-top: 0;
+    min-height: 80px;
+    height: auto;
+    width: 100%;
+}
+
+.header__heading--subheading {
+    margin: 0;
+    padding: 12px 0;
+    text-align: left;
+}
+
+body:not(.home) {
+    padding-top: 120px;
+}
+
+@media only screen and (max-width: 1024px) {
+    body:not(.home) {
+        padding-top: 74px;
+    }
 }
 
 // ============================================================

@@ -18,6 +18,7 @@ $title_color = trim( (string) get_sub_field('title_color') );
 $body_color = trim( (string) get_sub_field('body_color') );
 $heading_font_family = strtolower( trim( (string) get_sub_field('heading_font_family') ) );
 $heading_font_weight = trim( (string) get_sub_field('heading_font_weight') );
+$heading_text_transform = strtolower( trim( (string) get_sub_field('heading_text_transform') ) );
 $section_keyline_position = strtolower( trim( (string) get_sub_field('section_keyline_position') ) );
 $section_keyline_color = trim( (string) get_sub_field('section_keyline_color') );
 $padding_top = trim( (string) get_sub_field('padding_top') );
@@ -81,6 +82,9 @@ $eyebrow_color = $eyebrow_color ?: '#946E29';
 if ( ! in_array( $eyebrow_text_transform, array( 'capitalize', 'uppercase', 'none' ), true ) ) {
     $eyebrow_text_transform = 'uppercase';
 }
+if ( ! in_array( $heading_text_transform, array( 'capitalize', 'uppercase', 'none' ), true ) ) {
+    $heading_text_transform = 'capitalize';
+}
 $title_color = $title_color ?: '#51534a';
 $body_color = $body_color ?: '#51534a';
 $section_keyline_color = $section_keyline_color ?: $title_color;
@@ -99,6 +103,7 @@ $section_styles = array(
     '--sfa-body-color:' . $body_color,
     '--sfa-heading-font:' . $heading_font_css,
     '--sfa-heading-weight:' . $heading_font_weight,
+    '--sfa-heading-transform:' . $heading_text_transform,
 );
 
 if ( 'top' === $section_keyline_position ) {
@@ -213,7 +218,7 @@ $section_style_attr = implode( ';', $section_styles );
     font-size: clamp(32px, 4vw, 54px);
     font-weight: var(--sfa-heading-weight, 300);
     line-height: 1.02;
-    text-transform: capitalize;
+    text-transform: var(--sfa-heading-transform, capitalize);
 }
 
 .section-featured-article__excerpt,

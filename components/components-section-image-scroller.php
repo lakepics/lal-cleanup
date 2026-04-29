@@ -32,6 +32,7 @@ $scroll_speed = (int) get_sub_field('scroll_speed_seconds');
 $pause_on_hover = get_sub_field('pause_on_hover');
 $heading_font_family = strtolower( trim( (string) get_sub_field('heading_font_family') ) );
 $heading_font_weight = trim( (string) get_sub_field('heading_font_weight') );
+$heading_text_transform = strtolower( trim( (string) get_sub_field('heading_text_transform') ) );
 $subheading_font_family = strtolower( trim( (string) get_sub_field('subheading_font_family') ) );
 $subheading_font_weight = trim( (string) get_sub_field('subheading_font_weight') );
 $eyebrow_font_size = trim( (string) get_sub_field('eyebrow_font_size') );
@@ -46,6 +47,10 @@ if ( ! in_array( $heading_font_family, array( 'haarlem', 'freight-big-pro' ), tr
 
 if ( ! in_array( $heading_font_weight, array( '400', '500', '600', '700' ), true ) ) {
     $heading_font_weight = 'freight-big-pro' === $heading_font_family ? '400' : '600';
+}
+
+if ( ! in_array( $heading_text_transform, array( 'capitalize', 'uppercase', 'none' ), true ) ) {
+    $heading_text_transform = 'capitalize';
 }
 
 if ( ! in_array( $subheading_font_family, array( 'haarlem', 'freight-big-pro' ), true ) ) {
@@ -137,6 +142,7 @@ $section_styles = array(
     '--sis-scrollwork-color:' . $scrollwork_color,
     '--sis-heading-max-width:' . $heading_max_width,
     '--sis-heading-margin:' . $heading_margin,
+    '--sis-heading-transform:' . $heading_text_transform,
     '--sis-eyebrow-size:' . $eyebrow_font_size,
     '--sis-eyebrow-transform:' . $eyebrow_text_transform,
     '--sis-intro-max-width:' . $section_intro_max_width,
@@ -189,6 +195,8 @@ if ( 'bottom' === $section_keyline_position ) {
     --sis-scrollwork-opacity: var(--lacc-scrollwork-opacity, 0.4);
     padding: 60px 0;
     overflow: hidden;
+    overflow-x: clip;
+    max-width: 100%;
 }
 
 .section-image-scroller--scrollwork-left,
@@ -236,7 +244,7 @@ if ( 'bottom' === $section_keyline_position ) {
     font-weight: var(--sis-heading-weight, 600) !important;
     letter-spacing: var(--sis-heading-letter-spacing, 0.1275rem);
     color: var(--sis-heading-color, var(--lacc-color-ink)) !important;
-    text-transform: capitalize;
+    text-transform: var(--sis-heading-transform, capitalize);
 }
 
 .section-image-scroller h3,
@@ -282,13 +290,16 @@ if ( 'bottom' === $section_keyline_position ) {
 
 .section-image-scroller__viewport {
     overflow: hidden;
+    overflow-x: clip;
     width: 100%;
+    max-width: 100%;
 }
 
 .section-image-scroller__track {
     display: flex;
     gap: var(--sis-image-gap, 18px);
     width: max-content;
+    max-width: none;
     animation: section-image-scroller-marquee linear infinite;
 }
 

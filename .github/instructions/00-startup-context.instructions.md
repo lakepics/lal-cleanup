@@ -9,6 +9,7 @@ Startup hard gate:
   1. /memories/repo/design-system-promotion-workflow.md
   2. /memories/repo/site-template-consolidation.md
   3. /memories/repo/flexible-section-css-patterns.md
+- Before implementation, verify required local CLI tools are present on PATH for the planned task (for example: git, rg, node, npm, sass, python, python2, wp/local wrapper).
 - Read the most recent file in /memories/session/ if one exists.
 - If any required file is missing or unread, stop and state it explicitly.
 

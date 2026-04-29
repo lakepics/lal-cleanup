@@ -18,7 +18,10 @@
     }
   ],
   "scripts": {
-    "build": "bower install && gulp",
+    "build": "npm run build:styles",
+    "build:legacy": "bower install && gulp",
+    "build:styles": "mkdir -p dist/styles && sass assets/styles/main.scss dist/styles/main.css --style=compressed --no-source-map --silence-deprecation=import && sass assets/styles/custom.scss dist/styles/custom.css --style=compressed --no-source-map --silence-deprecation=import",
+    "watch:styles": "mkdir -p dist/styles && sass --watch assets/styles/main.scss:dist/styles/main.css assets/styles/custom.scss:dist/styles/custom.css --style=compressed --no-source-map --silence-deprecation=import",
     "jshint": "gulp jshint",
     "jscs": "jscs gulpfile.js assets/scripts/*.js",
     "wp:local": "bash scripts/wp-local.sh"

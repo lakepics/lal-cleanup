@@ -2,6 +2,7 @@
 <?php
 /**
  * Template Name: FAQ Accordion  - Page Template
+ * Deprecated: Use FAQ Accordion Builder (template-faq-accordion-builder.php)
  */
 ?>
 <?php while (have_posts()) : the_post(); ?>
@@ -15,7 +16,7 @@
                 <div class="panel">
                     <div class="panel-heading active">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#onetwo">
+        <a href="#onetwo">
         Are there any blackout dates for bookings?
         </a>
       </h4>
@@ -31,7 +32,7 @@
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#one">
+        <a href="#one">
          
 What is a Condolet?
         </a>
@@ -47,7 +48,7 @@ What is a Condolet?
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#two">
+        <a href="#two">
 Do you have a menu I can look at?
         </a>
       </h4>
@@ -61,7 +62,7 @@ Do you have a menu I can look at?
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#three">
+        <a href="#three">
 Do groups dine with each other in the same dining room?      </a>
       </h4>
                     </div>
@@ -74,7 +75,7 @@ Do groups dine with each other in the same dining room?      </a>
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#four">
+        <a href="#four">
 Do you provide alcoholic beverages?
         </a>
       </h4>
@@ -88,7 +89,7 @@ Do you provide alcoholic beverages?
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#five">
+        <a href="#five">
 Who provides audio visual and/or production equipment?
         </a>
       </h4>
@@ -102,7 +103,7 @@ Who provides audio visual and/or production equipment?
                                                 <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#thirteen">
+        <a href="#thirteen">
 Can we bring our own system and use your speakers?        </a>
       </h4>
                     </div>
@@ -115,7 +116,7 @@ Can we bring our own system and use your speakers?        </a>
                                 <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#nine">
+        <a href="#nine">
 DVD and Blu-Ray Players with Monitors
         </a>
       </h4>
@@ -129,7 +130,7 @@ DVD and Blu-Ray Players with Monitors
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#six">
+        <a href="#six">
 Do you have video conferencing capabilities?
         </a>
       </h4>
@@ -142,7 +143,7 @@ Do you have video conferencing capabilities?
                  <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#seven">
+        <a href="#seven">
 Can we attach signs or posters to walls?        </a>
       </h4>
                     </div>
@@ -155,7 +156,7 @@ Can we attach signs or posters to walls?        </a>
                                 <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#ten">
+        <a href="#ten">
 Is smoking allowed in the buildings?        </a>
       </h4>
                     </div>
@@ -167,7 +168,7 @@ Is smoking allowed in the buildings?        </a>
                                 <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#eight">
+        <a href="#eight">
 Do you provide transportation?
         </a>
       </h4>
@@ -184,7 +185,7 @@ Do you provide transportation?
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#eleven">
+        <a href="#eleven">
 Can I bring my pet?        </a>
       </h4>
                     </div>
@@ -197,7 +198,7 @@ Can I bring my pet?        </a>
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#bs-collapse" href="#twelve">
+        <a href="#twelve">
 What will the weather be like during our conference in Lake Arrowhead?        </a>
       </h4>
                     </div>
@@ -215,6 +216,176 @@ What will the weather be like during our conference in Lake Arrowhead?        </
     <!-- end of container block -->
 </section>
 
+<script>
+    (function () {
+        function initFaqAccordions() {
+            var groups = document.querySelectorAll('.faq-section .panel-group');
+            if (!groups.length) {
+                return;
+            }
+
+            groups.forEach(function (group) {
+                var triggers = Array.prototype.slice.call(group.querySelectorAll('.panel-title a[href^="#"]'));
+
+                function getTarget(trigger) {
+                    var targetSelector = trigger.getAttribute('href');
+                    if (!targetSelector || targetSelector.charAt(0) !== '#') {
+                        return null;
+                    }
+
+                    var escapedId = targetSelector.slice(1).replace(/([ !"#$%&'()*+,./:;<=>?@[\\\]^`{|}~])/g, '\\$1');
+                    return group.querySelector('#' + escapedId) || document.querySelector(targetSelector);
+                }
+
+                function closeItem(trigger) {
+                    var panel = trigger.closest('.panel');
+                    var heading = panel ? panel.querySelector('.panel-heading') : null;
+                    var target = getTarget(trigger);
+
+                    trigger.setAttribute('aria-expanded', 'false');
+                    if (heading) {
+                        heading.classList.remove('active');
+                    }
+
+                    if (target) {
+                        target.classList.remove('in');
+                        target.hidden = true;
+                    }
+                }
+
+                function openItem(trigger) {
+                    var panel = trigger.closest('.panel');
+                    var heading = panel ? panel.querySelector('.panel-heading') : null;
+                    var target = getTarget(trigger);
+
+                    trigger.setAttribute('aria-expanded', 'true');
+                    if (heading) {
+                        heading.classList.add('active');
+                    }
+
+                    if (target) {
+                        target.classList.add('in');
+                        target.hidden = false;
+                    }
+                }
+
+                triggers.forEach(function (trigger) {
+                    var target = getTarget(trigger);
+                    var isOpen = target ? target.classList.contains('in') : false;
+
+                    trigger.setAttribute('role', 'button');
+                    trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+                    if (target && target.id) {
+                        trigger.setAttribute('aria-controls', target.id);
+                        target.hidden = !isOpen;
+                    }
+
+                    trigger.addEventListener('click', function (event) {
+                        event.preventDefault();
+
+                        var willOpen = trigger.getAttribute('aria-expanded') !== 'true';
+                        triggers.forEach(closeItem);
+
+                        if (willOpen) {
+                            openItem(trigger);
+                        }
+                    });
+                });
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initFaqAccordions);
+        } else {
+            initFaqAccordions();
+        }
+    })();
+</script>
+
 
 <?php endwhile; ?>
+
+<?php
+/**
+ * schema.org FAQPage markup for conference/page template FAQ accordion.
+ * FAQ data embedded inline in template HTML.
+ */
+$faq_schema_entities = array(
+    array(
+        'question' => 'Are there any blackout dates for bookings?',
+        'answer' => 'The UCLA Lake Arrowhead Lodge is open year round, with the exception of December 24th and 25th when our facility is closed to observe the Christmas holiday.',
+    ),
+    array(
+        'question' => 'What is a Condolet?',
+        'answer' => 'Our unique Condolets are a combination of a condominium and chalet, and comprise the majority of overnight accommodations here at the UCLA Lake Arrowhead Lodge.',
+    ),
+    array(
+        'question' => 'Do you have a menu I can look at?',
+        'answer' => 'For a sample of our conference menus, please view our Culinary Experience page. During your conference, the breakfast buffet is available from 8:00 to 9:00 a.m.; the lunch buffet from 12:00 noon to 1:00 p.m.; and dinner is served from 6:30 to 8:00 p.m.',
+    ),
+    array(
+        'question' => 'Do groups dine with each other in the same dining room?',
+        'answer' => 'We have three dining rooms that are all connected that seat a total of 178 - 201 max. Your group will have its own assigned tables, grouped together.',
+    ),
+    array(
+        'question' => 'Do you provide alcoholic beverages?',
+        'answer' => 'As a state agency, the UCLA Lake Arrowhead Lodge cannot sell or provide alcoholic beverages. We do, however, allow you to bring your own social beverages.',
+    ),
+    array(
+        'question' => 'Who provides audio visual and/or production equipment?',
+        'answer' => 'The lodge has its own A/V equipment and the use of it is included in the CMP rate. We have staff on hand to assist you prior to the beginning of your conference.',
+    ),
+    array(
+        'question' => 'Can we bring our own system and use your speakers?',
+        'answer' => 'Unfortunately, we have a public announcement system and cannot plug in items that will alter our equalizer. If you would like to bring your own system please provide your own speakers.',
+    ),
+    array(
+        'question' => 'DVD and Blu-Ray Players with Monitors',
+        'answer' => 'These are available on request for use in meetings or for social events.',
+    ),
+    array(
+        'question' => 'Do you have video conferencing capabilities?',
+        'answer' => 'Yes, video conferencing is available for use in most of our meeting rooms.',
+    ),
+    array(
+        'question' => 'Can we attach signs or posters to walls?',
+        'answer' => 'Yes, our meeting room walls are made to secure signs and posters. We also carry a modest inventory of easels for poster sessions.',
+    ),
+    array(
+        'question' => 'Is smoking allowed in the buildings?',
+        'answer' => 'No. The UCLA Lake Arrowhead Lodge is a smoke-free property.',
+    ),
+    array(
+        'question' => 'Do you provide transportation?',
+        'answer' => 'No, however the UCLA Lake Arrowhead Lodge can provide you with a list of transportation companies if you wish to charter a bus or other modes of transportation.',
+    ),
+    array(
+        'question' => 'Can I bring my pet?',
+        'answer' => 'No. The UCLA Lake Arrowhead Lodge does not allow pets on the property. Pets are not permitted in the guest rooms, facilities, or on the grounds, with the exception of licensed service animals.',
+    ),
+    array(
+        'question' => 'What will the weather be like during our conference in Lake Arrowhead?',
+        'answer' => 'The Lake Arrowhead community has a unique climate for Southern California with four distinct seasons. The area receives about 300 days of sunshine per year.',
+    ),
+);
+
+$faq_schema_entities_formatted = array_map(
+    function ( $item ) {
+        return array(
+            '@type' => 'Question',
+            'name' => wp_strip_all_tags( $item['question'] ),
+            'acceptedAnswer' => array(
+                '@type' => 'Answer',
+                'text' => wp_strip_all_tags( $item['answer'] ),
+            ),
+        );
+    },
+    $faq_schema_entities
+);
+?>
+
+<script type="application/ld+json">
+<?php echo wp_json_encode( array( '@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $faq_schema_entities_formatted ), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); ?>
+</script>
 

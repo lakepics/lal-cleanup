@@ -1,6 +1,5 @@
 <?php
 $hero_media_type = strtolower( trim( (string) get_sub_field('hero_media_type') ) );
-$background_video_source = strtolower( trim( get_sub_field('background_video_source') ?: 'vimeo' ) );
 $background_video_url = trim( get_sub_field('background_video_url') ?: '' );
 $background_video_library_url = trim( get_sub_field('background_video_library_url') ?: '' );
 $hero_background_image = get_sub_field('background_image');
@@ -19,6 +18,7 @@ $section_anchor_id = preg_replace( '/[^a-z0-9_-]+/', '-', $section_anchor_id );
 $section_anchor_id = trim( (string) $section_anchor_id, '-' );
 $subheading_font_family = strtolower( trim( (string) get_sub_field('heading_font_family') ) );
 $subheading_font_weight = trim( (string) get_sub_field('heading_font_weight') );
+$heading_text_transform = strtolower( trim( (string) get_sub_field('heading_text_transform') ) );
 $heading_max_width = trim( (string) get_sub_field('heading_max_width') );
 $hero_heading_color = trim( (string) get_sub_field('hero_heading_color') );
 $hero_subheading_color = trim( (string) get_sub_field('hero_subheading_color') );
@@ -60,6 +60,10 @@ if ( ! in_array( $subheading_font_weight, array( '300', '400', '500', '600', '70
     $subheading_font_weight = '600';
 }
 
+if ( ! in_array( $heading_text_transform, array( 'capitalize', 'uppercase', 'none' ), true ) ) {
+    $heading_text_transform = 'uppercase';
+}
+
 if ( ! in_array( $factoid_value_font_family, array( 'default', 'haarlem', 'freight-big-pro' ), true ) ) {
     $factoid_value_font_family = 'default';
 }
@@ -74,11 +78,6 @@ if ( ! in_array( $factoid_label_font_family, array( 'default', 'haarlem', 'freig
 
 if ( ! in_array( $factoid_label_font_weight, array( '300', '400', '500', '600', '700' ), true ) ) {
     $factoid_label_font_weight = '600';
-}
-
-if ( is_page( 'flex' ) ) {
-    $factoid_value_font_family = 'freight-big-pro';
-    $factoid_value_font_weight = '600';
 }
 
 if ( ! in_array( $eyebrow_font_family, array( 'default', 'haarlem', 'freight-big-pro' ), true ) ) {
@@ -104,7 +103,7 @@ $eyebrow_background_color = $eyebrow_background_color ?: 'transparent';
 $eyebrow_border = $eyebrow_border ?: '1px solid rgba(201,151,58,0.35)';
 $eyebrow_padding = $eyebrow_padding ?: '8px 16px';
 $eyebrow_font_size = $eyebrow_font_size ?: '12px';
-$eyebrow_border_radius = $eyebrow_border_radius ?: '3px';
+$eyebrow_border_radius = $eyebrow_border_radius ?: '999px';
 $factoid_value_color = $factoid_value_color ?: 'var(--lacc-color-gold-soft)';
 $factoid_label_color = $factoid_label_color ?: 'rgba(246,243,237,0.78)';
 $heading_max_width = $heading_max_width ?: '100%';
@@ -164,20 +163,20 @@ if ( ! $hero_height ) {
     $hero_height = '70vh';
 }
 
-$background_video_wistia_id = '';
+$resolved_vimeo_url = '';
 if ( $background_video_url ) {
-    if ( preg_match( '/medias\/([a-z0-9]+)(?:\.jsonp)?/i', $background_video_url, $matches ) ) {
-        $background_video_wistia_id = $matches[1];
-    } elseif ( preg_match( '/wistia_async_([a-z0-9]+)/i', $background_video_url, $matches ) ) {
-        $background_video_wistia_id = $matches[1];
-    } elseif ( preg_match( '/([a-z0-9]+)$/i', $background_video_url, $matches ) ) {
-        $background_video_wistia_id = $matches[1];
+    if ( preg_match( '/vimeo\.com\/(?:video\/)?([0-9]+)/i', $background_video_url, $matches ) ) {
+        $resolved_vimeo_url = 'https://player.vimeo.com/video/' . $matches[1];
+    } elseif ( false !== stripos( $background_video_url, 'player.vimeo.com/video/' ) ) {
+        $resolved_vimeo_url = $background_video_url;
     }
 }
 
-$wistia_background_class_options = 'seo=false videoFoam=true autoPlay=true muted=true silentAutoPlay=true playsinline=true playbar=false playButton=false smallPlayButton=false fullscreenButton=false settingsControl=false volumeControl=false playbackRateControl=false qualityControl=false playPauseNotifier=false controlsVisibleOnLoad=false copyLinkAndThumbnailEnabled=false endVideoBehavior=loop';
+$has_vimeo_video = '' !== $resolved_vimeo_url;
+if ( 'video' === $hero_media_type && ! $has_vimeo_video ) {
+    $hero_media_type = 'image';
+}
 
-$default_vimeo_url = 'https://player.vimeo.com/video/1115571207';
 $vimeo_src = add_query_arg(
     array(
         'badge' => 0,
@@ -194,7 +193,7 @@ $vimeo_src = add_query_arg(
         'byline' => 0,
         'portrait' => 0,
     ),
-    $background_video_url ?: $default_vimeo_url
+    $resolved_vimeo_url ?: 'https://player.vimeo.com/video/0'
 );
 
 $section_video_hero_styles = array(
@@ -202,6 +201,7 @@ $section_video_hero_styles = array(
     '--svh-overlay-fill:rgba(81, 83, 74, 0.5)',
     '--svh-title-color:' . $hero_heading_color,
     '--svh-title-max-width:' . $heading_max_width,
+    '--svh-title-transform:' . $heading_text_transform,
     '--svh-subheading-color:' . $hero_subheading_color,
     '--svh-subheading-font:' . $subheading_font_stack,
     '--svh-subheading-weight:' . $subheading_font_weight,
@@ -255,8 +255,6 @@ if ( $hero_background_image_url ) {
 .section-video-hero .vid-container-overflow,
 .section-video-hero .video-container,
 .section-video-hero .background-video-vimeo-wrapper,
-.section-video-hero .wistia_responsive_padding,
-.section-video-hero .wistia_responsive_wrapper,
 .section-video-hero .video-hero-text-background-overlay {
     height: 100%;
 }
@@ -285,9 +283,12 @@ if ( $hero_background_image_url ) {
     overflow: hidden;
 }
 
-.section-video-hero .background-video-vimeo-wrapper,
-.section-video-hero .wistia_responsive_padding,
-.section-video-hero .wistia_responsive_wrapper {
+.section-video-hero.section-video-hero--video-stalled .video-container {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.section-video-hero .background-video-vimeo-wrapper {
     position: absolute !important;
     inset: 0;
     width: 100% !important;
@@ -310,53 +311,6 @@ if ( $hero_background_image_url ) {
     transform: translate(-50%, -50%);
 }
 
-.section-video-hero .wistia_embed,
-.section-video-hero .wistia_embed > div,
-.section-video-hero .wistia_embed > div > div,
-.section-video-hero .wistia_embed video,
-.section-video-hero .w-video-wrapper,
-.section-video-hero .w-video-wrapper video {
-    width: 100% !important;
-    height: 100% !important;
-}
-
-.section-video-hero .wistia_embed video,
-.section-video-hero .w-video-wrapper video {
-    object-fit: cover !important;
-    object-position: center center !important;
-}
-
-.section-video-hero .wistia_embed .w-bottom-bar,
-.section-video-hero .wistia_embed .click-for-sound-btn,
-.section-video-hero .wistia_embed a[aria-label*="Wistia Logo"],
-.section-video-hero .wistia_embed .w-wistia-logo {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-}
-
-.section-video-hero__wistia-padding {
-    padding: 0;
-    position: absolute;
-    inset: 0;
-    height: 100%;
-}
-
-.section-video-hero__wistia-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.section-video-hero__wistia-embed {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
 @media only screen and (max-aspect-ratio: 16/9) {
     .section-video-hero .background-video-vimeo {
         width: 177.78vh;
@@ -371,7 +325,13 @@ if ( $hero_background_image_url ) {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 100%;
+    height: 100% !important;
     padding: 110px 24px 70px;
+    box-sizing: border-box;
+    background: none;
     text-align: center;
 }
 
@@ -399,18 +359,18 @@ if ( $hero_background_image_url ) {
     max-width: var(--svh-title-max-width, 100%);
     color: var(--svh-title-color, var(--lacc-color-cream));
     font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
-    font-size: clamp(48px, 6vw, 84px);
+    font-size: clamp(48px, 5.6vw, 82px);
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1.04;
     letter-spacing: -.015em;
-    margin: 0 auto 24px;
+    margin: 0 auto 20px;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: var(--svh-title-transform, uppercase);
 }
 
 .section-video-hero .hero-slider-subheading {
-    margin: 0 auto 32px;
-    max-width: 840px;
+    margin: 0 auto 28px;
+    max-width: 980px;
     text-align: center;
 }
 
@@ -420,7 +380,7 @@ if ( $hero_background_image_url ) {
     color: var(--svh-subheading-color, rgba(246,243,237,0.82));
     font-family: var(--svh-subheading-font, Georgia, serif) !important;
     font-size: clamp(20px, 2.4vw, 34px);
-    font-style: normal;
+    font-style: italic;
     font-weight: var(--svh-subheading-weight, 600) !important;
     line-height: 1.35;
     text-align: center;
@@ -444,26 +404,27 @@ if ( $hero_background_image_url ) {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 18px 26px;
-    margin: 30px auto 34px;
-    max-width: 1120px;
+    gap: 14px 20px;
+    margin: 22px auto 26px;
+    max-width: 980px;
 }
 
 .section-video-hero .hero-factoid {
-    min-width: 120px;
-    padding: 0 10px;
+    min-width: 108px;
+    padding: 0 6px;
 }
 
 .section-video-hero .hero-factoid__value {
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     color: var(--svh-factoid-value-color, var(--lacc-color-gold-soft));
     font-family: var(--svh-factoid-value-font, HaarlemDeco, Arial, Helvetica, sans-serif) !important;
-    font-size: clamp(34px, 4.2vw, 58px);
+    font-size: clamp(34px, 3.7vw, 52px);
     font-weight: var(--svh-factoid-value-weight, 300) !important;
-    letter-spacing: .06em;
+    font-style: italic;
+    letter-spacing: .01em;
     line-height: 1;
-    text-transform: capitalize;
+    text-transform: none;
 }
 
 .section-video-hero .hero-factoid__label {
@@ -471,11 +432,11 @@ if ( $hero_background_image_url ) {
     color: var(--svh-factoid-label-color, rgba(246,243,237,0.78));
     font-family: var(--svh-factoid-label-font, inherit) !important;
     font-weight: var(--svh-factoid-label-weight, 600) !important;
-    letter-spacing: .14em;
-    font-size: 13px;
-    line-height: 1.3;
+    letter-spacing: .16em;
+    font-size: 11px;
+    line-height: 1.15;
     text-transform: uppercase;
-    margin-top: 6px;
+    margin-top: 4px;
 }
 
 .section-video-hero .hero-button-group {
@@ -545,26 +506,89 @@ if ( $hero_background_image_url ) {
 }
 
 .section-video-hero .background-video-toggle {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    z-index: 30;
-    padding: 10px 12px;
-    background: rgba(0,0,0,0.65);
-    color: var(--lacc-color-white);
-    border: 1px solid rgba(255,255,255,0.58);
+    position: relative;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    margin: 28px auto 0;
+    padding: 10px 14px;
+    background: rgba(31, 34, 29, 0.7);
+    color: var(--lacc-color-cream, #f6f3ed);
+    border: 1px solid rgba(246, 243, 237, 0.56);
     border-radius: 0;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: .08em;
-    line-height: 1;
+    line-height: 1.1;
     text-transform: uppercase;
+    transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.section-video-hero .background-video-toggle:hover,
+.section-video-hero .background-video-toggle:focus {
+    background: rgba(122, 90, 31, 0.9);
+    border-color: rgba(212, 164, 65, 0.92);
+    color: var(--lacc-color-white, #ffffff);
 }
 
 .section-video-hero .background-video-toggle:focus-visible {
     outline: 2px solid #ffffff;
     outline-offset: 2px;
+}
+
+.section-video-hero .background-video-toggle__icon {
+    display: inline-block;
+    flex: 0 0 auto;
+    color: currentColor;
+}
+
+.section-video-hero .background-video-toggle__icon--play {
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 11px solid currentColor;
+}
+
+.section-video-hero .background-video-toggle__icon--pause {
+    position: relative;
+    width: 11px;
+    height: 14px;
+}
+
+.section-video-hero .background-video-toggle__icon--pause::before,
+.section-video-hero .background-video-toggle__icon--pause::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: currentColor;
+}
+
+.section-video-hero .background-video-toggle__icon--pause::before {
+    left: 1px;
+}
+
+.section-video-hero .background-video-toggle__icon--pause::after {
+    right: 1px;
+}
+
+.section-video-hero .background-video-toggle.is-paused .background-video-toggle__icon--pause,
+.section-video-hero .background-video-toggle.is-playing .background-video-toggle__icon--play {
+    display: none;
+}
+
+.section-video-hero .background-video-toggle__label {
+    display: inline-block;
+}
+
+.section-video-hero.section-video-hero--video-stalled .background-video-toggle {
+    display: none;
 }
 
 .section-video-hero__eyebrow {
@@ -587,6 +611,9 @@ if ( $hero_background_image_url ) {
     .section-video-hero .video-hero-text-background-overlay {
         align-items: center;
         justify-content: center;
+        width: 100% !important;
+        max-width: none !important;
+        height: 100% !important;
         padding: 72px 18px 72px;
     }
 
@@ -630,11 +657,6 @@ if ( $hero_background_image_url ) {
     .section-video-hero .hero-factoid__value {
         font-size: 28px;
     }
-
-    .section-video-hero .background-video-toggle {
-        bottom: 12px;
-        right: 12px;
-    }
 }
 </style>
 
@@ -642,70 +664,24 @@ if ( $hero_background_image_url ) {
     <div class="vid-container-overflow">
         <?php if ( 'image' === $hero_media_type ) : ?>
             <div class="section-video-hero__media--image" aria-hidden="true"></div>
-        <?php else : ?>
+        <?php elseif ( $has_vimeo_video ) : ?>
         <div class="video-container">
-            <?php if ( 'wistia' === $background_video_source ) : ?>
-                <script>
-                    window._wq = window._wq || [];
-                    <?php if ( $background_video_wistia_id ) : ?>
-                    _wq.push({
-                        id: "<?php echo esc_js( $background_video_wistia_id ); ?>",
-                        options: {
-                            videoFoam: true,
-                            autoPlay: true,
-                            muted: true,
-                            silentAutoPlay: true,
-                            playsinline: true,
-                            playbar: false,
-                            playButton: false,
-                            smallPlayButton: false,
-                            fullscreenButton: false,
-                            settingsControl: false,
-                            volumeControl: false,
-                            playbackRateControl: false,
-                            qualityControl: false,
-                            playPauseNotifier: false,
-                            controlsVisibleOnLoad: false,
-                            copyLinkAndThumbnailEnabled: false,
-                            endVideoBehavior: "loop"
-                        }
-                    });
-                    <?php endif; ?>
-                </script>
-                <script src="<?php echo esc_url( $background_video_url ?: 'https://fast.wistia.com/embed/medias/4e2kjpftga.jsonp' ); ?>" async></script>
-                <script src="<?php echo esc_url( $background_video_library_url ?: 'https://fast.wistia.com/assets/external/E-v1.js' ); ?>" async></script>
-                <div class="wistia_responsive_padding section-video-hero__wistia-padding">
-                    <div class="wistia_responsive_wrapper section-video-hero__wistia-wrapper">
-                        <div class="wistia_embed section-video-hero__wistia-embed wistia_async_<?php echo esc_attr( $background_video_wistia_id ?: '4e2kjpftga' ); ?> <?php echo esc_attr( $wistia_background_class_options ); ?>">&nbsp;</div>
-                    </div>
-                </div>
-            <?php else : ?>
-                <div class="background-video-vimeo-wrapper">
-                    <iframe
-                        class="background-video-vimeo"
-                        src="<?php echo esc_url( $vimeo_src ); ?>"
-                        frameborder="0"
-                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        title="Background Video Hero"
-                    ></iframe>
-                </div>
-                <script src="<?php echo esc_url( $background_video_library_url ?: 'https://player.vimeo.com/api/player.js' ); ?>"></script>
-            <?php endif; ?>
+            <div class="background-video-vimeo-wrapper">
+                <iframe
+                    class="background-video-vimeo"
+                    src="<?php echo esc_url( $vimeo_src ); ?>"
+                    frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    title="Background Video Hero"
+                ></iframe>
+            </div>
+            <script src="<?php echo esc_url( $background_video_library_url ?: 'https://player.vimeo.com/api/player.js' ); ?>"></script>
         </div>
         <?php endif; ?>
     </div>
 
     <div class="video-hero-text-background-overlay">
-        <?php if ( 'video' === $hero_media_type ) : ?>
-        <button
-            class="background-video-toggle"
-            aria-label="Pause background video"
-            title="Pause background video"
-            type="button"
-        >⏸</button>
-        <?php endif; ?>
-
         <div class="video-hero-text-container">
             <div class="hero-slider-content">
                 <?php if ( $section_eyebrow ) : ?>
@@ -745,46 +721,25 @@ if ( $hero_background_image_url ) {
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
+
+                <?php if ( 'video' === $hero_media_type ) : ?>
+                    <button
+                        class="background-video-toggle is-playing"
+                        aria-label="Pause background video"
+                        title="Pause background video"
+                        type="button"
+                    >
+                        <span class="background-video-toggle__icon background-video-toggle__icon--play" aria-hidden="true"></span>
+                        <span class="background-video-toggle__icon background-video-toggle__icon--pause" aria-hidden="true"></span>
+                        <span class="background-video-toggle__label">Pause</span>
+                    </button>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 </div>
 
 <?php if ( 'video' === $hero_media_type ) : ?>
-    <?php if ( 'wistia' === $background_video_source ) : ?>
-<script>
-window._wq = window._wq || [];
-window._wq.push({
-    id: "<?php echo esc_js( $background_video_wistia_id ?: '4e2kjpftga' ); ?>",
-    onReady: function(video) {
-        var section = document.getElementById('<?php echo esc_js( $section_video_hero_id ); ?>');
-        var button = section ? section.querySelector('.background-video-toggle') : null;
-        if (!button) {
-            return;
-        }
-
-        function updateButton() {
-            var playing = video.state() === 'playing';
-            button.textContent = playing ? '⏸' : '▶';
-            var label = playing ? 'Pause background video' : 'Play background video';
-            button.setAttribute('aria-label', label);
-            button.setAttribute('title', label);
-        }
-
-        video.bind('play', updateButton);
-        video.bind('pause', updateButton);
-        button.addEventListener('click', function() {
-            if (video.state() === 'playing') {
-                video.pause();
-            } else {
-                video.play();
-            }
-        });
-        updateButton();
-    }
-});
-</script>
-    <?php else : ?>
 <script>
 (function() {
     var section = document.getElementById('<?php echo esc_js( $section_video_hero_id ); ?>');
@@ -797,17 +752,59 @@ window._wq.push({
 
     try {
         var vimeoPlayer = new Vimeo.Player(vimeoIframe);
+        var playStateResolved = false;
+        var stallTimer = null;
+
+        function setVideoStalled() {
+            if (!section || playStateResolved) {
+                return;
+            }
+            section.classList.add('section-video-hero--video-stalled');
+            updateButton('paused');
+        }
+
+        function clearVideoStalled() {
+            playStateResolved = true;
+            if (stallTimer) {
+                window.clearTimeout(stallTimer);
+                stallTimer = null;
+            }
+            if (section) {
+                section.classList.remove('section-video-hero--video-stalled');
+            }
+        }
+
+        stallTimer = window.setTimeout(function() {
+            vimeoPlayer.getPaused().then(function(paused) {
+                if (paused) {
+                    setVideoStalled();
+                } else {
+                    clearVideoStalled();
+                }
+            }).catch(function() {
+                setVideoStalled();
+            });
+        }, 3200);
 
         vimeoPlayer.setVolume(0).then(function() {
             return vimeoPlayer.play();
-        }).catch(function() {});
+        }).then(function() {
+            clearVideoStalled();
+        }).catch(function() {
+            setVideoStalled();
+        });
 
         function updateButton(state) {
             if (!button) {
                 return;
             }
             var playing = state === 'playing';
-            button.textContent = playing ? '⏸' : '▶';
+            button.classList.toggle('is-playing', playing);
+            button.classList.toggle('is-paused', !playing);
+            var labelNode = button.querySelector('.background-video-toggle__label');
+            if (labelNode) {
+                labelNode.textContent = playing ? 'Pause' : 'Play';
+            }
             var label = playing ? 'Pause background video' : 'Play background video';
             button.setAttribute('aria-label', label);
             button.setAttribute('title', label);
@@ -816,8 +813,14 @@ window._wq.push({
         if (button) {
             vimeoPlayer.getPaused().then(function(paused) {
                 updateButton(paused ? 'paused' : 'playing');
+                if (!paused) {
+                    clearVideoStalled();
+                }
+            }).catch(function() {
+                setVideoStalled();
             });
             vimeoPlayer.on('play', function() {
+                clearVideoStalled();
                 updateButton('playing');
             });
             vimeoPlayer.on('pause', function() {
@@ -826,17 +829,23 @@ window._wq.push({
             button.addEventListener('click', function() {
                 vimeoPlayer.getPaused().then(function(paused) {
                     if (paused) {
-                        vimeoPlayer.play();
+                        vimeoPlayer.play().then(function() {
+                            clearVideoStalled();
+                        }).catch(function() {
+                            setVideoStalled();
+                        });
                     } else {
                         vimeoPlayer.pause();
                     }
+                }).catch(function() {
+                    setVideoStalled();
                 });
             });
         }
     } catch (e) {
+        setVideoStalled();
         console.warn('Vimeo player init failed:', e);
     }
 })();
 </script>
-    <?php endif; ?>
 <?php endif; ?>

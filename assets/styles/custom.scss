@@ -1,0 +1,4 @@
+// Served as dist/styles/custom.css.
+// Keep this as a dedicated override entrypoint so runtime hotfixes and
+// long-tail custom rules stay separate from the main theme bundle.
+@import "layouts/custom";

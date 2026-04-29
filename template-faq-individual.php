@@ -1,32 +1,35 @@
 ﻿<?php
 /**
  * Template Name: FAQ Accordion  - Individual Traveler
+ * Deprecated: Use FAQ Accordion Builder (template-faq-accordion-builder.php)
  */
 ?>
 <?php while (have_posts()) : the_post(); ?>
 <?php get_template_part('components/_subheader');?>
 <section class="faq-section"> 
   <!-- Begining on Accordion block -->
-  <div class="container">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="row">
-        <h2>Categories:</h2>
-        <ul>
-          <li><a href="#reservation">Reservation &amp; Arrival</a></li>
-          <li><a href="#guestroom">Guest Room</a></li>
-          <li><a href="#dining">Dining at  the Lodge</a></li>
-          <li><a href="#thelodge">The Lodge</a></li>
-          <li><a href="#lakearrowhead">Lake Arrowhead</a></li>
-          <li><a href="#activities">Activities &amp; Events</a></li>
-          <li><a href="#covid">COVID-19 Mitigation Efforts</a></li>
-          <li><a href="#checkout">Checkout</a></li>
-        </ul>
-        <div style="margin-top: 25px; margin-bottom: 25px;">
-          <p>Don't see the answer to your question? Email us at <a href="mailto:UCLALakeArrowhead@ha.ucla.edu">UCLALakeArrowhead@ha.ucla.edu</a> 
+  <?php if ( apply_filters( 'lacc_faq_show_category_navigation', true ) ) : ?>
+    <div class="container">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+          <h2>Categories:</h2>
+          <ul>
+            <li><a href="#reservation">Reservation &amp; Arrival</a></li>
+            <li><a href="#guestroom">Guest Room</a></li>
+            <li><a href="#dining">Dining at  the Lodge</a></li>
+            <li><a href="#thelodge">The Lodge</a></li>
+            <li><a href="#lakearrowhead">Lake Arrowhead</a></li>
+            <li><a href="#activities">Activities &amp; Events</a></li>
+            <li><a href="#covid">COVID-19 Mitigation Efforts</a></li>
+            <li><a href="#checkout">Checkout</a></li>
+          </ul>
+          <div style="margin-top: 25px; margin-bottom: 25px;">
+            <p>Don't see the answer to your question? Email us at <a href="mailto:UCLALakeArrowhead@ha.ucla.edu">UCLALakeArrowhead@ha.ucla.edu</a> 
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <?php endif; ?>
   <div class="container">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="row"> <a name="reservation"></a>
@@ -34,7 +37,7 @@
         <div class="panel-group wrap" id="bs-collapse">
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#reservation1"> Can I bring my pet? </a> </h4>
+              <h4 class="panel-title"> <a href="#reservation1"> Can I bring my pet? </a> </h4>
             </div>
             <div id="reservation1" class="panel-collapse collapse">
               <div class="panel-body"> Only service animals are permitted. </div>
@@ -42,7 +45,7 @@
           </div>
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#reservation2"> I heard you have to be a UCLA Alumni to stay at the Lodge, is that true? </a> </h4>
+              <h4 class="panel-title"> <a href="#reservation2"> I heard you have to be a UCLA Alumni to stay at the Lodge, is that true? </a> </h4>
             </div>
             <div id="reservation2" class="panel-collapse collapse">
               <div class="panel-body"> No. While our summer <a href="https://bruinwoods.ucla.edu/">Bruin Woods</a> program (late June - August) is generally reserved for UCLA Alumni, anyone is welcome to <a href="https://reservations.travelclick.com/112652#/guestsandrooms">book a stay</a> with us outside these times. </div>
@@ -50,7 +53,7 @@
           </div>
           <div class="panel" style="display: none !important;">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#reservation3">Do we need chains for our vehicle?</a> </h4>
+              <h4 class="panel-title"> <a href="#reservation3">Do we need chains for our vehicle?</a> </h4>
             </div>
             <div id="reservation3" class="panel-collapse collapse">
               <div class="panel-body"> As Lake Arrowhead does receive occasional snowfall in the winter months, having chains stored in your vehicle is recommended. We do sell chains at the Front Desk as well.</div>
@@ -58,7 +61,7 @@
           </div>
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#reservation4">Why can't I book during the summer?</a> </h4>
+              <h4 class="panel-title"> <a href="#reservation4">Why can't I book during the summer?</a> </h4>
             </div>
             <div id="reservation4" class="panel-collapse collapse">
               <div class="panel-body"> From late June through August, the UCLA Lake Arrowhead Lodge hosts <a href="https://bruinwoods.ucla.edu/">Bruin Woods</a>, a family resort program for UCLA Alumni families, and is not open to the general public. </div>
@@ -77,7 +80,7 @@
         <div class="panel-group wrap" id="bs-collapse">
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#guestroom1"> I see you have a few different types of rooms, which one should I book? </a> </h4>
+              <h4 class="panel-title"> <a href="#guestroom1"> I see you have a few different types of rooms, which one should I book? </a> </h4>
             </div>
             <div id="guestroom1" class="panel-collapse collapse">
               <div class="panel-body">
@@ -91,7 +94,7 @@
           </div>
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#guestroom2"> Will there be a TV in my room? </a> </h4>
+              <h4 class="panel-title"> <a href="#guestroom2"> Will there be a TV in my room? </a> </h4>
             </div>
             <div id="guestroom2" class="panel-collapse collapse">
               <div class="panel-body"> No. Our rooms are designed for taking full advantage of your mountain getaway so be sure to explore all our 50-acre property and Lake Arrowhead has to offer. But if you can't miss your favorite show, we have high-speed internet available in every guest room for your streaming devices. Additionally, visit the Front Desk to inquire about setting up a viewing room in the Main Lodge. </div>
@@ -99,7 +102,7 @@
           </div>
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#guestroom3b"> Will there be a coffee maker in my room? </a> </h4>
+              <h4 class="panel-title"> <a href="#guestroom3b"> Will there be a coffee maker in my room? </a> </h4>
             </div>
             <div id="guestroom3b" class="panel-collapse collapse">
               <div class="panel-body"> While we do not currently have coffee makers in our rooms, it is available at the Main Lodge.</div>
@@ -107,7 +110,7 @@
           </div>
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#guestroom4"> Will my room have a lake view? </a> </h4>
+              <h4 class="panel-title"> <a href="#guestroom4"> Will my room have a lake view? </a> </h4>
             </div>
             <div id="guestroom4" class="panel-collapse collapse">
               <div class="panel-body"> The majority of our chalets have forest views, however, various areas of our property, including the Main Lodge, Dining Patio, and Front Lawn have a view of Lake Arrowhead. Don't miss the stunning lake panorama seen from our Zen Deck!</div>
@@ -126,7 +129,7 @@
         <div class="panel-group wrap" id="bs-collapse">
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#dining1"> Is there a restaurant at the Lodge? </a> </h4>
+              <h4 class="panel-title"> <a href="#dining1"> Is there a restaurant at the Lodge? </a> </h4>
             </div>
             <div id="dining1" class="panel-collapse collapse">
               <div class="panel-body"> We have an award-winning restaurant on site that is open for three meals a day during set times. Breakfast is served from 8 a.m. – 9 a.m., lunch from 12 p.m. – 1 p.m., and dinner from 6:30 p.m. – 8 p.m.</div>
@@ -134,7 +137,7 @@
           </div>
           <div class="panel" style="display: none !important;">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#dining2"> Do you have coffee available? </a> </h4>
+              <h4 class="panel-title"> <a href="#dining2"> Do you have coffee available? </a> </h4>
             </div>
             <div id="dining2" class="panel-collapse collapse">
               <div class="panel-body"> Yes, coffee is available in the Main Lodge upon request.</div>
@@ -153,7 +156,7 @@
         <div class="panel-group wrap" id="bs-collapse">
           <div class="panel">
             <div class="panel-heading active">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#lodge0"> What can I do at the UCLA Lake Arrowhead Lodge? </a> </h4>
+              <h4 class="panel-title"> <a href="#lodge0"> What can I do at the UCLA Lake Arrowhead Lodge? </a> </h4>
             </div>
             <div id="lodge0" class="panel-collapse collapse">
               <div class="panel-body"> The UCLA Lake Arrowhead Lodge offers so much more than a typical hotel. Our 50-acre property offers the ideal mountain backdrop for every guest. Be sure to check out every location the Lodge has to offer:
@@ -194,7 +197,7 @@
           
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#lodge1"> Is there a bar on site? </a> </h4>
+              <h4 class="panel-title"> <a href="#lodge1"> Is there a bar on site? </a> </h4>
             </div>
             <div id="lodge1" class="panel-collapse collapse">
               <div class="panel-body">There is not a bar at the Lodge. The Lodge does not sell or serve alcoholic beverages. </div>
@@ -202,7 +205,7 @@
           </div>
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#lodge2"> Is smoking prohibited on your property? </a> </h4>
+              <h4 class="panel-title"> <a href="#lodge2"> Is smoking prohibited on your property? </a> </h4>
             </div>
             <div id="lodge2" class="panel-collapse collapse">
               <div class="panel-body"> We are a smoke-free property and there are no designated smoking areas. </div>
@@ -210,7 +213,7 @@
           </div>
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#lodge4"> What is there to do in winter? </a> </h4>
+              <h4 class="panel-title"> <a href="#lodge4"> What is there to do in winter? </a> </h4>
             </div>
             <div id="lodge4" class="panel-collapse collapse">
               <div class="panel-body"> Visit the local ski resort just a short drive away, hike local trails, bundle up and enjoy the scenic lake view from our Zen Deck, play tennis on one of our four courts, relax by the firepit with s'mores, or gather the family to visit the Lake Arrowhead Village where restaurants and shops await. </div>
@@ -218,7 +221,7 @@
           </div>
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#lodge5"> I'm arriving in the winter, will I need snow chains for my vehicle? </a> </h4>
+              <h4 class="panel-title"> <a href="#lodge5"> I'm arriving in the winter, will I need snow chains for my vehicle? </a> </h4>
             </div>
             <div id="lodge5" class="panel-collapse collapse">
               <div class="panel-body"> As Lake Arrowhead does receive occasional snowfall in the winter months, having chains stored in your vehicle is recommended. </div>
@@ -237,7 +240,7 @@
         <div class="panel-group wrap" id="bs-collapse">
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#lakearrowhead1"> Why should I visit Lake Arrowhead? </a> </h4>
+              <h4 class="panel-title"> <a href="#lakearrowhead1"> Why should I visit Lake Arrowhead? </a> </h4>
             </div>
             <div id="lakearrowhead1" class="panel-collapse collapse">
               <div class="panel-body"> Known as the "Swiss Alps of Southern California", Lake Arrowhead is nestled 5,100 feet above sea level in the San Bernardino National Forest. Lake Arrowhead offers stunning alpine lake views, hiking and biking trails and a bustling village shopping and dining experience. Be sure to check out <a href="https://skyparksantasvillage.com/">SkyPark</a> and <a href="https://snow-valley.com/">Snow Valley Mountain Resort</a> for mountain activities available nearby!
@@ -247,7 +250,7 @@
           </div>
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#lakearrowhead2"> Can I rent a boat? </a> </h4>
+              <h4 class="panel-title"> <a href="#lakearrowhead2"> Can I rent a boat? </a> </h4>
             </div>
             <div id="lakearrowhead2" class="panel-collapse collapse">
               <div class="panel-body"> Lake Arrowhead is a private lake that does not permit boat rentals, but the <a href="https://mckenziewaterskischool.com/">McKenzie Water Ski School</a> offers tours and skiing (seasonally) and the <a href="https://lakearrowheadqueen.com/">Lake Arrowhead Queen</a> offers tours and private charters. </div>
@@ -255,7 +258,7 @@
           </div>
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#lakearrowhead3"> What will the weather be like during my stay? </a> </h4>
+              <h4 class="panel-title"> <a href="#lakearrowhead3"> What will the weather be like during my stay? </a> </h4>
             </div>
             <div id="lakearrowhead3" class="panel-collapse collapse">
               <div class="panel-body"> The Lake Arrowhead community has a unique climate for Southern California with four distinct seasons that support an array of outdoor recreational activities and year-round beauty. The area receives about 300 days of sunshine per year. We recommend you bring appropriate outerwear for the season and dress in layers to ensure your ultimate comfort. </div>
@@ -274,7 +277,7 @@
         <div class="panel-group wrap" id="bs-collapse">
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#act1"> Do you host weddings? </a> </h4>
+              <h4 class="panel-title"> <a href="#act1"> Do you host weddings? </a> </h4>
             </div>
             <div id="act1" class="panel-collapse collapse">
               <div class="panel-body"> Yes, we do host weddings. Please visit our <a href="/weddings">weddings page</a> for additional infomration. </p>
@@ -283,7 +286,7 @@
           </div>
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#act3"> What is Bruin Woods? </a> </h4>
+              <h4 class="panel-title"> <a href="#act3"> What is Bruin Woods? </a> </h4>
             </div>
             <div id="act3" class="panel-collapse collapse">
               <div class="panel-body"> From late June through August, the UCLA Lake Arrowhead Lodge hosts <a href="https://bruinwoods.ucla.edu/">Bruin Woods</a>, a family resort program for UCLA Alumni families, and is not open to the general public. </div>
@@ -302,7 +305,7 @@
         <div class="panel-group wrap" id="bs-collapse">
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#covid1"> What is the UCLA Lake Arrowhead Lodge doing to prevent the spread of COVID-19? </a> </h4>
+              <h4 class="panel-title"> <a href="#covid1"> What is the UCLA Lake Arrowhead Lodge doing to prevent the spread of COVID-19? </a> </h4>
             </div>
             <div id="covid1" class="panel-collapse collapse">
               <div class="panel-body"> Health and safety is our utmost priority. Please review all of our <a href="https://lakearrowheadconferencecenter.ucla.edu/coronavirus/">COVID-19 mitigation protocols</a> in place to ensure the safety of our guests and team members. Among many other protocols, none of our team members, including guest room cleaning staff, will enter your room during your stay, except in emergencies. All UCLA Lake Arrowhead Lodge team members are tested weekly for COVID-19 and complete a daily symptom-monitoring survey. Hand sanitizer stations are available throughout the Main Lodge. </div>
@@ -310,7 +313,7 @@
           </div>
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#covid2"> What COVID-19 mitigation protocols do I need to follow during my stay? </a> </h4>
+              <h4 class="panel-title"> <a href="#covid2"> What COVID-19 mitigation protocols do I need to follow during my stay? </a> </h4>
             </div>
             <div id="covid2" class="panel-collapse collapse">
               <div class="panel-body"> We expect our guests to help us prevent the spread of COVID-19 and keep the safety of all guests and team members at the UCLA Lake Arrowhead Lodge in mind during their stay. Please monitor yourself for symptoms before your arrival. Masks are mandatory in all indoor spaces and wherever you might come into contact with other guests or team members.  </div>
@@ -329,7 +332,7 @@
         <div class="panel-group wrap" id="bs-collapse">
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#checkout1"> What time do I need to checkout? </a> </h4>
+              <h4 class="panel-title"> <a href="#checkout1"> What time do I need to checkout? </a> </h4>
             </div>
             <div id="checkout1" class="panel-collapse collapse">
               <div class="panel-body"> Check out is 11:00 am. </div>
@@ -337,7 +340,7 @@
           </div>
           <div class="panel">
             <div class="panel-heading">
-              <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#bs-collapse" href="#checkout2"> Can I check out later? </a> </h4>
+              <h4 class="panel-title"> <a href="#checkout2"> Can I check out later? </a> </h4>
             </div>
             <div id="checkout2" class="panel-collapse collapse">
               <div class="panel-body"> We offer late check out based on availability, and this service may incur an additional fee.</div>
@@ -350,4 +353,150 @@
     </div>
   </div>
 </section>
+
+<script>
+  (function () {
+    function initFaqAccordions() {
+      var groups = document.querySelectorAll('.faq-section .panel-group');
+      if (!groups.length) {
+        return;
+      }
+
+      groups.forEach(function (group) {
+        var triggers = Array.prototype.slice.call(group.querySelectorAll('.panel-title a[href^="#"]'));
+
+        function getTarget(trigger) {
+          var targetSelector = trigger.getAttribute('href');
+          if (!targetSelector || targetSelector.charAt(0) !== '#') {
+            return null;
+          }
+
+          var escapedId = targetSelector.slice(1).replace(/([ !"#$%&'()*+,./:;<=>?@[\\\]^`{|}~])/g, '\\$1');
+          return group.querySelector('#' + escapedId) || document.querySelector(targetSelector);
+        }
+
+        function closeItem(trigger) {
+          var panel = trigger.closest('.panel');
+          var heading = panel ? panel.querySelector('.panel-heading') : null;
+          var target = getTarget(trigger);
+
+          trigger.setAttribute('aria-expanded', 'false');
+          if (heading) {
+            heading.classList.remove('active');
+          }
+
+          if (target) {
+            target.classList.remove('in');
+            target.hidden = true;
+          }
+        }
+
+        function openItem(trigger) {
+          var panel = trigger.closest('.panel');
+          var heading = panel ? panel.querySelector('.panel-heading') : null;
+          var target = getTarget(trigger);
+
+          trigger.setAttribute('aria-expanded', 'true');
+          if (heading) {
+            heading.classList.add('active');
+          }
+
+          if (target) {
+            target.classList.add('in');
+            target.hidden = false;
+          }
+        }
+
+        triggers.forEach(function (trigger) {
+          var target = getTarget(trigger);
+          var isOpen = target ? target.classList.contains('in') : false;
+
+          trigger.setAttribute('role', 'button');
+          trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+          if (target && target.id) {
+            trigger.setAttribute('aria-controls', target.id);
+            target.hidden = !isOpen;
+          }
+
+          trigger.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var willOpen = trigger.getAttribute('aria-expanded') !== 'true';
+            triggers.forEach(closeItem);
+
+            if (willOpen) {
+              openItem(trigger);
+            }
+          });
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initFaqAccordions);
+    } else {
+      initFaqAccordions();
+    }
+  })();
+</script>
 <?php endwhile; ?>
+
+<?php
+/**
+ * schema.org FAQPage markup for individual traveler FAQ template.
+ * FAQ data embedded inline in template HTML.
+ */
+$faq_schema_entities = array(
+  array(
+    'question' => 'Can I bring my pet?',
+    'answer' => 'Only service animals are permitted.',
+  ),
+  array(
+    'question' => 'I heard you have to be a UCLA Alumni to stay at the Lodge, is that true?',
+    'answer' => 'No. While our summer Bruin Woods program (late June - August) is generally reserved for UCLA Alumni, anyone is welcome to book a stay with us outside these times.',
+  ),
+  array(
+    'question' => 'Why can\'t I book during the summer?',
+    'answer' => 'From late June through August, the UCLA Lake Arrowhead Lodge hosts Bruin Woods, a family resort program for UCLA Alumni families, and is not open to the general public.',
+  ),
+  array(
+    'question' => 'I see you have a few different types of rooms, which one should I book?',
+    'answer' => 'Read more about our room types here. Most of our guest rooms are two-bedroom chalets perfect for accommodating families and small groups.',
+  ),
+  array(
+    'question' => 'Will there be a TV in my room?',
+    'answer' => 'No. Our rooms are designed for taking full advantage of your mountain getaway so be sure to explore all our 50-acre property and Lake Arrowhead has to offer.',
+  ),
+  array(
+    'question' => 'Will there be a coffee maker in my room?',
+    'answer' => 'While we do not currently have coffee makers in our rooms, it is available at the Main Lodge.',
+  ),
+  array(
+    'question' => 'Will my room have a lake view?',
+    'answer' => 'The majority of our chalets have forest views, however, various areas of our property, including the Main Lodge, Dining Patio, and Front Lawn have a view of Lake Arrowhead.',
+  ),
+  array(
+    'question' => 'Is there a restaurant at the Lodge?',
+    'answer' => 'We have an award-winning restaurant on site that is open for three meals a day during set times.',
+  ),
+);
+
+$faq_schema_entities_formatted = array_map(
+  function ( $item ) {
+    return array(
+      '@type' => 'Question',
+      'name' => wp_strip_all_tags( $item['question'] ),
+      'acceptedAnswer' => array(
+        '@type' => 'Answer',
+        'text' => wp_strip_all_tags( $item['answer'] ),
+      ),
+    );
+  },
+  $faq_schema_entities
+);
+?>
+
+<script type="application/ld+json">
+<?php echo wp_json_encode( array( '@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $faq_schema_entities_formatted ), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); ?>
+</script>

@@ -1,43 +1,34 @@
 
 <?php
 
-// check if the repeater field has rows of data
-if( have_rows('blueheaders') ):
-
- 	// loop through the rows of data
+// Render optional blue header rows from ACF repeater.
+if ( have_rows('blueheaders') ) :
     while ( have_rows('blueheaders') ) : the_row();
-
-        // display a sub field value
-       $bheader = get_sub_field('heading');
-       $bsubheader = get_sub_field('subheading');
+        $bheader = trim( (string) get_sub_field('heading') );
+        $bsubheader = trim( (string) get_sub_field('subheading') );
 ?>
 <div class="header__heading">
- 	<div class="container">
-        <div class="col-md-12">
-            <div class="row">
-                <h1 class="header__heading--subheading"><?php echo $bheader; ?></h1>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="header__heading--subheading"><?php echo esc_html( $bheader ); ?></h1>
             </div>
         </div>
-        <?php if ($bsubheader): ?>
-        <div class="subheader-title">
-            <div class="container">
-                <div class="col-md-12">
-                    <div class="row">
-                        <h2 class="header__heading--text"><?php if(!empty($bsubheader)):?> <?php echo $bsubheader; ?><?php endif; ?></h2>
-                    </div>
-                </div>
+    </div>
+</div>
+<?php if ( '' !== $bsubheader ) : ?>
+<div class="subheader-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="header__heading--text"><?php echo esc_html( $bsubheader ); ?></h2>
             </div>
         </div>
-        <?php endif; ?>
-<?php 
+    </div>
+</div>
+<?php endif; ?>
+<?php
     endwhile;
-
-else :
-
-    // no rows found
-
 endif;
 
 ?>

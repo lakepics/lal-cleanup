@@ -40,6 +40,7 @@ if ( have_rows('faq_groups') ) {
         $group_anchor = $group_anchor ?: preg_replace( '/[^a-z0-9_-]+/', '-', strtolower( $group_title ) );
         $group_anchor = trim( (string) $group_anchor, '-' );
         $group_summary = trim( wp_strip_all_tags( (string) get_sub_field('faq_section_summary') ) );
+    $include_in_category = (bool) get_sub_field('include_in_category_block');
 
         $faqs = array();
         if ( have_rows('faqs') ) {
@@ -68,6 +69,7 @@ if ( have_rows('faq_groups') ) {
             'title' => $group_title,
             'anchor' => $group_anchor,
             'summary' => $group_summary,
+            'include_in_category' => $include_in_category,
             'faqs' => $faqs,
         );
     }
@@ -504,19 +506,28 @@ $categories_intro_output = function_exists( 'lacc_strip_component_inline_styles'
                 <?php if ( count( $groups ) > 1 || ! empty( $categories_intro ) ) : ?>
                     <div class="section-faq-accordion__categories">
                         <?php if ( count( $groups ) > 1 ) : ?>
-                            <h3 class="section-faq-accordion__categories-title"><?php echo esc_html( $categories_heading ); ?></h3>
-                            <ul class="section-faq-accordion__categories-list lacc-keyline-list--plain">
-                                <?php foreach ( $groups as $group ) : ?>
-                                    <li>
-                                        <a href="#<?php echo esc_attr( $group['anchor'] ); ?>">
-                                            <span class="section-faq-accordion__category-link-title"><?php echo esc_html( $group['title'] ); ?></span>
-                                            <?php if ( ! empty( $group['summary'] ) ) : ?>
-                                                <span class="section-faq-accordion__category-link-summary"><?php echo esc_html( $group['summary'] ); ?></span>
-                                            <?php endif; ?>
-                                        </a>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
+                            <?php
+                            $categories_to_show = array_filter(
+                                $groups,
+                                function ( $group ) {
+                                    return (bool) $group['include_in_category'];
+                                }
+                            );
+                            if ( ! empty( $categories_to_show ) ) : ?>
+                                <h3 class="section-faq-accordion__categories-title"><?php echo esc_html( $categories_heading ); ?></h3>
+                                <ul class="section-faq-accordion__categories-list lacc-keyline-list--plain">
+                                    <?php foreach ( $categories_to_show as $group ) : ?>
+                                        <li>
+                                            <a href="#<?php echo esc_attr( $group['anchor'] ); ?>">
+                                                <span class="section-faq-accordion__category-link-title"><?php echo esc_html( $group['title'] ); ?></span>
+                                                <?php if ( ! empty( $group['summary'] ) ) : ?>
+                                                    <span class="section-faq-accordion__category-link-summary"><?php echo esc_html( $group['summary'] ); ?></span>
+                                                <?php endif; ?>
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
                         <?php endif; ?>
 
                         <?php if ( ! empty( $categories_intro ) ) : ?>

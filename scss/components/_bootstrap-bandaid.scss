@@ -1,7 +1,9 @@
+@use "sass:math";
+
 // Bootstrap Grid Bandaid – Temporary CSS shim for col-md-* classes
 // Purpose: Provide flexbox equivalents to Bootstrap grid classes while templates are gradually migrated
 // Migration strategy: Remove col-md-* classes from component templates incrementally; delete this file when no longer referenced
-// Last updated: 2026-04-27
+// Last updated: 2026-04-29
 
 // --lacc-gutter-x: horizontal gutter between columns (one side)
 // Maps to Bootstrap's .row > [class*='col-'] default gutter
@@ -9,11 +11,11 @@ $gutter-x: 0.75rem;
 
 // Column width mixins for consistent calc patterns
 @mixin col-size($cols, $total: 12) {
-  flex: 0 0 calc(#{percentage($cols / $total)} - #{$gutter-x});
+  flex: 0 0 calc(#{math.percentage(math.div($cols, $total))} - #{$gutter-x});
 }
 
 @mixin col-offset($cols, $total: 12) {
-  margin-left: calc(#{percentage($cols / $total)} + #{$gutter-x});
+  margin-left: calc(#{math.percentage(math.div($cols, $total))} + #{$gutter-x});
 }
 
 // Column width classes – directly replaces Bootstrap col-md-* grid

@@ -4,7 +4,8 @@ applyTo: "**/*.{php,scss,css,js,md}"
 ---
 
 LocalWP preflight:
-- Verify tools needed for the task are available: git, rg, node, npm, sass, wp or local wp-cli wrapper.
+- Verify tools needed for the task are available on PATH: git, rg, node, npm, sass, python, python2, and wp or local wp-cli wrapper.
+- If a required command is installed but not on PATH, fix PATH first and then continue.
 - If wp fails with DB connection, switch to Local wrapper pattern using socket flags.
 - Before DB-connected wp-cli work, detect the active Local runtime/socket path instead of assuming an older identifier still applies.
 - Prefer direct frontend verification after CSS or Customizer-related changes.

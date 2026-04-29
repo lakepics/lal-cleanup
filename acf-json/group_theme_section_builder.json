@@ -293,6 +293,36 @@
                             "save_options": 0
                         },
                         {
+                            "key": "field_tsb_vh_heading_transform",
+                            "label": "Hero Heading Text Transform",
+                            "name": "heading_text_transform",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose how the main hero heading should be cased.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "uppercase": "Uppercase",
+                                "capitalize": "Capitalize",
+                                "none": "As Typed"
+                            },
+                            "default_value": "uppercase",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
                             "key": "field_tsb_vh_heading_color",
                             "label": "Hero Heading Color",
                             "name": "hero_heading_color",
@@ -2332,6 +2362,36 @@
                                 "xxl": "XXL"
                             },
                             "default_value": "default",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_cg_heading_transform",
+                            "label": "Heading Text Transform",
+                            "name": "heading_text_transform",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose how the main section heading should be cased.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "uppercase": "Uppercase",
+                                "capitalize": "Capitalize",
+                                "none": "As Typed"
+                            },
+                            "default_value": "uppercase",
                             "return_format": "value",
                             "multiple": 0,
                             "allow_null": 0,
@@ -4605,6 +4665,36 @@
                             "save_options": 0
                         },
                         {
+                            "key": "field_tsb_is_heading_transform",
+                            "label": "Heading Text Transform",
+                            "name": "heading_text_transform",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose how the main section heading should be cased.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "uppercase": "Uppercase",
+                                "capitalize": "Capitalize",
+                                "none": "As Typed"
+                            },
+                            "default_value": "capitalize",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
                             "key": "field_tsb_is_heading_max_width",
                             "label": "Heading Max Width",
                             "name": "heading_max_width",
@@ -6543,6 +6633,36 @@
                             "save_options": 0
                         },
                         {
+                            "key": "field_tsb_fa_heading_transform",
+                            "label": "Title Text Transform",
+                            "name": "heading_text_transform",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose how the article title should be cased.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "uppercase": "Uppercase",
+                                "capitalize": "Capitalize",
+                                "none": "As Typed"
+                            },
+                            "default_value": "capitalize",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
                             "key": "field_tsb_fa_image_position",
                             "label": "Image Position",
                             "name": "image_position",
@@ -7559,6 +7679,28 @@
                                     "placeholder": "Brief summary of the questions this group answers.",
                                     "parent_repeater": "field_tsb_faq_groups"
                                 },
+                                    {
+                                        "key": "field_tsb_faq_include_in_category",
+                                        "label": "Include in Category Block",
+                                        "name": "include_in_category_block",
+                                        "aria-label": "",
+                                        "type": "true_false",
+                                        "instructions": "When enabled, this group will appear in the category jump list at the top of the accordion section. Enable for primary category groupings.",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "100",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "message": "Show this category in the jump list",
+                                        "default_value": 1,
+                                        "ui": 1,
+                                        "ui_on_text": "Yes",
+                                        "ui_off_text": "No",
+                                        "allow_in_bindings": 0,
+                                        "parent_repeater": "field_tsb_faq_groups"
+                                    },
                                 {
                                     "key": "field_tsb_faq_items",
                                     "label": "FAQs",

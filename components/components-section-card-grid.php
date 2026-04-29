@@ -90,6 +90,7 @@ $header_padding_left = trim( (string) $get_card_grid_field( 'header_padding_left
 $heading_font_family = strtolower( trim( (string) $get_card_grid_field( 'heading_font_family' ) ) );
 $heading_font_weight = trim( (string) $get_card_grid_field( 'heading_font_weight' ) );
 $heading_size = strtolower( trim( (string) $get_card_grid_field( 'heading_size' ) ) );
+$heading_text_transform = strtolower( trim( (string) $get_card_grid_field( 'heading_text_transform' ) ) );
 $subheading_font_family = strtolower( trim( (string) $get_card_grid_field( 'subheading_font_family' ) ) );
 $subheading_font_weight = trim( (string) $get_card_grid_field( 'subheading_font_weight' ) );
 $card_heading_font_family = strtolower( trim( (string) $get_card_grid_field( 'card_heading_font_family' ) ) );
@@ -114,6 +115,10 @@ if ( ! in_array( $heading_font_weight, array( '400', '500', '600', '700' ), true
 
 if ( ! in_array( $heading_size, array( 'default', 'xxl' ), true ) ) {
     $heading_size = 'default';
+}
+
+if ( ! in_array( $heading_text_transform, array( 'capitalize', 'uppercase', 'none' ), true ) ) {
+    $heading_text_transform = 'uppercase';
 }
 
 if ( ! in_array( $subheading_font_family, array( 'haarlem', 'freight-big-pro' ), true ) ) {
@@ -305,6 +310,7 @@ $section_styles = array(
     '--scg-heading-size:' . $heading_size_value,
     '--scg-heading-line-height:' . $heading_line_height_value,
     '--scg-heading-max-width:' . $heading_max_width,
+    '--scg-heading-transform:' . $heading_text_transform,
     '--scg-heading-margin:' . $heading_margin,
     '--scg-intro-max-width:' . $section_intro_max_width,
     '--scg-intro-margin:' . $section_intro_margin,
@@ -504,7 +510,7 @@ if ( 'bottom' === $section_keyline_position ) {
     font-size: var(--scg-heading-size, clamp(40px, 4.8vw, 58px));
     line-height: var(--scg-heading-line-height, 1.05);
     color: var(--scg-heading-color, var(--lacc-color-ink)) !important;
-    text-transform: uppercase;
+    text-transform: var(--scg-heading-transform, uppercase);
 }
 
 .section-card-grid__header h3,
@@ -1260,7 +1266,7 @@ if ( 'bottom' === $section_keyline_position ) {
                             <?php endif; ?>
                             <?php if ( ! empty( $card_image['url'] ) ) : ?>
                                 <div class="section-card-grid__card-image">
-                                    <img class="img-responsive" src="<?php echo esc_url( $card_image['url'] ); ?>" alt="<?php echo esc_attr( $card_image['alt'] ); ?>">
+                                    <img src="<?php echo esc_url( $card_image['url'] ); ?>" alt="<?php echo esc_attr( $card_image['alt'] ); ?>">
                                 </div>
                             <?php endif; ?>
                             <div class="section-card-grid__card-body">
@@ -1342,7 +1348,7 @@ if ( 'bottom' === $section_keyline_position ) {
                             <?php endif; ?>
                             <?php if ( ! empty( $card_image['url'] ) ) : ?>
                                 <div class="section-card-grid__card-image">
-                                    <img class="img-responsive" src="<?php echo esc_url( $card_image['url'] ); ?>" alt="<?php echo esc_attr( $card_image['alt'] ); ?>">
+                                    <img src="<?php echo esc_url( $card_image['url'] ); ?>" alt="<?php echo esc_attr( $card_image['alt'] ); ?>">
                                 </div>
                             <?php endif; ?>
                             <div class="section-card-grid__card-body">
