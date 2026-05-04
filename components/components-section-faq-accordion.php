@@ -125,7 +125,7 @@ if ( have_rows('faq_groups') ) {
 if ( empty( $groups ) ) {
     if ( function_exists( 'lacc_is_component_demo_page' ) && lacc_is_component_demo_page() ) {
         $section_anchor_id = 'faq-demo';
-        $section_eyebrow = 'Test Component';
+        $section_eyebrow = 'FAQ Accordion';
         $section_heading = 'FAQ accordion demo';
         $section_intro = '<p>A flexible builder version of the individual traveler FAQ pattern, tuned for the newer wedding and landing page system.</p>';
         $categories_heading = 'Categories:';
