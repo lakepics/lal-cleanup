@@ -67,7 +67,7 @@ while ( have_posts() ) : the_post();
         <div class="container">
             <span class="builder-reference-hero__eyebrow">Flexible Builder Inventory</span>
             <h1>Reference page for the layouts already in the builder</h1>
-            <p>This page renders the live flexible-builder components with DB-seeded content so visual review is grounded in actual production output and editable fields.</p>
+            <p>This page renders live flexible-builder components with DB-seeded content so visual review is grounded in production output and editable fields. Split Collage 1-up through 6-up is now the canonical collage audit lane for lock and promotion decisions.</p>
             <div class="builder-reference-nav">
                 <a href="#reference-video-hero">Video Hero</a>
                 <a href="#reference-card-grid-2-up">Card Grid</a>
