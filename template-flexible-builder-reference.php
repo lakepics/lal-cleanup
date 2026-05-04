@@ -83,6 +83,8 @@ while ( have_posts() ) : the_post();
                 <a href="#reference-split-collage-6up">Split Collage 6-up</a>
                 <a href="#reference-featured-article">Featured Article</a>
                 <a href="#reference-split-feature">Split Feature</a>
+                <a href="#reference-split-media-experience-list">Split Media Experience List</a>
+                <a href="#reference-split-media-about-band">Split Media About Band</a>
                 <a href="#reference-faq">FAQ</a>
                 <a href="#reference-two-column">Two Column</a>
             </div>

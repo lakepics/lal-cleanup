@@ -12,6 +12,7 @@ $get_split_media_field = static function ( $key ) use ( $section_split_media_ove
 };
 
 $media_mode = strtolower( trim( (string) $get_split_media_field( 'media_mode' ) ) );
+$split_media_variant = strtolower( trim( (string) $get_split_media_field( 'split_media_variant' ) ) );
 $content_source = strtolower( trim( (string) $get_split_media_field( 'content_source' ) ) );
 $linked_article = $get_split_media_field( 'linked_article' );
 $use_article_title = (bool) $get_split_media_field( 'use_article_title' );
@@ -42,17 +43,26 @@ $heading_font_weight = trim( (string) $get_split_media_field( 'heading_font_weig
 $padding_top = trim( (string) $get_split_media_field( 'padding_top' ) );
 $padding_bottom = trim( (string) $get_split_media_field( 'padding_bottom' ) );
 $media_min_height = trim( (string) $get_split_media_field( 'media_min_height' ) );
+$experience_items = $get_split_media_field( 'experience_items' );
+$experience_icon_style = strtolower( trim( (string) $get_split_media_field( 'experience_icon_style' ) ) );
+$experience_show_dividers = null !== $get_split_media_field( 'experience_show_dividers' ) ? (bool) $get_split_media_field( 'experience_show_dividers' ) : true;
+$about_emphasize_single_lane = null !== $get_split_media_field( 'about_emphasize_single_lane' ) ? (bool) $get_split_media_field( 'about_emphasize_single_lane' ) : false;
+$about_background_preset = strtolower( trim( (string) $get_split_media_field( 'about_background_preset' ) ) );
 $section_classes = trim( (string) $get_split_media_field( 'section_classes' ) );
 
 $use_scrollwork = $get_split_media_field( 'use_scrollwork' );
 $scrollwork_color = trim( (string) $get_split_media_field( 'scrollwork_color' ) );
-$seam_enabled = null !== $get_split_media_field( 'seam_enabled' ) ? (bool) $get_split_media_field( 'seam_enabled' ) : (bool) $use_scrollwork;
+$seam_enabled_field = $get_split_media_field( 'seam_enabled' );
+$seam_enabled = null !== $seam_enabled_field ? (bool) $seam_enabled_field : ( null !== $use_scrollwork ? (bool) $use_scrollwork : true );
 $seam_color = trim( (string) $get_split_media_field( 'seam_color' ) );
 $seam_opacity = trim( (string) $get_split_media_field( 'seam_opacity' ) );
 $seam_width = trim( (string) $get_split_media_field( 'seam_width' ) );
 
 if ( ! in_array( $media_mode, array( 'single_image', 'collage' ), true ) ) {
     $media_mode = 'single_image';
+}
+if ( ! in_array( $split_media_variant, array( 'standard', 'experience_list', 'about_band' ), true ) ) {
+    $split_media_variant = 'standard';
 }
 if ( ! in_array( $content_source, array( 'manual', 'linked_article' ), true ) ) {
     $content_source = 'manual';
@@ -65,6 +75,12 @@ if ( ! in_array( $container_type, array( 'container', 'container-fluid' ), true 
 }
 if ( ! in_array( $eyebrow_text_transform, array( 'capitalize', 'uppercase', 'none' ), true ) ) {
     $eyebrow_text_transform = 'uppercase';
+}
+if ( ! in_array( $experience_icon_style, array( 'diamond', 'plus' ), true ) ) {
+    $experience_icon_style = 'diamond';
+}
+if ( ! in_array( $about_background_preset, array( 'none', 'blue_band' ), true ) ) {
+    $about_background_preset = 'none';
 }
 
 $allowed_button_styles = array( 'primary', 'secondary', 'gold-text', 'ink', 'outline-ink', 'brown', 'light', 'outline', 'outline-dark', 'outline-gold' );
@@ -95,6 +111,10 @@ $seam_opacity = '' !== $seam_opacity ? $seam_opacity : '0.3';
 $seam_width = $seam_width ?: '78px';
 
 if ( ! $seam_enabled ) {
+    $seam_opacity = '0';
+}
+
+if ( 'standard' !== $split_media_variant && null === $seam_enabled_field && null === $use_scrollwork ) {
     $seam_opacity = '0';
 }
 
@@ -153,6 +173,27 @@ if ( ( ! $intro || '' === trim( wp_strip_all_tags( (string) $intro ) ) ) && 'lin
     }
 }
 
+$experience_items_normalized = array();
+if ( is_array( $experience_items ) ) {
+    foreach ( $experience_items as $experience_item ) {
+        if ( ! is_array( $experience_item ) ) {
+            continue;
+        }
+
+        $experience_title = trim( (string) ( $experience_item['item_title'] ?? $experience_item['title'] ?? '' ) );
+        $experience_body = trim( (string) ( $experience_item['item_body'] ?? $experience_item['copy'] ?? '' ) );
+
+        if ( '' === $experience_title && '' === $experience_body ) {
+            continue;
+        }
+
+        $experience_items_normalized[] = array(
+            'title' => $experience_title,
+            'body' => $experience_body,
+        );
+    }
+}
+
 $image_url = '';
 $image_alt = '';
 if ( is_array( $section_image ) && ! empty( $section_image['url'] ) ) {
@@ -175,7 +216,15 @@ if ( '' === $button_label ) {
     $button_label = ( 'linked_article' === $content_source ) ? 'Read Article' : 'Learn More';
 }
 
-if ( ! $title && ! $intro && ! $image_url ) {
+if ( 'experience_list' === $split_media_variant && empty( $experience_items_normalized ) ) {
+    $split_media_variant = 'standard';
+}
+
+if ( 'about_band' === $split_media_variant ) {
+    $content_background_color = 'transparent';
+}
+
+if ( ! $title && ! $intro && ! $image_url && empty( $experience_items_normalized ) ) {
     return;
 }
 
@@ -183,11 +232,21 @@ $section_id = $section_anchor_id ?: 'section-split-media-' . uniqid();
 $section_class_list = array(
     'section-split-media',
     'section-split-media--mode-single-image',
+    'section-split-media--variant-' . str_replace( '_', '-', $split_media_variant ),
     'section-split-media--image-' . $image_position,
     'container' === $container_type ? 'section-split-media--contained' : 'section-split-media--full-width',
 );
 if ( $section_classes ) {
     $section_class_list[] = $section_classes;
+}
+if ( 'experience_list' === $split_media_variant && ! $experience_show_dividers ) {
+    $section_class_list[] = 'section-split-media--hide-experience-dividers';
+}
+if ( 'about_band' === $split_media_variant && $about_emphasize_single_lane ) {
+    $section_class_list[] = 'section-split-media--about-single-lane';
+}
+if ( 'about_band' === $split_media_variant && 'blue_band' === $about_background_preset ) {
+    $section_class_list[] = 'section-split-media--about-blue-band';
 }
 
 $section_styles = array(
@@ -300,6 +359,134 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
 
 .section-split-media__content-column {
     position: relative;
+}
+
+.section-split-media--variant-experience-list .section-split-media__content,
+.section-split-media--variant-about-band .section-split-media__content {
+    justify-content: flex-start;
+}
+
+.section-split-media--variant-about-band.section-split-media--about-blue-band {
+    background: linear-gradient(180deg, #587596 0%, #364b63 100%);
+}
+
+.section-split-media--variant-about-band .section-split-media__content {
+    background: transparent;
+    padding-left: clamp(30px, 4vw, 64px);
+    padding-right: clamp(30px, 4vw, 64px);
+}
+
+.section-split-media--variant-about-band .section-split-media__title,
+.section-split-media--variant-about-band .section-split-media__copy,
+.section-split-media--variant-about-band .section-split-media__copy p {
+    color: #ffffff;
+}
+
+.section-split-media--variant-about-band .section-split-media__eyebrow {
+    color: #d4a441;
+}
+
+.section-split-media--variant-about-band .section-split-media__media-column {
+    background: transparent;
+    min-height: var(--ssm-media-min-height, clamp(300px, 28vw, 540px));
+}
+
+.section-split-media--variant-about-band.section-split-media--about-single-lane .section-split-media__content-column {
+    flex-basis: 100%;
+    max-width: 100%;
+}
+
+.section-split-media--variant-about-band.section-split-media--about-single-lane .section-split-media__media-column {
+    display: none;
+}
+
+.section-split-media--variant-experience-list .section-split-media__media-column {
+    background: var(--ssm-content-bg, #ffffff);
+}
+
+.section-split-media__experience-lane {
+    flex: 1 1 auto;
+    width: 100%;
+    padding: clamp(34px, 4.5vw, 72px) clamp(28px, 4.2vw, 56px);
+    background: var(--ssm-content-bg, #ffffff);
+}
+
+.section-split-media__experience-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.section-split-media__experience-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    align-items: start;
+    padding: 22px 0;
+}
+
+.section-split-media__experience-item + .section-split-media__experience-item {
+    border-top: 1px solid rgba(81, 83, 74, 0.12);
+}
+
+.section-split-media--hide-experience-dividers .section-split-media__experience-item + .section-split-media__experience-item {
+    border-top: 0;
+}
+
+.section-split-media__experience-icon {
+    width: 10px;
+    height: 10px;
+    margin-top: .6em;
+    background: #946E29;
+    transform: rotate(45deg);
+}
+
+.section-split-media__experience-icon--plus {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    margin-top: .55em;
+    background: transparent;
+    transform: none;
+}
+
+.section-split-media__experience-icon--plus::before,
+.section-split-media__experience-icon--plus::after {
+    content: '';
+    position: absolute;
+    background: #946E29;
+}
+
+.section-split-media__experience-icon--plus::before {
+    left: 4px;
+    top: 0;
+    width: 2px;
+    height: 10px;
+}
+
+.section-split-media__experience-icon--plus::after {
+    left: 0;
+    top: 4px;
+    width: 10px;
+    height: 2px;
+}
+
+.section-split-media__experience-title {
+    margin: 0;
+    color: var(--ssm-eyebrow-color, #946E29);
+    font-family: var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+}
+
+.section-split-media__experience-copy {
+    margin-top: 8px;
+    color: var(--ssm-body-color, #51534a);
+    font-size: 20px;
+    line-height: 1.5;
 }
 
 .section-split-media__content-column::after {
@@ -463,6 +650,10 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     .section-split-media--image-right .section-split-media__content-column::after {
         display: none;
     }
+
+    .section-split-media--variant-about-band.section-split-media--about-single-lane .section-split-media__media-column {
+        display: none;
+    }
 }
 </style>
 
@@ -471,11 +662,31 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
         <div class="section-split-media__panel">
             <div class="section-split-media__row">
                 <div class="section-split-media__media-column">
-                    <div class="section-split-media__image-wrap">
-                        <?php if ( $image_url ) : ?>
-                            <img class="section-split-media__image" src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $image_alt ?: trim( wp_strip_all_tags( (string) $title ) ) ); ?>">
-                        <?php endif; ?>
-                    </div>
+                    <?php if ( 'experience_list' === $split_media_variant ) : ?>
+                        <div class="section-split-media__experience-lane">
+                            <ul class="section-split-media__experience-list">
+                                <?php foreach ( $experience_items_normalized as $experience_item ) : ?>
+                                    <li class="section-split-media__experience-item">
+                                        <span class="section-split-media__experience-icon section-split-media__experience-icon--<?php echo esc_attr( $experience_icon_style ); ?>" aria-hidden="true"></span>
+                                        <div>
+                                            <?php if ( '' !== $experience_item['title'] ) : ?>
+                                                <h3 class="section-split-media__experience-title"><?php echo esc_html( $experience_item['title'] ); ?></h3>
+                                            <?php endif; ?>
+                                            <?php if ( '' !== $experience_item['body'] ) : ?>
+                                                <p class="section-split-media__experience-copy"><?php echo esc_html( $experience_item['body'] ); ?></p>
+                                            <?php endif; ?>
+                                        </div>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php else : ?>
+                        <div class="section-split-media__image-wrap">
+                            <?php if ( $image_url ) : ?>
+                                <img class="section-split-media__image" src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $image_alt ?: trim( wp_strip_all_tags( (string) $title ) ) ); ?>">
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <div class="section-split-media__content-column">

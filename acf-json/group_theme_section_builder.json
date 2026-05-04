@@ -9456,6 +9456,44 @@
                             "save_options": 0
                         },
                         {
+                            "key": "field_tsb_sm_variant",
+                            "label": "Variant",
+                            "name": "split_media_variant",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Standard keeps image+content. Experience List swaps media lane for itemized experiences. About Band prioritizes a single editorial lane.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_tsb_sm_mode",
+                                        "operator": "==",
+                                        "value": "single_image"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "34",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "standard": "Standard",
+                                "experience_list": "Experience List",
+                                "about_band": "About Band"
+                            },
+                            "default_value": "standard",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
                             "key": "field_tsb_sm_source",
                             "label": "Content Source",
                             "name": "content_source",
@@ -9759,6 +9797,210 @@
                             "delay": 0,
                             "toolbar": "full",
                             "default_value": ""
+                        },
+                        {
+                            "key": "field_tsb_sm_experience_items",
+                            "label": "Experience Items",
+                            "name": "experience_items",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Used by the Experience List variant.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_tsb_sm_variant",
+                                        "operator": "==",
+                                        "value": "experience_list"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "pagination": 0,
+                            "min": 1,
+                            "max": 8,
+                            "collapsed": "",
+                            "button_label": "Add Experience Item",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_tsb_sm_experience_item_title",
+                                    "label": "Item Title",
+                                    "name": "item_title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "40",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_tsb_sm_experience_items"
+                                },
+                                {
+                                    "key": "field_tsb_sm_experience_item_body",
+                                    "label": "Item Body",
+                                    "name": "item_body",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "60",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "rows": 3,
+                                    "placeholder": "",
+                                    "new_lines": "",
+                                    "parent_repeater": "field_tsb_sm_experience_items"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_tsb_sm_experience_icon_style",
+                            "label": "Experience Icon Style",
+                            "name": "experience_icon_style",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_tsb_sm_variant",
+                                        "operator": "==",
+                                        "value": "experience_list"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "diamond": "Diamond",
+                                "plus": "Plus"
+                            },
+                            "default_value": "diamond",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_sm_experience_show_dividers",
+                            "label": "Show Item Dividers",
+                            "name": "experience_show_dividers",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_tsb_sm_variant",
+                                        "operator": "==",
+                                        "value": "experience_list"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "ui": 1,
+                            "ui_on_text": "On",
+                            "ui_off_text": "Off",
+                            "allow_in_bindings": 0
+                        },
+                        {
+                            "key": "field_tsb_sm_about_emphasize_single_lane",
+                            "label": "About Band: Single Lane",
+                            "name": "about_emphasize_single_lane",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Hide the secondary lane and run one full-width editorial lane.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_tsb_sm_variant",
+                                        "operator": "==",
+                                        "value": "about_band"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "ui": 1,
+                            "ui_on_text": "On",
+                            "ui_off_text": "Off",
+                            "allow_in_bindings": 0
+                        },
+                        {
+                            "key": "field_tsb_sm_about_background_preset",
+                            "label": "About Band Background",
+                            "name": "about_background_preset",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_tsb_sm_variant",
+                                        "operator": "==",
+                                        "value": "about_band"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "35",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "blue_band": "Blue Gradient Band",
+                                "none": "None"
+                            },
+                            "default_value": "blue_band",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
                         },
                         {
                             "key": "field_tsb_sm_anchor_id",
