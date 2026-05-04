@@ -223,7 +223,7 @@ $section_id = $section_anchor_id ?: 'section-faq-accordion-' . uniqid();
 $section_keyline_position = in_array( $section_keyline_position, array( 'top', 'bottom' ), true ) ? $section_keyline_position : '';
 $background_color = $background_color ?: '#ffffff';
 $section_keyline_color = $section_keyline_color ?: '#b8b9b1';
-$content_frame_width = preg_match( '/^\d{1,3}%$/', $content_frame_width ) ? $content_frame_width : '76%';
+$content_frame_width = preg_match( '/^\d{1,3}%$/', $content_frame_width ) ? $content_frame_width : '54%';
 $padding_top = $padding_top ?: '60px';
 $padding_bottom = $padding_bottom ?: '60px';
 $categories_heading = $categories_heading ?: 'Categories:';
@@ -307,8 +307,8 @@ $allowed_heading_html = array(
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__header {
-    width: min(100%, var(--sfaq-content-frame-width, 76%));
-    margin: 0 auto 42px;
+    width: min(100%, var(--sfaq-content-frame-width, 54%));
+    margin: 0 0 42px;
     text-align: left;
 }
 
@@ -347,7 +347,7 @@ $allowed_heading_html = array(
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories {
     width: 100%;
-    margin: 0 auto 48px;
+    margin: 0 0 48px;
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories-title {
@@ -440,8 +440,8 @@ $allowed_heading_html = array(
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__inner {
-    width: min(100%, var(--sfaq-content-frame-width, 76%));
-    margin: 0 auto;
+    width: min(100%, var(--sfaq-content-frame-width, 54%));
+    margin: 0;
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__group {
