@@ -8422,6 +8422,27 @@
                             "save_options": 0
                         },
                         {
+                            "key": "field_tsb_faq_content_frame_width",
+                            "label": "Desktop Content Frame Width",
+                            "name": "content_frame_width",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Set a percentage width for the FAQ content frame on desktop (example: 72%).",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "76%",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "76%",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_tsb_faq_section_classes",
                             "label": "Additional Section Classes",
                             "name": "section_classes",

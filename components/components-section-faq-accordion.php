@@ -18,6 +18,7 @@ $section_classes = trim( (string) get_sub_field('section_classes') );
 $background_color = trim( (string) get_sub_field('background_color') );
 $section_keyline_position = strtolower( trim( (string) get_sub_field('section_keyline_position') ) );
 $section_keyline_color = trim( (string) get_sub_field('section_keyline_color') );
+$content_frame_width = trim( (string) get_sub_field('content_frame_width') );
 $padding_top = trim( (string) get_sub_field('padding_top') );
 $padding_bottom = trim( (string) get_sub_field('padding_bottom') );
 
@@ -222,6 +223,7 @@ $section_id = $section_anchor_id ?: 'section-faq-accordion-' . uniqid();
 $section_keyline_position = in_array( $section_keyline_position, array( 'top', 'bottom' ), true ) ? $section_keyline_position : '';
 $background_color = $background_color ?: '#ffffff';
 $section_keyline_color = $section_keyline_color ?: '#b8b9b1';
+$content_frame_width = preg_match( '/^\d{1,3}%$/', $content_frame_width ) ? $content_frame_width : '76%';
 $padding_top = $padding_top ?: '60px';
 $padding_bottom = $padding_bottom ?: '60px';
 $categories_heading = $categories_heading ?: 'Categories:';
@@ -238,6 +240,7 @@ $section_styles = array(
     '--sfaq-accordion-question-size:20px',
     '--sfaq-accordion-question-weight:400',
     '--sfaq-accordion-answer-open-bg:rgba(246,243,237,0.25)',
+    '--sfaq-content-frame-width:' . $content_frame_width,
 );
 
 if ( 'top' === $section_keyline_position ) {
@@ -253,11 +256,6 @@ $section_class_list = array( 'section-faq-accordion', 'section-faq-accordion--al
 if ( '' !== $section_classes ) {
     $section_class_list[] = $section_classes;
 }
-
-$header_alignment = 'center' === $content_alignment ? 'center' : $content_alignment;
-$header_margin = 'center' === $content_alignment ? '0 auto 42px' : ( 'right' === $content_alignment ? '0 0 42px auto' : '0 auto 42px 0' );
-$header_intro_margin = 'center' === $content_alignment ? '18px auto 0' : ( 'right' === $content_alignment ? '18px 0 0 auto' : '18px auto 0 0' );
-$categories_copy_margin = 'center' === $content_alignment ? '18px auto 0' : ( 'right' === $content_alignment ? '18px 0 0 auto' : '18px auto 0 0' );
 
 $faq_schema_entities = array();
 foreach ( $groups as $group ) {
@@ -309,9 +307,9 @@ $allowed_heading_html = array(
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__header {
-    margin: <?php echo esc_html( $header_margin ); ?>;
-    max-width: 920px;
-    text-align: <?php echo esc_html( $header_alignment ); ?>;
+    width: min(100%, var(--sfaq-content-frame-width, 76%));
+    margin: 0 auto 42px;
+    text-align: left;
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__eyebrow {
@@ -339,8 +337,8 @@ $allowed_heading_html = array(
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__intro {
-    margin: <?php echo esc_html( $header_intro_margin ); ?>;
-    max-width: 760px;
+    margin: 18px 0 0;
+    max-width: 36em;
     color: #51534a;
     font-family: var(--lacc-type-family-ui, Helvetica, Arial, sans-serif);
     font-size: 17px;
@@ -348,8 +346,8 @@ $allowed_heading_html = array(
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories {
+    width: 100%;
     margin: 0 auto 48px;
-    max-width: 920px;
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories-title {
@@ -368,7 +366,7 @@ $allowed_heading_html = array(
     list-style: none !important;
     margin: 0;
     margin-left: 0;
-    max-width: 640px;
+    max-width: none;
     padding: 0 !important;
     padding-left: 0 !important;
 }
@@ -433,8 +431,8 @@ $allowed_heading_html = array(
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories-copy {
-    margin: <?php echo esc_html( $categories_copy_margin ); ?>;
-    max-width: 640px;
+    margin: 18px 0 0;
+    max-width: 36em;
     color: #51534a;
     font-family: var(--lacc-type-family-ui, Helvetica, Arial, sans-serif);
     font-size: 16px;
@@ -442,7 +440,7 @@ $allowed_heading_html = array(
 }
 
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__inner {
-    max-width: 1020px;
+    width: min(100%, var(--sfaq-content-frame-width, 76%));
     margin: 0 auto;
 }
 
@@ -542,6 +540,12 @@ $allowed_heading_html = array(
 }
 
 @media (max-width: 767px) {
+    #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__header,
+    #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories,
+    #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__inner {
+        width: 100%;
+    }
+
     #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories-list {
         max-width: none;
     }
