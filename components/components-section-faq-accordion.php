@@ -4,6 +4,7 @@ $section_anchor_id = preg_replace( '/[^a-z0-9_-]+/', '-', $section_anchor_id );
 $section_anchor_id = trim( (string) $section_anchor_id, '-' );
 $section_eyebrow = trim( (string) get_sub_field('section_eyebrow') );
 $eyebrow_text_transform = strtolower( trim( (string) get_sub_field('eyebrow_text_transform') ) );
+$eyebrow_preset = strtolower( trim( (string) get_sub_field('eyebrow_preset') ) );
 $section_heading = trim( (string) get_sub_field('section_heading') );
 $section_intro = get_sub_field('section_intro');
 $categories_heading = trim( (string) get_sub_field('categories_heading') );
@@ -23,6 +24,52 @@ $padding_bottom = trim( (string) get_sub_field('padding_bottom') );
 if ( ! in_array( $eyebrow_text_transform, array( 'capitalize', 'uppercase', 'none' ), true ) ) {
     $eyebrow_text_transform = 'uppercase';
 }
+$eyebrow_color   = '';
+$eyebrow_bg      = '';
+$eyebrow_border  = '';
+$eyebrow_padding = '';
+$eyebrow_radius  = '';
+
+$eyebrow_preset_map = array(
+    'pill'  => array(
+        'transform' => 'uppercase',
+        'color'     => '#946E29',
+        'bg'        => 'transparent',
+        'border'    => '1px solid rgba(181,138,45,0.32)',
+        'padding'   => '0.42em 1.17em',
+        'radius'    => '999px',
+    ),
+    'plain' => array(
+        'transform' => 'uppercase',
+        'color'     => '#946E29',
+        'bg'        => 'transparent',
+        'border'    => 'none',
+        'padding'   => '0',
+        'radius'    => '0',
+    ),
+    'ink'   => array(
+        'transform' => 'uppercase',
+        'color'     => '#f6f3ed',
+        'bg'        => '#51534a',
+        'border'    => 'none',
+        'padding'   => '0.42em 1.17em',
+        'radius'    => '999px',
+    ),
+);
+if ( isset( $eyebrow_preset_map[ $eyebrow_preset ] ) ) {
+    $p                      = $eyebrow_preset_map[ $eyebrow_preset ];
+    $eyebrow_text_transform = $p['transform'];
+    $eyebrow_color          = $p['color'];
+    $eyebrow_bg             = $p['bg'];
+    $eyebrow_border         = $p['border'];
+    $eyebrow_padding        = $p['padding'];
+    $eyebrow_radius         = $p['radius'];
+}
+$eyebrow_color   = $eyebrow_color ?: '#946E29';
+$eyebrow_bg      = $eyebrow_bg ?: 'transparent';
+$eyebrow_border  = $eyebrow_border ?: 'none';
+$eyebrow_padding = $eyebrow_padding ?: '0';
+$eyebrow_radius  = $eyebrow_radius ?: '0';
 
 $groups = array();
 if ( have_rows('faq_groups') ) {
@@ -158,13 +205,18 @@ if ( ! in_array( $container_type, array( 'container', 'container-fluid' ), true 
     $container_type = 'container';
 }
 
+$layout_class = 'section-faq-accordion__layout section-faq-accordion__layout--full';
+if ( 'container' === $container_type ) {
+    $layout_class = 'section-faq-accordion__layout section-faq-accordion__layout--contained';
+}
+
 $font_map = array(
-    'haarlem' => 'HaarlemDeco, Arial, Helvetica, sans-serif',
-    'freight-big-pro' => '"Freight Big Pro", Georgia, serif',
+    'haarlem' => 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)',
+    'freight-big-pro' => 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)',
 );
 
-$section_heading_font_css = isset( $font_map[ $section_heading_font_family ] ) ? $font_map[ $section_heading_font_family ] : 'HaarlemDeco, Arial, Helvetica, sans-serif';
-$accordion_heading_font_css = isset( $font_map[ $accordion_heading_font_family ] ) ? $font_map[ $accordion_heading_font_family ] : '"Freight Big Pro", Georgia, serif';
+$section_heading_font_css = isset( $font_map[ $section_heading_font_family ] ) ? $font_map[ $section_heading_font_family ] : 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)';
+$accordion_heading_font_css = isset( $font_map[ $accordion_heading_font_family ] ) ? $font_map[ $accordion_heading_font_family ] : 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)';
 
 $section_id = $section_anchor_id ?: 'section-faq-accordion-' . uniqid();
 $section_keyline_position = in_array( $section_keyline_position, array( 'top', 'bottom' ), true ) ? $section_keyline_position : '';
@@ -238,6 +290,22 @@ $allowed_heading_html = array(
 ?>
 
 <style>
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__layout {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__layout--contained {
+    max-width: 1200px;
+}
+
+#<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__layout--full {
+    max-width: none;
+}
+
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__header {
     margin: <?php echo esc_html( $header_margin ); ?>;
     max-width: 920px;
@@ -247,7 +315,11 @@ $allowed_heading_html = array(
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__eyebrow {
     display: inline-block;
     margin-bottom: 14px;
-    color: #946E29;
+    color: <?php echo esc_html( $eyebrow_color ); ?>;
+    background: <?php echo esc_html( $eyebrow_bg ); ?>;
+    border: <?php echo esc_html( $eyebrow_border ); ?>;
+    padding: <?php echo esc_html( $eyebrow_padding ); ?>;
+    border-radius: <?php echo esc_html( $eyebrow_radius ); ?>;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: .14em;
@@ -258,7 +330,7 @@ $allowed_heading_html = array(
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__title {
     margin: 0;
     color: #51534a;
-    font-family: var(--sfaq-heading-font, HaarlemDeco, Arial, Helvetica, sans-serif);
+    font-family: var(--sfaq-heading-font, var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif));
     font-size: clamp(34px, 4.4vw, 60px);
     font-weight: var(--sfaq-heading-weight, 400);
     line-height: 1.04;
@@ -268,7 +340,7 @@ $allowed_heading_html = array(
     margin: <?php echo esc_html( $header_intro_margin ); ?>;
     max-width: 760px;
     color: #51534a;
-    font-family: Helvetica, Arial, Roboto, sans-serif;
+    font-family: var(--lacc-type-family-ui, Helvetica, Arial, sans-serif);
     font-size: 17px;
     line-height: 1.7;
 }
@@ -281,7 +353,7 @@ $allowed_heading_html = array(
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__categories-title {
     margin: 0 0 16px;
     color: #51534a;
-    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
+    font-family: var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif);
     font-size: clamp(28px, 2.8vw, 36px);
     font-weight: 400;
     letter-spacing: 0;
@@ -327,7 +399,7 @@ $allowed_heading_html = array(
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__category-link-title {
     display: block;
     color: #6383a8;
-    font-family: var(--sfaq-accordion-question-font, var(--sfaq-accordion-font, "Freight Big Pro", Georgia, serif));
+    font-family: var(--sfaq-accordion-question-font, var(--sfaq-accordion-font, var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)));
     font-style: normal;
     font-size: var(--sfaq-accordion-question-size, 20px);
     font-weight: var(--sfaq-accordion-question-weight, 400);
@@ -341,7 +413,7 @@ $allowed_heading_html = array(
     display: block;
     margin-top: 6px;
     color: #51534a;
-    font-family: "Freight Big Pro", Georgia, serif;
+    font-family: var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif);
     font-style: italic;
     font-size: 14px;
     line-height: 1.5;
@@ -362,7 +434,7 @@ $allowed_heading_html = array(
     margin: <?php echo esc_html( $categories_copy_margin ); ?>;
     max-width: 640px;
     color: #51534a;
-    font-family: Helvetica, Arial, Roboto, sans-serif;
+    font-family: var(--lacc-type-family-ui, Helvetica, Arial, sans-serif);
     font-size: 16px;
     line-height: 1.6;
 }
@@ -383,7 +455,7 @@ $allowed_heading_html = array(
 #<?php echo esc_attr( $section_id ); ?> .section-faq-accordion__group-title {
     margin: 0 0 18px;
     color: #51534a;
-    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
+    font-family: var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif);
     font-size: clamp(28px, 3.4vw, 40px);
     font-weight: 400;
     line-height: 1.1;
@@ -413,7 +485,7 @@ $allowed_heading_html = array(
     border: 0;
     background: transparent;
     color: #51534a;
-    font-family: var(--sfaq-accordion-question-font, var(--sfaq-accordion-font, "Freight Big Pro", Georgia, serif));
+    font-family: var(--sfaq-accordion-question-font, var(--sfaq-accordion-font, var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)));
     font-size: var(--sfaq-accordion-question-size, 20px);
     font-weight: var(--sfaq-accordion-question-weight, 400);
     letter-spacing: .01em;
@@ -454,7 +526,7 @@ $allowed_heading_html = array(
     padding: 1em 0 28px 1em;
     background: transparent;
     color: #51534a;
-    font-family: Helvetica, Arial, Roboto, sans-serif;
+    font-family: var(--lacc-type-family-ui, Helvetica, Arial, sans-serif);
     font-size: 16px;
     line-height: 1.7;
 }
@@ -485,7 +557,7 @@ $categories_intro_output = function_exists( 'lacc_strip_component_inline_styles'
 ?>
 
 <section id="<?php echo esc_attr( $section_id ); ?>" class="<?php echo esc_attr( implode( ' ', $section_class_list ) ); ?>" style="<?php echo esc_attr( $section_style_attr ); ?>">
-    <div class="<?php echo esc_attr( $container_type ); ?>">
+    <div class="<?php echo esc_attr( $layout_class ); ?>">
         <?php if ( '' !== $section_eyebrow || '' !== $section_heading || ! empty( $section_intro ) ) : ?>
             <div class="section-faq-accordion__header">
                 <?php if ( '' !== $section_eyebrow ) : ?>
