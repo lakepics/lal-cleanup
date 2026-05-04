@@ -261,7 +261,9 @@ $categories_copy_margin = 'center' === $content_alignment ? '18px auto 0' : ( 'r
 
 $faq_schema_entities = array();
 foreach ( $groups as $group ) {
-    foreach ( $group['faqs'] as $faq ) {
+    $group_faqs = isset( $group['faqs'] ) && is_array( $group['faqs'] ) ? $group['faqs'] : array();
+
+    foreach ( $group_faqs as $faq ) {
         $faq_schema_entities[] = array(
             '@type' => 'Question',
             'name' => wp_strip_all_tags( $faq['question'] ),
@@ -582,18 +584,31 @@ $categories_intro_output = function_exists( 'lacc_strip_component_inline_styles'
                             $categories_to_show = array_filter(
                                 $groups,
                                 function ( $group ) {
-                                    return (bool) $group['include_in_category'];
+                                    if ( array_key_exists( 'include_in_category', $group ) ) {
+                                        return (bool) $group['include_in_category'];
+                                    }
+
+                                    return true;
                                 }
                             );
                             if ( ! empty( $categories_to_show ) ) : ?>
                                 <h3 class="section-faq-accordion__categories-title"><?php echo esc_html( $categories_heading ); ?></h3>
                                 <ul class="section-faq-accordion__categories-list lacc-keyline-list--plain">
                                     <?php foreach ( $categories_to_show as $group ) : ?>
+                                        <?php
+                                        $group_anchor = isset( $group['anchor'] ) ? (string) $group['anchor'] : '';
+                                        $group_title = isset( $group['title'] ) ? (string) $group['title'] : '';
+                                        $group_summary = isset( $group['summary'] ) ? (string) $group['summary'] : '';
+
+                                        if ( '' === $group_anchor || '' === $group_title ) {
+                                            continue;
+                                        }
+                                        ?>
                                         <li>
-                                            <a href="#<?php echo esc_attr( $group['anchor'] ); ?>">
-                                                <span class="section-faq-accordion__category-link-title"><?php echo esc_html( $group['title'] ); ?></span>
-                                                <?php if ( ! empty( $group['summary'] ) ) : ?>
-                                                    <span class="section-faq-accordion__category-link-summary"><?php echo esc_html( $group['summary'] ); ?></span>
+                                            <a href="#<?php echo esc_attr( $group_anchor ); ?>">
+                                                <span class="section-faq-accordion__category-link-title"><?php echo esc_html( $group_title ); ?></span>
+                                                <?php if ( '' !== $group_summary ) : ?>
+                                                    <span class="section-faq-accordion__category-link-summary"><?php echo esc_html( $group_summary ); ?></span>
                                                 <?php endif; ?>
                                             </a>
                                         </li>
@@ -609,12 +624,21 @@ $categories_intro_output = function_exists( 'lacc_strip_component_inline_styles'
                 <?php endif; ?>
 
                 <?php foreach ( $groups as $group_index => $group ) : ?>
+                    <?php
+                    $group_anchor = isset( $group['anchor'] ) ? (string) $group['anchor'] : '';
+                    $group_title = isset( $group['title'] ) ? (string) $group['title'] : '';
+                    $group_faqs = isset( $group['faqs'] ) && is_array( $group['faqs'] ) ? $group['faqs'] : array();
+
+                    if ( '' === $group_anchor || '' === $group_title || empty( $group_faqs ) ) {
+                        continue;
+                    }
+                    ?>
                     <?php $accordion_id = $section_id . '-accordion-' . $group_index; ?>
-                    <div id="<?php echo esc_attr( $group['anchor'] ); ?>" class="section-faq-accordion__group">
-                        <h3 class="section-faq-accordion__group-title"><?php echo esc_html( $group['title'] ); ?></h3>
+                    <div id="<?php echo esc_attr( $group_anchor ); ?>" class="section-faq-accordion__group">
+                        <h3 class="section-faq-accordion__group-title"><?php echo esc_html( $group_title ); ?></h3>
 
                         <div class="section-faq-accordion__panels" id="<?php echo esc_attr( $accordion_id ); ?>" data-sfaq-group>
-                            <?php foreach ( $group['faqs'] as $faq_index => $faq ) : ?>
+                            <?php foreach ( $group_faqs as $faq_index => $faq ) : ?>
                                 <?php $panel_id = $accordion_id . '-panel-' . $faq_index; ?>
                                 <?php $faq_answer_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_strip_component_inline_styles( $faq['answer'] ) : $faq['answer']; ?>
                                 <div class="section-faq-accordion__panel">
