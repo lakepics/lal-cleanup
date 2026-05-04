@@ -74,7 +74,13 @@ while ( have_posts() ) : the_post();
                 <a href="#reference-scroller-variant-1">Scroller Variant 1</a>
                 <a href="#reference-scroller-variant-2">Scroller Variant 2</a>
                 <a href="#reference-scroller-variant-3">Scroller Variant 3</a>
-                <a href="#reference-collage">Image Collage</a>
+                <a href="#reference-split-collage-1up">Split Collage 1-up</a>
+                <a href="#reference-split-collage-2up">Split Collage 2-up</a>
+                <a href="#reference-split-collage-a">Split Collage 3-up A</a>
+                <a href="#reference-split-collage-b">Split Collage 3-up B</a>
+                <a href="#reference-split-collage-4up">Split Collage 4-up</a>
+                <a href="#reference-split-collage-5up">Split Collage 5-up</a>
+                <a href="#reference-split-collage-6up">Split Collage 6-up</a>
                 <a href="#reference-featured-article">Featured Article</a>
                 <a href="#reference-split-feature">Split Feature</a>
                 <a href="#reference-faq">FAQ</a>
