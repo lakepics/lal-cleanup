@@ -253,6 +253,8 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
 .section-split-media__media-column,
 .section-split-media__content-column {
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
     flex: 0 0 50%;
     max-width: 50%;
 }
@@ -283,8 +285,8 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     mask-repeat: repeat-y;
     -webkit-mask-position: center;
     mask-position: center;
-    -webkit-mask-size: var(--ssm-seam-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
-    mask-size: var(--ssm-seam-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
+    -webkit-mask-size: var(--lacc-scrollwork-width, 78px) auto;
+    mask-size: var(--lacc-scrollwork-width, 78px) auto;
     clip-path: inset(0 50% 0 0);
     pointer-events: none;
     z-index: 2;
@@ -315,8 +317,8 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     mask-repeat: repeat-y;
     -webkit-mask-position: center;
     mask-position: center;
-    -webkit-mask-size: var(--ssm-seam-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
-    mask-size: var(--ssm-seam-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
+    -webkit-mask-size: var(--lacc-scrollwork-width, 78px) auto;
+    mask-size: var(--lacc-scrollwork-width, 78px) auto;
     clip-path: inset(0 0 0 50%);
     pointer-events: none;
     z-index: 2;
@@ -329,25 +331,31 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
 }
 
 .section-split-media__image-wrap {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
     width: 100%;
     min-height: var(--ssm-media-min-height, clamp(420px, 45vw, 760px));
     background: #d9d2c4;
+    overflow: hidden;
 }
 
 .section-split-media__image {
-    display: block;
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    min-height: var(--ssm-media-min-height, clamp(420px, 45vw, 760px));
     object-fit: cover;
 }
 
 .section-split-media__content {
+    flex: 1 1 auto;
     width: 100%;
-    min-height: 100%;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-sizing: border-box;
     padding: clamp(44px, 5.8vw, 98px) clamp(34px, 5.2vw, 84px);
     background: var(--ssm-content-bg, #f6f3ed);
 }
