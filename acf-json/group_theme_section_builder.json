@@ -69,33 +69,6 @@
                             "selected": 0
                         },
                         {
-                            "key": "field_tsb_vh_source",
-                            "label": "",
-                            "name": "",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": false,
-                            "conditional_logic": false,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "multiple": 0,
-                            "allow_null": 0,
-                            "allow_in_bindings": 0,
-                            "ui": 1,
-                            "ajax": 0,
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0,
-                            "default_value": "",
-                            "maxlength": "",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
                             "key": "field_tsb_vh_height",
                             "label": "Hero Height",
                             "name": "hero_height",
@@ -8423,11 +8396,11 @@
                         },
                         {
                             "key": "field_tsb_faq_content_frame_width",
-                            "label": "Desktop Content Frame Width",
+                            "label": "FAQ Desktop Frame Width (%)",
                             "name": "content_frame_width",
                             "aria-label": "",
                             "type": "text",
-                            "instructions": "Set a percentage width for the FAQ content frame on desktop (example: 72%).",
+                            "instructions": "Set a percentage width for the FAQ content frame on desktop. Recommended range: 48% to 65%.",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -8435,10 +8408,10 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "76%",
+                            "default_value": "54%",
                             "maxlength": "",
                             "allow_in_bindings": 0,
-                            "placeholder": "76%",
+                            "placeholder": "54% (recommended 48-65%)",
                             "prepend": "",
                             "append": ""
                         },
@@ -10808,5 +10781,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1777931341
+    "modified": 1777937094
 }
