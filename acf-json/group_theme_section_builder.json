@@ -9681,6 +9681,40 @@
                             "allow_in_bindings": 0
                         },
                         {
+                            "key": "field_tsb_sm_seam_gutter_width",
+                            "label": "Seam Gutter Width",
+                            "name": "seam_gutter_width",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional CSS width for the center seam gutter when the ornament renders between the two lanes. Leave blank to keep the component default.",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_tsb_sm_mode",
+                                        "operator": "==",
+                                        "value": "single_image"
+                                    },
+                                    {
+                                        "field": "field_tsb_sm_seam_enabled",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "calc(var(--ssm-seam-width, 78px) + 16px)",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_tsb_sm_section_image",
                             "label": "Single Image",
                             "name": "section_image",

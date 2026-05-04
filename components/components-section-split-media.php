@@ -57,6 +57,7 @@ $seam_enabled = null !== $seam_enabled_field ? (bool) $seam_enabled_field : ( nu
 $seam_color = trim( (string) $get_split_media_field( 'seam_color' ) );
 $seam_opacity = trim( (string) $get_split_media_field( 'seam_opacity' ) );
 $seam_width = trim( (string) $get_split_media_field( 'seam_width' ) );
+$seam_gutter_width = trim( (string) $get_split_media_field( 'seam_gutter_width' ) );
 
 if ( ! in_array( $media_mode, array( 'single_image', 'collage' ), true ) ) {
     $media_mode = 'single_image';
@@ -109,6 +110,7 @@ $media_min_height = $media_min_height ?: 'clamp(420px, 45vw, 760px)';
 $seam_color = $seam_color ?: ( $scrollwork_color ?: $eyebrow_color );
 $seam_opacity = '' !== $seam_opacity ? $seam_opacity : '0.3';
 $seam_width = $seam_width ?: '78px';
+$seam_gutter_width = $seam_gutter_width ?: 'calc(var(--ssm-seam-width, 78px) + clamp(12px, 2vw, 24px))';
 
 $normalize_split_media_color = static function ( $value ) {
     $value = strtolower( trim( (string) $value ) );
@@ -279,7 +281,7 @@ $section_styles = array(
     '--ssm-seam-color:' . $seam_color,
     '--ssm-seam-opacity:' . $seam_opacity,
     '--ssm-seam-width:' . $seam_width,
-    '--ssm-seam-gutter:clamp(40px, 4vw, 64px)',
+    '--ssm-seam-gutter:' . $seam_gutter_width,
 );
 
 $allowed_heading_html = array(
@@ -359,10 +361,10 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork.svg');
     -webkit-mask-repeat: repeat-y;
     mask-repeat: repeat-y;
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-size: var(--lacc-scrollwork-width, 78px) auto;
-    mask-size: var(--lacc-scrollwork-width, 78px) auto;
+    -webkit-mask-position: top center;
+    mask-position: top center;
+    -webkit-mask-size: var(--lacc-scrollwork-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
+    mask-size: var(--lacc-scrollwork-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
     clip-path: inset(0 50% 0 0);
     pointer-events: none;
     z-index: 2;
@@ -519,10 +521,10 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork.svg');
     -webkit-mask-repeat: repeat-y;
     mask-repeat: repeat-y;
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-size: var(--lacc-scrollwork-width, 78px) auto;
-    mask-size: var(--lacc-scrollwork-width, 78px) auto;
+    -webkit-mask-position: top center;
+    mask-position: top center;
+    -webkit-mask-size: var(--lacc-scrollwork-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
+    mask-size: var(--lacc-scrollwork-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
     clip-path: inset(0 0 0 50%);
     pointer-events: none;
     z-index: 2;
@@ -535,13 +537,13 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
 }
 
 .section-split-media--seam-gutter .section-split-media__row {
-    column-gap: var(--ssm-seam-gutter, clamp(40px, 4vw, 64px));
+    column-gap: var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 78px) + clamp(12px, 2vw, 24px)));
 }
 
 .section-split-media--seam-gutter .section-split-media__media-column,
 .section-split-media--seam-gutter .section-split-media__content-column {
-    flex-basis: calc((100% - var(--ssm-seam-gutter, clamp(40px, 4vw, 64px))) / 2);
-    max-width: calc((100% - var(--ssm-seam-gutter, clamp(40px, 4vw, 64px))) / 2);
+    flex-basis: calc((100% - var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 78px) + clamp(12px, 2vw, 24px)))) / 2);
+    max-width: calc((100% - var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 78px) + clamp(12px, 2vw, 24px)))) / 2);
 }
 
 .section-split-media--seam-gutter .section-split-media__media-column::after,
@@ -565,10 +567,10 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork.svg');
     -webkit-mask-repeat: repeat-y;
     mask-repeat: repeat-y;
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-size: var(--lacc-scrollwork-width, 78px) auto;
-    mask-size: var(--lacc-scrollwork-width, 78px) auto;
+    -webkit-mask-position: top center;
+    mask-position: top center;
+    -webkit-mask-size: var(--lacc-scrollwork-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
+    mask-size: var(--lacc-scrollwork-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
     pointer-events: none;
     z-index: 3;
 }
