@@ -348,17 +348,21 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: clamp(36px, 5.4vw, 92px);
+    padding: clamp(44px, 5.8vw, 98px) clamp(34px, 5.2vw, 84px);
     background: var(--ssm-content-bg, #f6f3ed);
+}
+
+.section-split-media__content > * {
+    max-width: 34rem;
 }
 
 .section-split-media__eyebrow {
     display: inline-block;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     color: var(--ssm-eyebrow-color, #946E29);
     font-family: var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif);
-    font-size: 14px;
-    font-weight: 800;
+    font-size: 12px;
+    font-weight: 700;
     letter-spacing: .16em;
     line-height: 1.2;
     text-transform: var(--ssm-eyebrow-transform, uppercase);
@@ -368,21 +372,22 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     margin: 0;
     color: var(--ssm-title-color, #51534a);
     font-family: var(--ssm-heading-font, var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif));
-    font-size: clamp(40px, 4.6vw, 68px);
+    font-size: clamp(48px, 4.9vw, 72px);
     font-weight: var(--ssm-heading-weight, 400);
-    line-height: .98;
+    line-height: 1.02;
+    letter-spacing: .01em;
 }
 
 .section-split-media__copy,
 .section-split-media__copy p {
     color: var(--ssm-body-color, #51534a);
-    font-family: var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif);
-    font-size: clamp(20px, 2vw, 24px);
-    line-height: 1.55;
+    font-family: var(--lacc-type-family-ui, Helvetica, Arial, sans-serif);
+    font-size: clamp(18px, 1.45vw, 36px);
+    line-height: 1.45;
 }
 
 .section-split-media__copy {
-    margin-top: 22px;
+    margin-top: 24px;
 }
 
 .section-split-media__copy p:last-child {
@@ -401,8 +406,8 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     border: 1px solid transparent;
     border-radius: 0;
     font-size: 16px;
-    font-weight: 600;
-    letter-spacing: .04em;
+    font-weight: 700;
+    letter-spacing: .06em;
     line-height: 1;
     text-decoration: none !important;
     transition: background .25s ease, border-color .25s ease, color .25s ease;
