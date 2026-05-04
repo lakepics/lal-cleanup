@@ -109,8 +109,8 @@ $padding_bottom = $padding_bottom ?: '60px';
 $media_min_height = $media_min_height ?: 'clamp(420px, 45vw, 760px)';
 $seam_color = $seam_color ?: ( $scrollwork_color ?: $eyebrow_color );
 $seam_opacity = '' !== $seam_opacity ? $seam_opacity : '0.3';
-$seam_width = $seam_width ?: '78px';
-$seam_gutter_width = $seam_gutter_width ?: 'calc(var(--ssm-seam-width, 78px) + clamp(12px, 2vw, 24px))';
+$seam_width = $seam_width ?: '70px';
+$seam_gutter_width = $seam_gutter_width ?: 'calc(var(--ssm-seam-width, 70px) + clamp(12px, 2vw, 24px))';
 
 $normalize_split_media_color = static function ( $value ) {
     $value = strtolower( trim( (string) $value ) );
@@ -353,9 +353,9 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     content: '';
     position: absolute;
     top: 0;
-    right: calc(var(--ssm-seam-width, 78px) / -2);
+    right: calc(var(--ssm-seam-width, 70px) / -2);
     bottom: 0;
-    width: var(--ssm-seam-width, 78px);
+    width: var(--ssm-seam-width, 70px);
     background-color: #ffffff;
     -webkit-mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork.svg');
     mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork.svg');
@@ -363,8 +363,8 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     mask-repeat: repeat-y;
     -webkit-mask-position: top center;
     mask-position: top center;
-    -webkit-mask-size: var(--lacc-scrollwork-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
-    mask-size: var(--lacc-scrollwork-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
+    -webkit-mask-size: var(--ssm-seam-width, 70px) var(--lacc-scrollwork-tile-h, 450px);
+    mask-size: var(--ssm-seam-width, 70px) var(--lacc-scrollwork-tile-h, 450px);
     clip-path: inset(0 50% 0 0);
     pointer-events: none;
     z-index: 2;
@@ -372,7 +372,7 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
 
 .section-split-media--image-right .section-split-media__media-column::after {
     right: auto;
-    left: calc(var(--ssm-seam-width, 78px) / -2);
+    left: calc(var(--ssm-seam-width, 70px) / -2);
     clip-path: inset(0 0 0 50%);
 }
 
@@ -512,9 +512,9 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     content: '';
     position: absolute;
     top: 0;
-    left: calc(var(--ssm-seam-width, 78px) / -2);
+    left: calc(var(--ssm-seam-width, 70px) / -2);
     bottom: 0;
-    width: var(--ssm-seam-width, 78px);
+    width: var(--ssm-seam-width, 70px);
     background-color: var(--ssm-seam-color, #946E29);
     opacity: var(--ssm-seam-opacity, 0.3);
     -webkit-mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork.svg');
@@ -523,8 +523,8 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     mask-repeat: repeat-y;
     -webkit-mask-position: top center;
     mask-position: top center;
-    -webkit-mask-size: var(--lacc-scrollwork-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
-    mask-size: var(--lacc-scrollwork-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
+    -webkit-mask-size: var(--ssm-seam-width, 70px) var(--lacc-scrollwork-tile-h, 450px);
+    mask-size: var(--ssm-seam-width, 70px) var(--lacc-scrollwork-tile-h, 450px);
     clip-path: inset(0 0 0 50%);
     pointer-events: none;
     z-index: 2;
@@ -532,18 +532,18 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
 
 .section-split-media--image-right .section-split-media__content-column::after {
     left: auto;
-    right: calc(var(--ssm-seam-width, 78px) / -2);
+    right: calc(var(--ssm-seam-width, 70px) / -2);
     clip-path: inset(0 50% 0 0);
 }
 
 .section-split-media--seam-gutter .section-split-media__row {
-    column-gap: var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 78px) + clamp(12px, 2vw, 24px)));
+    column-gap: var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 70px) + clamp(12px, 2vw, 24px)));
 }
 
 .section-split-media--seam-gutter .section-split-media__media-column,
 .section-split-media--seam-gutter .section-split-media__content-column {
-    flex-basis: calc((100% - var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 78px) + clamp(12px, 2vw, 24px)))) / 2);
-    max-width: calc((100% - var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 78px) + clamp(12px, 2vw, 24px)))) / 2);
+    flex-basis: calc((100% - var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 70px) + clamp(12px, 2vw, 24px)))) / 2);
+    max-width: calc((100% - var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 70px) + clamp(12px, 2vw, 24px)))) / 2);
 }
 
 .section-split-media--seam-gutter .section-split-media__media-column::after,
@@ -559,7 +559,7 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     top: 0;
     bottom: 0;
     left: 50%;
-    width: var(--ssm-seam-width, 78px);
+    width: var(--ssm-seam-width, 70px);
     transform: translateX(-50%);
     background-color: var(--ssm-seam-color, #946E29);
     opacity: var(--ssm-seam-opacity, 0.3);
@@ -569,8 +569,8 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     mask-repeat: repeat-y;
     -webkit-mask-position: top center;
     mask-position: top center;
-    -webkit-mask-size: var(--lacc-scrollwork-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
-    mask-size: var(--lacc-scrollwork-width, 78px) var(--lacc-scrollwork-tile-h, 450px);
+    -webkit-mask-size: var(--ssm-seam-width, 70px) var(--lacc-scrollwork-tile-h, 450px);
+    mask-size: var(--ssm-seam-width, 70px) var(--lacc-scrollwork-tile-h, 450px);
     pointer-events: none;
     z-index: 3;
 }

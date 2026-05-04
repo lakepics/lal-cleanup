@@ -1,45 +1,61 @@
 <?php
-$hero_media_type = strtolower( trim( (string) get_sub_field('hero_media_type') ) );
-$background_video_url = trim( get_sub_field('background_video_url') ?: '' );
-$background_video_library_url = trim( get_sub_field('background_video_library_url') ?: '' );
-$hero_background_image = get_sub_field('background_image');
+$section_video_hero_override = isset( $GLOBALS['section_video_hero_override'] ) && is_array( $GLOBALS['section_video_hero_override'] )
+    ? $GLOBALS['section_video_hero_override']
+    : array();
+
+$get_video_hero_field = static function ( $key ) use ( $section_video_hero_override ) {
+    if ( array_key_exists( $key, $section_video_hero_override ) ) {
+        return $section_video_hero_override[ $key ];
+    }
+
+    return function_exists( 'get_sub_field' ) ? get_sub_field( $key ) : null;
+};
+
+$hero_media_type = strtolower( trim( (string) $get_video_hero_field('hero_media_type') ) );
+$background_video_url = trim( $get_video_hero_field('background_video_url') ?: '' );
+$background_video_library_url = trim( $get_video_hero_field('background_video_library_url') ?: '' );
+$hero_background_image = $get_video_hero_field('background_image');
 $hero_background_image_url = is_array( $hero_background_image ) && ! empty( $hero_background_image['url'] ) ? $hero_background_image['url'] : '';
-$section_eyebrow = get_sub_field('section_eyebrow');
-$background_video_h1 = get_sub_field('background_video_h1');
-$background_video_h2 = get_sub_field('background_video_h2');
-$background_video_button_url = get_sub_field('background_video_button_url');
-$background_video_button_label = get_sub_field('background_video_button_label');
-$background_video_button_style = strtolower( trim( (string) get_sub_field('background_video_button_style') ) );
-$background_video_closure_notice_show = get_sub_field('background_video_closure_notice_show');
-$background_video_closure_notice = get_sub_field('background_video_closure_notice');
-$hero_height = trim( (string) get_sub_field('hero_height') );
-$section_anchor_id = strtolower( trim( (string) get_sub_field('section_anchor_id') ) );
+$section_eyebrow = $get_video_hero_field('section_eyebrow');
+$background_video_h1 = $get_video_hero_field('background_video_h1');
+$background_video_h2 = $get_video_hero_field('background_video_h2');
+$background_video_button_url = $get_video_hero_field('background_video_button_url');
+$background_video_button_label = $get_video_hero_field('background_video_button_label');
+$background_video_button_style = strtolower( trim( (string) $get_video_hero_field('background_video_button_style') ) );
+$background_video_closure_notice_show = $get_video_hero_field('background_video_closure_notice_show');
+$background_video_closure_notice = $get_video_hero_field('background_video_closure_notice');
+$hero_height = trim( (string) $get_video_hero_field('hero_height') );
+$section_anchor_id = strtolower( trim( (string) $get_video_hero_field('section_anchor_id') ) );
 $section_anchor_id = preg_replace( '/[^a-z0-9_-]+/', '-', $section_anchor_id );
 $section_anchor_id = trim( (string) $section_anchor_id, '-' );
-$subheading_font_family = strtolower( trim( (string) get_sub_field('heading_font_family') ) );
-$subheading_font_weight = trim( (string) get_sub_field('heading_font_weight') );
-$heading_text_transform = strtolower( trim( (string) get_sub_field('heading_text_transform') ) );
-$heading_max_width = trim( (string) get_sub_field('heading_max_width') );
-$hero_heading_color = trim( (string) get_sub_field('hero_heading_color') );
-$hero_subheading_color = trim( (string) get_sub_field('hero_subheading_color') );
-$eyebrow_color = trim( (string) get_sub_field('eyebrow_color') );
-$eyebrow_font_family = strtolower( trim( (string) get_sub_field('eyebrow_font_family') ) );
-$eyebrow_font_weight = trim( (string) get_sub_field('eyebrow_font_weight') );
-$eyebrow_font_size = trim( (string) get_sub_field('eyebrow_font_size') );
-$eyebrow_text_transform = strtolower( trim( (string) get_sub_field('eyebrow_text_transform') ) );
-$eyebrow_background_color = trim( (string) get_sub_field('eyebrow_background_color') );
-$eyebrow_border = trim( (string) get_sub_field('eyebrow_border') );
-$eyebrow_padding = trim( (string) get_sub_field('eyebrow_padding') );
-$eyebrow_border_radius = trim( (string) get_sub_field('eyebrow_border_radius') );
-$factoid_value_font_family = strtolower( trim( (string) get_sub_field('factoid_value_font_family') ) );
-$factoid_value_font_weight = trim( (string) get_sub_field('factoid_value_font_weight') );
-$factoid_value_color = trim( (string) get_sub_field('factoid_value_color') );
-$factoid_label_font_family = strtolower( trim( (string) get_sub_field('factoid_label_font_family') ) );
-$factoid_label_font_weight = trim( (string) get_sub_field('factoid_label_font_weight') );
-$factoid_label_color = trim( (string) get_sub_field('factoid_label_color') );
-$cta_text_size = trim( (string) get_sub_field('cta_text_size') );
-$cta_padding = trim( (string) get_sub_field('cta_padding') );
-$cta_letter_spacing = trim( (string) get_sub_field('cta_letter_spacing') );
+$subheading_font_family = strtolower( trim( (string) $get_video_hero_field('heading_font_family') ) );
+$subheading_font_weight = trim( (string) $get_video_hero_field('heading_font_weight') );
+$heading_text_transform = strtolower( trim( (string) $get_video_hero_field('heading_text_transform') ) );
+$heading_alignment = strtolower( trim( (string) $get_video_hero_field('heading_alignment') ) );
+$heading_max_width = trim( (string) $get_video_hero_field('heading_max_width') );
+$hero_heading_color = trim( (string) $get_video_hero_field('hero_heading_color') );
+$hero_subheading_color = trim( (string) $get_video_hero_field('hero_subheading_color') );
+$eyebrow_color = trim( (string) $get_video_hero_field('eyebrow_color') );
+$eyebrow_font_family = strtolower( trim( (string) $get_video_hero_field('eyebrow_font_family') ) );
+$eyebrow_font_weight = trim( (string) $get_video_hero_field('eyebrow_font_weight') );
+$eyebrow_font_size = trim( (string) $get_video_hero_field('eyebrow_font_size') );
+$eyebrow_text_transform = strtolower( trim( (string) $get_video_hero_field('eyebrow_text_transform') ) );
+$eyebrow_background_color = trim( (string) $get_video_hero_field('eyebrow_background_color') );
+$eyebrow_border = trim( (string) $get_video_hero_field('eyebrow_border') );
+$eyebrow_padding = trim( (string) $get_video_hero_field('eyebrow_padding') );
+$eyebrow_border_radius = trim( (string) $get_video_hero_field('eyebrow_border_radius') );
+$eyebrow_preset = strtolower( trim( (string) $get_video_hero_field('eyebrow_preset') ) );
+$eyebrow_font_size_override = $eyebrow_font_size;
+$factoid_value_font_family = strtolower( trim( (string) $get_video_hero_field('factoid_value_font_family') ) );
+$factoid_value_font_weight = trim( (string) $get_video_hero_field('factoid_value_font_weight') );
+$factoid_value_color = trim( (string) $get_video_hero_field('factoid_value_color') );
+$factoid_label_font_family = strtolower( trim( (string) $get_video_hero_field('factoid_label_font_family') ) );
+$factoid_label_font_weight = trim( (string) $get_video_hero_field('factoid_label_font_weight') );
+$factoid_label_color = trim( (string) $get_video_hero_field('factoid_label_color') );
+$button_size = strtolower( trim( (string) $get_video_hero_field('button_size') ) );
+$cta_text_size = trim( (string) $get_video_hero_field('cta_text_size') );
+$cta_padding = trim( (string) $get_video_hero_field('cta_padding') );
+$cta_letter_spacing = trim( (string) $get_video_hero_field('cta_letter_spacing') );
 $section_video_hero_id = $section_anchor_id ?: 'section-video-hero-' . uniqid();
 
 if ( ! in_array( $hero_media_type, array( 'video', 'image' ), true ) ) {
@@ -53,27 +69,31 @@ $hero_factoids = array();
 $hero_cta_buttons = array();
 
 if ( ! in_array( $subheading_font_family, array( 'haarlem', 'freight-big-pro' ), true ) ) {
-    $subheading_font_family = 'haarlem';
+    $subheading_font_family = 'freight-big-pro';
 }
 
 if ( ! in_array( $subheading_font_weight, array( '300', '400', '500', '600', '700' ), true ) ) {
-    $subheading_font_weight = '600';
+    $subheading_font_weight = '500';
 }
 
 if ( ! in_array( $heading_text_transform, array( 'capitalize', 'uppercase', 'none' ), true ) ) {
     $heading_text_transform = 'uppercase';
 }
 
+if ( ! in_array( $heading_alignment, array( 'left', 'center', 'right' ), true ) ) {
+    $heading_alignment = 'center';
+}
+
 if ( ! in_array( $factoid_value_font_family, array( 'default', 'haarlem', 'freight-big-pro' ), true ) ) {
-    $factoid_value_font_family = 'default';
+    $factoid_value_font_family = 'freight-big-pro';
 }
 
 if ( ! in_array( $factoid_value_font_weight, array( '300', '400', '500', '600', '700' ), true ) ) {
-    $factoid_value_font_weight = '300';
+    $factoid_value_font_weight = '500';
 }
 
 if ( ! in_array( $factoid_label_font_family, array( 'default', 'haarlem', 'freight-big-pro' ), true ) ) {
-    $factoid_label_font_family = 'default';
+    $factoid_label_font_family = 'haarlem';
 }
 
 if ( ! in_array( $factoid_label_font_weight, array( '300', '400', '500', '600', '700' ), true ) ) {
@@ -92,30 +112,128 @@ if ( ! in_array( $eyebrow_text_transform, array( 'capitalize', 'uppercase', 'non
     $eyebrow_text_transform = 'uppercase';
 }
 
-$subheading_font_stack = 'freight-big-pro' === $subheading_font_family ? '"Freight Big Pro", Georgia, serif' : 'HaarlemDeco, Arial, Helvetica, sans-serif';
-$factoid_value_font_stack = 'freight-big-pro' === $factoid_value_font_family ? '"Freight Big Pro", Georgia, serif' : ( 'haarlem' === $factoid_value_font_family ? 'HaarlemDeco, Arial, Helvetica, sans-serif' : 'HaarlemDeco, Arial, Helvetica, sans-serif' );
-$factoid_label_font_stack = 'freight-big-pro' === $factoid_label_font_family ? '"Freight Big Pro", Georgia, serif' : ( 'haarlem' === $factoid_label_font_family ? 'HaarlemDeco, Arial, Helvetica, sans-serif' : 'inherit' );
-$eyebrow_font_stack = 'freight-big-pro' === $eyebrow_font_family ? '"Freight Big Pro", Georgia, serif' : ( 'haarlem' === $eyebrow_font_family ? 'HaarlemDeco, Arial, Helvetica, sans-serif' : 'inherit' );
+$subheading_font_stack = 'freight-big-pro' === $subheading_font_family
+    ? 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)'
+    : 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)';
+$factoid_value_font_stack = 'freight-big-pro' === $factoid_value_font_family
+    ? 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)'
+    : 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)';
+$factoid_label_font_stack = 'freight-big-pro' === $factoid_label_font_family
+    ? 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)'
+    : ( 'haarlem' === $factoid_label_font_family ? 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)' : 'inherit' );
+$eyebrow_font_stack = 'freight-big-pro' === $eyebrow_font_family
+    ? 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)'
+    : ( 'haarlem' === $eyebrow_font_family ? 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)' : 'inherit' );
 $hero_heading_color = $hero_heading_color ?: 'var(--lacc-color-cream)';
 $hero_subheading_color = $hero_subheading_color ?: 'rgba(246,243,237,0.82)';
 $eyebrow_color = $eyebrow_color ?: 'var(--lacc-color-gold-soft)';
 $eyebrow_background_color = $eyebrow_background_color ?: 'transparent';
-$eyebrow_border = $eyebrow_border ?: '1px solid rgba(201,151,58,0.35)';
-$eyebrow_padding = $eyebrow_padding ?: '8px 16px';
+$eyebrow_border = $eyebrow_border ?: '1px solid rgba(181,138,45,0.32)';
+$eyebrow_padding = $eyebrow_padding ?: '0.42em 1.17em';
 $eyebrow_font_size = $eyebrow_font_size ?: '12px';
 $eyebrow_border_radius = $eyebrow_border_radius ?: '999px';
+
+$eyebrow_preset_map = array(
+    'pill'  => array(
+        'font_family'   => 'haarlem',
+        'font_weight'   => '600',
+        'font_size'     => '12px',
+        'transform'     => 'uppercase',
+        'color'         => '#946E29',
+        'bg'            => 'transparent',
+        'border'        => '1px solid rgba(181,138,45,0.32)',
+        'padding'       => '0.42em 1.17em',
+        'radius'        => '999px',
+    ),
+    'plain' => array(
+        'font_family'   => 'haarlem',
+        'font_weight'   => '600',
+        'font_size'     => '12px',
+        'transform'     => 'uppercase',
+        'color'         => '#946E29',
+        'bg'            => 'transparent',
+        'border'        => 'none',
+        'padding'       => '0',
+        'radius'        => '0',
+    ),
+    'ink'   => array(
+        'font_family'   => 'haarlem',
+        'font_weight'   => '600',
+        'font_size'     => '12px',
+        'transform'     => 'uppercase',
+        'color'         => '#f6f3ed',
+        'bg'            => '#51534a',
+        'border'        => 'none',
+        'padding'       => '0.42em 1.17em',
+        'radius'        => '999px',
+    ),
+);
+if ( isset( $eyebrow_preset_map[ $eyebrow_preset ] ) ) {
+    $p                      = $eyebrow_preset_map[ $eyebrow_preset ];
+    $eyebrow_font_family    = $p['font_family'];
+    $eyebrow_font_weight    = $p['font_weight'];
+    $eyebrow_font_size      = $p['font_size'];
+    $eyebrow_text_transform = $p['transform'];
+    $eyebrow_color          = $p['color'];
+    $eyebrow_background_color = $p['bg'];
+    $eyebrow_border         = $p['border'];
+    $eyebrow_padding        = $p['padding'];
+    $eyebrow_border_radius  = $p['radius'];
+    $eyebrow_font_stack     = 'haarlem' === $eyebrow_font_family
+        ? 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)'
+        : ( 'freight-big-pro' === $eyebrow_font_family
+            ? 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)'
+            : 'inherit' );
+    if ( $eyebrow_font_size_override ) {
+        $eyebrow_font_size = $eyebrow_font_size_override;
+    }
+}
 $factoid_value_color = $factoid_value_color ?: 'var(--lacc-color-gold-soft)';
 $factoid_label_color = $factoid_label_color ?: 'rgba(246,243,237,0.78)';
 $heading_max_width = $heading_max_width ?: '100%';
-$cta_text_size = $cta_text_size ?: '13px';
-$cta_padding = $cta_padding ?: '.85em 1.45em';
-$cta_letter_spacing = $cta_letter_spacing ?: '.08em';
+$allowed_button_sizes = array( 'large', 'normal', 'small' );
+if ( ! in_array( $button_size, $allowed_button_sizes, true ) ) {
+    $button_size = 'normal';
+}
+$button_size_map = array(
+    'large' => array(
+        'font_size' => '20px',
+        'padding' => '1em 1.8em',
+        'letter_spacing' => '.06em',
+    ),
+    'normal' => array(
+        'font_size' => '16px',
+        'padding' => '.85em 1.45em',
+        'letter_spacing' => '.04em',
+    ),
+    'small' => array(
+        'font_size' => '12px',
+        'padding' => '.7em 1.2em',
+        'letter_spacing' => '.08em',
+    ),
+);
+$resolved_button_size = $button_size_map[ $button_size ];
+$cta_text_size = $cta_text_size ?: $resolved_button_size['font_size'];
+$cta_padding = $cta_padding ?: $resolved_button_size['padding'];
+$cta_letter_spacing = $cta_letter_spacing ?: $resolved_button_size['letter_spacing'];
 
 if ( ! in_array( $background_video_button_style, array( 'primary', 'secondary', 'gold-text', 'ink', 'outline-ink', 'brown', 'light', 'outline', 'outline-dark', 'outline-gold' ), true ) ) {
     $background_video_button_style = 'primary';
 }
 
-if ( have_rows( 'hero_factoids' ) ) {
+if ( is_array( $get_video_hero_field( 'hero_factoids' ) ) ) {
+    foreach ( $get_video_hero_field( 'hero_factoids' ) as $factoid_item ) {
+        $factoid_value = trim( (string) ( $factoid_item['factoid_value'] ?? '' ) );
+        $factoid_label = trim( (string) ( $factoid_item['factoid_label'] ?? '' ) );
+
+        if ( '' !== $factoid_value || '' !== $factoid_label ) {
+            $hero_factoids[] = array(
+                'value' => $factoid_value,
+                'label' => $factoid_label,
+            );
+        }
+    }
+} elseif ( have_rows( 'hero_factoids' ) ) {
     while ( have_rows( 'hero_factoids' ) ) {
         the_row();
         $factoid_value = trim( (string) get_sub_field( 'factoid_value' ) );
@@ -130,7 +248,25 @@ if ( have_rows( 'hero_factoids' ) ) {
     }
 }
 
-if ( have_rows( 'hero_cta_buttons' ) ) {
+if ( is_array( $get_video_hero_field( 'hero_cta_buttons' ) ) ) {
+    foreach ( $get_video_hero_field( 'hero_cta_buttons' ) as $button_item ) {
+        $button_label = trim( (string) ( $button_item['button_label'] ?? '' ) );
+        $button_url = trim( (string) ( $button_item['button_url'] ?? '' ) );
+        $button_style = strtolower( trim( (string) ( $button_item['button_style'] ?? '' ) ) );
+
+        if ( $button_label && $button_url ) {
+            if ( ! in_array( $button_style, array( 'primary', 'secondary', 'gold-text', 'ink', 'outline-ink', 'brown', 'light', 'outline', 'outline-dark', 'outline-gold' ), true ) ) {
+                $button_style = 'primary';
+            }
+
+            $hero_cta_buttons[] = array(
+                'label' => $button_label,
+                'url' => $button_url,
+                'style' => $button_style,
+            );
+        }
+    }
+} elseif ( have_rows( 'hero_cta_buttons' ) ) {
     while ( have_rows( 'hero_cta_buttons' ) ) {
         the_row();
         $button_label = trim( (string) get_sub_field( 'button_label' ) );
@@ -202,6 +338,7 @@ $section_video_hero_styles = array(
     '--svh-title-color:' . $hero_heading_color,
     '--svh-title-max-width:' . $heading_max_width,
     '--svh-title-transform:' . $heading_text_transform,
+    '--svh-title-align:' . $heading_alignment,
     '--svh-subheading-color:' . $hero_subheading_color,
     '--svh-subheading-font:' . $subheading_font_stack,
     '--svh-subheading-weight:' . $subheading_font_weight,
@@ -358,13 +495,13 @@ if ( $hero_background_image_url ) {
     width: 100%;
     max-width: var(--svh-title-max-width, 100%);
     color: var(--svh-title-color, var(--lacc-color-cream));
-    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
+    font-family: var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif);
     font-size: clamp(48px, 5.6vw, 82px);
     font-weight: 400;
     line-height: 1.04;
     letter-spacing: -.015em;
     margin: 0 auto 20px;
-    text-align: center;
+    text-align: var(--svh-title-align, center);
     text-transform: var(--svh-title-transform, uppercase);
 }
 
@@ -378,10 +515,10 @@ if ( $hero_background_image_url ) {
 .section-video-hero .hero-slider-subheading p,
 .section-video-hero .hero-slider-subheading li {
     color: var(--svh-subheading-color, rgba(246,243,237,0.82));
-    font-family: var(--svh-subheading-font, Georgia, serif) !important;
+    font-family: var(--svh-subheading-font, var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)) !important;
     font-size: clamp(20px, 2.4vw, 34px);
     font-style: italic;
-    font-weight: var(--svh-subheading-weight, 600) !important;
+    font-weight: var(--svh-subheading-weight, 500) !important;
     line-height: 1.35;
     text-align: center;
 }
@@ -418,9 +555,9 @@ if ( $hero_background_image_url ) {
     display: block;
     margin-bottom: 2px;
     color: var(--svh-factoid-value-color, var(--lacc-color-gold-soft));
-    font-family: var(--svh-factoid-value-font, HaarlemDeco, Arial, Helvetica, sans-serif) !important;
+    font-family: var(--svh-factoid-value-font, var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)) !important;
     font-size: clamp(34px, 3.7vw, 52px);
-    font-weight: var(--svh-factoid-value-weight, 300) !important;
+    font-weight: var(--svh-factoid-value-weight, 500) !important;
     font-style: italic;
     letter-spacing: .01em;
     line-height: 1;
@@ -430,10 +567,10 @@ if ( $hero_background_image_url ) {
 .section-video-hero .hero-factoid__label {
     display: block;
     color: var(--svh-factoid-label-color, rgba(246,243,237,0.78));
-    font-family: var(--svh-factoid-label-font, inherit) !important;
+    font-family: var(--svh-factoid-label-font, var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)) !important;
     font-weight: var(--svh-factoid-label-weight, 600) !important;
     letter-spacing: .16em;
-    font-size: 11px;
+    font-size: 16px;
     line-height: 1.15;
     text-transform: uppercase;
     margin-top: 4px;
@@ -454,11 +591,11 @@ if ( $hero_background_image_url ) {
     min-width: 0;
     min-height: 0;
     width: auto;
-    padding: .85em 1.45em;
+    padding: var(--svh-cta-padding, .85em 1.45em);
     border: 1px solid transparent;
     border-radius: 0;
-    letter-spacing: .08em;
-    font-size: 13px;
+    letter-spacing: var(--svh-cta-letter-spacing, .04em);
+    font-size: var(--svh-cta-font-size, 16px);
     font-weight: 700;
     line-height: 1.2;
     text-transform: uppercase;
@@ -482,6 +619,56 @@ if ( $hero_background_image_url ) {
     outline-offset: 2px;
 }
 
+.section-video-hero .hero-button--primary {
+    background: var(--lacc-color-action-primary, #3f5f85);
+    border-color: var(--lacc-color-action-primary, #3f5f85);
+    color: var(--lacc-color-action-on-primary, #ffffff);
+}
+
+.section-video-hero .hero-button--secondary {
+    background: var(--lacc-color-accent-old-gold, #7a5a1f);
+    border-color: var(--lacc-color-accent-old-gold, #7a5a1f);
+    color: var(--lacc-color-text-inverse, #ffffff);
+}
+
+.section-video-hero .hero-button--outline {
+    background: transparent;
+    border-color: var(--lacc-color-action-primary, #3f5f85);
+    color: var(--lacc-color-action-primary, #3f5f85);
+}
+
+.section-video-hero .hero-button--gold-text,
+.section-video-hero .hero-button--brown {
+    background: transparent;
+    border-color: #7c5542;
+    color: #7c5542;
+}
+
+.section-video-hero .hero-button--outline-gold {
+    background: transparent;
+    border-color: var(--lacc-color-accent-old-gold, #7a5a1f);
+    color: var(--lacc-color-accent-old-gold, #7a5a1f);
+}
+
+.section-video-hero .hero-button--ink {
+    background: var(--lacc-color-ink, #51534a);
+    border-color: var(--lacc-color-ink, #51534a);
+    color: var(--lacc-color-text-inverse, #ffffff);
+}
+
+.section-video-hero .hero-button--outline-ink,
+.section-video-hero .hero-button--outline-dark {
+    background: transparent;
+    border-color: var(--lacc-color-ink, #51534a);
+    color: var(--lacc-color-ink, #51534a);
+}
+
+.section-video-hero .hero-button--light {
+    background: var(--lacc-color-cream, #f6f3ed);
+    border-color: #ddd4c8;
+    color: var(--lacc-color-ink, #51534a);
+}
+
 .section-video-hero .hero-button--primary:hover,
 .section-video-hero .hero-button--primary:focus {
     background: var(--lacc-color-action-primary-hover, #324c6a);
@@ -491,18 +678,60 @@ if ( $hero_background_image_url ) {
 
 .section-video-hero .hero-button--secondary:hover,
 .section-video-hero .hero-button--secondary:focus {
-    background: var(--lacc-color-bg-soft, #f6f3ed);
+    background: var(--lacc-color-accent-old-gold-hover, #624818);
+    border-color: var(--lacc-color-accent-old-gold-hover, #624818);
+    color: var(--lacc-color-text-inverse, #ffffff);
+}
+
+.section-video-hero .hero-button--outline-gold:hover,
+.section-video-hero .hero-button--outline-gold:focus {
+    background: var(--lacc-color-accent-old-gold, #7a5a1f);
+    border-color: var(--lacc-color-accent-old-gold, #7a5a1f);
+    color: var(--lacc-color-text-inverse, #ffffff);
+}
+
+.section-video-hero .hero-button--outline:hover,
+.section-video-hero .hero-button--outline:focus {
+    background: var(--lacc-color-action-primary, #3f5f85);
     border-color: var(--lacc-color-action-primary, #3f5f85);
-    color: var(--lacc-color-action-primary, #3f5f85);
+    color: var(--lacc-color-action-on-primary, #ffffff);
 }
 
 .section-video-hero .hero-button--gold-text:hover,
 .section-video-hero .hero-button--gold-text:focus,
 .section-video-hero .hero-button--brown:hover,
 .section-video-hero .hero-button--brown:focus {
-    background: var(--lacc-color-accent-old-gold, #7a5a1f);
-    border-color: var(--lacc-color-accent-old-gold, #7a5a1f);
+    background: #7c5542;
+    border-color: #7c5542;
     color: var(--lacc-color-text-inverse, #ffffff);
+}
+
+.section-video-hero .hero-button--ink:hover,
+.section-video-hero .hero-button--ink:focus {
+    background: var(--lacc-color-ink-deep, #1f221d);
+    border-color: var(--lacc-color-ink-deep, #1f221d);
+    color: var(--lacc-color-text-inverse, #ffffff);
+}
+
+.section-video-hero .hero-button--outline-ink:hover,
+.section-video-hero .hero-button--outline-ink:focus {
+    background: rgba(81,83,74,.08);
+    border-color: var(--lacc-color-ink, #51534a);
+    color: #3b3d37;
+}
+
+.section-video-hero .hero-button--outline-dark:hover,
+.section-video-hero .hero-button--outline-dark:focus {
+    background: var(--lacc-color-ink, #51534a);
+    border-color: var(--lacc-color-ink, #51534a);
+    color: var(--lacc-color-text-inverse, #ffffff);
+}
+
+.section-video-hero .hero-button--light:hover,
+.section-video-hero .hero-button--light:focus {
+    background: #ebe2d5;
+    border-color: #ddd4c8;
+    color: var(--lacc-color-ink, #51534a);
 }
 
 .section-video-hero .background-video-toggle {

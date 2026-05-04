@@ -291,6 +291,36 @@
                             "append": ""
                         },
                         {
+                            "key": "field_tsb_vh_heading_alignment",
+                            "label": "Hero Heading Alignment",
+                            "name": "heading_alignment",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Controls heading text alignment for this hero section.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "center": "Center",
+                                "right": "Right"
+                            },
+                            "default_value": "center",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
                             "key": "field_tsb_vh_subheading_color",
                             "label": "Hero Subhead Color",
                             "name": "hero_subheading_color",
