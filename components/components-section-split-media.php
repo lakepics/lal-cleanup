@@ -110,6 +110,18 @@ $seam_color = $seam_color ?: ( $scrollwork_color ?: $eyebrow_color );
 $seam_opacity = '' !== $seam_opacity ? $seam_opacity : '0.3';
 $seam_width = $seam_width ?: '78px';
 
+$normalize_split_media_color = static function ( $value ) {
+    $value = strtolower( trim( (string) $value ) );
+    $value = preg_replace( '/\s+/', '', $value );
+
+    return $value;
+};
+
+$use_seam_gutter = $seam_enabled && (
+    'experience_list' === $split_media_variant
+    || $normalize_split_media_color( $background_color ) === $normalize_split_media_color( $content_background_color )
+);
+
 if ( ! $seam_enabled ) {
     $seam_opacity = '0';
 }
@@ -242,6 +254,9 @@ if ( $section_classes ) {
 if ( 'experience_list' === $split_media_variant && ! $experience_show_dividers ) {
     $section_class_list[] = 'section-split-media--hide-experience-dividers';
 }
+if ( $use_seam_gutter ) {
+    $section_class_list[] = 'section-split-media--seam-gutter';
+}
 if ( 'about_band' === $split_media_variant && $about_emphasize_single_lane ) {
     $section_class_list[] = 'section-split-media--about-single-lane';
 }
@@ -264,6 +279,7 @@ $section_styles = array(
     '--ssm-seam-color:' . $seam_color,
     '--ssm-seam-opacity:' . $seam_opacity,
     '--ssm-seam-width:' . $seam_width,
+    '--ssm-seam-gutter:clamp(40px, 4vw, 64px)',
 );
 
 $allowed_heading_html = array(
@@ -307,6 +323,7 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
+    position: relative;
 }
 
 .section-split-media__media-column,
@@ -517,6 +534,45 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     clip-path: inset(0 50% 0 0);
 }
 
+.section-split-media--seam-gutter .section-split-media__row {
+    column-gap: var(--ssm-seam-gutter, clamp(40px, 4vw, 64px));
+}
+
+.section-split-media--seam-gutter .section-split-media__media-column,
+.section-split-media--seam-gutter .section-split-media__content-column {
+    flex-basis: calc((100% - var(--ssm-seam-gutter, clamp(40px, 4vw, 64px))) / 2);
+    max-width: calc((100% - var(--ssm-seam-gutter, clamp(40px, 4vw, 64px))) / 2);
+}
+
+.section-split-media--seam-gutter .section-split-media__media-column::after,
+.section-split-media--seam-gutter .section-split-media__content-column::after,
+.section-split-media--seam-gutter.section-split-media--image-right .section-split-media__media-column::after,
+.section-split-media--seam-gutter.section-split-media--image-right .section-split-media__content-column::after {
+    display: none;
+}
+
+.section-split-media--seam-gutter .section-split-media__row::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: var(--ssm-seam-width, 78px);
+    transform: translateX(-50%);
+    background-color: var(--ssm-seam-color, #946E29);
+    opacity: var(--ssm-seam-opacity, 0.3);
+    -webkit-mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork.svg');
+    mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork.svg');
+    -webkit-mask-repeat: repeat-y;
+    mask-repeat: repeat-y;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: var(--lacc-scrollwork-width, 78px) auto;
+    mask-size: var(--lacc-scrollwork-width, 78px) auto;
+    pointer-events: none;
+    z-index: 3;
+}
+
 .section-split-media__image-wrap {
     position: relative;
     display: flex;
@@ -648,6 +704,20 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     .section-split-media__content-column::after,
     .section-split-media--image-right .section-split-media__media-column::after,
     .section-split-media--image-right .section-split-media__content-column::after {
+        display: none;
+    }
+
+    .section-split-media--seam-gutter .section-split-media__row {
+        column-gap: 0;
+    }
+
+    .section-split-media--seam-gutter .section-split-media__media-column,
+    .section-split-media--seam-gutter .section-split-media__content-column {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    .section-split-media--seam-gutter .section-split-media__row::after {
         display: none;
     }
 
