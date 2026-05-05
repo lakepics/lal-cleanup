@@ -368,6 +368,71 @@ $rows = array(
             ),
         )
     ),
+    // --- 4-up variant matrix: same preset per row so height equalization is fair ---
+    array_merge(
+        $card_section_base,
+        array(
+            'acf_fc_layout'    => 'section_card_grid',
+            'section_anchor_id' => 'reference-card-grid-4up-carousel',
+            'section_eyebrow'  => '4-up / carousel-card preset',
+            'section_heading'  => 'Four-up: Carousel Card',
+            'section_intro'    => '<p>All four cards use the carousel-card preset with gallery images. Equalize card bottoms is on — buttons should pin to the same baseline.</p>',
+            'cards'            => array(
+                array( 'card_desktop_width' => '3', 'card_image' => $img['img_0'], 'card_badge' => 'Seasonal', 'card_label_treatment' => 'flag', 'card_style_preset' => 'carousel-card', 'card_images' => array( $img['img_0'], $img['img_4'] ), 'card_heading' => 'Alpine Gathering', 'card_body' => '<p>Mountain atmosphere and curated group experiences at the lodge.</p>', 'card_button_label' => 'Learn More', 'card_button_url' => home_url( '/lake-arrowhead-accommodations/' ), 'card_button_style' => 'outline-dark' ),
+                array( 'card_desktop_width' => '3', 'card_image' => $img['img_1'], 'card_badge' => 'Featured', 'card_label_treatment' => 'flag', 'card_style_preset' => 'carousel-card', 'card_images' => array( $img['img_1'], $img['img_3'] ), 'card_heading' => 'Lakeside Retreat', 'card_body' => '<p>Shorter copy to test bottom-alignment when card heights differ.</p>', 'card_button_label' => 'Learn More', 'card_button_url' => home_url( '/lake-arrowhead-accommodations/' ), 'card_button_style' => 'outline-dark' ),
+                array( 'card_desktop_width' => '3', 'card_image' => $img['img_2'], 'card_badge' => 'New', 'card_label_treatment' => 'flag', 'card_style_preset' => 'carousel-card', 'card_images' => array( $img['img_2'] ), 'card_heading' => 'Culinary Experience', 'card_body' => '<p>A longer block of copy here to push the card body taller and force the equalization mechanism to stretch the adjacent shorter cards to match this card\'s height — verifying the flex-column fill works correctly across the row.</p>', 'card_button_label' => 'Learn More', 'card_button_url' => home_url( '/culinary-experience/' ), 'card_button_style' => 'outline-dark' ),
+                array( 'card_desktop_width' => '3', 'card_image' => $img['img_3'], 'card_badge' => 'Year-round', 'card_label_treatment' => 'flag', 'card_style_preset' => 'carousel-card', 'card_images' => array( $img['img_3'], $img['img_0'] ), 'card_heading' => 'Outdoor Access', 'card_body' => '<p>Trails, lake, and lodge grounds.</p>', 'card_button_label' => 'Learn More', 'card_button_url' => home_url( '/lake-arrowhead-accommodations/' ), 'card_button_style' => 'outline-dark' ),
+            ),
+        )
+    ),
+    array_merge(
+        $card_section_base,
+        array(
+            'acf_fc_layout'    => 'section_card_grid',
+            'section_anchor_id' => 'reference-card-grid-4up-specials',
+            'section_eyebrow'  => '4-up / specials-card preset',
+            'section_heading'  => 'Four-up: Specials Card',
+            'section_intro'    => '<p>All four cards use the specials-card preset. Tests offer hierarchy and pricing pattern layout at 25% width.</p>',
+            'cards'            => array(
+                array( 'card_desktop_width' => '3', 'card_image' => $img['img_0'], 'card_badge' => 'Deal', 'card_label_treatment' => 'none', 'card_style_preset' => 'specials-card', 'card_heading' => 'Midweek Escape', 'card_body' => '<div class="lacc-pricing-pattern"><p class="lacc-pricing-pattern__lede">Sunday–Thursday</p><p class="lacc-pricing-pattern__price">from $179 <span class="lacc-pricing-pattern__period">per night</span></p></div><p>A shorter description block.</p>', 'card_button_label' => 'Book Now', 'card_button_url' => home_url( '/specials/' ), 'card_button_style' => 'outline-dark' ),
+                array( 'card_desktop_width' => '3', 'card_image' => $img['img_1'], 'card_badge' => 'Limited', 'card_label_treatment' => 'none', 'card_style_preset' => 'specials-card', 'card_heading' => 'Weekend Package', 'card_body' => '<div class="lacc-pricing-pattern"><p class="lacc-pricing-pattern__lede">Fri–Sun stays</p><p class="lacc-pricing-pattern__price">from $219 <span class="lacc-pricing-pattern__period">per night</span></p></div><p>Extended description with more lines of copy to verify button baseline stays consistent across the row when copy length varies between cards.</p><ul class="lacc-pricing-list"><li>Includes breakfast daily</li><li>Access to all lodge amenities</li></ul>', 'card_button_label' => 'Book Now', 'card_button_url' => home_url( '/specials/' ), 'card_button_style' => 'outline-dark' ),
+                array( 'card_desktop_width' => '3', 'card_image' => $img['img_2'], 'card_badge' => 'Group Rate', 'card_label_treatment' => 'none', 'card_style_preset' => 'specials-card', 'card_heading' => 'Group Buyout', 'card_body' => '<div class="lacc-pricing-pattern"><p class="lacc-pricing-pattern__lede">10+ rooms</p><p class="lacc-pricing-pattern__price">Custom rate</p></div><p>Contact us for pricing.</p>', 'card_button_label' => 'Inquire', 'card_button_url' => home_url( '/contact-us/' ), 'card_button_style' => 'outline-dark' ),
+                array( 'card_desktop_width' => '3', 'card_image' => $img['img_3'], 'card_badge' => 'New', 'card_label_treatment' => 'none', 'card_style_preset' => 'specials-card', 'card_heading' => 'Early Bird Rate', 'card_body' => '<div class="lacc-pricing-pattern"><p class="lacc-pricing-pattern__lede">Book 30+ days out</p><p class="lacc-pricing-pattern__price">from $159 <span class="lacc-pricing-pattern__period">per night</span></p></div><p>Lock in the best rate when you plan ahead.</p>', 'card_button_label' => 'Book Now', 'card_button_url' => home_url( '/specials/' ), 'card_button_style' => 'outline-dark' ),
+            ),
+        )
+    ),
+    array_merge(
+        $card_section_base,
+        array(
+            'acf_fc_layout'    => 'section_card_grid',
+            'section_anchor_id' => 'reference-card-grid-4up-offer',
+            'section_eyebrow'  => '4-up / offer-card preset',
+            'section_heading'  => 'Four-up: Offer Card',
+            'section_intro'    => '<p>All four cards use the offer-card preset — no image, text-forward. Tests button pinning when cards are purely content-driven.</p>',
+            'cards'            => array(
+                array( 'card_desktop_width' => '3', 'card_badge' => 'Offer', 'card_label_treatment' => 'flag', 'card_style_preset' => 'offer-card', 'card_heading' => 'Mountain Getaway', 'card_body' => '<p>Brief offer copy with a single line.</p>', 'card_button_label' => 'View Offer', 'card_button_url' => home_url( '/specials/' ), 'card_button_style' => 'outline-dark' ),
+                array( 'card_desktop_width' => '3', 'card_badge' => 'Exclusive', 'card_label_treatment' => 'flag', 'card_style_preset' => 'offer-card', 'card_heading' => 'Alumni Rate', 'card_body' => '<p>Expanded copy block to test height equalization across the row. This card has substantially more copy than its neighbors so the flex-column fill should stretch the shorter cards to match.</p><p>Two paragraphs here to push it further.</p>', 'card_button_label' => 'View Offer', 'card_button_url' => home_url( '/specials/' ), 'card_button_style' => 'outline-dark' ),
+                array( 'card_desktop_width' => '3', 'card_badge' => 'Seasonal', 'card_label_treatment' => 'flag', 'card_style_preset' => 'offer-card', 'card_heading' => 'Winter Special', 'card_body' => '<p>Short copy, one line.</p>', 'card_button_label' => 'View Offer', 'card_button_url' => home_url( '/specials/' ), 'card_button_style' => 'outline-dark' ),
+                array( 'card_desktop_width' => '3', 'card_badge' => 'New', 'card_label_treatment' => 'flag', 'card_style_preset' => 'offer-card', 'card_heading' => 'Stay + Dine', 'card_body' => '<p>Medium length copy to complete the row and verify the equalize mechanism in a three-varied-length scenario.</p>', 'card_button_label' => 'View Offer', 'card_button_url' => home_url( '/specials/' ), 'card_button_style' => 'outline-dark' ),
+            ),
+        )
+    ),
+    array_merge(
+        $card_section_base,
+        array(
+            'acf_fc_layout'    => 'section_card_grid',
+            'section_anchor_id' => 'reference-card-grid-4up-prompt',
+            'section_eyebrow'  => '4-up / prompt-card preset',
+            'section_heading'  => 'Four-up: Prompt Card',
+            'section_intro'    => '<p>All four cards use the prompt-card preset — no image, clean CTA focus. Tests the stripped-down card at 25% width.</p>',
+            'cards'            => array(
+                array( 'card_desktop_width' => '3', 'card_badge' => 'Start Here', 'card_label_treatment' => 'flag', 'card_style_preset' => 'prompt-card', 'card_heading' => 'Accommodations', 'card_body' => '<p>Browse room types and seasonal availability.</p>', 'card_button_label' => 'Explore', 'card_button_url' => home_url( '/lake-arrowhead-accommodations/' ), 'card_button_style' => 'outline-dark' ),
+                array( 'card_desktop_width' => '3', 'card_badge' => 'Plan', 'card_label_treatment' => 'flag', 'card_style_preset' => 'prompt-card', 'card_heading' => 'Conferences', 'card_body' => '<p>Full-service meeting spaces with AV support, catering, and on-site coordination — designed for groups of 10 to 250.</p>', 'card_button_label' => 'Explore', 'card_button_url' => home_url( '/conferences/' ), 'card_button_style' => 'outline-dark' ),
+                array( 'card_desktop_width' => '3', 'card_badge' => 'Dine', 'card_label_treatment' => 'flag', 'card_style_preset' => 'prompt-card', 'card_heading' => 'Culinary', 'card_body' => '<p>Seasonal menus in a lakeside setting.</p>', 'card_button_label' => 'Explore', 'card_button_url' => home_url( '/culinary-experience/' ), 'card_button_style' => 'outline-dark' ),
+                array( 'card_desktop_width' => '3', 'card_badge' => 'Explore', 'card_label_treatment' => 'flag', 'card_style_preset' => 'prompt-card', 'card_heading' => 'Recreation', 'card_body' => '<p>Trails, lake access, and outdoor programming throughout the year.</p>', 'card_button_label' => 'Explore', 'card_button_url' => home_url( '/lake-arrowhead-accommodations/' ), 'card_button_style' => 'outline-dark' ),
+            ),
+        )
+    ),
     array_merge(
         $card_section_base,
         array(
