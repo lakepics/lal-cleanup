@@ -60,6 +60,43 @@ function lacc_enqueue_footer_icon_styles() {
 }
 add_action('wp_enqueue_scripts', 'lacc_enqueue_footer_icon_styles', 110);
 
+function lacc_should_enqueue_legacy_bootstrap() {
+    if ( is_admin() ) {
+        return false;
+    }
+
+    if ( function_exists( 'is_page_template' ) && (
+        is_page_template( 'template-landing-page.php' ) ||
+        is_page_template( 'template-flexible-sections.php' )
+    ) ) {
+        return false;
+    }
+
+    return true;
+}
+
+function lacc_enqueue_legacy_bootstrap_support() {
+    if ( ! lacc_should_enqueue_legacy_bootstrap() ) {
+        return;
+    }
+
+    wp_enqueue_style(
+        'lacc-legacy-bootstrap-css',
+        'https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css',
+        array(),
+        '3.4.1'
+    );
+
+    wp_enqueue_script(
+        'lacc-legacy-bootstrap-js',
+        'https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js',
+        array( 'jquery' ),
+        '3.4.1',
+        true
+    );
+}
+add_action( 'wp_enqueue_scripts', 'lacc_enqueue_legacy_bootstrap_support', 90 );
+
 // Add support for Luskin Gallery Template
 function createSlug($string)
 {
