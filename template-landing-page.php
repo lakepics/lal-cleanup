@@ -6,7 +6,6 @@
 <?php while ( have_posts() ) : the_post(); ?>
 
     <?php get_template_part( 'components/components-background-video' ); ?>
-    <?php get_template_part( 'components/component-featured-article' ); ?>
 
     <?php if ( have_rows( 'page_sections' ) ) : ?>
         <?php while ( have_rows( 'page_sections' ) ) : the_row(); ?>

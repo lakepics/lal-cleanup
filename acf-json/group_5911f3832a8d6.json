@@ -250,11 +250,11 @@
     "hide_on_screen": [
         "the_content"
     ],
-    "active": true,
+    "active": 0,
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1776451247
+    "modified": 1778017165
 }

@@ -156,8 +156,8 @@
                 "id": ""
             },
             "choices": {
-                "left": "Image Left / Text Right",
-                "right": "Image Right / Text Left"
+                "left": "Image Left \/ Text Right",
+                "right": "Image Right \/ Text Left"
             },
             "default_value": "left",
             "return_format": "value",
@@ -220,7 +220,7 @@
                 "600": "Semibold",
                 "700": "Bold"
             },
-            "default_value": "300",
+            "default_value": 300,
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -265,7 +265,10 @@
             },
             "default_value": "#ffffff",
             "enable_opacity": 1,
-            "return_format": "string"
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
         },
         {
             "key": "field_home_fa_panel_background",
@@ -283,7 +286,10 @@
             },
             "default_value": "#f6f3ed",
             "enable_opacity": 1,
-            "return_format": "string"
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
         },
         {
             "key": "field_home_fa_eyebrow_color",
@@ -301,7 +307,10 @@
             },
             "default_value": "#946E29",
             "enable_opacity": 1,
-            "return_format": "string"
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
         },
         {
             "key": "field_home_fa_title_color",
@@ -319,7 +328,10 @@
             },
             "default_value": "#51534a",
             "enable_opacity": 1,
-            "return_format": "string"
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
         },
         {
             "key": "field_home_fa_body_color",
@@ -337,7 +349,10 @@
             },
             "default_value": "#51534a",
             "enable_opacity": 1,
-            "return_format": "string"
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
         },
         {
             "key": "field_home_fa_image_scrollwork_color",
@@ -355,7 +370,10 @@
             },
             "default_value": "#ffffff",
             "enable_opacity": 1,
-            "return_format": "string"
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
         },
         {
             "key": "field_home_fa_panel_scrollwork_color",
@@ -373,7 +391,10 @@
             },
             "default_value": "#946E29",
             "enable_opacity": 1,
-            "return_format": "string"
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
         },
         {
             "key": "field_home_fa_rollover_toggle",
@@ -415,7 +436,7 @@
                 "top": "Top",
                 "bottom": "Bottom"
             },
-            "default_value": "",
+            "default_value": false,
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -442,7 +463,10 @@
             },
             "default_value": "#51534a",
             "enable_opacity": 1,
-            "return_format": "string"
+            "return_format": "string",
+            "custom_palette_source": "",
+            "palette_colors": "",
+            "show_color_wheel": true
         },
         {
             "key": "field_home_fa_padding_top",
@@ -492,7 +516,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "template-landing-page.php"
+                "value": "templates\/_mainpage__bullet-list.php"
             }
         ]
     ],
@@ -502,11 +526,11 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": 0,
     "description": "Optional featured article block for the homepage landing page template.",
     "show_in_rest": 0,
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1776727600
+    "modified": 1778017165
 }

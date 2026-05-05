@@ -67,7 +67,9 @@ function lacc_should_enqueue_legacy_bootstrap() {
 
     if ( function_exists( 'is_page_template' ) && (
         is_page_template( 'template-landing-page.php' ) ||
-        is_page_template( 'template-flexible-sections.php' )
+        is_page_template( 'template-landing-page-home.php' ) ||
+        is_page_template( 'template-flexible-sections.php' ) ||
+        is_page_template( '_complete-meeting-package.php' )
     ) ) {
         return false;
     }
@@ -240,6 +242,49 @@ function lacc_strip_component_inline_styles( $html ) {
 
     return (string) preg_replace( '/\sstyle=("|\').*?\1/i', '', $html );
 }
+
+function lacc_get_admin_post_id_from_request() {
+    if ( isset( $_GET['post'] ) ) {
+        return (int) $_GET['post'];
+    }
+
+    if ( isset( $_POST['post_ID'] ) ) {
+        return (int) $_POST['post_ID'];
+    }
+
+    return 0;
+}
+
+function lacc_filter_home_builder_acf_groups( $field_groups, $args ) {
+    if ( ! is_admin() || ! is_array( $field_groups ) ) {
+        return $field_groups;
+    }
+
+    $post_id = lacc_get_admin_post_id_from_request();
+    if ( $post_id <= 0 ) {
+        return $field_groups;
+    }
+
+    if ( 'template-landing-page-home.php' !== get_page_template_slug( $post_id ) ) {
+        return $field_groups;
+    }
+
+    $allowed_group_keys = array(
+        'group_theme_section_builder',
+        'group_69de87df0cec2',
+        'group_67045215c709a',
+    );
+
+    return array_values(
+        array_filter(
+            $field_groups,
+            static function ( $group ) use ( $allowed_group_keys ) {
+                return isset( $group['key'] ) && in_array( (string) $group['key'], $allowed_group_keys, true );
+            }
+        )
+    );
+}
+add_filter( 'acf/get_field_groups', 'lacc_filter_home_builder_acf_groups', 20, 2 );
 
 function lacc_register_faq_schema_entities( $entities ) {
     if ( empty( $entities ) || ! is_array( $entities ) ) {

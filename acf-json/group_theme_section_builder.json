@@ -10889,6 +10889,13 @@
                 "operator": "==",
                 "value": "template-flexible-sections.php"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-landing-page-home.php"
+            }
         ]
     ],
     "menu_order": 0,
