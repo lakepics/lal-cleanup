@@ -187,7 +187,9 @@ function lacc_is_pattern_sandbox_page() {
 }
 
 function lacc_is_component_demo_page() {
-    return ( function_exists( 'is_page' ) && is_page( 'flex' ) ) || lacc_is_pattern_sandbox_page();
+    return ( function_exists( 'is_page' ) && is_page( 'flex' ) )
+        || lacc_is_pattern_sandbox_page()
+        || ( function_exists( 'is_page_template' ) && is_page_template( 'template-flexible-builder-reference.php' ) );
 }
 
 function lacc_should_strip_component_inline_styles() {

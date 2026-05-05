@@ -24,7 +24,9 @@
     "watch:styles": "mkdir -p dist/styles && sass --watch assets/styles/main.scss:dist/styles/main.css assets/styles/custom.scss:dist/styles/custom.css --style=compressed --no-source-map --silence-deprecation=import",
     "jshint": "gulp jshint",
     "jscs": "jscs gulpfile.js assets/scripts/*.js",
-    "wp:local": "bash scripts/wp-local.sh"
+    "wp:local": "bash scripts/wp-local.sh",
+    "wp:acf-sync:dry": "bash scripts/wp-local.sh acf json sync --dry-run",
+    "wp:acf-sync": "bash scripts/wp-local.sh acf json sync"
   },
   "engines": {
     "node": ">= 0.12.0",

@@ -6,6 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SITE_PATH="${LOCAL_SITE_PATH:-$(cd "$SCRIPT_DIR/../../../.." && pwd)}"
 SITE_URL="${LOCAL_SITE_URL:-https://lal.local}"
 LOCAL_RUN_ROOT="${LOCAL_RUN_ROOT:-$HOME/Library/Application Support/Local/run}"
+LOCAL_LIGHTNING_SERVICES_ROOT="${LOCAL_LIGHTNING_SERVICES_ROOT:-$HOME/Library/Application Support/Local/lightning-services}"
 WP_CLI_PHAR="${LOCAL_WP_CLI_PHAR:-/Applications/Local.app/Contents/Resources/extraResources/bin/wp-cli/wp-cli.phar}"
 
 detect_socket() {
@@ -32,17 +33,52 @@ detect_socket() {
     find "$LOCAL_RUN_ROOT" -type s -path '*/mysql/mysqld.sock' 2>/dev/null | head -n 1
 }
 
+detect_mysql_client_dir() {
+    local mysql_path=""
+
+    mysql_path="$(find "$LOCAL_LIGHTNING_SERVICES_ROOT" -type f -name mysql 2>/dev/null | grep '/bin/' | sort -rV | head -n 1 || true)"
+
+    if [[ -n "$mysql_path" ]]; then
+        dirname "$mysql_path"
+        return 0
+    fi
+
+    return 1
+}
+
 if [[ ! -f "$WP_CLI_PHAR" ]]; then
     printf 'Local WP-CLI phar not found at %s\n' "$WP_CLI_PHAR" >&2
     exit 1
 fi
 
 SOCKET_PATH="${LOCAL_MYSQL_SOCKET:-$(detect_socket)}"
+MYSQL_CLIENT_DIR="${LOCAL_MYSQL_CLIENT_DIR:-$(detect_mysql_client_dir || true)}"
 
 if [[ -z "$SOCKET_PATH" || ! -S "$SOCKET_PATH" ]]; then
     printf 'Unable to find a Local MySQL socket for %s\n' "$SITE_URL" >&2
     printf 'Set LOCAL_MYSQL_SOCKET explicitly or inspect %s\n' "$LOCAL_RUN_ROOT" >&2
     exit 1
+fi
+
+if [[ -n "$MYSQL_CLIENT_DIR" && -x "$MYSQL_CLIENT_DIR/mysql" ]]; then
+    export PATH="$MYSQL_CLIENT_DIR:$PATH"
+fi
+
+export MYSQL_UNIX_PORT="$SOCKET_PATH"
+
+WP_ARGS=("$@")
+if [[ "${1:-}" == "db" && "${2:-}" == "query" ]]; then
+    has_socket_arg="false"
+    for arg in "${WP_ARGS[@]}"; do
+        if [[ "$arg" == --socket=* ]]; then
+            has_socket_arg="true"
+            break
+        fi
+    done
+
+    if [[ "$has_socket_arg" == "false" ]]; then
+        WP_ARGS+=("--socket=$SOCKET_PATH")
+    fi
 fi
 
 exec php \
@@ -53,4 +89,4 @@ exec php \
     "$WP_CLI_PHAR" \
     --path="$SITE_PATH" \
     --url="$SITE_URL" \
-    "$@"
+    "${WP_ARGS[@]}"

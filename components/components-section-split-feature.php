@@ -1,28 +1,42 @@
 <?php
-$section_anchor_id = strtolower( trim( (string) get_sub_field('section_anchor_id') ) );
+$section_split_feature_override = isset( $GLOBALS['section_split_feature_override'] ) && is_array( $GLOBALS['section_split_feature_override'] )
+    ? $GLOBALS['section_split_feature_override']
+    : array();
+
+$get_split_feature_field = static function ( $key ) use ( $section_split_feature_override ) {
+    if ( array_key_exists( $key, $section_split_feature_override ) ) {
+        return $section_split_feature_override[ $key ];
+    }
+
+    return function_exists( 'get_sub_field' ) ? get_sub_field( $key ) : null;
+};
+
+$section_anchor_id = strtolower( trim( (string) $get_split_feature_field('section_anchor_id') ) );
 $section_anchor_id = preg_replace( '/[^a-z0-9_-]+/', '-', $section_anchor_id );
 $section_anchor_id = trim( (string) $section_anchor_id, '-' );
-$section_eyebrow = trim( (string) get_sub_field('section_eyebrow') );
-$eyebrow_text_transform = strtolower( trim( (string) get_sub_field('eyebrow_text_transform') ) );
-$section_heading = get_sub_field('section_heading');
-$section_copy = get_sub_field('section_copy');
-$section_image = get_sub_field('section_image');
-$image_position = strtolower( trim( (string) get_sub_field('image_position') ) );
-$button_label = trim( (string) get_sub_field('button_label') );
-$button_url = trim( (string) get_sub_field('button_url') );
-$button_style = strtolower( trim( (string) get_sub_field('button_style') ) );
-$background_color = trim( (string) get_sub_field('background_color') );
-$content_background_color = trim( (string) get_sub_field('content_background_color') );
-$eyebrow_color = trim( (string) get_sub_field('eyebrow_color') );
-$title_color = trim( (string) get_sub_field('title_color') );
-$body_color = trim( (string) get_sub_field('body_color') );
-$heading_font_family = strtolower( trim( (string) get_sub_field('heading_font_family') ) );
-$heading_font_weight = trim( (string) get_sub_field('heading_font_weight') );
-$section_keyline_position = strtolower( trim( (string) get_sub_field('section_keyline_position') ) );
-$section_keyline_color = trim( (string) get_sub_field('section_keyline_color') );
-$padding_top = trim( (string) get_sub_field('padding_top') );
-$padding_bottom = trim( (string) get_sub_field('padding_bottom') );
-$image_min_height = trim( (string) get_sub_field('image_min_height') );
+$section_eyebrow = trim( (string) $get_split_feature_field('section_eyebrow') );
+$eyebrow_text_transform = strtolower( trim( (string) $get_split_feature_field('eyebrow_text_transform') ) );
+$section_heading = $get_split_feature_field('section_heading');
+$section_copy = $get_split_feature_field('section_copy');
+$section_image = $get_split_feature_field('section_image');
+$image_position = strtolower( trim( (string) $get_split_feature_field('image_position') ) );
+$button_label = trim( (string) $get_split_feature_field('button_label') );
+$button_url = trim( (string) $get_split_feature_field('button_url') );
+$button_style = strtolower( trim( (string) $get_split_feature_field('button_style') ) );
+$button_size = strtolower( trim( (string) $get_split_feature_field('button_size') ) );
+$background_color = trim( (string) $get_split_feature_field('background_color') );
+$content_background_color = trim( (string) $get_split_feature_field('content_background_color') );
+$eyebrow_color = trim( (string) $get_split_feature_field('eyebrow_color') );
+$eyebrow_preset = strtolower( trim( (string) $get_split_feature_field('eyebrow_preset') ) );
+$title_color = trim( (string) $get_split_feature_field('title_color') );
+$body_color = trim( (string) $get_split_feature_field('body_color') );
+$heading_font_family = strtolower( trim( (string) $get_split_feature_field('heading_font_family') ) );
+$heading_font_weight = trim( (string) $get_split_feature_field('heading_font_weight') );
+$section_keyline_position = strtolower( trim( (string) $get_split_feature_field('section_keyline_position') ) );
+$section_keyline_color = trim( (string) $get_split_feature_field('section_keyline_color') );
+$padding_top = trim( (string) $get_split_feature_field('padding_top') );
+$padding_bottom = trim( (string) $get_split_feature_field('padding_bottom') );
+$image_min_height = trim( (string) $get_split_feature_field('image_min_height') );
 
 if ( ! is_array( $section_image ) || empty( $section_image['url'] ) ) {
     $section_image = array();
@@ -40,7 +54,7 @@ if ( ! in_array( $eyebrow_text_transform, array( 'capitalize', 'uppercase', 'non
     $eyebrow_text_transform = 'uppercase';
 }
 
-$allowed_button_styles = array( 'primary', 'secondary', 'gold-text', 'ink', 'outline-ink', 'brown', 'light', 'outline', 'outline-dark', 'outline-gold' );
+$allowed_button_styles = array( 'primary', 'secondary', 'gold-text', 'ink', 'outline-ink', 'brown', 'light', 'outline', 'outline-dark', 'outline-gold', 'white' );
 if ( ! in_array( $button_style, $allowed_button_styles, true ) ) {
     $button_style = 'outline-dark';
 }
@@ -50,21 +64,53 @@ if ( ! in_array( $heading_font_weight, $allowed_heading_weights, true ) ) {
     $heading_font_weight = '400';
 }
 
-$heading_font_css = 'HaarlemDeco, Arial, Helvetica, sans-serif';
+$heading_font_css = 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)';
 if ( 'freight-big-pro' === $heading_font_family ) {
-    $heading_font_css = '"Freight Big Pro", Georgia, serif';
+    $heading_font_css = 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)';
 }
 
 $section_keyline_position = in_array( $section_keyline_position, array( 'top', 'bottom' ), true ) ? $section_keyline_position : '';
 $background_color = $background_color ?: '#ffffff';
 $content_background_color = $content_background_color ?: '#f6f3ed';
 $eyebrow_color = $eyebrow_color ?: '#946E29';
+
+$eyebrow_preset_map = array(
+    'pill'  => array( 'color' => '#946E29', 'transform' => 'uppercase' ),
+    'plain' => array( 'color' => '#946E29', 'transform' => 'uppercase' ),
+    'ink'   => array( 'color' => '#51534a', 'transform' => 'uppercase' ),
+);
+if ( isset( $eyebrow_preset_map[ $eyebrow_preset ] ) ) {
+    $eyebrow_color          = $eyebrow_preset_map[ $eyebrow_preset ]['color'];
+    $eyebrow_text_transform = $eyebrow_preset_map[ $eyebrow_preset ]['transform'];
+}
 $title_color = $title_color ?: '#51534a';
 $body_color = $body_color ?: '#51534a';
 $section_keyline_color = $section_keyline_color ?: $title_color;
 $padding_top = $padding_top ?: '60px';
 $padding_bottom = $padding_bottom ?: '60px';
 $image_min_height = $image_min_height ?: '648px';
+$allowed_button_sizes = array( 'large', 'normal', 'small' );
+if ( ! in_array( $button_size, $allowed_button_sizes, true ) ) {
+    $button_size = 'normal';
+}
+$button_size_map = array(
+    'large' => array(
+        'font_size' => '20px',
+        'padding' => '1em 1.8em',
+        'letter_spacing' => '.06em',
+    ),
+    'normal' => array(
+        'font_size' => '16px',
+        'padding' => '.85em 1.45em',
+        'letter_spacing' => '.04em',
+    ),
+    'small' => array(
+        'font_size' => '12px',
+        'padding' => '.7em 1.2em',
+        'letter_spacing' => '.08em',
+    ),
+);
+$resolved_button_size = $button_size_map[ $button_size ];
 
 $section_id = $section_anchor_id ?: 'section-split-feature-' . uniqid();
 $image_url = ! empty( $section_image['url'] ) ? $section_image['url'] : '';
@@ -92,6 +138,9 @@ $section_styles = array(
     '--ssf-heading-font:' . $heading_font_css,
     '--ssf-heading-weight:' . $heading_font_weight,
     '--ssf-image-min-height:' . $image_min_height,
+    '--ssf-cta-font-size:' . $resolved_button_size['font_size'],
+    '--ssf-cta-padding:' . $resolved_button_size['padding'],
+    '--ssf-cta-letter-spacing:' . $resolved_button_size['letter_spacing'],
     '--ssf-scrollwork-width:var(--lacc-scrollwork-width, 78px)',
     '--ssf-scrollwork-opacity:var(--lacc-scrollwork-opacity, 0.25)'
 );
@@ -110,6 +159,14 @@ $section_style_attr = implode( ';', $section_styles );
 <style>
 .section-split-feature {
     position: relative;
+}
+
+.section-split-feature__inner {
+    width: min(100%, 1200px);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .section-split-feature__grid {
@@ -217,7 +274,7 @@ $section_style_attr = implode( ';', $section_styles );
     display: inline-block;
     margin-bottom: 12px;
     color: var(--ssf-eyebrow-color, #946E29);
-    font-family: HaarlemDeco, Arial, Helvetica, sans-serif;
+    font-family: var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif);
     font-size: 14px;
     font-weight: 800;
     letter-spacing: .16em;
@@ -228,7 +285,7 @@ $section_style_attr = implode( ';', $section_styles );
 .section-split-feature__title {
     margin: 0;
     color: var(--ssf-title-color, #51534a);
-    font-family: var(--ssf-heading-font, HaarlemDeco, Arial, Helvetica, sans-serif);
+    font-family: var(--ssf-heading-font, var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif));
     font-size: clamp(40px, 4.6vw, 68px);
     font-weight: var(--ssf-heading-weight, 400);
     line-height: .98;
@@ -244,7 +301,7 @@ $section_style_attr = implode( ';', $section_styles );
 .section-split-feature__copy,
 .section-split-feature__copy p {
     color: var(--ssf-body-color, #51534a);
-    font-family: "Freight Big Pro", Georgia, serif;
+    font-family: var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif);
     font-size: clamp(20px, 2vw, 24px);
     font-weight: 400;
     line-height: 1.55;
@@ -260,6 +317,12 @@ $section_style_attr = implode( ';', $section_styles );
 
 .section-split-feature__cta {
     margin-top: 28px;
+}
+
+.section-split-feature .hero-button {
+    font-size: var(--ssf-cta-font-size, 16px);
+    padding: var(--ssf-cta-padding, .85em 1.45em);
+    letter-spacing: var(--ssf-cta-letter-spacing, .04em);
 }
 
 @media (max-width: 991px) {
@@ -306,7 +369,7 @@ $section_style_attr = implode( ';', $section_styles );
 <?php $section_copy_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_strip_component_inline_styles( $section_copy ) : $section_copy; ?>
 
 <section id="<?php echo esc_attr( $section_id ); ?>" class="section-split-feature section-split-feature--image-<?php echo esc_attr( $image_position ); ?>" style="<?php echo esc_attr( $section_style_attr ); ?>">
-    <div class="container">
+    <div class="section-split-feature__inner">
         <div class="section-split-feature__grid">
             <div class="section-split-feature__media">
                 <?php if ( $image_url ) : ?>

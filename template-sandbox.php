@@ -4137,8 +4137,8 @@ if ( ! $landing_featured_article ) {
             </div>
             <div class="lacc-sandbox__cards-grid">
                 <div class="lacc-sandbox__cards-row-head">
-                    <h3 class="lacc-sandbox__cards-row-title">2-up / 50% width studies</h3>
-                    <p class="lacc-sandbox__cards-row-note">Use this row for stronger destination and promo cards that need room for media, hierarchy, and richer metadata.</p>
+                    <h3 class="lacc-sandbox__cards-row-title">2-up / carousel-card + specials-card studies</h3>
+                    <p class="lacc-sandbox__cards-row-note">Use this row as the locked pair for stronger destination and promo cards that need room for media, hierarchy, and richer metadata.</p>
                 </div>
                 <div class="lacc-sandbox__cards-row lacc-sandbox__cards-row--2up">
                     <article class="lacc-sandbox__audit-card lacc-sandbox__audit-card--stay">
@@ -4237,9 +4237,9 @@ if ( ! $landing_featured_article ) {
                 </div>
                 <div class="lacc-sandbox__lane-copy lacc-sandbox__cards-cell-note">
                     <ul>
-                        <li>Stay / 50%.</li>
-                        <li>Stay gallery.</li>
-                        <li>Open Chalet stay card uses editorial media treatment with booking-oriented body content.</li>
+                        <li>carousel-card.</li>
+                        <li>specials-card.</li>
+                        <li>Open Chalet and Book Early remain the lock references for the two-up pattern family.</li>
                     </ul>
                 </div>
 

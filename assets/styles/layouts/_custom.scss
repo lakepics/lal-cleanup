@@ -1,6 +1,6 @@
 // _custom.scss
 // Migrated from assets/styles/customizer.css on 2026-04-25.
-// Bootstrap-era .navbar-* rules removed (archived with _header.scss).
+// Legacy navigation rules removed (archived with _header.scss).
 // Source: customizer.css.archived-2026-04-25
 
 // ============================================================
@@ -13,8 +13,8 @@
 
 @font-face {
     font-family: "HaarlemDeco";
-    src: url('/lal/wp-content/themes/LACC-sage-theme-master/dist/fonts/HaarlemDeco/font.woff2') format('woff2'),
-         url('/lal/wp-content/themes/LACC-sage-theme-master/dist/fonts/HaarlemDeco/font.woff') format('woff');
+    src: url('/wp-content/themes/LACC-sage-theme-master/dist/fonts/HaarlemDeco/font.woff2') format('woff2'),
+         url('/wp-content/themes/LACC-sage-theme-master/dist/fonts/HaarlemDeco/font.woff') format('woff');
 }
 
 // ============================================================
@@ -33,6 +33,51 @@ p, body {
     font-style: normal;
     font-size: 16px;
     line-height: 1.6em;
+}
+
+// Reusable pricing pattern for cards and section content blocks.
+.lacc-pricing-pattern {
+    display: grid;
+    gap: 10px;
+}
+
+.lacc-pricing-pattern__title {
+    margin: 0;
+    color: var(--lacc-color-ink, #51534a);
+    font-family: var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif);
+    font-size: clamp(40px, 4.8vw, 66px);
+    line-height: .98;
+    text-transform: uppercase;
+}
+
+.lacc-pricing-pattern__price {
+    margin: 0;
+    color: var(--lacc-color-accent-gold, #d4a441);
+    font-family: var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif);
+    font-size: clamp(52px, 5vw, 74px);
+    font-style: italic;
+    font-weight: 500;
+    line-height: .95;
+}
+
+.lacc-pricing-pattern__period {
+    margin-left: 10px;
+    color: rgba(81,83,74,0.65);
+    font-family: var(--lacc-type-family-ui, Helvetica, Arial, sans-serif);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
+.lacc-pricing-pattern__lede {
+    margin: 0;
+    color: rgba(81,83,74,0.92);
+    font-family: var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif);
+    font-size: clamp(28px, 2.8vw, 50px);
+    font-style: italic;
+    line-height: 1.18;
 }
 
 // ============================================================
@@ -678,7 +723,7 @@ div#ta-widget a:hover img {
 // BUTTONS
 // ============================================================
 
-.btn--blue {
+.lacc-btn--blue {
     border: 1px solid var(--lacc-color-brand-blue);
     background-color: var(--lacc-color-white);
     color: var(--lacc-color-brand-blue);
@@ -795,4 +840,28 @@ ol.numbered {
 
 .p-50 {
     padding: 50px;
+}
+
+// ============================================================
+// SPLIT COLLAGE FRAME POSITIONING
+// ============================================================
+
+// Overlapping three-frame collage: item-0 is primary (large, left-bottom),
+// item-1 is secondary (mid-right, upper), item-2 is tertiary (mid-right, lower).
+.section-split-collage__frame--item-0 {
+    grid-column: 1 / span 7;
+    grid-row: 2 / span 6;
+    transform: translateY(14px);
+}
+
+.section-split-collage__frame--item-1 {
+    grid-column: 7 / span 5;
+    grid-row: 1 / span 4;
+    transform: translate(-18px, -6px);
+}
+
+.section-split-collage__frame--item-2 {
+    grid-column: 7 / span 5;
+    grid-row: 6 / span 3;
+    transform: translate(8px, 10px);
 }

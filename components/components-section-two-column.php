@@ -98,9 +98,14 @@ if ( ! in_array( $heading_font_weight, array( '300', '400', '500', '600', '700' 
 	$heading_font_weight = 'freight-big-pro' === $heading_font_family ? '400' : '600';
 }
 
+$layout_class = 'section-two-column__layout section-two-column__layout--full';
+if ( 'container' === $container_type ) {
+    $layout_class = 'section-two-column__layout section-two-column__layout--contained';
+}
+
 $section_keyline_position = in_array( $section_keyline_position, array( 'top', 'bottom' ), true ) ? $section_keyline_position : '';
 
-$allowed_button_styles = array( 'primary', 'secondary', 'gold-text', 'ink', 'outline-ink', 'brown', 'light', 'outline', 'outline-dark', 'outline-gold' );
+$allowed_button_styles = array( 'primary', 'secondary', 'gold-text', 'ink', 'outline-ink', 'brown', 'light', 'outline', 'outline-dark', 'outline-gold', 'white' );
 if ( ! in_array( $col_a_button_style, $allowed_button_styles, true ) ) {
 	$col_a_button_style = 'outline-dark';
 }
@@ -120,9 +125,11 @@ $col_frs = isset( $ratio_map[ $column_ratio ] ) ? $ratio_map[ $column_ratio ] : 
 
 // ─── Font stack ───────────────────────────────────────────────────────────────
 $heading_font_css = 'freight-big-pro' === $heading_font_family
-	? '"Freight Big Pro", Georgia, serif'
-	: 'HaarlemDeco, Arial, Helvetica, sans-serif';
-$eyebrow_font_css = 'helvetica' === $eyebrow_font_family ? 'Helvetica, Arial, sans-serif' : 'HaarlemDeco, Arial, Helvetica, sans-serif';
+    ? 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)'
+    : 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)';
+$eyebrow_font_css = 'helvetica' === $eyebrow_font_family
+    ? 'var(--lacc-type-family-ui, Helvetica, Arial, sans-serif)'
+    : 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)';
 $eyebrow_font_size = 'helvetica' === $eyebrow_font_family ? '14px' : '12px';
 $eyebrow_font_weight = 'helvetica' === $eyebrow_font_family ? '700' : '800';
 
@@ -226,13 +233,12 @@ $allowed_heading_html = array(
     justify-content: center;
     width: fit-content;
     max-width: 100%;
-    min-height: 34px;
-    padding: 8px 16px;
+    padding: 0.42em 1.17em;
     margin-bottom: 10px;
     color: var(--stc-eyebrow-color, #946E29);
     border: var(--stc-eyebrow-border-width, 1px) solid var(--stc-eyebrow-border-color, #b58a2d);
     background: var(--stc-eyebrow-fill, #f6f3ed);
-    font-family: var(--stc-eyebrow-font, HaarlemDeco, Arial, Helvetica, sans-serif);
+    font-family: var(--stc-eyebrow-font, var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif));
     font-size: var(--stc-eyebrow-size, 12px);
     font-weight: var(--stc-eyebrow-weight, 800);
     letter-spacing: .16em;
@@ -265,7 +271,7 @@ $allowed_heading_html = array(
 .section-two-column__header-heading {
     margin: 0 0 16px;
     color: var(--stc-heading-color, #51534a);
-    font-family: var(--stc-heading-font, HaarlemDeco, Arial, Helvetica, sans-serif);
+    font-family: var(--stc-heading-font, var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif));
     font-size: clamp(32px, 3.6vw, 52px);
     font-weight: var(--stc-heading-weight, 400);
     line-height: 1.02;
@@ -279,7 +285,7 @@ $allowed_heading_html = array(
 .section-two-column__header-intro,
 .section-two-column__header-intro p {
     color: var(--stc-heading-color, #51534a);
-    font-family: "Freight Big Pro", Georgia, serif;
+    font-family: var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif);
     font-size: clamp(18px, 1.8vw, 22px);
     font-weight: 400;
     line-height: 1.6;
@@ -357,13 +363,12 @@ $allowed_heading_html = array(
     justify-content: center;
     width: fit-content;
     max-width: 100%;
-    min-height: 34px;
-    padding: 8px 16px;
+    padding: 0.42em 1.17em;
     margin-bottom: 10px;
     color: var(--stc-eyebrow-color, #946E29);
     border: var(--stc-eyebrow-border-width, 1px) solid var(--stc-eyebrow-border-color, #b58a2d);
     background: var(--stc-eyebrow-fill, #f6f3ed);
-    font-family: var(--stc-eyebrow-font, HaarlemDeco, Arial, Helvetica, sans-serif);
+    font-family: var(--stc-eyebrow-font, var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif));
     font-size: var(--stc-eyebrow-size, 12px);
     font-weight: var(--stc-eyebrow-weight, 800);
     letter-spacing: .16em;
@@ -375,7 +380,7 @@ $allowed_heading_html = array(
 .section-two-column__col-heading {
     margin: 0 0 14px;
     color: inherit;
-    font-family: var(--stc-heading-font, HaarlemDeco, Arial, Helvetica, sans-serif);
+    font-family: var(--stc-heading-font, var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif));
     font-size: clamp(26px, 2.8vw, 44px);
     font-weight: var(--stc-heading-weight, 400);
     line-height: 1.02;
@@ -388,7 +393,7 @@ $allowed_heading_html = array(
 
 .section-two-column--freight-italic-medium .section-two-column__header-heading,
 .section-two-column--freight-italic-medium .section-two-column__col-heading {
-    font-family: "Freight Big Pro", Georgia, serif !important;
+    font-family: var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif) !important;
     font-weight: 500 !important;
     font-style: italic;
     letter-spacing: .02em;
@@ -397,7 +402,7 @@ $allowed_heading_html = array(
 /* Copy */
 .section-two-column__col-copy,
 .section-two-column__col-copy p {
-    font-family: "Freight Big Pro", Georgia, serif;
+    font-family: var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif);
     font-size: clamp(17px, 1.6vw, 20px);
     font-weight: 400;
     line-height: 1.6;
@@ -436,12 +441,27 @@ $allowed_heading_html = array(
         padding-top: 60px;
     }
 }
+
+.section-two-column__layout {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.section-two-column__layout--contained {
+    max-width: 1200px;
+}
+
+.section-two-column__layout--full {
+    max-width: none;
+}
 </style>
 
 <section id="<?php echo esc_attr( $section_id ); ?>" class="<?php echo esc_attr( implode( ' ', $section_class_list ) ); ?>" style="<?php echo esc_attr( $section_style_attr ); ?>">
-
     <?php if ( $section_eyebrow || $section_heading || $section_intro ) : ?>
-        <div class="container">
+        <div class="<?php echo esc_attr( $layout_class ); ?>">
             <div class="section-two-column__header">
                 <?php if ( $section_eyebrow ) : ?>
                     <div class="section-two-column__header-eyebrow-wrap">
@@ -458,8 +478,8 @@ $allowed_heading_html = array(
         </div>
     <?php endif; ?>
 
-    <?php $grid_open = 'container' === $container_type ? '<div class="container"><div class="section-two-column__grid">' : '<div class="section-two-column__grid">'; ?>
-    <?php $grid_close = 'container' === $container_type ? '</div></div>' : '</div>'; ?>
+    <?php $grid_open = '<div class="' . esc_attr( $layout_class ) . '"><div class="section-two-column__grid">'; ?>
+    <?php $grid_close = '</div></div>'; ?>
 
     <?php echo $grid_open; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
