@@ -111,6 +111,33 @@ $eyebrow_padding = trim( (string) $get_card_grid_field( 'eyebrow_padding' ) );
 $eyebrow_border_radius = trim( (string) $get_card_grid_field( 'eyebrow_border_radius' ) );
 $eyebrow_preset = strtolower( trim( (string) $get_card_grid_field( 'eyebrow_preset' ) ) );
 
+$normalize_font_family = static function ( $value, $default = 'haarlem', $allow_default = false ) {
+    $normalized = strtolower( trim( (string) $value ) );
+
+    if ( '' === $normalized ) {
+        return $allow_default ? 'default' : $default;
+    }
+
+    if ( false !== strpos( $normalized, 'freight' ) ) {
+        return 'freight-big-pro';
+    }
+
+    if ( false !== strpos( $normalized, 'haarlem' ) ) {
+        return 'haarlem';
+    }
+
+    if ( $allow_default && 'default' === $normalized ) {
+        return 'default';
+    }
+
+    return $default;
+};
+
+$heading_font_family = $normalize_font_family( $heading_font_family );
+$subheading_font_family = $normalize_font_family( $subheading_font_family, $heading_font_family );
+$card_heading_font_family = $normalize_font_family( $card_heading_font_family, $heading_font_family );
+$eyebrow_font_family = $normalize_font_family( $eyebrow_font_family, 'default', true );
+
 if ( ! in_array( $heading_font_family, array( 'haarlem', 'freight-big-pro' ), true ) ) {
     $heading_font_family = 'haarlem';
 }
