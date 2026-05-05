@@ -318,7 +318,7 @@ $cta_text_size = $cta_text_size ?: $resolved_button_size['font_size'];
 $cta_padding = $cta_padding ?: $resolved_button_size['padding'];
 $cta_letter_spacing = $cta_letter_spacing ?: $resolved_button_size['letter_spacing'];
 $post_content_max_width = $post_content_max_width ?: '100%';
-$allowed_button_styles = array( 'primary', 'secondary', 'gold-text', 'ink', 'outline-ink', 'brown', 'light', 'outline', 'outline-dark', 'outline-gold' );
+$allowed_button_styles = array( 'primary', 'secondary', 'gold-text', 'ink', 'outline-ink', 'brown', 'light', 'outline', 'outline-dark', 'outline-gold', 'outline-white' );
 $allowed_card_heading_tags = array( 'h2', 'h3', 'h4', 'h5', 'h6' );
 $allowed_card_style_presets = array( 'auto', 'generic', 'carousel-card', 'specials-card', 'editorial-card', 'utility-card', 'offer-card', 'prompt-card', 'pricing-tier' );
 $allowed_card_label_treatments = array( 'auto', 'none', 'eyebrow', 'flag' );
@@ -855,6 +855,19 @@ if ( 'bottom' === $section_keyline_position ) {
     background: transparent !important;
     border-color: var(--lacc-color-accent-old-gold, #7a5a1f) !important;
     color: var(--lacc-color-accent-old-gold, #7a5a1f) !important;
+}
+
+.section-card-grid .hero-button--outline-white {
+    background: transparent !important;
+    border-color: rgba(255,255,255,0.75) !important;
+    color: var(--lacc-color-white, #ffffff) !important;
+}
+
+.section-card-grid .hero-button--outline-white:hover,
+.section-card-grid .hero-button--outline-white:focus {
+    background: rgba(255,255,255,0.12) !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
 }
 
 .section-card-grid .hero-button--primary:hover,
@@ -1804,7 +1817,7 @@ if ( 'bottom' === $section_keyline_position ) {
 }
 
 [data-scg-col="3"] .section-card-grid__card--preset-specials-card {
-    --scg-specials-title-size: clamp(17px, 1.45vw, 22px);
+    --scg-specials-title-size: clamp(22px, 2vw, 30px);
     --scg-specials-body-padding: 20px 20px 26px;
     --scg-specials-lede-size: clamp(14px, 1.41vw, 26px);
     --scg-specials-price-size: clamp(16px, 1.41vw, 26px);
