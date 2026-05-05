@@ -4383,6 +4383,35 @@
                                     "parent_repeater": "field_tsb_cg_cards"
                                 },
                                 {
+                                    "key": "field_tsb_cg_card_images",
+                                    "label": "Card Carousel Images",
+                                    "name": "card_images",
+                                    "aria-label": "",
+                                    "type": "gallery",
+                                    "instructions": "Optional. Add 2+ images to enable an in-card carousel for this card.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "library": "all",
+                                    "min": "",
+                                    "max": "",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": "",
+                                    "insert": "append",
+                                    "preview_size": "medium",
+                                    "parent_repeater": "field_tsb_cg_cards"
+                                },
+                                {
                                     "key": "field_tsb_cg_card_badge",
                                     "label": "Card Badge",
                                     "name": "card_badge",
@@ -10025,6 +10054,35 @@
                             "allow_in_bindings": 0
                         },
                         {
+                            "key": "field_tsb_sm_about_content_width",
+                            "label": "About Band Content Width",
+                            "name": "about_content_width",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Desktop content-lane width for About Band. Use a percentage (for example 65%).",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_tsb_sm_variant",
+                                        "operator": "==",
+                                        "value": "about_band"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "65%",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "65%",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_tsb_sm_about_background_preset",
                             "label": "About Band Background",
                             "name": "about_background_preset",
@@ -10845,5 +10903,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1777937094
+    "modified": 1777950309
 }

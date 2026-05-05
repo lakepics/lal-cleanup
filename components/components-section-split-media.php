@@ -47,6 +47,7 @@ $experience_items = $get_split_media_field( 'experience_items' );
 $experience_icon_style = strtolower( trim( (string) $get_split_media_field( 'experience_icon_style' ) ) );
 $experience_show_dividers = null !== $get_split_media_field( 'experience_show_dividers' ) ? (bool) $get_split_media_field( 'experience_show_dividers' ) : true;
 $about_emphasize_single_lane = null !== $get_split_media_field( 'about_emphasize_single_lane' ) ? (bool) $get_split_media_field( 'about_emphasize_single_lane' ) : false;
+$about_content_width = trim( (string) $get_split_media_field( 'about_content_width' ) );
 $about_background_preset = strtolower( trim( (string) $get_split_media_field( 'about_background_preset' ) ) );
 $section_classes = trim( (string) $get_split_media_field( 'section_classes' ) );
 
@@ -109,8 +110,12 @@ $padding_bottom = $padding_bottom ?: '60px';
 $media_min_height = $media_min_height ?: 'clamp(420px, 45vw, 760px)';
 $seam_color = $seam_color ?: ( $scrollwork_color ?: $eyebrow_color );
 $seam_opacity = '' !== $seam_opacity ? $seam_opacity : '0.3';
-$seam_width = $seam_width ?: '70px';
-$seam_gutter_width = $seam_gutter_width ?: 'calc(var(--ssm-seam-width, 70px) + clamp(12px, 2vw, 24px))';
+$seam_width = $seam_width ?: '78px';
+$seam_gutter_width = $seam_gutter_width ?: 'calc(var(--ssm-seam-width, 78px) + clamp(12px, 2vw, 24px))';
+
+if ( ! preg_match( '/^\s*\d+(?:\.\d+)?%\s*$/', $about_content_width ) ) {
+    $about_content_width = '65%';
+}
 
 $normalize_split_media_color = static function ( $value ) {
     $value = strtolower( trim( (string) $value ) );
@@ -270,6 +275,8 @@ $section_styles = array(
     'background-color:' . $background_color,
     'padding-top:' . $padding_top,
     'padding-bottom:' . $padding_bottom,
+    '--ssm-section-pad-top:' . $padding_top,
+    '--ssm-section-pad-bottom:' . $padding_bottom,
     '--ssm-content-bg:' . $content_background_color,
     '--ssm-eyebrow-color:' . $eyebrow_color,
     '--ssm-eyebrow-transform:' . $eyebrow_text_transform,
@@ -282,6 +289,7 @@ $section_styles = array(
     '--ssm-seam-opacity:' . $seam_opacity,
     '--ssm-seam-width:' . $seam_width,
     '--ssm-seam-gutter:' . $seam_gutter_width,
+    '--ssm-about-content-width:' . $about_content_width,
 );
 
 $allowed_heading_html = array(
@@ -353,9 +361,9 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     content: '';
     position: absolute;
     top: 0;
-    right: calc(var(--ssm-seam-width, 70px) / -2);
+    right: calc(var(--ssm-seam-width, 78px) / -2);
     bottom: 0;
-    width: var(--ssm-seam-width, 70px);
+    width: var(--ssm-seam-width, 78px);
     background-color: #ffffff;
     -webkit-mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork.svg');
     mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork.svg');
@@ -363,8 +371,8 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     mask-repeat: repeat-y;
     -webkit-mask-position: top center;
     mask-position: top center;
-    -webkit-mask-size: var(--ssm-seam-width, 70px) var(--lacc-scrollwork-tile-h, 450px);
-    mask-size: var(--ssm-seam-width, 70px) var(--lacc-scrollwork-tile-h, 450px);
+    -webkit-mask-size: var(--ssm-seam-width, 78px) auto;
+    mask-size: var(--ssm-seam-width, 78px) auto;
     clip-path: inset(0 50% 0 0);
     pointer-events: none;
     z-index: 2;
@@ -372,7 +380,7 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
 
 .section-split-media--image-right .section-split-media__media-column::after {
     right: auto;
-    left: calc(var(--ssm-seam-width, 70px) / -2);
+    left: calc(var(--ssm-seam-width, 78px) / -2);
     clip-path: inset(0 0 0 50%);
 }
 
@@ -410,9 +418,19 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     min-height: var(--ssm-media-min-height, clamp(300px, 28vw, 540px));
 }
 
+.section-split-media--variant-about-band:not(.section-split-media--about-single-lane) .section-split-media__content-column {
+    flex-basis: var(--ssm-about-content-width, 65%);
+    max-width: var(--ssm-about-content-width, 65%);
+}
+
+.section-split-media--variant-about-band:not(.section-split-media--about-single-lane) .section-split-media__media-column {
+    flex-basis: calc(100% - var(--ssm-about-content-width, 65%));
+    max-width: calc(100% - var(--ssm-about-content-width, 65%));
+}
+
 .section-split-media--variant-about-band.section-split-media--about-single-lane .section-split-media__content-column {
-    flex-basis: 100%;
-    max-width: 100%;
+    flex-basis: var(--ssm-about-content-width, 100%);
+    max-width: var(--ssm-about-content-width, 100%);
 }
 
 .section-split-media--variant-about-band.section-split-media--about-single-lane .section-split-media__media-column {
@@ -512,9 +530,9 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     content: '';
     position: absolute;
     top: 0;
-    left: calc(var(--ssm-seam-width, 70px) / -2);
+    left: calc(var(--ssm-seam-width, 78px) / -2);
     bottom: 0;
-    width: var(--ssm-seam-width, 70px);
+    width: var(--ssm-seam-width, 78px);
     background-color: var(--ssm-seam-color, #946E29);
     opacity: var(--ssm-seam-opacity, 0.3);
     -webkit-mask-image: url('/wp-content/themes/LACC-sage-theme-master/assets/images/scrollwork.svg');
@@ -523,8 +541,8 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     mask-repeat: repeat-y;
     -webkit-mask-position: top center;
     mask-position: top center;
-    -webkit-mask-size: var(--ssm-seam-width, 70px) var(--lacc-scrollwork-tile-h, 450px);
-    mask-size: var(--ssm-seam-width, 70px) var(--lacc-scrollwork-tile-h, 450px);
+    -webkit-mask-size: var(--ssm-seam-width, 78px) auto;
+    mask-size: var(--ssm-seam-width, 78px) auto;
     clip-path: inset(0 0 0 50%);
     pointer-events: none;
     z-index: 2;
@@ -532,18 +550,18 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
 
 .section-split-media--image-right .section-split-media__content-column::after {
     left: auto;
-    right: calc(var(--ssm-seam-width, 70px) / -2);
+    right: calc(var(--ssm-seam-width, 78px) / -2);
     clip-path: inset(0 50% 0 0);
 }
 
 .section-split-media--seam-gutter .section-split-media__row {
-    column-gap: var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 70px) + clamp(12px, 2vw, 24px)));
+    column-gap: var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 78px) + clamp(12px, 2vw, 24px)));
 }
 
 .section-split-media--seam-gutter .section-split-media__media-column,
 .section-split-media--seam-gutter .section-split-media__content-column {
-    flex-basis: calc((100% - var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 70px) + clamp(12px, 2vw, 24px)))) / 2);
-    max-width: calc((100% - var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 70px) + clamp(12px, 2vw, 24px)))) / 2);
+    flex-basis: calc((100% - var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 78px) + clamp(12px, 2vw, 24px)))) / 2);
+    max-width: calc((100% - var(--ssm-seam-gutter, calc(var(--ssm-seam-width, 78px) + clamp(12px, 2vw, 24px)))) / 2);
 }
 
 .section-split-media--seam-gutter .section-split-media__media-column::after,
@@ -556,10 +574,10 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
 .section-split-media--seam-gutter .section-split-media__row::after {
     content: '';
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: calc(var(--ssm-section-pad-top, 0px) * -1);
+    bottom: calc(var(--ssm-section-pad-bottom, 0px) * -1);
     left: 50%;
-    width: var(--ssm-seam-width, 70px);
+    width: var(--ssm-seam-width, 78px);
     transform: translateX(-50%);
     background-color: var(--ssm-seam-color, #946E29);
     opacity: var(--ssm-seam-opacity, 0.3);
@@ -569,8 +587,8 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     mask-repeat: repeat-y;
     -webkit-mask-position: top center;
     mask-position: top center;
-    -webkit-mask-size: var(--ssm-seam-width, 70px) var(--lacc-scrollwork-tile-h, 450px);
-    mask-size: var(--ssm-seam-width, 70px) var(--lacc-scrollwork-tile-h, 450px);
+    -webkit-mask-size: var(--ssm-seam-width, 78px) auto;
+    mask-size: var(--ssm-seam-width, 78px) auto;
     pointer-events: none;
     z-index: 3;
 }
