@@ -85,6 +85,12 @@ if ( '' === $excerpt && $post_id ) {
     $excerpt = wp_trim_words( wp_strip_all_tags( (string) get_post_field( 'post_content', $post_id ) ), 38 );
 }
 
+$excerpt = trim( wp_strip_all_tags( $excerpt ) );
+$excerpt = preg_replace( '/\s*\.{3}\s*continued\.?$/i', '', $excerpt );
+$excerpt = preg_replace( '/\s*…\s*continued\.?$/iu', '', $excerpt );
+$excerpt = preg_replace( '/\s+continued\.?$/i', '', $excerpt );
+$excerpt = trim( (string) $excerpt );
+
 $allowed_heading_html = array(
     'b' => array(),
     'strong' => array(),

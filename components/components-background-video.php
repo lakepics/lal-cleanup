@@ -87,7 +87,7 @@ $background_video_closure_notice = get_field('background_video_closure_notice');
         }
 
         .background-video-hero .background-video-toggle {
-            position: relative;
+            position: absolute;
             z-index: 3;
             display: inline-flex;
             align-items: center;
@@ -96,7 +96,9 @@ $background_video_closure_notice = get_field('background_video_closure_notice');
             min-height: 0;
             width: auto;
             padding: .85em 1.45em;
-            margin: 28px 0 0;
+            margin: 0;
+            right: 48px;
+            bottom: 48px;
             border: 1px solid rgba(255,255,255,0.75);
             border-radius: 0;
             background: transparent;
@@ -170,6 +172,11 @@ $background_video_closure_notice = get_field('background_video_closure_notice');
             .background-video-hero .hero-slider-content {
                 max-width: 100%;
             }
+
+            .background-video-hero .background-video-toggle {
+                right: 24px;
+                bottom: 24px;
+            }
         }
     </style>
 
@@ -236,18 +243,18 @@ $background_video_closure_notice = get_field('background_video_closure_notice');
                 <?php if ( $background_video_button_url && $background_video_button_label ) : ?>
                     <a class="hero-button" href="<?php echo esc_url( $background_video_button_url ); ?>" tabindex="0"><?php echo esc_html( $background_video_button_label ); ?></a>
                 <?php endif; ?>
-                <button
-                    id="background-video-playpause"
-                    class="background-video-toggle is-playing"
-                    aria-label="Pause background video"
-                    title="Pause background video"
-                    type="button"
-                >
-                    <span class="background-video-toggle__label">Pause</span>
-                </button>
             </div>
         </div>
     </div>
+    <button
+        id="background-video-playpause"
+        class="background-video-toggle is-playing"
+        aria-label="Pause background video"
+        title="Pause background video"
+        type="button"
+    >
+        <span class="background-video-toggle__label">Pause</span>
+    </button>
 </div>
 
 <script>

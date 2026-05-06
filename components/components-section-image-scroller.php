@@ -740,6 +740,58 @@ if ( 'bottom' === $section_keyline_position ) {
 .section-image-scroller__toggle {
     appearance: none;
     cursor: pointer;
+    min-width: 8.1em;
+}
+
+.section-image-scroller__toggle .sis-toggle-icon {
+    display: inline-flex;
+    width: .9em;
+    height: .9em;
+    margin-right: .3em;
+    position: relative;
+    flex: 0 0 auto;
+    color: currentColor;
+}
+
+.section-image-scroller__toggle .sis-toggle-icon::before,
+.section-image-scroller__toggle .sis-toggle-icon::after {
+    content: '';
+    position: absolute;
+}
+
+.section-image-scroller__toggle[data-scroller-toggle="pause"] .sis-toggle-icon::before,
+.section-image-scroller__toggle[data-scroller-toggle="pause"] .sis-toggle-icon::after {
+    top: 0.15em;
+    bottom: 0.15em;
+    width: 4px;
+    background: currentColor;
+}
+
+.section-image-scroller__toggle[data-scroller-toggle="pause"] .sis-toggle-icon::before {
+    left: 0.14em;
+}
+
+.section-image-scroller__toggle[data-scroller-toggle="pause"] .sis-toggle-icon::after {
+    right: 0.14em;
+}
+
+.section-image-scroller__toggle[data-scroller-toggle="play"] .sis-toggle-icon::before {
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-top: .38em solid transparent;
+    border-bottom: .38em solid transparent;
+    border-left: .58em solid currentColor;
+    transform: translate(-38%, -50%);
+}
+
+.section-image-scroller__toggle[data-scroller-toggle="play"] .sis-toggle-icon::after {
+    display: none;
+}
+
+.section-image-scroller__toggle .sis-toggle-label {
+    display: inline-block;
 }
 
 .section-image-scroller__toggle:hover,
@@ -765,6 +817,11 @@ if ( 'bottom' === $section_keyline_position ) {
     box-shadow: none;
     transform: translateY(0);
     transition: background .25s ease, border-color .25s ease, color .25s ease;
+}
+
+.section-image-scroller .section-image-scroller__toggle.hero-button {
+    width: 8.1em;
+    min-width: 8.1em;
 }
 
 .section-image-scroller .hero-button--primary {
@@ -1103,7 +1160,7 @@ if ( 'bottom' === $section_keyline_position ) {
 
                 <?php if ( ! empty( $normalized_items ) ) : ?>
                     <div class="section-image-scroller__controls">
-                        <button type="button" class="section-image-scroller__toggle hero-button hero-button--<?php echo esc_attr( $section_button_style ); ?>" data-scroller-toggle="pause" aria-pressed="false" aria-label="Pause image scroller">❚❚ Pause</button>
+                        <button type="button" class="section-image-scroller__toggle hero-button hero-button--outline-dark" data-scroller-toggle="pause" aria-pressed="false" aria-label="Pause image scroller"><span class="sis-toggle-icon" aria-hidden="true"></span><span class="sis-toggle-label">Pause</span></button>
                     </div>
                 <?php endif; ?>
             </div>
@@ -1137,7 +1194,10 @@ if ( 'bottom' === $section_keyline_position ) {
         toggle.setAttribute('data-scroller-toggle', isPaused ? 'pause' : 'play');
         toggle.setAttribute('aria-pressed', isPaused ? 'false' : 'true');
         toggle.setAttribute('aria-label', isPaused ? 'Pause image scroller' : 'Play image scroller');
-        toggle.textContent = isPaused ? '❚❚ Pause' : '▶ Play';
+        var label = toggle.querySelector('.sis-toggle-label');
+        if (label) {
+            label.textContent = isPaused ? 'Pause' : 'Play';
+        }
     });
 })();
 </script>

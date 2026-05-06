@@ -179,16 +179,35 @@ if ( is_object( $linked_article ) && isset( $linked_article->ID ) ) {
     $post_id = (int) $linked_article;
 }
 
-$title = $section_heading;
-if ( ( ! $title || '' === trim( wp_strip_all_tags( (string) $title ) ) ) && 'linked_article' === $content_source && $use_article_title && $post_id ) {
+$manual_title = $section_heading;
+$manual_intro = $section_intro;
+
+$title = $manual_title;
+if ( 'linked_article' === $content_source && $use_article_title && $post_id ) {
     $title = get_the_title( $post_id );
+
+    // Content tab heading acts as an optional linked-article override.
+    if ( $manual_title && '' !== trim( wp_strip_all_tags( (string) $manual_title ) ) ) {
+        $title = $manual_title;
+    }
 }
 
-$intro = $section_intro;
-if ( ( ! $intro || '' === trim( wp_strip_all_tags( (string) $intro ) ) ) && 'linked_article' === $content_source && $use_article_excerpt && $post_id ) {
+$intro = $manual_intro;
+if ( 'linked_article' === $content_source && $use_article_excerpt && $post_id ) {
     $intro = trim( (string) get_the_excerpt( $post_id ) );
     if ( '' === $intro ) {
         $intro = wp_trim_words( wp_strip_all_tags( (string) get_post_field( 'post_content', $post_id ) ), 38 );
+    }
+
+    $intro = trim( wp_strip_all_tags( $intro ) );
+    $intro = preg_replace( '/\s*\.{3}\s*continued\.?$/i', '', $intro );
+    $intro = preg_replace( '/\s*…\s*continued\.?$/iu', '', $intro );
+    $intro = preg_replace( '/\s+continued\.?$/i', '', $intro );
+    $intro = trim( (string) $intro );
+
+    // Content tab copy acts as an optional linked-article override.
+    if ( $manual_intro && '' !== trim( wp_strip_all_tags( (string) $manual_intro ) ) ) {
+        $intro = $manual_intro;
     }
 }
 
@@ -271,6 +290,15 @@ if ( 'about_band' === $split_media_variant && 'blue_band' === $about_background_
     $section_class_list[] = 'section-split-media--about-blue-band';
 }
 
+// Handle section keyline borders
+$section_keyline_position = trim( (string) $get_split_media_field( 'section_keyline_position' ) );
+$section_keyline_color = trim( (string) $get_split_media_field( 'section_keyline_color' ) );
+
+// Default keyline color if not set
+if ( ! $section_keyline_color ) {
+    $section_keyline_color = '#51534a';
+}
+
 $section_styles = array(
     'background-color:' . $background_color,
     'padding-top:' . $padding_top,
@@ -292,6 +320,13 @@ $section_styles = array(
     '--ssm-about-content-width:' . $about_content_width,
 );
 
+// Add keyline borders
+if ( 'top' === $section_keyline_position ) {
+    $section_styles[] = 'border-top:1px solid ' . $section_keyline_color;
+} elseif ( 'bottom' === $section_keyline_position ) {
+    $section_styles[] = 'border-bottom:1px solid ' . $section_keyline_color;
+}
+
 $allowed_heading_html = array(
     'b' => array(),
     'strong' => array(),
@@ -305,8 +340,18 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
 ?>
 
 <style>
+.section-split-media,
+.section-split-media * {
+    -webkit-hyphens: none;
+    hyphens: none;
+}
+
 .section-split-media {
     position: relative;
+}
+
+.section-split-media--variant-experience-list.section-split-media--contained.section-split-media--seam-gutter {
+    overflow: hidden;
 }
 
 .section-split-media__inner {
@@ -322,6 +367,15 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     max-width: none;
     padding-left: 0;
     padding-right: 0;
+}
+
+/* about_band always constrains content to 1200px even in full-width mode */
+.section-split-media--variant-about-band .section-split-media__inner {
+    width: min(100%, 1200px);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .section-split-media__panel {
@@ -403,6 +457,11 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     padding-right: clamp(30px, 4vw, 64px);
 }
 
+/* experience_list: give content column extra left clearance from the seam */
+.section-split-media--variant-experience-list .section-split-media__content {
+    padding-left: clamp(56px, 7vw, 112px);
+}
+
 .section-split-media--variant-about-band .section-split-media__title,
 .section-split-media--variant-about-band .section-split-media__copy,
 .section-split-media--variant-about-band .section-split-media__copy p {
@@ -441,25 +500,55 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
     background: var(--ssm-content-bg, #ffffff);
 }
 
+.section-split-media--variant-experience-list .section-split-media__row {
+    background: var(--ssm-content-bg, #ffffff);
+}
+
+.section-split-media--variant-experience-list .section-split-media__media-column::after {
+    background-color: var(--ssm-content-bg, #ffffff);
+}
+
 .section-split-media__experience-lane {
     flex: 1 1 auto;
     width: 100%;
+    box-sizing: border-box;
     padding: clamp(34px, 4.5vw, 72px) clamp(28px, 4.2vw, 56px);
+    --ssm-seam-clearance: calc(var(--ssm-seam-width, 78px) / 2 + clamp(28px, 4.2vw, 56px));
+    padding-right: var(--ssm-seam-clearance);
     background: var(--ssm-content-bg, #ffffff);
+}
+
+.section-split-media--variant-experience-list.section-split-media--image-right .section-split-media__experience-lane {
+    padding-right: clamp(28px, 4.2vw, 56px);
+    padding-left: var(--ssm-seam-clearance);
 }
 
 .section-split-media__experience-list {
     list-style: none;
     margin: 0;
     padding: 0;
+    width: min(100%, 46rem);
+}
+
+.section-split-media--variant-experience-list .section-split-media__experience-list {
+    margin-right: auto;
+}
+
+.section-split-media--variant-experience-list.section-split-media--image-right .section-split-media__experience-list {
+    margin-left: auto;
+    margin-right: 0;
 }
 
 .section-split-media__experience-item {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto minmax(0, 1fr);
     gap: 14px;
     align-items: start;
     padding: 22px 0;
+}
+
+.section-split-media__experience-item > div {
+    min-width: 0;
 }
 
 .section-split-media__experience-item + .section-split-media__experience-item {

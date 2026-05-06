@@ -33,6 +33,9 @@ $section_keyline_position = strtolower( trim( (string) $get_card_grid_field( 'se
 $section_keyline_color = trim( (string) $get_card_grid_field( 'section_keyline_color' ) );
 $section_intro_max_width = trim( (string) $get_card_grid_field( 'section_intro_max_width' ) );
 $section_intro_spacing_bottom = trim( (string) $get_card_grid_field( 'section_intro_spacing_bottom' ) );
+$section_intro_font_family = strtolower( trim( (string) $get_card_grid_field( 'section_intro_font_family' ) ) );
+$section_intro_font_weight = trim( (string) $get_card_grid_field( 'section_intro_font_weight' ) );
+$section_intro_font_size = trim( (string) $get_card_grid_field( 'section_intro_font_size' ) );
 $heading_max_width = trim( (string) $get_card_grid_field( 'heading_max_width' ) );
 $card_padding = trim( (string) $get_card_grid_field( 'card_padding' ) );
 $card_padding_top = trim( (string) $get_card_grid_field( 'card_padding_top' ) );
@@ -135,7 +138,8 @@ $normalize_font_family = static function ( $value, $default = 'haarlem', $allow_
 
 $heading_font_family = $normalize_font_family( $heading_font_family );
 $subheading_font_family = $normalize_font_family( $subheading_font_family, $heading_font_family );
-$card_heading_font_family = $normalize_font_family( $card_heading_font_family, $heading_font_family );
+$card_heading_font_family = $normalize_font_family( $card_heading_font_family, $subheading_font_family );
+$section_intro_font_family = $normalize_font_family( $section_intro_font_family, 'default', true );
 $eyebrow_font_family = $normalize_font_family( $eyebrow_font_family, 'default', true );
 
 if ( ! in_array( $heading_font_family, array( 'haarlem', 'freight-big-pro' ), true ) ) {
@@ -163,11 +167,19 @@ if ( ! in_array( $subheading_font_weight, array( '400', '500', '600', '700' ), t
 }
 
 if ( ! in_array( $card_heading_font_family, array( 'haarlem', 'freight-big-pro' ), true ) ) {
-    $card_heading_font_family = $heading_font_family;
+    $card_heading_font_family = $subheading_font_family;
 }
 
 if ( ! in_array( $card_heading_font_weight, array( '400', '500', '600', '700' ), true ) ) {
-    $card_heading_font_weight = 'freight-big-pro' === $card_heading_font_family ? '400' : $heading_font_weight;
+    $card_heading_font_weight = 'freight-big-pro' === $card_heading_font_family ? '400' : $subheading_font_weight;
+}
+
+if ( ! in_array( $section_intro_font_family, array( 'default', 'haarlem', 'freight-big-pro' ), true ) ) {
+    $section_intro_font_family = 'default';
+}
+
+if ( ! in_array( $section_intro_font_weight, array( '400', '500', '600', '700' ), true ) ) {
+    $section_intro_font_weight = '400';
 }
 
 if ( ! in_array( $eyebrow_font_family, array( 'default', 'haarlem', 'freight-big-pro' ), true ) ) {
@@ -207,6 +219,11 @@ $subheading_font_stack = 'freight-big-pro' === $subheading_font_family
 $card_heading_font_stack = 'freight-big-pro' === $card_heading_font_family
     ? 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)'
     : 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)';
+$section_intro_font_stack = 'freight-big-pro' === $section_intro_font_family
+    ? 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)'
+    : ( 'haarlem' === $section_intro_font_family
+        ? 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)'
+        : 'var(--lacc-type-family-ui, Arial, Helvetica, sans-serif)' );
 $eyebrow_font_stack = 'freight-big-pro' === $eyebrow_font_family
     ? 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)'
     : ( 'haarlem' === $eyebrow_font_family ? 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)' : 'inherit' );
@@ -228,6 +245,7 @@ if ( is_page( 'flex' ) && 'freight-big-pro' === $subheading_font_family ) {
 
 $default_surface_gradient = function_exists( 'lacc_get_default_surface_gradient' ) ? lacc_get_default_surface_gradient() : 'linear-gradient(180deg, rgba(246,243,237,0.92) 0%, rgba(255,255,255,0.92) 100%)';
 $section_intro_max_width = $section_intro_max_width ?: '100%';
+$section_intro_font_size = $section_intro_font_size ?: '16px';
 $heading_max_width = $heading_max_width ?: '100%';
 $heading_size_value = 'xxl' === $heading_size ? 'clamp(36px, 4.8vw, 68px)' : 'clamp(40px, 4.8vw, 58px)';
 $heading_line_height_value = 'xxl' === $heading_size ? '.98' : '1.05';
@@ -498,6 +516,9 @@ $section_styles = array(
     '--scg-heading-margin:' . $heading_margin,
     '--scg-intro-max-width:' . $section_intro_max_width,
     '--scg-intro-margin:' . $section_intro_margin,
+    '--scg-intro-font:' . $section_intro_font_stack,
+    '--scg-intro-weight:' . $section_intro_font_weight,
+    '--scg-intro-size:' . $section_intro_font_size,
     '--scg-intro-cta-justify:' . $intro_cta_justify,
     '--scg-bottom-cta-justify:' . $bottom_cta_justify,
     '--scg-bottom-cta-align:' . $section_bottom_button_alignment,
@@ -764,9 +785,18 @@ if ( 'bottom' === $section_keyline_position ) {
     width: 100%;
     max-width: var(--scg-intro-max-width, 100%);
     margin: var(--scg-intro-margin, 0 auto 0 0);
+    font-family: var(--scg-intro-font, var(--lacc-type-family-ui, Arial, Helvetica, sans-serif));
+    font-size: var(--scg-intro-size, 16px);
+    font-weight: var(--scg-intro-weight, 400);
     hyphens: none;
     -webkit-hyphens: none;
     -ms-hyphens: none;
+}
+
+.section-card-grid__intro p {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
 }
 
 .section-card-grid__intro-cta {
@@ -2186,7 +2216,7 @@ if ( 'bottom' === $section_keyline_position ) {
     <div class="<?php echo esc_attr( $layout_class ); ?>">
         <div class="section-card-grid__inner">
         <?php if ( $section_eyebrow || $section_heading || $section_intro || ( $section_button_label && $section_button_url ) ) : ?>
-            <div class="section-card-grid__header" style="<?php echo esc_attr( $header_style_attr ); ?>;"
+            <div class="section-card-grid__header" style="<?php echo esc_attr( $header_style_attr ); ?>;">
                 <?php if ( $section_eyebrow ) : ?>
                     <span class="section-card-grid__eyebrow"><?php echo esc_html( $section_eyebrow ); ?></span>
                 <?php endif; ?>
