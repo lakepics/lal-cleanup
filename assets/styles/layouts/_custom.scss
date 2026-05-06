@@ -81,16 +81,16 @@ p, body {
 }
 
 // ============================================================
-// LAYOUT — Body padding for fixed nav
+// LAYOUT — Body padding for fixed nav (nav bar height: 94px desktop / 76px mobile)
 // ============================================================
 
 body {
-    padding-top: 74px;
+    padding-top: 94px;
 }
 
 @media only screen and (max-width: 1024px) {
     body {
-        padding-top: 66px;
+        padding-top: 76px;
     }
 }
 

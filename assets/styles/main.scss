@@ -31,6 +31,7 @@
 @import "layouts/subpages";
 @import "layouts/components";
 // @import "layouts/header"; // ARCHIVED 2026-04-25 — Bootstrap-era nav styles
+@import "layouts/nav"; // Primary nav — extracted from components-primary-nav.php 2026-05-06
 @import "layouts/hero";
 @import "layouts/footer";
 @import "layouts/gallery";
