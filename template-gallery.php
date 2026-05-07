@@ -10,7 +10,8 @@
 
         <?php
 
-        foreach ( get_field( 'images', 116 ) as $picture ) {
+        $pictures_all = get_field( 'images' ) ?: [];
+        foreach ( $pictures_all as $picture ) {
             $categories[createSlug( $picture['category'] )] =  $picture['category'];
         }
 
@@ -33,7 +34,7 @@
         <div id="gallery-container" class="container clearfix">
 
         <?php
-        $pictures = get_field( 'images', 116 );
+        $pictures = $pictures_all;
         foreach ( $pictures as $picture ) {
             $picture_src = wp_get_attachment_image_src( $picture['image']['id'], 'full' );
             $imgTitle = lacc_get_gallery_caption( array(

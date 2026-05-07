@@ -2,7 +2,7 @@
  $gridnavs = get_field('gridnavs');
     if ($gridnavs) {
         echo    '<section class="maingrid">
-                    <div class="maingrid__container">
+                <div class="maingrid__container container">
                             <div class="col-md-12">';
             foreach ($gridnavs as $gridnav) {
             echo                '<a href="' . $gridnav['redirect'] . '">

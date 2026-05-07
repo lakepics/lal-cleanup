@@ -99,6 +99,21 @@ function lacc_enqueue_legacy_bootstrap_support() {
 }
 add_action( 'wp_enqueue_scripts', 'lacc_enqueue_legacy_bootstrap_support', 90 );
 
+function lacc_enqueue_fancybox() {
+    if ( ! is_page_template( 'template-gallery.php' ) ) {
+        return;
+    }
+
+    wp_enqueue_script(
+        'lacc-fancybox-js',
+        'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js',
+        array( 'jquery' ),
+        '3.5.7',
+        true
+    );
+}
+add_action( 'wp_enqueue_scripts', 'lacc_enqueue_fancybox', 100 );
+
 // Add support for Luskin Gallery Template
 function createSlug($string)
 {

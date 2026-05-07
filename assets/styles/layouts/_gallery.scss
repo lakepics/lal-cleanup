@@ -235,7 +235,7 @@ body {
   background: transparent !important;
   border: none;
   box-sizing: border-box;
-  color: #737373;
+  color: var(--lacc-color-ink);
   font-family: "Proxima Nova Semibold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   height: 58px;
@@ -255,7 +255,7 @@ body {
 
 .gallery-filters-wrapper span {
   background: url("/wp-content/themes/luskin/library/images/dropdown-arrow.png") no-repeat right center;
-  color: #737373;
+  color: var(--lacc-color-ink);
   display: block;
   font-family: "Proxima Nova Semibold", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
