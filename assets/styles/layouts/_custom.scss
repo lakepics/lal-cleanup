@@ -82,21 +82,8 @@ p, body {
 
 // ============================================================
 // LAYOUT — Body padding for fixed nav (nav bar height: 94px desktop / 76px mobile)
+// NOTE: body:not(.home) rule below is the canonical rule — do not add a separate body {} block here.
 // ============================================================
-
-body {
-    padding-top: 94px;
-}
-
-@media only screen and (max-width: 1024px) {
-    body {
-        padding-top: 76px;
-    }
-}
-
-body.home {
-    padding-top: 0;
-}
 
 // ============================================================
 // NOTIFICATION BAR — #dabar
@@ -144,12 +131,16 @@ body.home {
 }
 
 body:not(.home) {
-    padding-top: 120px;
+    padding-top: 94px;
+}
+
+body.home {
+    padding-top: 0;
 }
 
 @media only screen and (max-width: 1024px) {
     body:not(.home) {
-        padding-top: 74px;
+        padding-top: 76px;
     }
 }
 
