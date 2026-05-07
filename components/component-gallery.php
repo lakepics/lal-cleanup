@@ -25,10 +25,10 @@
         }
         .gallery__controls button {
             padding: 8px 13px;
-            border: 1px solid rgba(201,151,58,0.40);
+            border: 1px solid rgba(81,83,74,0.35);
             border-radius: 999px;
             background: transparent;
-            color: #946E29;
+            color: var(--lacc-color-ink);
             font-size: 11px;
             font-weight: 600;
             letter-spacing: .06em;
@@ -38,24 +38,33 @@
         }
         .gallery__controls button:hover,
         .gallery__controls button:focus {
-            background: rgba(201,151,58,0.10);
-            border-color: #946E29;
-            color: #7b5a20;
+            background: rgba(81,83,74,0.08);
+            border-color: var(--lacc-color-ink);
+            color: var(--lacc-color-ink);
             outline: none;
         }
         .gallery__controls button.is-active {
-            background: #946E29;
-            border-color: #946E29;
+            background: var(--lacc-color-ink);
+            border-color: var(--lacc-color-ink);
             color: #fff;
         }
         .gallery__controls button.is-active:hover,
         .gallery__controls button.is-active:focus {
-            background: #7b5a20;
-            border-color: #7b5a20;
+            background: #3a3c34;
+            border-color: #3a3c34;
             color: #fff;
         }
         .lacc-gallery {
             width: 100%;
+        }
+        .gallery__sizer {
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .gallery__sizer { width: 50%; }
+        }
+        @media (min-width: 992px) {
+            .gallery__sizer { width: 33.33%; }
         }
         .gallery__item {
             width: 100%;
@@ -122,10 +131,12 @@
 
     echo '<script>
         jQuery(function($) {
-            // Filter button active state
+            // Filter button active state + isotope filter
             var $filters = $(".category-filters");
             $filters.on("click", "button", function() {
                 $(this).addClass("is-active").siblings("button").removeClass("is-active");
+                var filterValue = $(this).attr("data-filter");
+                $gallery.isotope({ filter: filterValue });
             });
 
             // Init isotope on .lacc-gallery (renamed from .gallery to avoid WP block CSS conflict)
@@ -135,8 +146,42 @@
                     itemSelector: ".gallery__item",
                     layoutMode: "masonry",
                     percentPosition: true,
-                    masonry: { columnWidth: ".gallery__item" }
+                    masonry: { columnWidth: ".gallery__sizer" }
                 });
+            });
+
+            // Position control bar inside image top edge, caption bar inside image bottom edge
+            var lacc_fbTimer;
+
+            function lacc_positionFancyboxBars() {
+                var $img = $(".fancybox-slide--current .fancybox-image");
+                if (!$img.length) return;
+                var rect = $img[0].getBoundingClientRect();
+                if (!rect.width || !rect.height) return;
+                var $controls = $(".fancybox-controls");
+                var $caption  = $(".fancybox-caption-wrap");
+                var capH = $caption.outerHeight() || 44;
+                $controls.css({ top: Math.round(rect.top), left: Math.round(rect.left), width: Math.round(rect.width), transform: "none", bottom: "auto" });
+                $caption.css({ top: Math.round(rect.bottom) - capH, left: Math.round(rect.left), width: Math.round(rect.width), transform: "none", bottom: "auto" });
+            }
+
+            // afterLoad fires on every slide (afterShow never fires in this Fancybox build)
+            $.extend(true, $.fancybox.defaults, {
+                afterLoad: function(instance, current) {
+                    clearTimeout(lacc_fbTimer);
+                    // afterLoad fires before the slide animation — delay to final position
+                    lacc_fbTimer = setTimeout(lacc_positionFancyboxBars, 350);
+                }
+            });
+
+            var lacc_fbResizeTimer;
+            $(window).on("resize.fancybox-bars", function() {
+                clearTimeout(lacc_fbResizeTimer);
+                lacc_fbResizeTimer = setTimeout(function() {
+                    if ($(".fancybox-slide--current .fancybox-image").length) {
+                        lacc_positionFancyboxBars();
+                    }
+                }, 150);
             });
         });
     </script>';
@@ -163,6 +208,7 @@
             echo '</div>';
         echo '<div class="row gallery__wrapper">';
             echo '<div class="lacc-gallery">';
+            echo '<div class="gallery__sizer"></div>';
             if ( have_rows('gallery') ):
                 while ( have_rows('gallery') ) : the_row();
                 $img_crop = get_sub_field('crop_size');

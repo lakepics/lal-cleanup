@@ -39,16 +39,26 @@
 .fancybox-controls {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  width: min(90vw, 1080px);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  text-align: left;
   opacity: 0;
   z-index: 99994;
   transition: opacity .2s;
-  pointer-events: none;
+  pointer-events: all;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  direction: ltr; }
+  direction: ltr;
+  border-radius: 0;
+  background: rgba(15, 20, 27, 0.78);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25); }
 
 .fancybox-show-controls .fancybox-controls {
   opacity: 1; }
@@ -57,18 +67,21 @@
   display: none; }
 
 .fancybox-show-infobar .fancybox-infobar {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   pointer-events: all; }
 
 .fancybox-infobar__body {
   display: inline-block;
-  width: 70px;
-  line-height: 44px;
+  min-width: 76px;
+  padding: 0 12px;
+  line-height: 40px;
   font-size: 13px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   text-align: center;
   color: #ddd;
-  background-color: rgba(30, 30, 30, 0.7);
+  background-color: transparent;
+  border-right: 1px solid rgba(255, 255, 255, 0.28);
   pointer-events: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -79,14 +92,27 @@
   -webkit-font-smoothing: subpixel-antialiased; }
 
 .fancybox-buttons {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: static;
   display: none;
   pointer-events: all; }
 
 .fancybox-show-buttons .fancybox-buttons {
-  display: block; }
+  display: inline-flex;
+  align-items: center;
+  gap: 2px; }
+
+@media only screen and (max-width: 767px) {
+  .fancybox-controls {
+    width: calc(100vw - 16px);
+    bottom: 56px;
+    padding: 4px 6px;
+    border-radius: 8px 8px 0 0; }
+
+  .fancybox-infobar__body {
+    min-width: 64px;
+    padding: 0 8px;
+    line-height: 36px;
+    font-size: 12px; } }
 
 .fancybox-slider-wrap {
   overflow: hidden;
@@ -306,15 +332,18 @@
 /* Caption */
 .fancybox-caption-wrap {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 60px 30px 0 30px;
+  top: 0;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  width: min(90vw, 1080px);
+  transform: translateX(-50%);
+  padding: 0;
   z-index: 99998;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   box-sizing: border-box;
-  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0.8) 100%);
+  background: none;
   opacity: 0;
   transition: opacity .2s;
   pointer-events: none; }
@@ -323,13 +352,25 @@
   opacity: 1; }
 
 .fancybox-caption {
-  padding: 30px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-  font-size: 14px;
+  padding: 10px 14px;
+  border-top: 0;
+  font-size: 13px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #fff;
-  line-height: 20px;
+  line-height: 1.45;
+  background: rgba(15, 20, 27, 0.78);
+  border-radius: 0;
   -webkit-text-size-adjust: none; }
+
+@media only screen and (max-width: 767px) {
+  .fancybox-caption-wrap {
+    width: calc(100vw - 16px);
+    bottom: 12px; }
+
+  .fancybox-caption {
+    padding: 8px 10px;
+    border-radius: 0 0 8px 8px;
+    font-size: 12px; } }
 
 .fancybox-caption a,
 .fancybox-caption button {
@@ -343,9 +384,9 @@
 .fancybox-button {
   display: inline-block;
   position: relative;
-  width: 44px;
-  height: 44px;
-  line-height: 44px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   margin: 0;
   padding: 0;
   border: 0;
@@ -362,10 +403,10 @@
   pointer-events: none; }
 
 .fancybox-infobar__body, .fancybox-button {
-  background: rgba(30, 30, 30, 0.6); }
+  background: transparent; }
 
 .fancybox-button:hover {
-  background: rgba(0, 0, 0, 0.8); }
+  background: rgba(255, 255, 255, 0.12); }
 
 .fancybox-button::before,
 .fancybox-button::after {
@@ -384,8 +425,10 @@
   opacity: 0.5; }
 
 .fancybox-button--left::after {
-  left: 20px;
-  top: 18px;
+  left: 50%;
+  top: 50%;
+  margin-left: -3px;
+  margin-top: -3px;
   width: 6px;
   height: 6px;
   background: transparent;
@@ -396,8 +439,10 @@
   transform: rotate(-135deg); }
 
 .fancybox-button--right::after {
-  right: 20px;
-  top: 18px;
+  right: 50%;
+  top: 50%;
+  margin-right: -3px;
+  margin-top: -3px;
   width: 6px;
   height: 6px;
   background: transparent;
@@ -408,13 +453,13 @@
   transform: rotate(45deg); }
 
 .fancybox-button--left {
-  border-bottom-left-radius: 5px; }
+  border-radius: 6px; }
 
 .fancybox-button--right {
-  border-bottom-right-radius: 5px; }
+  border-radius: 6px; }
 
 .fancybox-button--close {
-  float: right; }
+  float: none; }
 
 .fancybox-button--close::before, .fancybox-button--close::after {
   content: '';

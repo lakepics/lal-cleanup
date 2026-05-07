@@ -28,6 +28,7 @@
                     <option value=".campus">Lake Arrowhead</option>
                     <option value=".meetings">Meetings</option>
                 </select>
+                <span>Show All</span>
             </div>
         </div>
 
@@ -58,4 +59,28 @@
 
     </div>    
 </div><!-- /main content -->
+
+<script>
+(function($) {
+    $(document).ready(function() {
+        var $container = $('#gallery-container');
+        var $select    = $('#gallery-filters');
+        var $span      = $select.siblings('span');
+
+        $container.imagesLoaded(function() {
+            $container.isotope({
+                itemSelector: '.item',
+                layoutMode: 'masonry'
+            });
+        });
+
+        $select.on('change', function() {
+            var filterValue = $(this).val();
+            $container.isotope({ filter: filterValue });
+            $span.text($(this).find('option:selected').text());
+        });
+    });
+}(jQuery));
+</script>
+
    <?php endwhile; ?>
