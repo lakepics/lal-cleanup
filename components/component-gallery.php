@@ -59,7 +59,7 @@
         }
         .gallery__item {
             width: 100%;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
         @media (min-width: 768px) {
             .gallery__item { width: 50%; }
@@ -77,15 +77,13 @@
             height: auto;
         }
         .gallery__item .gallery__meta {
-            margin-top: 12px;
-            min-height: 3.2em;
-            padding-bottom: 24px;
+            margin-top: 6px;
+            min-height: 41px;
             text-align: center;
         }
         .gallery__item .caption {
             display: block;
-            min-height: 2.8em;
-            margin: 0 auto 24px;
+            margin: 0;
             color: #51534a;
             font-size: 14px;
             font-weight: 400;
