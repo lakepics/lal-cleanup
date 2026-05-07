@@ -54,8 +54,18 @@
             border-color: #7b5a20;
             color: #fff;
         }
+        .lacc-gallery {
+            width: 100%;
+        }
         .gallery__item {
-            margin-bottom: 30px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        @media (min-width: 768px) {
+            .gallery__item { width: 50%; }
+        }
+        @media (min-width: 992px) {
+            .gallery__item { width: 33.33%; }
         }
         .gallery__item > a {
             display: block;
@@ -114,9 +124,21 @@
 
     echo '<script>
         jQuery(function($) {
+            // Filter button active state
             var $filters = $(".category-filters");
             $filters.on("click", "button", function() {
                 $(this).addClass("is-active").siblings("button").removeClass("is-active");
+            });
+
+            // Init isotope on .lacc-gallery (renamed from .gallery to avoid WP block CSS conflict)
+            var $gallery = $(".lacc-gallery");
+            $gallery.imagesLoaded(function() {
+                $gallery.isotope({
+                    itemSelector: ".gallery__item",
+                    layoutMode: "masonry",
+                    percentPosition: true,
+                    masonry: { columnWidth: ".gallery__item" }
+                });
             });
         });
     </script>';
@@ -142,7 +164,7 @@
                 echo '</div>';
             echo '</div>';
         echo '<div class="row gallery__wrapper">';
-            echo '<div class="gallery">';
+            echo '<div class="lacc-gallery">';
             if ( have_rows('gallery') ):
                 while ( have_rows('gallery') ) : the_row();
                 $img_crop = get_sub_field('crop_size');
@@ -160,7 +182,7 @@
                     }
                     $full_size = get_sub_field('image_full_size');
                     if ( get_sub_field('video_url') ) { $full_size = get_sub_field('video_url'); }
-                echo '<div class="gallery__item ' . esc_attr( trim( $col_val . ' ' . $img_crop . ' ' . $category ) ) . '"><a data-fancybox="gallery"' . $caption_attributes . ' href="' . esc_url( $full_size ) . '"><span class="enlarge">View Larger</span><img class="img-responsive" src="' . esc_url( get_sub_field('image') ) . '" alt="' . esc_attr( $caption_text ) . '">';
+                echo '<div class="gallery__item ' . esc_attr( trim( $col_val . ' ' . $img_crop . ' ' . $category ) ) . '"><a data-fancybox="gallery"' . $caption_attributes . ' href="' . esc_url( $full_size ) . '"><img class="img-responsive" src="' . esc_url( get_sub_field('image') ) . '" alt="' . esc_attr( $caption_text ) . '">';
                 if (get_sub_field('photo_credit')) { 
                     $photo_credit = get_sub_field('photo_credit');
                     echo '<span class="photo-credit">Photo Credit: ' . esc_html( $photo_credit ) . '</span>'; 
