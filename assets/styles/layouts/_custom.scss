@@ -78,6 +78,22 @@ footer a:not([class]) {
     filter: brightness(0.95);
 }
 
+// Global: keep stacked gold-button rows readable and add reliable
+// contrast on TablePress header cells across all templates.
+.row__gold-buttons--rectangle {
+    margin-bottom: 12px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.tablepress thead th,
+.tablepress tfoot th {
+    background-color: #f6f3ed !important;
+    color: #3f3f3f !important;
+}
+
 // ============================================================
 // HISTORY PAGE — image float wraps
 // Template: template-history.php uses .right-img-text-wrap and
