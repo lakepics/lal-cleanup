@@ -30,17 +30,6 @@ footer a:not([class]) {
     }
 }
 
-// Nav / site-header — let existing nav rules control color.
-.site-header a:not([class]),
-nav a:not([class]) {
-    color: inherit;
-
-    &:hover,
-    &:focus {
-        text-decoration: none;
-    }
-}
-
 // ============================================================
 // GOLD DOWNLOAD BUTTON ROW
 // Used by components-one-goldbutton.php on planner and legacy
