@@ -952,6 +952,10 @@ if ( 'bottom' === $section_keyline_position ) {
     justify-content: flex-start;
 }
 
+.section-image-scroller--static.section-image-scroller--variant-masonry .section-image-scroller__masonry-row--two {
+    margin-left: 0;
+}
+
 .section-image-scroller--static .section-image-scroller__controls {
     display: none;
 }
