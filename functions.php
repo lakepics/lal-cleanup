@@ -68,8 +68,7 @@ function lacc_should_enqueue_legacy_bootstrap() {
     if ( function_exists( 'is_page_template' ) && (
         is_page_template( 'template-landing-page.php' ) ||
         is_page_template( 'template-landing-page-home.php' ) ||
-        is_page_template( 'template-flexible-sections.php' ) ||
-        is_page_template( '_complete-meeting-package.php' )
+        is_page_template( 'template-flexible-sections.php' )
     ) ) {
         return false;
     }

@@ -949,3 +949,52 @@ ol.numbered {
         font-size: 1.5em;
     }
 }
+
+// ============================================================
+// GEN-BTN: base positioning fix
+// @extend .parent-button inside deeply nested #col-five-seven
+// and #one-col-buttons rules in _subpages.scss causes SCSS to
+// emit a standalone .gen-btn{position:absolute} rule. Override
+// to position:relative so gen-btn renders in document flow on
+// pages like the CMP template. The #ID-scoped contexts that
+// legitimately need position:absolute retain higher specificity.
+// Also wire up the link and animate-child styles that only
+// exist on the scoped selectors in _subpages.scss.
+// ============================================================
+.gen-btn {
+    position: relative;
+    width: auto;
+    cursor: pointer;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: inline-block;
+    border: 2px solid #6383a8;
+    background-color: #6383a8;
+    margin-top: 30px;
+    a {
+        font-size: 1em;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        color: #fff;
+        text-decoration: none;
+        line-height: 38px;
+        z-index: 2;
+        margin: 0 25px;
+        position: relative;
+    }
+    .gen-btn-animate {
+        width: 100%;
+        height: 44px;
+        bottom: -50px;
+        background-color: #fff;
+        position: absolute;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+    &:hover a {
+        color: #6383a8;
+    }
+    &:hover .gen-btn-animate {
+        bottom: 0;
+    }
+}
