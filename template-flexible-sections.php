@@ -5,6 +5,22 @@
 ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
+  <?php $has_blueheaders = have_rows('blueheaders'); ?>
+
+  <?php get_template_part('components/_subheader'); ?>
+
+  <?php if ( ! $has_blueheaders ) : ?>
+    <div class="header__heading">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="header__heading--subheading"><?php echo esc_html( get_the_title() ); ?></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endif; ?>
+
   <style>
   .section-video-hero,
   .section-video-hero *,

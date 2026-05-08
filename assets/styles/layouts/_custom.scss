@@ -4,6 +4,54 @@
 // Source: customizer.css.archived-2026-04-25
 
 // ============================================================
+// GOLD DOWNLOAD BUTTON ROW
+// Used by components-one-goldbutton.php on planner and legacy
+// pages. These selectors were missing from the active bundles.
+// ============================================================
+.row__gold-buttons {
+    margin: 30px 0 40px;
+}
+
+.row__gold-buttons--copy {
+    p,
+    div {
+        margin-bottom: 0;
+    }
+}
+
+.row__gold-buttons--col {
+    text-align: right;
+
+    @media (max-width: 991px) {
+        text-align: left;
+        margin-top: 20px;
+    }
+}
+
+.row__gold-buttons--single {
+    background-color: #ad8a5f;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    color: #fff !important;
+    display: inline-block;
+    font-size: 1em;
+    min-height: 40px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    line-height: 24px;
+    margin: 0;
+    padding: 10px 50px 10px 20px;
+    text-decoration: none;
+}
+
+.row__gold-buttons--single:hover,
+.row__gold-buttons--single:focus {
+    color: #fff !important;
+    text-decoration: none;
+    filter: brightness(0.95);
+}
+
+// ============================================================
 // HISTORY PAGE — image float wraps
 // Template: template-history.php uses .right-img-text-wrap and
 // .left-img-text-wrap as <span> wrappers around floated images.
