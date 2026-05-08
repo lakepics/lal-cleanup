@@ -4,6 +4,44 @@
 // Source: customizer.css.archived-2026-04-25
 
 // ============================================================
+// INLINE TEXT LINK COLOR — light backgrounds only
+// Design system: Accessible Blue #3F5F85 (primary action color).
+// Targets unclassed <a> elements (tel, mailto, bare anchors) in
+// content areas. Nav (.site-header) and footer excluded below.
+// ============================================================
+a:not([class]) {
+    color: #3f5f85;
+
+    &:hover,
+    &:focus {
+        color: #2d4460;
+        text-decoration: underline;
+    }
+}
+
+// Footer — dark background; preserve its own cream/white link treatment.
+footer a:not([class]) {
+    color: rgba(246, 243, 237, 0.82);
+
+    &:hover,
+    &:focus {
+        color: #ffffff;
+        text-decoration: none;
+    }
+}
+
+// Nav / site-header — let existing nav rules control color.
+.site-header a:not([class]),
+nav a:not([class]) {
+    color: inherit;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+// ============================================================
 // GOLD DOWNLOAD BUTTON ROW
 // Used by components-one-goldbutton.php on planner and legacy
 // pages. These selectors were missing from the active bundles.
