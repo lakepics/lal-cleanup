@@ -204,6 +204,16 @@ p, body {
     text-align: left;
 }
 
+// Ensure the inner container behaves like a Bootstrap container on templates
+// that don't load Bootstrap (e.g. template-flexible-sections.php).
+// On Bootstrap pages Bootstrap's own rules cover this; no conflict.
+.header__heading .container {
+    max-width: 1170px;
+    padding: 0 15px;
+    margin: 0 auto;
+    width: 100%;
+}
+
 body:not(.home) {
     padding-top: 94px;
 }
