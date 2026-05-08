@@ -49,6 +49,7 @@ body.home .lacc-primary-nav::after {
     display: flex;
     align-items: center;
     gap: 20px;
+    box-sizing: border-box;
     min-height: 94px;
     padding: 13px 22px;
 }
