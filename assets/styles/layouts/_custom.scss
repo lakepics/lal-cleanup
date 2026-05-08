@@ -4,6 +4,32 @@
 // Source: customizer.css.archived-2026-04-25
 
 // ============================================================
+// HISTORY PAGE — image float wraps
+// Template: template-history.php uses .right-img-text-wrap and
+// .left-img-text-wrap as <span> wrappers around floated images.
+// These classes were never defined in SCSS — added 2026-05-08.
+// ============================================================
+.right-img-text-wrap {
+    float: right;
+    margin: 0 0 20px 25px;
+    img {
+        display: block;
+    }
+}
+
+.left-img-text-wrap {
+    float: left;
+    margin: 0 25px 20px 0;
+    img {
+        display: block;
+    }
+}
+
+.copy-history {
+    overflow: hidden;
+}
+
+// ============================================================
 // FONT — HaarlemDeco
 // Note: the MyFonts tracking beacon below must remain a plain
 // CSS @import so the browser makes the HTTP request.

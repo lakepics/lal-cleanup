@@ -293,54 +293,69 @@ margin: 23% 0;
 
 /* Planner Toolkit Page */
 
+.meeting_planner_toolkit {
+    margin-top: 50px;
+}
+
 .planner {
     margin-bottom: 30px;
+
+    @media (max-width: 1024px) {
+        margin-bottom: 0px;
+    }
+
     .container {
-        width: 1200px;
         padding: 0px;
         .row {
-            .col-md-12 {
-                padding: 0px;
-                // .col-md-3:first-child {
-                //     padding-left: 0px;
-                // }
-                .col-md-3 {
-                    .card {
-                        background-color: $main-beige;
-                        height: auto;
-                        min-width: 235px;
-                        padding: 0px;
-                        text-align: center;
-                        border-radius: 2px;
-                        box-shadow: 0 1px 2px 0 rgba(123, 123, 123, 0.50);
-                        display: block;
-                        position: relative;
-                        .card-link {
-                            .planner-heading {
-                                background-color: $main-blue;
-                                color: white;
-                                text-align: center;
-                                margin: 0px;
-                                padding: 10px 0px;
-                                font-size: 1em;
-                                font-weight: 600;
-                                border-radius: 2px 2px 0px 0px;
-                            }
-                            .card-img {
-                                position: relative;
-                                float: left;
-                                width: 100%;
-                                height: auto;
-                                overflow: hidden;
-                                img {
-                                    width: 100%;
-                                }
-                            }
-                        }
-                    }
+            .col-md-3 {
+                @media (max-width: 1024px) {
+                    margin-bottom: 30px;
                 }
             }
         }
+    }
+
+    &__card {
+        background-color: $main-beige;
+        height: auto;
+        min-width: 235px;
+        padding: 0px;
+        text-align: center;
+        border-radius: 2px;
+        box-shadow: .8px .9px 3px grey;
+        display: block;
+        position: relative;
+        -webkit-transition: box-shadow .6s ease-out;
+
+        &:hover {
+            box-shadow: 1px 8px 20px grey;
+            -webkit-transition: box-shadow .6s ease-in;
+        }
+    }
+
+    &__card-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    &__card--heading {
+        background-color: $main-blue;
+        color: white;
+        text-align: center;
+        margin: 0px;
+        padding: 10px 0px;
+        font-size: 1em;
+        font-weight: 600;
+        border-radius: 2px 2px 0px 0px;
+    }
+
+    &__card--img {
+        min-height: 175px;
+        margin: 0 auto;
+        background-position: 50%;
+        background-size: cover;
+        overflow: hidden;
     }
 }
 
