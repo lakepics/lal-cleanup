@@ -4616,6 +4616,27 @@
                             "ui_off_text": "No"
                         },
                         {
+                            "key": "field_tsb_is_static_strip",
+                            "label": "Static Strip (no scroll)",
+                            "name": "static_strip",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Render images as a non-scrolling horizontal strip. Disables animation and hides the pause/play toggle.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ui_on_text": "Yes",
+                            "ui_off_text": "No"
+                        },
+                        {
                             "key": "field_tsb_is_variant",
                             "label": "Scroller Variant",
                             "name": "scroller_variant",

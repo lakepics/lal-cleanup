@@ -43,6 +43,7 @@ $cta_padding = trim( (string) $get_image_scroller_field('cta_padding') );
 $cta_letter_spacing = trim( (string) $get_image_scroller_field('cta_letter_spacing') );
 $scroll_speed = (int) $get_image_scroller_field('scroll_speed_seconds');
 $pause_on_hover = $get_image_scroller_field('pause_on_hover');
+$static_strip = (bool) $get_image_scroller_field('static_strip');
 $heading_font_family = strtolower( trim( (string) $get_image_scroller_field('heading_font_family') ) );
 $heading_font_weight = trim( (string) $get_image_scroller_field('heading_font_weight') );
 $heading_text_transform = strtolower( trim( (string) $get_image_scroller_field('heading_text_transform') ) );
@@ -259,6 +260,9 @@ if ( $use_scrollwork ) {
 }
 if ( $pause_on_hover ) {
     $section_class_list[] = 'section-image-scroller--pause-on-hover';
+}
+if ( $static_strip ) {
+    $section_class_list[] = 'section-image-scroller--static';
 }
 
 $section_styles = array(
@@ -930,6 +934,27 @@ if ( 'bottom' === $section_keyline_position ) {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
 }
+
+.section-image-scroller--static .section-image-scroller__viewport {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.section-image-scroller--static .section-image-scroller__viewport::-webkit-scrollbar {
+    display: none;
+}
+
+.section-image-scroller--static .section-image-scroller__track {
+    animation: none !important;
+    width: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.section-image-scroller--static .section-image-scroller__controls {
+    display: none;
+}
 </style>
 
 <?php $section_intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_strip_component_inline_styles( $section_intro ) : $section_intro; ?>
@@ -1031,8 +1056,8 @@ if ( 'bottom' === $section_keyline_position ) {
             <div class="section-image-scroller__viewport">
                 <?php if ( 'variant-2-masonry' === $scroller_variant ) : ?>
                     <div class="section-image-scroller__masonry">
-                        <div class="section-image-scroller__masonry-row section-image-scroller__masonry-row--one section-image-scroller__track" style="animation-duration: <?php echo esc_attr( $scroll_speed ); ?>s;">
-                            <?php for ( $loop = 0; $loop < 2; $loop++ ) : ?>
+                        <div class="section-image-scroller__masonry-row section-image-scroller__masonry-row--one section-image-scroller__track"<?php echo $static_strip ? '' : ' style="animation-duration: ' . esc_attr( $scroll_speed ) . 's;"'; ?>>
+                            <?php for ( $loop = 0; $loop < ( $static_strip ? 1 : 2 ); $loop++ ) : ?>
                                 <?php foreach ( $masonry_row_one as $item ) : ?>
                                     <?php
                                     $item_style = array();
@@ -1058,8 +1083,8 @@ if ( 'bottom' === $section_keyline_position ) {
                             <?php endfor; ?>
                         </div>
 
-                        <div class="section-image-scroller__masonry-row section-image-scroller__masonry-row--two section-image-scroller__track" style="animation-duration: <?php echo esc_attr( $scroll_speed ); ?>s;">
-                            <?php for ( $loop = 0; $loop < 2; $loop++ ) : ?>
+                        <div class="section-image-scroller__masonry-row section-image-scroller__masonry-row--two section-image-scroller__track"<?php echo $static_strip ? '' : ' style="animation-duration: ' . esc_attr( $scroll_speed ) . 's;"'; ?>>
+                            <?php for ( $loop = 0; $loop < ( $static_strip ? 1 : 2 ); $loop++ ) : ?>
                                 <?php foreach ( $masonry_row_two as $item ) : ?>
                                     <?php
                                     $item_style = array();
@@ -1086,8 +1111,8 @@ if ( 'bottom' === $section_keyline_position ) {
                         </div>
                     </div>
                 <?php else : ?>
-                    <div class="section-image-scroller__track" style="animation-duration: <?php echo esc_attr( $scroll_speed ); ?>s;">
-                        <?php for ( $loop = 0; $loop < 2; $loop++ ) : ?>
+                    <div class="section-image-scroller__track"<?php echo $static_strip ? '' : ' style="animation-duration: ' . esc_attr( $scroll_speed ) . 's;"'; ?>>
+                        <?php for ( $loop = 0; $loop < ( $static_strip ? 1 : 2 ); $loop++ ) : ?>
                             <?php if ( 'variant-3-framed' === $scroller_variant ) : ?>
                             <?php
                             $group_sizes    = array( 'short', 'compact', 'mid', 'tall' );
