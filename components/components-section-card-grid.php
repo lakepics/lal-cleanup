@@ -78,6 +78,9 @@ $cta_padding = trim( (string) $get_card_grid_field( 'cta_padding' ) );
 $cta_letter_spacing = trim( (string) $get_card_grid_field( 'cta_letter_spacing' ) );
 $post_grid_content = $get_card_grid_field( 'post_grid_content' );
 $post_content_max_width = trim( (string) $get_card_grid_field( 'post_content_max_width' ) );
+$post_content_font_family = strtolower( trim( (string) $get_card_grid_field( 'post_content_font_family' ) ) );
+$post_content_font_weight = trim( (string) $get_card_grid_field( 'post_content_font_weight' ) );
+$post_content_font_size = trim( (string) $get_card_grid_field( 'post_content_font_size' ) );
 $cards_data = $get_card_grid_field( 'cards' );
 $has_card_badges = false;
 if ( is_array( $cards_data ) ) {
@@ -98,6 +101,7 @@ $header_padding_left = trim( (string) $get_card_grid_field( 'header_padding_left
 $heading_font_family = strtolower( trim( (string) $get_card_grid_field( 'heading_font_family' ) ) );
 $heading_font_weight = trim( (string) $get_card_grid_field( 'heading_font_weight' ) );
 $heading_size = strtolower( trim( (string) $get_card_grid_field( 'heading_size' ) ) );
+$heading_font_size_custom = trim( (string) $get_card_grid_field( 'heading_font_size_custom' ) );
 $heading_text_transform = strtolower( trim( (string) $get_card_grid_field( 'heading_text_transform' ) ) );
 $subheading_font_family = strtolower( trim( (string) $get_card_grid_field( 'subheading_font_family' ) ) );
 $subheading_font_weight = trim( (string) $get_card_grid_field( 'subheading_font_weight' ) );
@@ -107,6 +111,7 @@ $eyebrow_color = trim( (string) $get_card_grid_field( 'eyebrow_color' ) );
 $eyebrow_font_family = strtolower( trim( (string) $get_card_grid_field( 'eyebrow_font_family' ) ) );
 $eyebrow_font_weight = trim( (string) $get_card_grid_field( 'eyebrow_font_weight' ) );
 $eyebrow_font_size = trim( (string) $get_card_grid_field( 'eyebrow_font_size' ) );
+$eyebrow_spacing_bottom = trim( (string) $get_card_grid_field( 'eyebrow_spacing_bottom' ) );
 $eyebrow_text_transform = strtolower( trim( (string) $get_card_grid_field( 'eyebrow_text_transform' ) ) );
 $eyebrow_background_color = trim( (string) $get_card_grid_field( 'eyebrow_background_color' ) );
 $eyebrow_border = trim( (string) $get_card_grid_field( 'eyebrow_border' ) );
@@ -140,6 +145,7 @@ $heading_font_family = $normalize_font_family( $heading_font_family );
 $subheading_font_family = $normalize_font_family( $subheading_font_family, $heading_font_family );
 $card_heading_font_family = $normalize_font_family( $card_heading_font_family, $subheading_font_family );
 $section_intro_font_family = $normalize_font_family( $section_intro_font_family, 'default', true );
+$post_content_font_family = $normalize_font_family( $post_content_font_family, $section_intro_font_family, true );
 $eyebrow_font_family = $normalize_font_family( $eyebrow_font_family, 'default', true );
 
 if ( ! in_array( $heading_font_family, array( 'haarlem', 'freight-big-pro' ), true ) ) {
@@ -150,7 +156,7 @@ if ( ! in_array( $heading_font_weight, array( '400', '500', '600', '700' ), true
     $heading_font_weight = 'freight-big-pro' === $heading_font_family ? '400' : '600';
 }
 
-if ( ! in_array( $heading_size, array( 'default', 'xxl' ), true ) ) {
+if ( ! in_array( $heading_size, array( 'default', 'medium', 'xxl' ), true ) ) {
     $heading_size = 'default';
 }
 
@@ -180,6 +186,10 @@ if ( ! in_array( $section_intro_font_family, array( 'default', 'haarlem', 'freig
 
 if ( ! in_array( $section_intro_font_weight, array( '400', '500', '600', '700' ), true ) ) {
     $section_intro_font_weight = '400';
+}
+
+if ( ! in_array( $post_content_font_weight, array( '400', '500', '600', '700' ), true ) ) {
+    $post_content_font_weight = $section_intro_font_weight;
 }
 
 if ( ! in_array( $eyebrow_font_family, array( 'default', 'haarlem', 'freight-big-pro' ), true ) ) {
@@ -224,6 +234,11 @@ $section_intro_font_stack = 'freight-big-pro' === $section_intro_font_family
     : ( 'haarlem' === $section_intro_font_family
         ? 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)'
         : 'var(--lacc-type-family-ui, Arial, Helvetica, sans-serif)' );
+$post_content_font_stack = 'freight-big-pro' === $post_content_font_family
+    ? 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)'
+    : ( 'haarlem' === $post_content_font_family
+        ? 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)'
+        : 'var(--lacc-type-family-ui, Arial, Helvetica, sans-serif)' );
 $eyebrow_font_stack = 'freight-big-pro' === $eyebrow_font_family
     ? 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)'
     : ( 'haarlem' === $eyebrow_font_family ? 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)' : 'inherit' );
@@ -246,14 +261,17 @@ if ( is_page( 'flex' ) && 'freight-big-pro' === $subheading_font_family ) {
 $default_surface_gradient = function_exists( 'lacc_get_default_surface_gradient' ) ? lacc_get_default_surface_gradient() : 'linear-gradient(180deg, rgba(246,243,237,0.92) 0%, rgba(255,255,255,0.92) 100%)';
 $section_intro_max_width = $section_intro_max_width ?: '100%';
 $section_intro_font_size = $section_intro_font_size ?: '16px';
+$post_content_font_size = $post_content_font_size ?: $section_intro_font_size;
 $heading_max_width = $heading_max_width ?: '100%';
-$heading_size_value = 'xxl' === $heading_size ? 'clamp(36px, 4.8vw, 68px)' : 'clamp(40px, 4.8vw, 58px)';
-$heading_line_height_value = 'xxl' === $heading_size ? '.98' : '1.05';
+$heading_size_value = 'xxl' === $heading_size ? 'clamp(36px, 4.8vw, 68px)' : ( 'medium' === $heading_size ? 'clamp(30px, 3.6vw, 44px)' : 'clamp(40px, 4.8vw, 58px)' );
+$heading_size_value = $heading_font_size_custom ?: $heading_size_value;
+$heading_line_height_value = 'xxl' === $heading_size ? '.98' : ( 'medium' === $heading_size ? '1.1' : '1.05' );
 $eyebrow_color = $eyebrow_color ?: '#b58a2d';
 $eyebrow_background_color = $eyebrow_background_color ?: 'rgba(246,243,237,0.92)';
 $eyebrow_border = $eyebrow_border ?: '1px solid rgba(181,138,45,0.32)';
 $eyebrow_padding = $eyebrow_padding ?: '0.42em 1.17em';
 $eyebrow_font_size = $eyebrow_font_size ?: '12px';
+$eyebrow_spacing_bottom = $eyebrow_spacing_bottom ?: '12px';
 $eyebrow_border_radius = $eyebrow_border_radius ?: '999px';
 
 $eyebrow_preset_map = array(
@@ -373,8 +391,13 @@ $allowed_heading_html = array(
     'i' => array(),
     'em' => array(),
     'br' => array(),
+    'hr' => array(),
     'span' => array( 'class' => array() ),
 );
+$section_intro_output = $section_intro;
+if ( $section_intro && function_exists( 'lacc_strip_component_inline_styles' ) ) {
+    $section_intro_output = lacc_strip_component_inline_styles( $section_intro );
+}
 $section_button_style = in_array( $section_button_style, $allowed_button_styles, true ) ? $section_button_style : 'primary';
 $section_bottom_button_style = in_array( $section_bottom_button_style, $allowed_button_styles, true ) ? $section_bottom_button_style : 'secondary';
 $background_vertical_position = $background_vertical_position ?: 'center';
@@ -430,6 +453,9 @@ if ( 'locked-density' === $card_visual_system ) {
     $section_class_list[] = 'section-card-grid--visual-locked-density';
 }
 $section_class_list[] = 'section-card-grid--button-size-' . $button_size;
+if ( 'freight-big-pro' === $heading_font_family ) {
+    $section_class_list[] = 'section-card-grid--heading-freight';
+}
 
 $layout_class = 'section-card-grid__layout section-card-grid__layout--full';
 if ( 'container' === $container_type ) {
@@ -522,6 +548,9 @@ $section_styles = array(
     '--scg-intro-cta-justify:' . $intro_cta_justify,
     '--scg-bottom-cta-justify:' . $bottom_cta_justify,
     '--scg-bottom-cta-align:' . $section_bottom_button_alignment,
+    '--scg-post-font:' . $post_content_font_stack,
+    '--scg-post-weight:' . $post_content_font_weight,
+    '--scg-post-size:' . $post_content_font_size,
     '--scg-cta-font-size:' . $cta_text_size,
     '--scg-cta-padding:' . $cta_padding,
     '--scg-cta-letter-spacing:' . $cta_letter_spacing,
@@ -534,6 +563,7 @@ $section_styles = array(
     '--scg-eyebrow-font:' . $eyebrow_font_stack,
     '--scg-eyebrow-weight:' . $eyebrow_font_weight,
     '--scg-eyebrow-size:' . $eyebrow_font_size,
+    '--scg-eyebrow-spacing-bottom:' . $eyebrow_spacing_bottom,
     '--scg-eyebrow-transform:' . $eyebrow_text_transform,
     '--scg-eyebrow-bg:' . $eyebrow_background_color,
     '--scg-eyebrow-border:' . $eyebrow_border,
@@ -816,6 +846,16 @@ if ( 'bottom' === $section_keyline_position ) {
     width: 100%;
     max-width: var(--scg-post-content-max-width, 100%);
     margin: 3em auto 0;
+    font-family: var(--scg-post-font, var(--scg-intro-font, var(--lacc-type-family-ui, Arial, Helvetica, sans-serif)));
+    font-weight: var(--scg-post-weight, var(--scg-intro-weight, 400));
+    font-size: var(--scg-post-size, var(--scg-intro-size, 16px));
+    line-height: 1.72;
+}
+
+.section-card-grid__post-content p {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
 }
 
 .section-card-grid .season-tags {
@@ -1007,7 +1047,7 @@ if ( 'bottom' === $section_keyline_position ) {
 
 .section-card-grid__eyebrow {
     display: inline-block;
-    margin-bottom: 12px;
+    margin-bottom: var(--scg-eyebrow-spacing-bottom, 12px);
     letter-spacing: .11em;
     font-size: var(--scg-eyebrow-size, 12px);
     line-height: 1.2;
@@ -1129,7 +1169,7 @@ if ( 'bottom' === $section_keyline_position ) {
     width: fit-content;
     max-width: 100%;
     min-height: 30px;
-    margin: 0 0 12px;
+    margin: 0 0 var(--scg-eyebrow-spacing-bottom, 12px);
     padding: 6px 12px;
     border: var(--scg-eyebrow-border, 1px solid rgba(81,83,74,0.28));
     background: var(--scg-eyebrow-bg, transparent);
@@ -2178,11 +2218,16 @@ if ( 'bottom' === $section_keyline_position ) {
     letter-spacing: .04em;
     min-height: 0;
 }
+<?php if ( ! is_admin() ) : ?>
+.section-card-grid--heading-freight .section-card-grid__header h2 {
+    font-style: italic;
+}
+<?php endif; ?>
+
 </style>
 
-<?php $section_intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_strip_component_inline_styles( $section_intro ) : $section_intro; ?>
 <script>
-(function(){
+(function() {
     function initCarousel(wrap) {
         var slides = wrap.querySelectorAll('.section-card-grid__card-carousel-slide');
         var dots   = wrap.querySelectorAll('.section-card-grid__card-carousel-dot');

@@ -33,6 +33,7 @@ $subheading_font_weight = trim( (string) $get_video_hero_field('heading_font_wei
 $heading_text_transform = strtolower( trim( (string) $get_video_hero_field('heading_text_transform') ) );
 $heading_alignment = strtolower( trim( (string) $get_video_hero_field('heading_alignment') ) );
 $heading_max_width = trim( (string) $get_video_hero_field('heading_max_width') );
+$overlay_content_max_width = trim( (string) $get_video_hero_field('overlay_content_max_width') );
 $hero_heading_color = trim( (string) $get_video_hero_field('hero_heading_color') );
 $hero_subheading_color = trim( (string) $get_video_hero_field('hero_subheading_color') );
 $eyebrow_color = trim( (string) $get_video_hero_field('eyebrow_color') );
@@ -73,7 +74,7 @@ if ( ! in_array( $subheading_font_family, array( 'haarlem', 'freight-big-pro' ),
 }
 
 if ( ! in_array( $subheading_font_weight, array( '300', '400', '500', '600', '700' ), true ) ) {
-    $subheading_font_weight = '500';
+    $subheading_font_weight = '400';
 }
 
 if ( ! in_array( $heading_text_transform, array( 'capitalize', 'uppercase', 'none' ), true ) ) {
@@ -191,6 +192,7 @@ if ( isset( $eyebrow_preset_map[ $eyebrow_preset ] ) ) {
 $factoid_value_color = $factoid_value_color ?: 'var(--lacc-color-gold-soft)';
 $factoid_label_color = $factoid_label_color ?: 'rgba(246,243,237,0.78)';
 $heading_max_width = $heading_max_width ?: '100%';
+$overlay_content_max_width = $overlay_content_max_width ?: '980px';
 $allowed_button_sizes = array( 'large', 'normal', 'small' );
 if ( ! in_array( $button_size, $allowed_button_sizes, true ) ) {
     $button_size = 'normal';
@@ -339,6 +341,7 @@ $section_video_hero_styles = array(
     '--svh-title-max-width:' . $heading_max_width,
     '--svh-title-transform:' . $heading_text_transform,
     '--svh-title-align:' . $heading_alignment,
+    '--svh-content-max-width:' . $overlay_content_max_width,
     '--svh-subheading-color:' . $hero_subheading_color,
     '--svh-subheading-font:' . $subheading_font_stack,
     '--svh-subheading-weight:' . $subheading_font_weight,
@@ -364,6 +367,11 @@ $section_video_hero_styles = array(
 
 if ( $hero_background_image_url ) {
     $section_video_hero_styles[] = '--svh-media-image:url(' . esc_url_raw( $hero_background_image_url ) . ')';
+}
+
+$section_video_hero_classes = array( 'section-video-hero', 'section-video-hero--' . $hero_media_type );
+if ( 'freight-big-pro' === $subheading_font_family ) {
+    $section_video_hero_classes[] = 'section-video-hero--heading-freight';
 }
 ?>
 
@@ -487,7 +495,7 @@ if ( $hero_background_image_url ) {
 
 .section-video-hero .hero-slider-content {
     width: 100%;
-    max-width: 970px;
+    max-width: var(--svh-content-max-width, 980px);
     margin: 0 auto;
 }
 
@@ -507,7 +515,7 @@ if ( $hero_background_image_url ) {
 
 .section-video-hero .hero-slider-subheading {
     margin: 0 auto 28px;
-    max-width: 980px;
+    max-width: var(--svh-content-max-width, 980px);
     text-align: center;
 }
 
@@ -517,7 +525,6 @@ if ( $hero_background_image_url ) {
     color: var(--svh-subheading-color, rgba(246,243,237,0.82));
     font-family: var(--svh-subheading-font, var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)) !important;
     font-size: clamp(20px, 2.4vw, 34px);
-    font-style: italic;
     font-weight: var(--svh-subheading-weight, 500) !important;
     line-height: 1.35;
     text-align: center;
@@ -543,7 +550,7 @@ if ( $hero_background_image_url ) {
     justify-content: center;
     gap: 14px 20px;
     margin: 22px auto 26px;
-    max-width: 980px;
+    max-width: var(--svh-content-max-width, 980px);
 }
 
 .section-video-hero .hero-factoid {
@@ -871,9 +878,16 @@ if ( $hero_background_image_url ) {
         font-size: 28px;
     }
 }
+<?php if ( ! is_admin() ) : ?>
+.section-video-hero--heading-freight .hero-slider-subheading,
+.section-video-hero--heading-freight .hero-slider-subheading p,
+.section-video-hero--heading-freight .hero-slider-subheading li {
+    font-style: italic;
+}
+<?php endif; ?>
 </style>
 
-<div id="<?php echo esc_attr( $section_video_hero_id ); ?>" class="section-video-hero section-video-hero--<?php echo esc_attr( $hero_media_type ); ?>" style="<?php echo esc_attr( implode( ';', $section_video_hero_styles ) ); ?>;">
+<div id="<?php echo esc_attr( $section_video_hero_id ); ?>" class="<?php echo esc_attr( implode( ' ', $section_video_hero_classes ) ); ?>" style="<?php echo esc_attr( implode( ';', $section_video_hero_styles ) ); ?>;">
     <div class="vid-container-overflow">
         <?php if ( 'image' === $hero_media_type ) : ?>
             <div class="section-video-hero__media--image" aria-hidden="true"></div>

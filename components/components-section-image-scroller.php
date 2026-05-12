@@ -264,6 +264,9 @@ if ( $pause_on_hover ) {
 if ( $static_strip ) {
     $section_class_list[] = 'section-image-scroller--static';
 }
+if ( 'freight-big-pro' === $heading_font_family ) {
+    $section_class_list[] = 'section-image-scroller--heading-freight';
+}
 
 $section_styles = array(
     '--sis-heading-font:' . $heading_font_stack,
@@ -959,6 +962,11 @@ if ( 'bottom' === $section_keyline_position ) {
 .section-image-scroller--static .section-image-scroller__controls {
     display: none;
 }
+<?php if ( ! is_admin() ) : ?>
+.section-image-scroller--heading-freight h2 {
+    font-style: italic;
+}
+<?php endif; ?>
 </style>
 
 <?php $section_intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_strip_component_inline_styles( $section_intro ) : $section_intro; ?>

@@ -6,10 +6,21 @@
 
 <?php while ( have_posts() ) : the_post(); ?>
   <?php $has_blueheaders = have_rows('blueheaders'); ?>
+    <?php $page_sections = get_field('page_sections'); ?>
+    <?php $has_video_hero = false; ?>
+
+    <?php if ( is_array( $page_sections ) ) : ?>
+      <?php foreach ( $page_sections as $page_section ) : ?>
+        <?php if ( 'section_video_hero' === ( $page_section['acf_fc_layout'] ?? '' ) ) : ?>
+          <?php $has_video_hero = true; ?>
+          <?php break; ?>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    <?php endif; ?>
 
   <?php get_template_part('components/_subheader'); ?>
 
-  <?php if ( ! $has_blueheaders ) : ?>
+    <?php if ( ! $has_blueheaders && ! $has_video_hero ) : ?>
     <div class="header__heading">
       <div class="container">
         <div class="row">
@@ -26,6 +37,10 @@
   .section-video-hero *,
   .section-card-grid,
   .section-card-grid *,
+  .section-content-block,
+  .section-content-block *,
+  .section-card-repeater-grid,
+  .section-card-repeater-grid *,
   .section-image-scroller,
   .section-image-scroller *,
   .section-split-media,
@@ -43,8 +58,10 @@
       <?php $current_layout = get_row_layout(); ?>
       <?php if ( 'section_video_hero' === $current_layout ) : ?>
         <?php get_template_part('components/components', 'section-video-hero'); ?>
-      <?php elseif ( 'section_card_grid' === $current_layout ) : ?>
-        <?php get_template_part('components/components', 'section-card-grid'); ?>
+      <?php elseif ( 'section_content_block' === $current_layout ) : ?>
+        <?php get_template_part('components/components', 'section-content-block'); ?>
+      <?php elseif ( 'section_card_repeater_grid' === $current_layout ) : ?>
+        <?php get_template_part('components/components', 'section-card-repeater-grid'); ?>
       <?php elseif ( 'section_image_scroller' === $current_layout ) : ?>
         <?php get_template_part('components/components', 'section-image-scroller'); ?>
       <?php elseif ( 'section_split_media' === $current_layout ) : ?>

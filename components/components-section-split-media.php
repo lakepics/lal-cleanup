@@ -289,6 +289,9 @@ if ( 'about_band' === $split_media_variant && $about_emphasize_single_lane ) {
 if ( 'about_band' === $split_media_variant && 'blue_band' === $about_background_preset ) {
     $section_class_list[] = 'section-split-media--about-blue-band';
 }
+if ( 'freight-big-pro' === $heading_font_family ) {
+    $section_class_list[] = 'section-split-media--heading-freight';
+}
 
 // Handle section keyline borders
 $section_keyline_position = trim( (string) $get_split_media_field( 'section_keyline_position' ) );
@@ -834,6 +837,11 @@ $intro_output = function_exists( 'lacc_strip_component_inline_styles' ) ? lacc_s
         display: none;
     }
 }
+<?php if ( ! is_admin() ) : ?>
+.section-split-media--heading-freight .section-split-media__title {
+    font-style: italic;
+}
+<?php endif; ?>
 </style>
 
 <section id="<?php echo esc_attr( $section_id ); ?>" class="<?php echo esc_attr( implode( ' ', $section_class_list ) ); ?>" style="<?php echo esc_attr( implode( ';', $section_styles ) ); ?>">

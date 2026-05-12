@@ -2080,6 +2080,27 @@
                             "append": ""
                         },
                         {
+                            "key": "field_tsb_cb_eyebrow_spacing_bottom",
+                            "label": "Eyebrow Spacing Bottom",
+                            "name": "eyebrow_spacing_bottom",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "CSS margin-bottom value under the eyebrow treatment (for example: 12px, 0.75rem, 1em).",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "12px",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "12px",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_tsb_cb_eyebrow_bg",
                             "label": "Eyebrow Background",
                             "name": "eyebrow_background_color",
@@ -3258,7 +3279,7 @@
                             ]
                         },
                         {
-                            "key": "field_tsb_cb_tab_content",
+                            "key": "field_tsb_crg_tab_content",
                             "label": "Content",
                             "name": "",
                             "aria-label": "",
@@ -3276,7 +3297,7 @@
                             "selected": 0
                         },
                         {
-                            "key": "field_tsb_cb_eyebrow",
+                            "key": "field_tsb_crg_eyebrow",
                             "label": "Eyebrow",
                             "name": "section_eyebrow",
                             "aria-label": "",
@@ -3297,7 +3318,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_heading",
+                            "key": "field_tsb_crg_heading",
                             "label": "Heading",
                             "name": "section_heading",
                             "aria-label": "",
@@ -3319,7 +3340,7 @@
                             "rows": ""
                         },
                         {
-                            "key": "field_tsb_cb_intro",
+                            "key": "field_tsb_crg_intro",
                             "label": "Intro Copy",
                             "name": "section_intro",
                             "aria-label": "",
@@ -3340,7 +3361,7 @@
                             "delay": 0
                         },
                         {
-                            "key": "field_tsb_cb_tab_ctas",
+                            "key": "field_tsb_crg_tab_ctas",
                             "label": "CTAs & Extra Content",
                             "name": "",
                             "aria-label": "",
@@ -3358,7 +3379,7 @@
                             "selected": 0
                         },
                         {
-                            "key": "field_tsb_cb_button_label",
+                            "key": "field_tsb_crg_button_label",
                             "label": "Intro CTA Label",
                             "name": "section_button_label",
                             "aria-label": "",
@@ -3379,7 +3400,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_button_url",
+                            "key": "field_tsb_crg_button_url",
                             "label": "Intro CTA URL",
                             "name": "section_button_url",
                             "aria-label": "",
@@ -3397,7 +3418,7 @@
                             "placeholder": "https://example.com"
                         },
                         {
-                            "key": "field_tsb_cb_button_style",
+                            "key": "field_tsb_crg_button_style",
                             "label": "Intro CTA Style",
                             "name": "section_button_style",
                             "aria-label": "",
@@ -3431,7 +3452,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_button_alignment",
+                            "key": "field_tsb_crg_button_alignment",
                             "label": "Intro CTA Alignment",
                             "name": "section_button_alignment",
                             "aria-label": "",
@@ -3461,7 +3482,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_bottom_button_label",
+                            "key": "field_tsb_crg_bottom_button_label",
                             "label": "Bottom CTA Label",
                             "name": "section_bottom_button_label",
                             "aria-label": "",
@@ -3482,7 +3503,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_bottom_button_url",
+                            "key": "field_tsb_crg_bottom_button_url",
                             "label": "Bottom CTA URL",
                             "name": "section_bottom_button_url",
                             "aria-label": "",
@@ -3500,7 +3521,7 @@
                             "placeholder": "https://example.com"
                         },
                         {
-                            "key": "field_tsb_cb_bottom_button_style",
+                            "key": "field_tsb_crg_bottom_button_style",
                             "label": "Bottom CTA Style",
                             "name": "section_bottom_button_style",
                             "aria-label": "",
@@ -3534,7 +3555,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_bottom_button_alignment",
+                            "key": "field_tsb_crg_bottom_button_alignment",
                             "label": "Bottom CTA Alignment",
                             "name": "section_bottom_button_alignment",
                             "aria-label": "",
@@ -3564,7 +3585,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_heading_font",
+                            "key": "field_tsb_crg_heading_font",
                             "label": "Heading Font Family",
                             "name": "heading_font_family",
                             "aria-label": "",
@@ -3593,7 +3614,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_heading_weight",
+                            "key": "field_tsb_crg_heading_weight",
                             "label": "Heading Weight",
                             "name": "heading_font_weight",
                             "aria-label": "",
@@ -3624,7 +3645,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_heading_size",
+                            "key": "field_tsb_crg_heading_size",
                             "label": "Heading Size",
                             "name": "heading_size",
                             "aria-label": "",
@@ -3653,7 +3674,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_heading_font_size_custom",
+                            "key": "field_tsb_crg_heading_font_size_custom",
                             "label": "Heading Size Override",
                             "name": "heading_font_size_custom",
                             "aria-label": "",
@@ -3674,7 +3695,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_heading_text_transform",
+                            "key": "field_tsb_crg_heading_text_transform",
                             "label": "Heading Text Transform",
                             "name": "heading_text_transform",
                             "aria-label": "",
@@ -3703,7 +3724,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_heading_max_width",
+                            "key": "field_tsb_crg_heading_max_width",
                             "label": "Heading Max Width",
                             "name": "heading_max_width",
                             "aria-label": "",
@@ -3724,7 +3745,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_intro_font",
+                            "key": "field_tsb_crg_intro_font",
                             "label": "Intro Copy Font Family",
                             "name": "section_intro_font_family",
                             "aria-label": "",
@@ -3754,7 +3775,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_intro_weight",
+                            "key": "field_tsb_crg_intro_weight",
                             "label": "Intro Copy Weight",
                             "name": "section_intro_font_weight",
                             "aria-label": "",
@@ -3785,7 +3806,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_intro_size",
+                            "key": "field_tsb_crg_intro_size",
                             "label": "Intro Copy Size",
                             "name": "section_intro_font_size",
                             "aria-label": "",
@@ -3806,7 +3827,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_tab_eyebrow",
+                            "key": "field_tsb_crg_tab_eyebrow",
                             "label": "Eyebrow",
                             "name": "",
                             "aria-label": "",
@@ -3824,7 +3845,7 @@
                             "selected": 0
                         },
                         {
-                            "key": "field_tsb_cb_eyebrow_text_transform",
+                            "key": "field_tsb_crg_eyebrow_text_transform",
                             "label": "Eyebrow Text Transform",
                             "name": "eyebrow_text_transform",
                             "aria-label": "",
@@ -3853,7 +3874,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_eyebrow_preset",
+                            "key": "field_tsb_crg_eyebrow_preset",
                             "label": "Eyebrow Preset",
                             "name": "eyebrow_preset",
                             "aria-label": "",
@@ -3882,7 +3903,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_eyebrow_color",
+                            "key": "field_tsb_crg_eyebrow_color",
                             "label": "Eyebrow Color",
                             "name": "eyebrow_color",
                             "aria-label": "",
@@ -3903,7 +3924,7 @@
                             "show_color_wheel": true
                         },
                         {
-                            "key": "field_tsb_cb_eyebrow_font",
+                            "key": "field_tsb_crg_eyebrow_font",
                             "label": "Eyebrow Font Face",
                             "name": "eyebrow_font_family",
                             "aria-label": "",
@@ -3933,7 +3954,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_eyebrow_weight",
+                            "key": "field_tsb_crg_eyebrow_weight",
                             "label": "Eyebrow Font Weight",
                             "name": "eyebrow_font_weight",
                             "aria-label": "",
@@ -3964,7 +3985,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_eyebrow_size",
+                            "key": "field_tsb_crg_eyebrow_size",
                             "label": "Eyebrow Font Size",
                             "name": "eyebrow_font_size",
                             "aria-label": "",
@@ -3985,7 +4006,28 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_eyebrow_bg",
+                            "key": "field_tsb_crg_eyebrow_spacing_bottom",
+                            "label": "Eyebrow Spacing Bottom",
+                            "name": "eyebrow_spacing_bottom",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "CSS margin-bottom value under the eyebrow treatment (for example: 12px, 0.75rem, 1em).",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "12px",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "12px",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_crg_eyebrow_bg",
                             "label": "Eyebrow Background",
                             "name": "eyebrow_background_color",
                             "aria-label": "",
@@ -4006,7 +4048,7 @@
                             "show_color_wheel": true
                         },
                         {
-                            "key": "field_tsb_cb_eyebrow_border",
+                            "key": "field_tsb_crg_eyebrow_border",
                             "label": "Eyebrow Border",
                             "name": "eyebrow_border",
                             "aria-label": "",
@@ -4027,7 +4069,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_eyebrow_padding",
+                            "key": "field_tsb_crg_eyebrow_padding",
                             "label": "Eyebrow Padding",
                             "name": "eyebrow_padding",
                             "aria-label": "",
@@ -4048,7 +4090,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_eyebrow_radius",
+                            "key": "field_tsb_crg_eyebrow_radius",
                             "label": "Eyebrow Border Radius",
                             "name": "eyebrow_border_radius",
                             "aria-label": "",
@@ -4808,7 +4850,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_tab_layout",
+                            "key": "field_tsb_crg_tab_layout",
                             "label": "Section Layout & Background",
                             "name": "",
                             "aria-label": "",
@@ -4826,7 +4868,7 @@
                             "selected": 0
                         },
                         {
-                            "key": "field_tsb_cb_section_anchor_id",
+                            "key": "field_tsb_crg_section_anchor_id",
                             "label": "Section Anchor ID",
                             "name": "section_anchor_id",
                             "aria-label": "",
@@ -4846,7 +4888,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_align",
+                            "key": "field_tsb_crg_align",
                             "label": "Content Alignment",
                             "name": "content_alignment",
                             "aria-label": "",
@@ -4876,7 +4918,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_container",
+                            "key": "field_tsb_crg_container",
                             "label": "Container Type",
                             "name": "container_type",
                             "aria-label": "",
@@ -4905,7 +4947,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_bg_color",
+                            "key": "field_tsb_crg_bg_color",
                             "label": "Background Color",
                             "name": "background_color",
                             "aria-label": "",
@@ -4926,7 +4968,7 @@
                             "show_color_wheel": true
                         },
                         {
-                            "key": "field_tsb_cb_bg_image",
+                            "key": "field_tsb_crg_bg_image",
                             "label": "Background Image",
                             "name": "background_image",
                             "aria-label": "",
@@ -4952,7 +4994,7 @@
                             "preview_size": "medium"
                         },
                         {
-                            "key": "field_tsb_cb_bg_gradient",
+                            "key": "field_tsb_crg_bg_gradient",
                             "label": "Background Gradient",
                             "name": "background_gradient",
                             "aria-label": "",
@@ -4973,7 +5015,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_bg_vertical",
+                            "key": "field_tsb_crg_bg_vertical",
                             "label": "Background Vertical Position",
                             "name": "background_vertical_position",
                             "aria-label": "",
@@ -4994,7 +5036,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_bg_parallax",
+                            "key": "field_tsb_crg_bg_parallax",
                             "label": "Enable Background Parallax",
                             "name": "background_parallax",
                             "aria-label": "",
@@ -5015,7 +5057,7 @@
                             "ui_off_text": "Off"
                         },
                         {
-                            "key": "field_tsb_cb_scrollwork",
+                            "key": "field_tsb_crg_scrollwork",
                             "label": "Use Scrollwork",
                             "name": "use_scrollwork",
                             "aria-label": "",
@@ -5036,7 +5078,7 @@
                             "ui_off_text": "No"
                         },
                         {
-                            "key": "field_tsb_cb_scrollwork_side",
+                            "key": "field_tsb_crg_scrollwork_side",
                             "label": "Scrollwork Side",
                             "name": "scrollwork_side",
                             "aria-label": "",
@@ -5065,7 +5107,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_scrollwork_color",
+                            "key": "field_tsb_crg_scrollwork_color",
                             "label": "Scrollwork Color",
                             "name": "scrollwork_color",
                             "aria-label": "",
@@ -5086,7 +5128,7 @@
                             "show_color_wheel": true
                         },
                         {
-                            "key": "field_tsb_cb_section_classes",
+                            "key": "field_tsb_crg_section_classes",
                             "label": "Extra Section Classes",
                             "name": "section_classes",
                             "aria-label": "",
@@ -5107,7 +5149,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_padding_top",
+                            "key": "field_tsb_crg_padding_top",
                             "label": "Padding Top",
                             "name": "padding_top",
                             "aria-label": "",
@@ -5128,7 +5170,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_padding_bottom",
+                            "key": "field_tsb_crg_padding_bottom",
                             "label": "Padding Bottom",
                             "name": "padding_bottom",
                             "aria-label": "",
@@ -5149,7 +5191,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_keyline_position",
+                            "key": "field_tsb_crg_keyline_position",
                             "label": "Section Keyline",
                             "name": "section_keyline_position",
                             "aria-label": "",
@@ -5179,7 +5221,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_cb_keyline_color",
+                            "key": "field_tsb_crg_keyline_color",
                             "label": "Keyline Color",
                             "name": "section_keyline_color",
                             "aria-label": "",
@@ -5200,7 +5242,7 @@
                             "show_color_wheel": true
                         },
                         {
-                            "key": "field_tsb_cb_is_full_width",
+                            "key": "field_tsb_crg_is_full_width",
                             "label": "Full Width Section",
                             "name": "is_full_width",
                             "aria-label": "",
@@ -5220,7 +5262,7 @@
                             "ui_off_text": ""
                         },
                         {
-                            "key": "field_tsb_cb_section_intro_max_width",
+                            "key": "field_tsb_crg_section_intro_max_width",
                             "label": "Intro Max Width",
                             "name": "section_intro_max_width",
                             "aria-label": "",
@@ -5240,7 +5282,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_section_heading_color",
+                            "key": "field_tsb_crg_section_heading_color",
                             "label": "Section Heading Color",
                             "name": "section_heading_color",
                             "aria-label": "",
@@ -5261,7 +5303,7 @@
                             "show_color_wheel": true
                         },
                         {
-                            "key": "field_tsb_cb_tab_header",
+                            "key": "field_tsb_crg_tab_header",
                             "label": "Header Box",
                             "name": "",
                             "aria-label": "",
@@ -5279,7 +5321,7 @@
                             "selected": 0
                         },
                         {
-                            "key": "field_tsb_cb_header_bg",
+                            "key": "field_tsb_crg_header_bg",
                             "label": "Header Box Background",
                             "name": "header_background_color",
                             "aria-label": "",
@@ -5300,7 +5342,7 @@
                             "show_color_wheel": true
                         },
                         {
-                            "key": "field_tsb_cb_header_width_actual",
+                            "key": "field_tsb_crg_header_width_actual",
                             "label": "Header Box Width",
                             "name": "header_width",
                             "aria-label": "",
@@ -5321,7 +5363,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_header_width",
+                            "key": "field_tsb_crg_header_width",
                             "label": "Header Box Max Width",
                             "name": "header_max_width",
                             "aria-label": "",
@@ -5342,7 +5384,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_header_pad_top",
+                            "key": "field_tsb_crg_header_pad_top",
                             "label": "Header Padding Top",
                             "name": "header_padding_top",
                             "aria-label": "",
@@ -5363,7 +5405,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_header_pad_right",
+                            "key": "field_tsb_crg_header_pad_right",
                             "label": "Header Padding Right",
                             "name": "header_padding_right",
                             "aria-label": "",
@@ -5384,7 +5426,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_header_pad_bottom",
+                            "key": "field_tsb_crg_header_pad_bottom",
                             "label": "Header Padding Bottom",
                             "name": "header_padding_bottom",
                             "aria-label": "",
@@ -5405,7 +5447,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_header_pad_left",
+                            "key": "field_tsb_crg_header_pad_left",
                             "label": "Header Padding Left",
                             "name": "header_padding_left",
                             "aria-label": "",
@@ -5426,7 +5468,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_cb_intro_spacing_bottom",
+                            "key": "field_tsb_crg_intro_spacing_bottom",
                             "label": "Padding Below Intro Copy",
                             "name": "section_intro_spacing_bottom",
                             "aria-label": "",
@@ -9779,5 +9821,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1778619767
+    "modified": 1778620539
 }

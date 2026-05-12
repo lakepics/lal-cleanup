@@ -1,11 +1,30 @@
 
 <?php
 
-// Render optional blue header rows from ACF repeater.
-if ( have_rows('blueheaders') ) :
+$blueheaders = get_field('blueheaders');
+$has_blueheader_content = false;
+
+if ( is_array( $blueheaders ) ) {
+    foreach ( $blueheaders as $blueheader ) {
+        $heading = trim( (string) ( $blueheader['heading'] ?? '' ) );
+        $subheading = trim( (string) ( $blueheader['subheading'] ?? '' ) );
+
+        if ( '' !== $heading || '' !== $subheading ) {
+            $has_blueheader_content = true;
+            break;
+        }
+    }
+}
+
+// Render optional blue header rows from ACF repeater when content exists.
+if ( $has_blueheader_content && have_rows('blueheaders') ) :
     while ( have_rows('blueheaders') ) : the_row();
         $bheader = trim( (string) get_sub_field('heading') );
         $bsubheader = trim( (string) get_sub_field('subheading') );
+
+        if ( '' === $bheader && '' === $bsubheader ) {
+            continue;
+        }
 ?>
 <div class="header__heading">
     <div class="container">
