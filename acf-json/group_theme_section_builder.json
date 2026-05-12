@@ -3273,7 +3273,7 @@
                             },
                             "placement": "top",
                             "endpoint": 0,
-                            "selected": 1
+                            "selected": 0
                         },
                         {
                             "key": "field_tsb_cb_eyebrow",
@@ -9779,5 +9779,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1778619080
+    "modified": 1778619372
 }
