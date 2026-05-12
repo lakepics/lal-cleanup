@@ -73,8 +73,6 @@ $background_color = $background_color ?: '#f6f3ed';
 $background_vertical_position = $background_vertical_position ?: 'center';
 $scrollwork_color = $scrollwork_color ?: '#8DC5DB';
 $media_min_height = $media_min_height ?: 'clamp(460px, 52vw, 760px)';
-$button_label = $button_label ?: 'Explore Gallery Direction';
-$button_url = $button_url ?: home_url( '/gallery/' );
 
 if ( $is_library_demo ) {
     $section_eyebrow = $section_eyebrow ?: 'New Section Pattern';
@@ -83,6 +81,8 @@ if ( $is_library_demo ) {
         : 'Photography on the right — overlapping collage with reversible layout'
     );
     $section_intro = $section_intro ?: '<p>This pattern merges the clearer content structure from the split-feature sections with the more atmospheric image treatment from the collage demo. The left side holds eyebrow, heading, copy, and CTA. The right side becomes a framed collage stage that can be flipped via the image_position setting.</p>';
+    $button_label = $button_label ?: 'Explore Gallery Direction';
+    $button_url = $button_url ?: home_url( '/gallery/' );
 }
 
 if ( ! $section_heading ) {
