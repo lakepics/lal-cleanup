@@ -3258,7 +3258,7 @@
                             ]
                         },
                         {
-                            "key": "field_tsb_crg_tab_heading_content",
+                            "key": "field_tsb_cb_tab_content",
                             "label": "Content",
                             "name": "",
                             "aria-label": "",
@@ -3340,7 +3340,7 @@
                             "delay": 0
                         },
                         {
-                            "key": "field_tsb_crg_tab_heading_ctas",
+                            "key": "field_tsb_cb_tab_ctas",
                             "label": "CTAs & Extra Content",
                             "name": "",
                             "aria-label": "",
@@ -3806,7 +3806,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_tsb_crg_tab_heading_eyebrow",
+                            "key": "field_tsb_cb_tab_eyebrow",
                             "label": "Eyebrow",
                             "name": "",
                             "aria-label": "",
@@ -4177,26 +4177,6 @@
                             "placeholder": ".04em",
                             "prepend": "",
                             "append": ""
-                        },
-                        {
-                            "key": "field_tsb_crg_is_full_width",
-                            "label": "Full Width Section",
-                            "name": "is_full_width",
-                            "aria-label": "",
-                            "type": "true_false",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 0,
-                            "ui": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": ""
                         },
                         {
                             "key": "field_tsb_crg_enable_card_hover_effect",
@@ -4828,7 +4808,7 @@
                             "save_options": 0
                         },
                         {
-                            "key": "field_tsb_crg_tab_layout",
+                            "key": "field_tsb_cb_tab_layout",
                             "label": "Section Layout & Background",
                             "name": "",
                             "aria-label": "",
@@ -4896,6 +4876,350 @@
                             "save_options": 0
                         },
                         {
+                            "key": "field_tsb_cb_container",
+                            "label": "Container Type",
+                            "name": "container_type",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "container": "Container",
+                                "container-fluid": "Container Fluid"
+                            },
+                            "default_value": "container",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_cb_bg_color",
+                            "label": "Background Color",
+                            "name": "background_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 1,
+                            "return_format": "string",
+                            "custom_palette_source": "",
+                            "palette_colors": "",
+                            "show_color_wheel": true
+                        },
+                        {
+                            "key": "field_tsb_cb_bg_image",
+                            "label": "Background Image",
+                            "name": "background_image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0,
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_tsb_cb_bg_gradient",
+                            "label": "Background Gradient",
+                            "name": "background_gradient",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional CSS gradient for the section background, such as linear-gradient(180deg, rgba(36,49,39,0.92) 0%, rgba(27,36,29,0.92) 100%).",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "linear-gradient(180deg, rgba(36,49,39,0.92) 0%, rgba(27,36,29,0.92) 100%)",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_cb_bg_vertical",
+                            "label": "Background Vertical Position",
+                            "name": "background_vertical_position",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional vertical position for the background image, such as top, center, bottom, or 30%.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "center",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "center",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_cb_bg_parallax",
+                            "label": "Enable Background Parallax",
+                            "name": "background_parallax",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Uses fixed background attachment for a simple parallax effect.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ui_on_text": "On",
+                            "ui_off_text": "Off"
+                        },
+                        {
+                            "key": "field_tsb_cb_scrollwork",
+                            "label": "Use Scrollwork",
+                            "name": "use_scrollwork",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "10",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ui_on_text": "Yes",
+                            "ui_off_text": "No"
+                        },
+                        {
+                            "key": "field_tsb_cb_scrollwork_side",
+                            "label": "Scrollwork Side",
+                            "name": "scrollwork_side",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "10",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right"
+                            },
+                            "default_value": "left",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_cb_scrollwork_color",
+                            "label": "Scrollwork Color",
+                            "name": "scrollwork_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "Optional color for the scrollwork ornament.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "#8DC5DB",
+                            "enable_opacity": 1,
+                            "return_format": "string",
+                            "custom_palette_source": "",
+                            "palette_colors": "",
+                            "show_color_wheel": true
+                        },
+                        {
+                            "key": "field_tsb_cb_section_classes",
+                            "label": "Extra Section Classes",
+                            "name": "section_classes",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "optional custom classes",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_cb_padding_top",
+                            "label": "Padding Top",
+                            "name": "padding_top",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "60px",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_cb_padding_bottom",
+                            "label": "Padding Bottom",
+                            "name": "padding_bottom",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "60px",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_cb_keyline_position",
+                            "label": "Section Keyline",
+                            "name": "section_keyline_position",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Optional 1px divider line at the top or bottom of the section.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "": "None",
+                                "top": "Top",
+                                "bottom": "Bottom"
+                            },
+                            "default_value": false,
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_cb_keyline_color",
+                            "label": "Keyline Color",
+                            "name": "section_keyline_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "Optional color for the 1px section keyline.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "enable_opacity": 0,
+                            "return_format": "string",
+                            "custom_palette_source": "",
+                            "palette_colors": "",
+                            "show_color_wheel": true
+                        },
+                        {
+                            "key": "field_tsb_cb_is_full_width",
+                            "label": "Full Width Section",
+                            "name": "is_full_width",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
                             "key": "field_tsb_cb_section_intro_max_width",
                             "label": "Intro Max Width",
                             "name": "section_intro_max_width",
@@ -4937,331 +5261,7 @@
                             "show_color_wheel": true
                         },
                         {
-                            "key": "field_tsb_crg_container",
-                            "label": "Container Type",
-                            "name": "container_type",
-                            "aria-label": "",
-                            "type": "select",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "20",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "container": "Container",
-                                "container-fluid": "Container Fluid"
-                            },
-                            "default_value": "container",
-                            "return_format": "value",
-                            "multiple": 0,
-                            "allow_null": 0,
-                            "allow_in_bindings": 0,
-                            "ui": 1,
-                            "ajax": 0,
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
-                        },
-                        {
-                            "key": "field_tsb_crg_bg_color",
-                            "label": "Background Color",
-                            "name": "background_color",
-                            "aria-label": "",
-                            "type": "color_picker",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "20",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "enable_opacity": 1,
-                            "return_format": "string",
-                            "custom_palette_source": "",
-                            "palette_colors": "",
-                            "show_color_wheel": true
-                        },
-                        {
-                            "key": "field_tsb_crg_bg_image",
-                            "label": "Background Image",
-                            "name": "background_image",
-                            "aria-label": "",
-                            "type": "image",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "20",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "array",
-                            "library": "all",
-                            "min_width": "",
-                            "min_height": "",
-                            "min_size": "",
-                            "max_width": "",
-                            "max_height": "",
-                            "max_size": "",
-                            "mime_types": "",
-                            "allow_in_bindings": 0,
-                            "preview_size": "medium"
-                        },
-                        {
-                            "key": "field_tsb_crg_bg_gradient",
-                            "label": "Background Gradient",
-                            "name": "background_gradient",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "Optional CSS gradient for the section background, such as linear-gradient(180deg, rgba(36,49,39,0.92) 0%, rgba(27,36,29,0.92) 100%).",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "40",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "linear-gradient(180deg, rgba(36,49,39,0.92) 0%, rgba(27,36,29,0.92) 100%)",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_tsb_crg_bg_vertical",
-                            "label": "Background Vertical Position",
-                            "name": "background_vertical_position",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "Optional vertical position for the background image, such as top, center, bottom, or 30%.",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "20",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "center",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "center",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_tsb_crg_bg_parallax",
-                            "label": "Enable Background Parallax",
-                            "name": "background_parallax",
-                            "aria-label": "",
-                            "type": "true_false",
-                            "instructions": "Uses fixed background attachment for a simple parallax effect.",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "20",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 0,
-                            "allow_in_bindings": 0,
-                            "ui": 1,
-                            "ui_on_text": "On",
-                            "ui_off_text": "Off"
-                        },
-                        {
-                            "key": "field_tsb_crg_scrollwork",
-                            "label": "Use Scrollwork",
-                            "name": "use_scrollwork",
-                            "aria-label": "",
-                            "type": "true_false",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "10",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 0,
-                            "allow_in_bindings": 0,
-                            "ui": 1,
-                            "ui_on_text": "Yes",
-                            "ui_off_text": "No"
-                        },
-                        {
-                            "key": "field_tsb_crg_scrollwork_side",
-                            "label": "Scrollwork Side",
-                            "name": "scrollwork_side",
-                            "aria-label": "",
-                            "type": "select",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "10",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "left": "Left",
-                                "right": "Right"
-                            },
-                            "default_value": "left",
-                            "return_format": "value",
-                            "multiple": 0,
-                            "allow_null": 0,
-                            "allow_in_bindings": 0,
-                            "ui": 1,
-                            "ajax": 0,
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
-                        },
-                        {
-                            "key": "field_tsb_crg_scrollwork_color",
-                            "label": "Scrollwork Color",
-                            "name": "scrollwork_color",
-                            "aria-label": "",
-                            "type": "color_picker",
-                            "instructions": "Optional color for the scrollwork ornament.",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "20",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "#8DC5DB",
-                            "enable_opacity": 1,
-                            "return_format": "string",
-                            "custom_palette_source": "",
-                            "palette_colors": "",
-                            "show_color_wheel": true
-                        },
-                        {
-                            "key": "field_tsb_crg_section_classes",
-                            "label": "Extra Section Classes",
-                            "name": "section_classes",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "optional custom classes",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_tsb_crg_padding_top",
-                            "label": "Padding Top",
-                            "name": "padding_top",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "25",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "60px",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_tsb_crg_padding_bottom",
-                            "label": "Padding Bottom",
-                            "name": "padding_bottom",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "25",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "allow_in_bindings": 0,
-                            "placeholder": "60px",
-                            "prepend": "",
-                            "append": ""
-                        },
-                        {
-                            "key": "field_tsb_crg_keyline_position",
-                            "label": "Section Keyline",
-                            "name": "section_keyline_position",
-                            "aria-label": "",
-                            "type": "select",
-                            "instructions": "Optional 1px divider line at the top or bottom of the section.",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "25",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "": "None",
-                                "top": "Top",
-                                "bottom": "Bottom"
-                            },
-                            "default_value": false,
-                            "return_format": "value",
-                            "multiple": 0,
-                            "allow_null": 0,
-                            "allow_in_bindings": 0,
-                            "ui": 1,
-                            "ajax": 0,
-                            "placeholder": "",
-                            "create_options": 0,
-                            "save_options": 0
-                        },
-                        {
-                            "key": "field_tsb_crg_keyline_color",
-                            "label": "Keyline Color",
-                            "name": "section_keyline_color",
-                            "aria-label": "",
-                            "type": "color_picker",
-                            "instructions": "Optional color for the 1px section keyline.",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "25",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "enable_opacity": 0,
-                            "return_format": "string",
-                            "custom_palette_source": "",
-                            "palette_colors": "",
-                            "show_color_wheel": true
-                        },
-                        {
-                            "key": "field_tsb_crg_tab_heading_header",
+                            "key": "field_tsb_cb_tab_header",
                             "label": "Header Box",
                             "name": "",
                             "aria-label": "",
@@ -9779,5 +9779,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1778619372
+    "modified": 1778619767
 }
