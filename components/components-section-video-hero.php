@@ -818,11 +818,11 @@ if ( 'freight-big-pro' === $subheading_font_family ) {
     border: var(--svh-eyebrow-border, 1px solid rgba(201,151,58,0.35));
     border-radius: var(--svh-eyebrow-radius, 3px);
     letter-spacing: .12em;
-    font-size: 12px;
+    font-size: var(--svh-eyebrow-size, 12px);
     line-height: 1.2;
     font-family: var(--svh-eyebrow-font, inherit);
     font-weight: var(--svh-eyebrow-weight, 700);
-    text-transform: uppercase;
+    text-transform: var(--svh-eyebrow-transform, uppercase);
     color: var(--svh-eyebrow-color, var(--lacc-color-gold-soft));
     background: var(--svh-eyebrow-bg, transparent);
 }

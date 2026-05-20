@@ -1485,6 +1485,35 @@
                             "append": ""
                         },
                         {
+                            "key": "field_tsb_cb_post_content_alignment",
+                            "label": "Post Content Alignment",
+                            "name": "post_content_alignment",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Align supplemental content below the card grid.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "center": "Center"
+                            },
+                            "default_value": "left",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
                             "key": "field_tsb_cb_post_content_font_family",
                             "label": "Supplemental Font Family",
                             "name": "post_content_font_family",
@@ -3581,6 +3610,77 @@
                             "ui": 1,
                             "ajax": 0,
                             "placeholder": "Inherit section alignment",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_crg_post_content",
+                            "label": "Supplemental Content",
+                            "name": "post_grid_content",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Optional content shown below the card grid.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 0,
+                            "delay": 0
+                        },
+                        {
+                            "key": "field_tsb_crg_post_content_max_width",
+                            "label": "Post Content Max Width",
+                            "name": "post_content_max_width",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional max-width for the content block that appears below the card grid. Use any CSS unit, such as 900px or 70rem.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "900px",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_crg_post_content_alignment",
+                            "label": "Post Content Alignment",
+                            "name": "post_content_alignment",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Align supplemental content below the card grid.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "center": "Center"
+                            },
+                            "default_value": "left",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
                             "create_options": 0,
                             "save_options": 0
                         },
@@ -7539,11 +7639,11 @@
                         },
                         {
                             "key": "field_tsb_sc_intro",
-                            "label": "Copy",
+                            "label": "Intro Copy",
                             "name": "section_intro",
                             "aria-label": "",
                             "type": "wysiwyg",
-                            "instructions": "",
+                            "instructions": "Rich-text content shown below the heading.",
                             "required": false,
                             "conditional_logic": false,
                             "wrapper": {
@@ -7551,7 +7651,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "tabs": "text",
+                            "tabs": "all",
                             "media_upload": 0,
                             "delay": 0,
                             "toolbar": "full",
@@ -7676,6 +7776,558 @@
                             "save_options": 0
                         },
                         {
+                            "key": "field_tsb_sc_tab_typography",
+                            "label": "Typography",
+                            "name": "",
+                            "aria-label": "",
+                            "type": "tab",
+                            "instructions": "Use these optional overrides to style the split collage heading, intro copy, eyebrow, and CTA without affecting other sections.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "placement": "top",
+                            "endpoint": 0,
+                            "selected": 0
+                        },
+                        {
+                            "key": "field_tsb_sc_heading_font",
+                            "label": "Heading Font Family",
+                            "name": "heading_font_family",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose the typeface for the main split collage heading.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "34",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "haarlem": "Haarlem",
+                                "freight-big-pro": "Freight Big Pro"
+                            },
+                            "default_value": "haarlem",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_sc_heading_weight",
+                            "label": "Heading Weight",
+                            "name": "heading_font_weight",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Set the weight for the main split collage heading.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "400": "Regular",
+                                "500": "Medium",
+                                "600": "Semibold",
+                                "700": "Bold"
+                            },
+                            "default_value": "400",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_sc_heading_color",
+                            "label": "Heading Color",
+                            "name": "section_heading_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "Optional color override for the split collage heading.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "#51534a",
+                            "enable_opacity": 1,
+                            "return_format": "string",
+                            "custom_palette_source": "",
+                            "palette_colors": "",
+                            "show_color_wheel": true
+                        },
+                        {
+                            "key": "field_tsb_sc_heading_size_custom",
+                            "label": "Heading Size Override",
+                            "name": "heading_font_size_custom",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional CSS font-size override for the heading, for example: 48px or clamp(32px, 4vw, 60px).",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "34",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "clamp(40px, 4.8vw, 66px)",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "clamp(32px, 4vw, 60px)",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_sc_heading_text_transform",
+                            "label": "Heading Text Transform",
+                            "name": "heading_text_transform",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Optional text transform for the main heading.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "capitalize": "Capitalize",
+                                "uppercase": "Uppercase",
+                                "none": "None"
+                            },
+                            "default_value": "none",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_sc_heading_max_width",
+                            "label": "Heading Max Width",
+                            "name": "heading_max_width",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional CSS max-width for the split collage heading.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "12ch",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "12ch",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_sc_intro_font",
+                            "label": "Intro Copy Font Family",
+                            "name": "section_intro_font_family",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose the typeface for the copy below the split collage heading.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "34",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "default": "Default Body",
+                                "haarlem": "Haarlem",
+                                "freight-big-pro": "Freight Big Pro"
+                            },
+                            "default_value": "freight-big-pro",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_sc_intro_weight",
+                            "label": "Intro Copy Weight",
+                            "name": "section_intro_font_weight",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Set the weight for the split collage intro copy.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "400": "Regular",
+                                "500": "Medium",
+                                "600": "Semibold",
+                                "700": "Bold"
+                            },
+                            "default_value": "400",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_sc_intro_size",
+                            "label": "Intro Copy Size",
+                            "name": "section_intro_font_size",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional CSS font-size for the split collage intro copy.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "clamp(19px, 2vw, 23px)",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "16px",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_sc_intro_max_width",
+                            "label": "Intro Copy Max Width",
+                            "name": "section_intro_max_width",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional CSS max-width for the intro copy block.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "34",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "36rem",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "36rem",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_sc_eyebrow_font",
+                            "label": "Eyebrow Font Face",
+                            "name": "eyebrow_font_family",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose the typeface for the eyebrow label.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "default": "Default",
+                                "haarlem": "Haarlem",
+                                "freight-big-pro": "Freight Big Pro"
+                            },
+                            "default_value": "haarlem",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_sc_eyebrow_weight",
+                            "label": "Eyebrow Font Weight",
+                            "name": "eyebrow_font_weight",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Set the weight for the eyebrow label.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "400": "Regular",
+                                "500": "Medium",
+                                "600": "Semibold",
+                                "700": "Bold"
+                            },
+                            "default_value": "400",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_sc_eyebrow_size",
+                            "label": "Eyebrow Font Size",
+                            "name": "eyebrow_font_size",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional CSS font-size for the eyebrow label.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "15px",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "15px",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_sc_eyebrow_transform",
+                            "label": "Eyebrow Text Transform",
+                            "name": "eyebrow_text_transform",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Optional text transform for the eyebrow label.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "capitalize": "Capitalize",
+                                "uppercase": "Uppercase",
+                                "none": "None"
+                            },
+                            "default_value": "capitalize",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 1,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_tsb_sc_eyebrow_color",
+                            "label": "Eyebrow Color",
+                            "name": "eyebrow_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "Optional text color for the eyebrow label.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "#f5b62b",
+                            "enable_opacity": 1,
+                            "return_format": "string",
+                            "custom_palette_source": "",
+                            "palette_colors": "",
+                            "show_color_wheel": true
+                        },
+                        {
+                            "key": "field_tsb_sc_eyebrow_bg",
+                            "label": "Eyebrow Background",
+                            "name": "eyebrow_background_color",
+                            "aria-label": "",
+                            "type": "color_picker",
+                            "instructions": "Optional background color for the eyebrow label.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "rgba(81, 83, 74, 0.94)",
+                            "enable_opacity": 1,
+                            "return_format": "string",
+                            "custom_palette_source": "",
+                            "palette_colors": "",
+                            "show_color_wheel": true
+                        },
+                        {
+                            "key": "field_tsb_sc_eyebrow_border",
+                            "label": "Eyebrow Border",
+                            "name": "eyebrow_border",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional full CSS border value, such as 2px solid #c9973a.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "34",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "2px solid #c9973a",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "2px solid #c9973a",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_sc_eyebrow_padding",
+                            "label": "Eyebrow Padding",
+                            "name": "eyebrow_padding",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional CSS padding for the eyebrow label.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "8px 18px",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "8px 18px",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_sc_eyebrow_radius",
+                            "label": "Eyebrow Border Radius",
+                            "name": "eyebrow_border_radius",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional CSS border-radius for the eyebrow label.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "32px",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "32px",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_sc_cta_text_size",
+                            "label": "CTA Text Size",
+                            "name": "cta_text_size",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional CSS font-size for the split collage CTA button.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "16px",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "16px",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_sc_cta_padding",
+                            "label": "CTA Padding",
+                            "name": "cta_padding",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional CSS padding for the split collage CTA button.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": ".85em 1.6em",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": ".85em 1.6em",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_tsb_sc_cta_letter_spacing",
+                            "label": "CTA Letter Spacing",
+                            "name": "cta_letter_spacing",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional CSS letter-spacing for the split collage CTA button.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "35",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": ".04em",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": ".04em",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
                             "key": "field_tsb_sc_tab_collage",
                             "label": "Collage Settings",
                             "name": "",
@@ -7796,11 +8448,11 @@
                         },
                         {
                             "key": "field_tsb_sc_media_min_height",
-                            "label": "Media Min Height",
+                            "label": "Media Max Height",
                             "name": "media_min_height",
                             "aria-label": "",
                             "type": "text",
-                            "instructions": "Sets the minimum height of the entire collage stage. Increase to give images more vertical room. Use a px value for a fixed floor (e.g. 680px) or clamp() for responsive scaling. Default: clamp(460px, 52vw, 760px).",
+                            "instructions": "Sets the maximum height of the entire collage stage. Use a px value for a fixed cap (e.g. 680px) or clamp() for responsive scaling. Default: clamp(460px, 52vw, 760px).",
                             "required": false,
                             "conditional_logic": false,
                             "wrapper": {

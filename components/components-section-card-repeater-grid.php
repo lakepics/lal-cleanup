@@ -6,7 +6,6 @@ $section_card_grid_override = array_merge(
     $section_card_repeater_override,
     array(
         'section_classes' => $card_repeater_classes,
-        'post_grid_content' => '',
     )
 );
 

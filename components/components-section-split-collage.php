@@ -36,6 +36,28 @@ $media_min_height = trim( (string) $get_split_collage_field( 'media_min_height' 
 $button_label = trim( (string) $get_split_collage_field( 'button_label' ) );
 $button_url = trim( (string) $get_split_collage_field( 'button_url' ) );
 $button_style = strtolower( trim( (string) $get_split_collage_field( 'button_style' ) ) );
+$heading_font_family = strtolower( trim( (string) $get_split_collage_field( 'heading_font_family' ) ) );
+$heading_font_weight = trim( (string) $get_split_collage_field( 'heading_font_weight' ) );
+$heading_font_size_custom = trim( (string) $get_split_collage_field( 'heading_font_size_custom' ) );
+$heading_text_transform = strtolower( trim( (string) $get_split_collage_field( 'heading_text_transform' ) ) );
+$heading_max_width = trim( (string) $get_split_collage_field( 'heading_max_width' ) );
+$section_heading_color = trim( (string) $get_split_collage_field( 'section_heading_color' ) );
+$section_intro_font_family = strtolower( trim( (string) $get_split_collage_field( 'section_intro_font_family' ) ) );
+$section_intro_font_weight = trim( (string) $get_split_collage_field( 'section_intro_font_weight' ) );
+$section_intro_font_size = trim( (string) $get_split_collage_field( 'section_intro_font_size' ) );
+$section_intro_max_width = trim( (string) $get_split_collage_field( 'section_intro_max_width' ) );
+$eyebrow_font_family = strtolower( trim( (string) $get_split_collage_field( 'eyebrow_font_family' ) ) );
+$eyebrow_font_weight = trim( (string) $get_split_collage_field( 'eyebrow_font_weight' ) );
+$eyebrow_font_size = trim( (string) $get_split_collage_field( 'eyebrow_font_size' ) );
+$eyebrow_text_transform = strtolower( trim( (string) $get_split_collage_field( 'eyebrow_text_transform' ) ) );
+$eyebrow_color = trim( (string) $get_split_collage_field( 'eyebrow_color' ) );
+$eyebrow_background_color = trim( (string) $get_split_collage_field( 'eyebrow_background_color' ) );
+$eyebrow_border = trim( (string) $get_split_collage_field( 'eyebrow_border' ) );
+$eyebrow_padding = trim( (string) $get_split_collage_field( 'eyebrow_padding' ) );
+$eyebrow_border_radius = trim( (string) $get_split_collage_field( 'eyebrow_border_radius' ) );
+$cta_text_size = trim( (string) $get_split_collage_field( 'cta_text_size' ) );
+$cta_padding = trim( (string) $get_split_collage_field( 'cta_padding' ) );
+$cta_letter_spacing = trim( (string) $get_split_collage_field( 'cta_letter_spacing' ) );
 $section_classes = trim( (string) $get_split_collage_field( 'section_classes' ) );
 
 if ( ! in_array( $content_alignment, array( 'left', 'center', 'right' ), true ) ) {
@@ -58,6 +80,48 @@ if ( ! in_array( $collage_variant, array( 'overlap-trio', 'portrait-stack' ), tr
     $collage_variant = 'overlap-trio';
 }
 
+$normalize_font_family = static function ( $font_family, $fallback = 'default' ) {
+    $allowed_font_families = array( 'default', 'haarlem', 'freight-big-pro' );
+
+    return in_array( $font_family, $allowed_font_families, true ) ? $font_family : $fallback;
+};
+
+$font_stack = static function ( $font_family, $default_stack ) {
+    if ( 'freight-big-pro' === $font_family ) {
+        return 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)';
+    }
+
+    if ( 'haarlem' === $font_family ) {
+        return 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)';
+    }
+
+    return $default_stack;
+};
+
+$heading_font_family = $normalize_font_family( $heading_font_family, 'haarlem' );
+$section_intro_font_family = $normalize_font_family( $section_intro_font_family, 'freight-big-pro' );
+$eyebrow_font_family = $normalize_font_family( $eyebrow_font_family, 'haarlem' );
+
+if ( ! in_array( $heading_font_weight, array( '400', '500', '600', '700' ), true ) ) {
+    $heading_font_weight = 'freight-big-pro' === $heading_font_family ? '400' : '400';
+}
+
+if ( ! in_array( $section_intro_font_weight, array( '400', '500', '600', '700' ), true ) ) {
+    $section_intro_font_weight = '400';
+}
+
+if ( ! in_array( $eyebrow_font_weight, array( '400', '500', '600', '700' ), true ) ) {
+    $eyebrow_font_weight = '400';
+}
+
+if ( ! in_array( $heading_text_transform, array( 'capitalize', 'uppercase', 'none' ), true ) ) {
+    $heading_text_transform = 'none';
+}
+
+if ( ! in_array( $eyebrow_text_transform, array( 'capitalize', 'uppercase', 'none' ), true ) ) {
+    $eyebrow_text_transform = 'capitalize';
+}
+
 $allowed_button_styles = array( 'primary', 'secondary', 'gold-text', 'ink', 'outline-ink', 'brown', 'light', 'outline', 'outline-dark', 'outline-gold' );
 if ( ! in_array( $button_style, $allowed_button_styles, true ) ) {
     $button_style = 'secondary';
@@ -72,7 +136,25 @@ $padding_bottom = $padding_bottom ?: '72px';
 $background_color = $background_color ?: '#f6f3ed';
 $background_vertical_position = $background_vertical_position ?: 'center';
 $scrollwork_color = $scrollwork_color ?: '#8DC5DB';
-$media_min_height = $media_min_height ?: 'clamp(460px, 52vw, 760px)';
+$media_max_height = $media_min_height ?: 'clamp(460px, 52vw, 760px)';
+$heading_font_size_custom = $heading_font_size_custom ?: 'clamp(40px, 4.8vw, 66px)';
+$heading_max_width = $heading_max_width ?: '12ch';
+$section_heading_color = $section_heading_color ?: '#51534a';
+$section_intro_font_size = $section_intro_font_size ?: 'clamp(19px, 2vw, 23px)';
+$section_intro_max_width = $section_intro_max_width ?: '36rem';
+$eyebrow_font_size = $eyebrow_font_size ?: '15px';
+$eyebrow_color = $eyebrow_color ?: '#f5b62b';
+$eyebrow_background_color = $eyebrow_background_color ?: 'transparent';
+$eyebrow_border = $eyebrow_border ?: '2px solid #c9973a';
+$eyebrow_padding = $eyebrow_padding ?: '8px 18px';
+$eyebrow_border_radius = $eyebrow_border_radius ?: '32px';
+$cta_text_size = $cta_text_size ?: '16px';
+$cta_padding = $cta_padding ?: '.85em 1.6em';
+$cta_letter_spacing = $cta_letter_spacing ?: '.04em';
+
+$heading_font_stack = $font_stack( $heading_font_family, 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)' );
+$section_intro_font_stack = $font_stack( $section_intro_font_family, 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)' );
+$eyebrow_font_stack = $font_stack( $eyebrow_font_family, 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)' );
 
 if ( $is_library_demo ) {
     $section_eyebrow = $section_eyebrow ?: 'New Section Pattern';
@@ -114,8 +196,30 @@ $section_styles = array(
     '--ssc-section-pad-bottom: ' . $padding_bottom,
     '--ssc-container-max: 1170px',
     '--ssc-content-max: 585px',
-    '--ssc-media-min-height: ' . $media_min_height,
+    '--ssc-media-max-height: ' . $media_max_height,
     '--ssc-scrollwork-color: ' . $scrollwork_color,
+    '--ssc-heading-font: ' . $heading_font_stack,
+    '--ssc-heading-weight: ' . $heading_font_weight,
+    '--ssc-heading-size: ' . $heading_font_size_custom,
+    '--ssc-heading-transform: ' . $heading_text_transform,
+    '--ssc-heading-max-width: ' . $heading_max_width,
+    '--ssc-heading-color: ' . $section_heading_color,
+    '--ssc-intro-font: ' . $section_intro_font_stack,
+    '--ssc-intro-weight: ' . $section_intro_font_weight,
+    '--ssc-intro-size: ' . $section_intro_font_size,
+    '--ssc-intro-max-width: ' . $section_intro_max_width,
+    '--ssc-eyebrow-font: ' . $eyebrow_font_stack,
+    '--ssc-eyebrow-weight: ' . $eyebrow_font_weight,
+    '--ssc-eyebrow-size: ' . $eyebrow_font_size,
+    '--ssc-eyebrow-transform: ' . $eyebrow_text_transform,
+    '--ssc-eyebrow-color: ' . $eyebrow_color,
+    '--ssc-eyebrow-bg: ' . $eyebrow_background_color,
+    '--ssc-eyebrow-border: ' . $eyebrow_border,
+    '--ssc-eyebrow-padding: ' . $eyebrow_padding,
+    '--ssc-eyebrow-radius: ' . $eyebrow_border_radius,
+    '--ssc-cta-font-size: ' . $cta_text_size,
+    '--ssc-cta-padding: ' . $cta_padding,
+    '--ssc-cta-letter-spacing: ' . $cta_letter_spacing,
 );
 
 if ( $background_gradient ) {
@@ -393,37 +497,49 @@ $section_class_list[] = 'section-split-collage--recipe-' . $active_recipe;
     width: fit-content;
     max-width: max-content;
     margin-bottom: 14px;
-    padding: 8px 18px;
-    border: 2px solid #c9973a;
-    border-radius: 32px;
-    background: rgba(81, 83, 74, 0.94);
-    color: #f5b62b;
-    font-family: var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif);
-    font-size: 15px;
-    font-weight: 400;
+    padding: var(--ssc-eyebrow-padding, 8px 18px);
+    border: var(--ssc-eyebrow-border, 2px solid #c9973a);
+    border-radius: var(--ssc-eyebrow-radius, 32px);
+    background: none;
+    background-color: var(--ssc-eyebrow-bg, rgba(81, 83, 74, 0.94)) !important;
+    color: var(--ssc-eyebrow-color, #f5b62b);
+    font-family: var(--ssc-eyebrow-font, var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif));
+    font-size: var(--ssc-eyebrow-size, 15px);
+    font-weight: var(--ssc-eyebrow-weight, 400);
     letter-spacing: .18em;
     line-height: 1.1;
-    text-transform: capitalize;
+    text-transform: var(--ssc-eyebrow-transform, capitalize);
 }
 
 .section-split-collage__title {
     margin: 0;
-    max-width: 12ch;
-    color: #51534a;
-    font-family: var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif);
-    font-size: clamp(40px, 4.8vw, 66px);
-    font-weight: 400;
+    max-width: var(--ssc-heading-max-width, 12ch);
+    color: var(--ssc-heading-color, #51534a);
+    font-family: var(--ssc-heading-font, var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif));
+    font-size: var(--ssc-heading-size, clamp(40px, 4.8vw, 66px));
+    font-weight: var(--ssc-heading-weight, 400);
     line-height: .98;
+    text-transform: var(--ssc-heading-transform, none);
 }
 
 .section-split-collage__copy,
 .section-split-collage__copy p {
     margin: 18px 0 0;
-    max-width: 36rem;
-    color: #51534a;
-    font-family: var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif);
-    font-size: clamp(19px, 2vw, 23px);
+    max-width: var(--ssc-intro-max-width, 36rem);
+    color: var(--ssc-heading-color, #51534a);
+    font-family: var(--ssc-intro-font, var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif));
+    font-size: var(--ssc-intro-size, clamp(19px, 2vw, 23px));
+    font-weight: var(--ssc-intro-weight, 400);
     line-height: 1.62;
+}
+
+.section-split-collage__title em,
+.section-split-collage__title i,
+.section-split-collage__copy em,
+.section-split-collage__copy i,
+.section-split-collage__copy p em,
+.section-split-collage__copy p i {
+    font-style: italic;
 }
 
 .section-split-collage__actions {
@@ -435,12 +551,12 @@ $section_class_list[] = 'section-split-collage--recipe-' . $active_recipe;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: .85em 1.6em;
+    padding: var(--ssc-cta-padding, .85em 1.6em);
     border: 1px solid transparent;
     border-radius: 0;
-    font-size: 16px;
+    font-size: var(--ssc-cta-font-size, 16px);
     font-weight: 600;
-    letter-spacing: .04em;
+    letter-spacing: var(--ssc-cta-letter-spacing, .04em);
     line-height: 1;
     text-decoration: none !important;
     transition: background .25s ease, border-color .25s ease, color .25s ease;
@@ -519,9 +635,9 @@ $section_class_list[] = 'section-split-collage--recipe-' . $active_recipe;
 .section-split-collage__media-wrap {
     position: relative;
     align-self: stretch;
-    min-height: var(--ssc-media-min-height, clamp(460px, 52vw, 760px));
+    max-height: var(--ssc-media-max-height, clamp(460px, 52vw, 760px));
     padding-left: var(--ssc-column-gap, clamp(48px, 5vw, 84px));
-    overflow: visible;
+    overflow: hidden;
 }
 
 .section-split-collage--media-left .section-split-collage__media-wrap {
@@ -533,10 +649,10 @@ $section_class_list[] = 'section-split-collage--recipe-' . $active_recipe;
 .section-split-collage__stage {
     position: relative;
     height: 100%;
-    min-height: inherit;
+    max-height: var(--ssc-media-max-height, clamp(460px, 52vw, 760px));
     padding: 24px;
     background: var(--ssc-stage-bg, var(--ssc-surface, #f6f3ed));
-    overflow: visible;
+    overflow: hidden;
 }
 
 /* ── Overlapping frames grid ── */
@@ -545,7 +661,8 @@ $section_class_list[] = 'section-split-collage--recipe-' . $active_recipe;
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-template-rows: repeat(12, minmax(24px, 1fr));
-    min-height: inherit;
+    height: 100%;
+    max-height: inherit;
     gap: var(--ssc-frame-gap, 6px);
     isolation: isolate;
 }
@@ -665,11 +782,11 @@ $section_class_list[] = 'section-split-collage--recipe-' . $active_recipe;
     .section-split-collage__media-wrap {
         padding-left: 0;
         padding-right: 0;
-        min-height: 420px;
+        max-height: 420px;
     }
 
     .section-split-collage__stage {
-        min-height: inherit;
+        max-height: 420px;
         padding: 24px;
     }
 }
@@ -704,7 +821,7 @@ $section_class_list[] = 'section-split-collage--recipe-' . $active_recipe;
                 <?php endif; ?>
                 <h2 class="section-split-collage__title"><?php echo wp_kses( $section_heading, array( 'br' => array(), 'em' => array(), 'i' => array(), 'strong' => array(), 'span' => array( 'class' => array() ) ) ); ?></h2>
                 <?php if ( $section_intro ) : ?>
-                    <div class="section-split-collage__copy"><?php echo wp_kses_post( $section_intro ); ?></div>
+                    <div class="section-split-collage__copy"><?php echo wp_kses_post( preg_replace( '/<style[^>]*>.*?<\/style>/is', '', (string) $section_intro ) ); ?></div>
                 <?php endif; ?>
                 <?php if ( $button_label && $button_url ) : ?>
                     <div class="section-split-collage__actions">

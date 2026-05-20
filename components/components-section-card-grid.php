@@ -78,6 +78,7 @@ $cta_padding = trim( (string) $get_card_grid_field( 'cta_padding' ) );
 $cta_letter_spacing = trim( (string) $get_card_grid_field( 'cta_letter_spacing' ) );
 $post_grid_content = $get_card_grid_field( 'post_grid_content' );
 $post_content_max_width = trim( (string) $get_card_grid_field( 'post_content_max_width' ) );
+$post_content_alignment = strtolower( trim( (string) $get_card_grid_field( 'post_content_alignment' ) ) );
 $post_content_font_family = strtolower( trim( (string) $get_card_grid_field( 'post_content_font_family' ) ) );
 $post_content_font_weight = trim( (string) $get_card_grid_field( 'post_content_font_weight' ) );
 $post_content_font_size = trim( (string) $get_card_grid_field( 'post_content_font_size' ) );
@@ -347,7 +348,8 @@ $card_button_justify = 'center' === $card_button_alignment ? 'center' : ( 'right
 $card_badge_justify = 'center' === $card_badge_alignment ? 'center' : ( 'right' === $card_badge_alignment ? 'flex-end' : 'flex-start' );
 $enable_card_hover_effect = ( null === $enable_card_hover_effect || '' === $enable_card_hover_effect ) ? 1 : $enable_card_hover_effect;
 $section_heading_color = $section_heading_color ?: 'var(--lacc-color-ink)';
-$card_heading_font_size = $card_heading_font_size ?: 'inherit';
+$card_heading_font_size = trim( (string) $card_heading_font_size );
+$has_card_heading_size_override = '' !== $card_heading_font_size;
 $card_heading_color = $card_heading_color ?: $section_heading_color;
 $section_keyline_position = in_array( $section_keyline_position, array( 'top', 'bottom' ), true ) ? $section_keyline_position : '';
 $section_keyline_color = $section_keyline_color ?: $section_heading_color;
@@ -416,6 +418,8 @@ if ( $section_intro_spacing_bottom ) {
 $section_button_alignment = in_array( $section_button_alignment, array( 'left', 'center', 'right' ), true ) ? $section_button_alignment : $content_alignment;
 $section_bottom_button_alignment = in_array( $section_bottom_button_alignment, array( 'left', 'center', 'right' ), true ) ? $section_bottom_button_alignment : $content_alignment;
 $section_intro_margin = 'center' === $content_alignment ? '0 auto' : ( 'right' === $content_alignment ? '0 0 0 auto' : '0 auto 0 0' );
+$post_content_alignment = in_array( $post_content_alignment, array( 'left', 'center' ), true ) ? $post_content_alignment : 'left';
+$post_content_margin = 'center' === $post_content_alignment ? '3em auto 0' : '3em auto 0 0';
 $heading_margin = 'center' === $content_alignment ? '0 auto 12px' : ( 'right' === $content_alignment ? '0 0 12px auto' : '0 auto 12px 0' );
 $header_margin = 'center' === $content_alignment ? '0 auto' : ( 'right' === $content_alignment ? '0 0 0 auto' : '0 auto 0 0' );
 $intro_cta_justify = 'center' === $section_button_alignment ? 'center' : ( 'right' === $section_button_alignment ? 'flex-end' : 'flex-start' );
@@ -531,7 +535,6 @@ $section_styles = array(
     '--scg-card-heading-font:' . $card_heading_font_stack,
     '--scg-card-heading-weight:' . $card_heading_font_weight,
     '--scg-card-heading-letter-spacing:' . $card_heading_letter_spacing,
-    '--scg-card-heading-size:' . $card_heading_font_size,
     '--scg-card-heading-color:' . $card_heading_color,
     '--scg-heading-color:' . $section_heading_color,
     '--scg-scrollwork-color:' . $scrollwork_color,
@@ -551,6 +554,8 @@ $section_styles = array(
     '--scg-post-font:' . $post_content_font_stack,
     '--scg-post-weight:' . $post_content_font_weight,
     '--scg-post-size:' . $post_content_font_size,
+    '--scg-post-content-align:' . $post_content_alignment,
+    '--scg-post-content-margin:' . $post_content_margin,
     '--scg-cta-font-size:' . $cta_text_size,
     '--scg-cta-padding:' . $cta_padding,
     '--scg-cta-letter-spacing:' . $cta_letter_spacing,
@@ -585,6 +590,9 @@ $section_styles = array(
     '--scg-card-button-justify:' . $card_button_justify,
     '--scg-card-button-align:' . $card_button_alignment
 );
+if ( $has_card_heading_size_override ) {
+    $section_styles[] = '--scg-card-heading-size-override:' . $card_heading_font_size;
+}
 if ( $background_color ) {
     $section_styles[] = 'background-color:' . $background_color;
 }
@@ -845,7 +853,8 @@ if ( 'bottom' === $section_keyline_position ) {
 .section-card-grid__post-content {
     width: 100%;
     max-width: var(--scg-post-content-max-width, 100%);
-    margin: 3em auto 0;
+    margin: var(--scg-post-content-margin, 3em auto 0 0);
+    text-align: var(--scg-post-content-align, left);
     font-family: var(--scg-post-font, var(--scg-intro-font, var(--lacc-type-family-ui, Arial, Helvetica, sans-serif)));
     font-weight: var(--scg-post-weight, var(--scg-intro-weight, 400));
     font-size: var(--scg-post-size, var(--scg-intro-size, 16px));
@@ -1226,7 +1235,7 @@ if ( 'bottom' === $section_keyline_position ) {
 }
 
 [data-scg-col="4"] .section-card-grid__card--pricing {
-    --scg-card-heading-size: clamp(24px, 2.2vw, 34px);
+    --scg-card-heading-size: var(--scg-card-heading-size-override, clamp(24px, 2.2vw, 34px));
 }
 
 .section-card-grid__card--pricing .section-card-grid__card-body > * {
@@ -1321,7 +1330,7 @@ if ( 'bottom' === $section_keyline_position ) {
 .section-card-grid__card--pricing .section-card-grid__card-copy .lacc-pricing-tier__capacity {
     margin: 0;
     color: #946E29;
-    font-size: 12px;
+    font-size: var(--scg-eyebrow-size, 12px);
     font-weight: 700;
     letter-spacing: .16em;
     text-transform: uppercase;
@@ -1330,7 +1339,7 @@ if ( 'bottom' === $section_keyline_position ) {
 .section-card-grid__card--pricing .section-card-grid__card-copy .lacc-pricing-tier__kicker {
     margin: 0;
     color: rgba(81,83,74,0.72);
-    font-size: 12px;
+    font-size: var(--scg-eyebrow-size, 12px);
     font-weight: 700;
     letter-spacing: .16em;
     text-transform: uppercase;
@@ -1558,26 +1567,26 @@ if ( 'bottom' === $section_keyline_position ) {
 
 /* Width-responsive card typography: 2-up -> 3-up -> 4-up -> 5-up */
 .section-card-grid__card-column[data-scg-col="6"] .section-card-grid__card {
-    --scg-card-heading-size: clamp(32px, 2.8vw, 38px);
+    --scg-card-heading-size: var(--scg-card-heading-size-override, clamp(32px, 2.8vw, 38px));
     --scg-card-body-size: 16px;
 }
 
 .section-card-grid__card-column[data-scg-col="4"] .section-card-grid__card {
-    --scg-card-heading-size: clamp(28px, 2.4vw, 34px);
+    --scg-card-heading-size: var(--scg-card-heading-size-override, clamp(28px, 2.4vw, 34px));
     --scg-card-body-size: 16px;
 }
 
 .section-card-grid__card-column[data-scg-col="3"] .section-card-grid__card {
-    --scg-card-heading-size: clamp(24px, 2vw, 30px);
+    --scg-card-heading-size: var(--scg-card-heading-size-override, clamp(24px, 2vw, 30px));
     --scg-card-body-size: 16px;
 }
 
 .section-card-grid__card-column[data-scg-col="15"] .section-card-grid__card {
-    --scg-card-heading-size: clamp(20px, 1.6vw, 24px);
+    --scg-card-heading-size: var(--scg-card-heading-size-override, clamp(20px, 1.6vw, 24px));
     --scg-card-body-size: 12px;
 }
 
-.section-card-grid__card .section-card-grid__card-copy p:not(.lacc-pkg-price):not(.pkg-price):not(.lacc-pricing-price):not(.lacc-pricing-pattern__title):not(.lacc-pricing-pattern__price):not(.lacc-pricing-pattern__lede),
+.section-card-grid__card .section-card-grid__card-copy p:not(.lacc-pkg-price):not(.pkg-price):not(.lacc-pricing-price):not(.lacc-pricing-pattern__title):not(.lacc-pricing-pattern__price):not(.lacc-pricing-pattern__lede):not(.lacc-pricing-tier__capacity):not(.lacc-pricing-tier__kicker):not(.lacc-pricing-tier__subprice),
 .section-card-grid__card .section-card-grid__card-copy li {
     font-family: Arial, Helvetica, sans-serif !important;
     font-size: var(--scg-card-body-size, 16px);
@@ -1586,7 +1595,7 @@ if ( 'bottom' === $section_keyline_position ) {
 
 @media (max-width: 767px) {
     .section-card-grid__card-column .section-card-grid__card {
-        --scg-card-heading-size: clamp(24px, 7vw, 32px);
+        --scg-card-heading-size: var(--scg-card-heading-size-override, clamp(24px, 7vw, 32px));
         --scg-card-body-size: 16px;
     }
 }
