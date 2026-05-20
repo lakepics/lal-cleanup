@@ -10,7 +10,8 @@ use Roots\Sage\Wrapper;
   <?php get_template_part('templates/head'); ?>
   <?php
     $lacc_body_classes = array();
-    if ( function_exists('get_field') && get_field('flush_last_section_to_footer') ) {
+    $lacc_flush_footer = function_exists('get_field') && get_field('flush_last_section_to_footer');
+    if ( $lacc_flush_footer ) {
       $lacc_body_classes[] = 'lacc-flush-footer';
     }
   ?>
@@ -35,7 +36,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <?php include Wrapper\sidebar_path(); ?>
           </aside><!-- /.sidebar -->
         <?php endif; ?>
-    <footer>
+    <footer<?php echo $lacc_flush_footer ? ' style="margin-top:0;"' : ''; ?>>
       <?php
         do_action('get_footer');
         get_template_part('templates/footer');
