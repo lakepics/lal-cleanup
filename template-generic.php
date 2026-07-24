@@ -28,6 +28,7 @@
             $title = $image['title'];
             $alt = $image['alt'];
             $description = $image['description'];
+            $caption = ! empty( $description );
             // Begin caption wrap.
             if ($caption) : ?>
                 <div class="wp-caption">

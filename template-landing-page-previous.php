@@ -41,7 +41,7 @@ echo '<section class="section-hero-slider"><div class="hero-slider">';
                         </div></a>
                     </div>
                     <div class="phone-slider-box">
-                        <a href="https://lakearrowheadconferencecenter.ucla.edu/stay-at-ucla-lake-arrowhead-conference-center/"> <div class="phone-slider-box--text">Accommodations
+                        <a href="/lake-arrowhead-accommodations/"> <div class="phone-slider-box--text">Accommodations
                         </div> </a>
                     </div>
                     <div class="phone-slider-box">

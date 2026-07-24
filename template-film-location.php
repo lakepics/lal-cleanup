@@ -316,7 +316,7 @@
                 <h3>Ensure the comfort of your cast & crew</h3>
                 <p>As a working lodge, we can accommodate your cast and crew in 82 comfortable and unique guest rooms. From cozy chalets to private cottages and guest houses, we have the space your team needs. Meal breaks will please one and all, as we serve deliciously innovative cuisine from our award-winning kitchen.</p>
                 <p>
-                    <a class="button" href="/stay-at-ucla-lake-arrowhead-conference-center/">Learn More about our Property</a>
+                    <a class="button" href="/lake-arrowhead-accommodations/">Learn More about our Property</a>
                 </p>
             </div>
 
@@ -431,12 +431,12 @@
             </div>
             <div class="col-md-4">
                 <img src="https://lakearrowheadconferencecenter.ucla.edu/wp-content/uploads/2021/01/LAL_Film_ResortRooms.jpg" class="img-responsive">
-                <h3><a href="/stay-at-ucla-lake-arrowhead-conference-center/">Resort amenities</a></h3>
+                <h3><a href="/lake-arrowhead-accommodations/">Resort amenities</a></h3>
                 <p>Enjoy a resort experience while you work. Take five in a cozy chalet with deck and fireplace; relax and socialize in our charming Main Lodge; enjoy award-winning dining.</p>
             </div>
             <div class="col-md-4">
                 <img src="https://lakearrowheadconferencecenter.ucla.edu/wp-content/uploads/2021/01/LAL_Film_Recreation.jpg" class="img-responsive">
-                <h3><a href="/recreation/" target="_blank">On-site recreation</a></h3>
+                <h3><a href="/play-at-lake-arrowhead-lodge/" target="_blank">On-site recreation</a></h3>
                 <p>We have a 24-hour fitness center, swimming pool, indoor hot tub, ropes course, tennis, pickleball and basketball courts — and much more — to stay active on set.</p>
             </div>
             <div class="col-md-4">

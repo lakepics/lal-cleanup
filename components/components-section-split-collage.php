@@ -99,7 +99,7 @@ $font_stack = static function ( $font_family, $default_stack ) {
 };
 
 $heading_font_family = $normalize_font_family( $heading_font_family, 'haarlem' );
-$section_intro_font_family = $normalize_font_family( $section_intro_font_family, 'freight-big-pro' );
+$section_intro_font_family = $normalize_font_family( $section_intro_font_family, 'default' );
 $eyebrow_font_family = $normalize_font_family( $eyebrow_font_family, 'haarlem' );
 
 if ( ! in_array( $heading_font_weight, array( '400', '500', '600', '700' ), true ) ) {
@@ -140,7 +140,7 @@ $media_max_height = $media_min_height ?: 'clamp(460px, 52vw, 760px)';
 $heading_font_size_custom = $heading_font_size_custom ?: 'clamp(40px, 4.8vw, 66px)';
 $heading_max_width = $heading_max_width ?: '12ch';
 $section_heading_color = $section_heading_color ?: '#51534a';
-$section_intro_font_size = $section_intro_font_size ?: 'clamp(19px, 2vw, 23px)';
+$section_intro_font_size = $section_intro_font_size ?: '16px';
 $section_intro_max_width = $section_intro_max_width ?: '36rem';
 $eyebrow_font_size = $eyebrow_font_size ?: '15px';
 $eyebrow_color = $eyebrow_color ?: '#f5b62b';
@@ -153,7 +153,7 @@ $cta_padding = $cta_padding ?: '.85em 1.6em';
 $cta_letter_spacing = $cta_letter_spacing ?: '.04em';
 
 $heading_font_stack = $font_stack( $heading_font_family, 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)' );
-$section_intro_font_stack = $font_stack( $section_intro_font_family, 'var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif)' );
+$section_intro_font_stack = $font_stack( $section_intro_font_family, 'var(--lacc-type-family-body-fallback, Arial, Helvetica, sans-serif)' );
 $eyebrow_font_stack = $font_stack( $eyebrow_font_family, 'var(--lacc-type-family-display, HaarlemDeco, Arial, Helvetica, sans-serif)' );
 
 if ( $is_library_demo ) {
@@ -527,10 +527,39 @@ $section_class_list[] = 'section-split-collage--recipe-' . $active_recipe;
     margin: 18px 0 0;
     max-width: var(--ssc-intro-max-width, 36rem);
     color: var(--ssc-heading-color, #51534a);
-    font-family: var(--ssc-intro-font, var(--lacc-type-family-editorial, "Freight Big Pro", Georgia, serif));
+    font-family: var(--ssc-intro-font, var(--lacc-type-family-body-fallback, Arial, Helvetica, sans-serif));
     font-size: var(--ssc-intro-size, clamp(19px, 2vw, 23px));
     font-weight: var(--ssc-intro-weight, 400);
     line-height: 1.62;
+}
+
+.section-split-collage__copy > * {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+.section-split-collage__copy h1,
+.section-split-collage__copy h2,
+.section-split-collage__copy h3,
+.section-split-collage__copy h4,
+.section-split-collage__copy h5,
+.section-split-collage__copy h6 {
+    margin-top: 18px;
+    margin-bottom: 0;
+    text-transform: none;
+}
+
+.section-split-collage__copy ul,
+.section-split-collage__copy ol {
+    margin: 18px 0 0;
+    padding-left: 1.25em;
+}
+
+.section-split-collage__copy li {
+    margin: 0.35em 0;
 }
 
 .section-split-collage__title em,

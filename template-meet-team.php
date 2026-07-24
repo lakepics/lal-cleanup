@@ -148,31 +148,48 @@ $team = get_field( "meet_the_team" );
 
 if ( $team ) {
     foreach ( $team as $team_section ) {
-        echo '<div class="container clearfix two-columns"><h2>' . ( $team_section['team_sub_head'] ?? '' ) . '</h2>';
-        if ( $team_section['team_members'] ) {
+    $team_sub_head = ( is_array( $team_section ) && isset( $team_section['team_sub_head'] ) ) ? $team_section['team_sub_head'] : '';
+    echo '<div class="container clearfix two-columns"><h2>' . $team_sub_head . '</h2>';
+    if ( is_array( $team_section ) && ! empty( $team_section['team_members'] ) && is_array( $team_section['team_members'] ) ) {
             $team_members = $team_section['team_members'];
             foreach ( $team_members as $row ) {
                 echo '<div class="clearfix column left-column column-entry" style="margin-bottom: 35px;">';
-                foreach ( $row['left_column'] as $entry ) {
+        $left_column = ( is_array( $row ) && ! empty( $row['left_column'] ) && is_array( $row['left_column'] ) ) ? $row['left_column'] : array();
+        foreach ( $left_column as $entry ) {
+          $entry_image = ( is_array( $entry ) && isset( $entry['image'] ) ) ? $entry['image'] : '';
+          $entry_alt = ( is_array( $entry ) && isset( $entry['alt_text'] ) ) ? $entry['alt_text'] : '';
+          $entry_name = ( is_array( $entry ) && isset( $entry['name'] ) ) ? $entry['name'] : '';
+          $entry_title = ( is_array( $entry ) && isset( $entry['title'] ) ) ? $entry['title'] : '';
+          $entry_phone = ( is_array( $entry ) && isset( $entry['phone'] ) ) ? $entry['phone'] : '';
+          $entry_email = ( is_array( $entry ) && isset( $entry['email'] ) ) ? $entry['email'] : '';
+          $entry_bio = ( is_array( $entry ) && isset( $entry['bio'] ) ) ? $entry['bio'] : '';
                     echo '<div class="team clearfix">';
-                    echo '<img class="team-img" style="width: 50%;" src="'. ( $entry['image'] ?? '' ) .'" alt="' . ( $entry['alt_text'] ?? '' ) . '" />';
-                    echo '<h3 class="team-name">' . $entry['name'] . '</h3>';
-                    echo '<div class="team-title">' . $entry['title'] . '</div>';
-                    echo '<div class="team-phone">' . $entry['phone'] . '</div>';
-                    echo '<div class="team-email"><a href="mailto:' . $entry['email'] . '">' . $entry['email'] . '</a></div>';
-                    echo '<div class="bio" style="padding-top: 35px; width: 90%;"><strong><div style="padding-bottom: 15px; display: none !important;">What do you like most about working at the Lake Arrowhead Lodge?</strong></div>' . $entry['bio'] . '</div>';
+          echo '<img class="team-img" style="width: 50%;" src="'. $entry_image .'" alt="' . $entry_alt . '" />';
+          echo '<h3 class="team-name">' . $entry_name . '</h3>';
+          echo '<div class="team-title">' . $entry_title . '</div>';
+          echo '<div class="team-phone">' . $entry_phone . '</div>';
+          echo '<div class="team-email"><a href="mailto:' . $entry_email . '">' . $entry_email . '</a></div>';
+          echo '<div class="bio" style="padding-top: 35px; width: 90%;"><strong><div style="padding-bottom: 15px; display: none !important;">What do you like most about working at the Lake Arrowhead Lodge?</strong></div>' . $entry_bio . '</div>';
                     echo '</div>';
                 }
                 echo '</div>';
                 echo '<div class="clearfix column right-column column-entry " style="margin-bottom: 35px;">';
-                foreach ( $row['right_column'] as $entry ) {
+        $right_column = ( is_array( $row ) && ! empty( $row['right_column'] ) && is_array( $row['right_column'] ) ) ? $row['right_column'] : array();
+        foreach ( $right_column as $entry ) {
+          $entry_image = ( is_array( $entry ) && isset( $entry['image'] ) ) ? $entry['image'] : '';
+          $entry_alt = ( is_array( $entry ) && isset( $entry['alt_text'] ) ) ? $entry['alt_text'] : '';
+          $entry_name = ( is_array( $entry ) && isset( $entry['name'] ) ) ? $entry['name'] : '';
+          $entry_title = ( is_array( $entry ) && isset( $entry['title'] ) ) ? $entry['title'] : '';
+          $entry_phone = ( is_array( $entry ) && isset( $entry['phone'] ) ) ? $entry['phone'] : '';
+          $entry_email = ( is_array( $entry ) && isset( $entry['email'] ) ) ? $entry['email'] : '';
+          $entry_bio = ( is_array( $entry ) && isset( $entry['bio'] ) ) ? $entry['bio'] : '';
                     echo '<div class="team clearfix">';
-                    echo '<img class="team-img" style="width: 50%" src="'. ( $entry['image'] ?? '' ) .'" alt="' . ( $entry['alt_text'] ?? '' ) . '" />';
-                    echo '<h3 class="team-name">' . $entry['name'] . '</h3>';
-                    echo '<div class="team-title">' . $entry['title'] . '</div>';
-                    echo '<div class="team-phone">' . $entry['phone'] . '</div>';
-                    echo '<div class="team-email"><a href="mailto:' . $entry['email'] . '">' . $entry['email'] . '</a></div>';
-                    echo '<div class="bio" style="padding-top: 35px; width: 90%;"><strong><div style="padding-bottom: 15px; display: none !important;">What do you like most about working at the Lake Arrowhead Lodge?</strong></div>' . $entry['bio'] . '</div>';
+          echo '<img class="team-img" style="width: 50%" src="'. $entry_image .'" alt="' . $entry_alt . '" />';
+          echo '<h3 class="team-name">' . $entry_name . '</h3>';
+          echo '<div class="team-title">' . $entry_title . '</div>';
+          echo '<div class="team-phone">' . $entry_phone . '</div>';
+          echo '<div class="team-email"><a href="mailto:' . $entry_email . '">' . $entry_email . '</a></div>';
+          echo '<div class="bio" style="padding-top: 35px; width: 90%;"><strong><div style="padding-bottom: 15px; display: none !important;">What do you like most about working at the Lake Arrowhead Lodge?</strong></div>' . $entry_bio . '</div>';
                     echo '</div>';
                 }
                 echo '</div>';

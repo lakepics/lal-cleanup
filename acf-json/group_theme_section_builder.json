@@ -8020,7 +8020,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "clamp(19px, 2vw, 23px)",
+                            "default_value": "16px",
                             "maxlength": "",
                             "allow_in_bindings": 0,
                             "placeholder": "16px",

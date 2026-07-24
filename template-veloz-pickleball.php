@@ -430,7 +430,7 @@
                 </ul>
 
                 <p>Fees include overnight lodging, meals, parking, Internet and clinic registration fees. Participants will also receive a custom-designed water bottle and t-shirt.</p>
-                <p>Our <a href="/stay-at-ucla-lake-arrowhead-conference-center/">chalets are perfect to sleep the whole team</a>! They are two bedroom/two bathroom units with an additional queen sofa pullout located in the living room (max capacity is 6 people per chalet).</p>
+                <p>Our <a href="/lake-arrowhead-accommodations/">chalets are perfect to sleep the whole team</a>! They are two bedroom/two bathroom units with an additional queen sofa pullout located in the living room (max capacity is 6 people per chalet).</p>
             </div>
         </div>
     </div>

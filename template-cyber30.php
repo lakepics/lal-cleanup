@@ -404,7 +404,7 @@
             <div class="col-md-4 col-md-offset-5 mt-50 mb-50 p-50" style="background: #FFFFFF">
                 <h2 class="text-center" style="letter-spacing: .06em;">a higher standard of comfort</h2>
                 <p>Modern amenities meet timeless charm at the UCLA Lake Arrowhead Lodge. Book your unique two-story chalet, featuring comfy beds, plush bedding, ample amenities and a variety of floorplans to suit your needs. Most of our rooms include a fireplace and deck offering beautiful mountain or lake views. Bring your device to stay connected with complimentary Wi-Fi, or unplug entirely. Our mountain atmosphere is enhanced when you leave the workaday world completely behind.</p>
-                <p class="text-center mb-50 pb-50 pt-25"><a class="btn lg" href="https://lakearrowheadlodge.com/stay-at-ucla-lake-arrowhead-conference-center/">View Our Rooms & Cabins</a></p>
+                <p class="text-center mb-50 pb-50 pt-25"><a class="btn lg" href="/lake-arrowhead-accommodations/">View Our Rooms & Cabins</a></p>
             </div>
         </div>
     </div>

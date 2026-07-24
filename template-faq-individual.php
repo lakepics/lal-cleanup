@@ -84,7 +84,7 @@
             </div>
             <div id="guestroom1" class="panel-collapse collapse">
               <div class="panel-body">
-                <p style="margin-top: 15px;">Read more about our room types <a href="https://lakearrowheadconferencecenter.ucla.edu/stay-at-ucla-lake-arrowhead-conference-center/">here</a>. Most of our guest rooms are two-bedroom chalets perfect for accommodating families and small groups.</p>
+                <p style="margin-top: 15px;">Read more about our room types <a href="/lake-arrowhead-accommodations/">here</a>. Most of our guest rooms are two-bedroom chalets perfect for accommodating families and small groups.</p>
                 <p style="margin-top: 15px;">We suggest booking a Deluxe or Premium Chalet to enjoy a full living room or an Open Chalet which has a studio-style living room. All three of these room types offer two bathrooms.</p>
                 <p style="margin-top: 15px;">One bathroom options include a queen bed in the master bedroom, a living room, and a loft. You have a choice between a Chalet with Queen Loft, which has a queen bed upstairs, or a Chalet with Twin Loft, which has two twin beds upstairs.</p>
                 <p style="margin-top: 15px;">If you don't need two bedrooms, we suggest booking our Vintage Single Deluxe room with a bedroom and living room, or Vintage Single without a living room.</p>

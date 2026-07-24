@@ -138,6 +138,14 @@ if ( 'standard' !== $split_media_variant && null === $seam_enabled_field && null
 }
 
 if ( 'collage' === $media_mode ) {
+    $split_collage_intro_size = trim( (string) $get_split_media_field( 'section_intro_font_size' ) );
+    if ( '' === $split_collage_intro_size ) {
+        $split_collage_intro_size = trim( (string) $get_split_media_field( 'intro_copy_size' ) );
+    }
+    if ( '' === $split_collage_intro_size ) {
+        $split_collage_intro_size = trim( (string) $get_split_media_field( 'copy_size_override' ) );
+    }
+
     $override = array(
         'section_anchor_id' => $section_anchor_id,
         'section_eyebrow' => $section_eyebrow,
@@ -162,6 +170,7 @@ if ( 'collage' === $media_mode ) {
         'button_label' => $button_label,
         'button_url' => $button_url,
         'button_style' => $button_style,
+        'section_intro_font_size' => $split_collage_intro_size,
         'section_classes' => trim( 'section-split-media section-split-media--mode-collage ' . $section_classes ),
         'collage_items' => $get_split_media_field( 'collage_items' ),
     );

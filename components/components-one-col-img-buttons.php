@@ -9,7 +9,7 @@
                     <p>Your group can participate in all sorts of outdoor fun — from swimming to shooting hoops, taking a hike, launching a kayak onto the blue waters of Lake Arrowhead, or tossing some bocce balls around the lawn. Take advantage of all our leisure activities and make the most of your time on the mountain. </p>
                     <div class="gen-btn">
                         <div class="gen-btn-animate "></div>
-                        <a href="https://lakearrowheadconferencecenter.ucla.edu/recreation/sports-recreation/">Learn More<i id="space" class="fa fa-arrow-circle-right" aria-hidden="true">
+                        <a href="/play-at-lake-arrowhead-lodge/">Learn More<i id="space" class="fa fa-arrow-circle-right" aria-hidden="true">
                                                 </i>
                                         </a>
                     </div>

@@ -26,6 +26,11 @@ $dining_md_col_value = get_field('dining_md_col_value');
 $dining_md_col_offset = get_field('dining_md_col_offset');
 $dining_heading = get_field('dining_heading');
 $dining_copy = get_field('dining_copy');
+
+$offer_image_url = ( is_array( $offer_image ) && ! empty( $offer_image['url'] ) ) ? $offer_image['url'] : '';
+$offer_image_alt = ( is_array( $offer_image ) && isset( $offer_image['alt'] ) ) ? $offer_image['alt'] : '';
+$activities_image_url = ( is_array( $activities_image ) && ! empty( $activities_image['url'] ) ) ? $activities_image['url'] : '';
+$activities_image_alt = ( is_array( $activities_image ) && isset( $activities_image['alt'] ) ) ? $activities_image['alt'] : '';
 ?>
 <style>
     /* @import must be at top of file, otherwise CSS will not work */
@@ -348,6 +353,7 @@ $dining_copy = get_field('dining_copy');
             $title = $image['title'];
             $alt = $image['alt'];
             $description = $image['description'];
+            $caption = ! empty( $description );
             // Begin caption wrap.
             if ($caption) : ?>
                 <div class="wp-caption">
@@ -374,7 +380,9 @@ $dining_copy = get_field('dining_copy');
                     } ?>
                 </div>
                 <div class="col-md-5 col-md-offset-1 col-xs-12 pt-51 mt-50">
-                    <img class="img-responsive" src="<?php echo $offer_image['url']; ?>" alt="<?php echo $offer_image['alt']; ?>">
+                    <?php if ( $offer_image_url ) : ?>
+                        <img class="img-responsive" src="<?php echo esc_url( $offer_image_url ); ?>" alt="<?php echo esc_attr( $offer_image_alt ); ?>">
+                    <?php endif; ?>
                     <?php if($offer_copy_right) {
                         echo $offer_copy_right;
                     } ?>
@@ -403,7 +411,9 @@ $dining_copy = get_field('dining_copy');
                     </div>
                 </div>
                 <div class="col-md-<?php if($activities_md_col_value) { echo (10 - $activities_md_col_value); } ?> col-md-offset-1 mt-50 pt-51">
-                    <img class="img-responsive" src="<?php echo $activities_image['url'] ?>" alt="<?php echo $activities_image['alt'] ?>">
+                    <?php if ( $activities_image_url ) : ?>
+                        <img class="img-responsive" src="<?php echo esc_url( $activities_image_url ); ?>" alt="<?php echo esc_attr( $activities_image_alt ); ?>">
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

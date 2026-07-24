@@ -84,13 +84,13 @@ a.button {background-color: #ad8a5f;
 </div>
   <div class="column2" style="background-color:#fff;">
 
-<a href="/recreation/sports-recreation/"><img src="https://lakearrowheadconferencecenter.ucla.edu/wp-content/uploads/2020/06/rec2.jpg" style="width: 100% !important;"></a>
+<a href="/play-at-lake-arrowhead-lodge/"><img src="https://lakearrowheadconferencecenter.ucla.edu/wp-content/uploads/2020/06/rec2.jpg" style="width: 100% !important;"></a>
 
 
-    <h3><a href="/recreation/sports-recreation/">Sports & Recreation Activities</a></h3>
+    <h3><a href="/play-at-lake-arrowhead-lodge/">Sports & Recreation Activities</a></h3>
     <p>When your meetings are finished for the day, it's time to slip away to our tranquil grounds for some good old-fashioned fun and relaxation. We offer many fun recreational activities, from active to relaxing! </p>
 
-<a class="button" href="/recreation/sports-recreation/">Learn More</a>  
+<a class="button" href="/play-at-lake-arrowhead-lodge/">Learn More</a>
 
   </div>
 </div>

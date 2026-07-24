@@ -69,7 +69,7 @@ $site_footer_utility_links = array(
                         </a>
                     </div>
                     <div class="site-footer__social-cta-wrap">
-                        <a class="site-footer__cta site-footer__cta--social" href="<?php echo esc_url( home_url('/email-signup/') ); ?>">Join Our Email List</a>
+                        <a class="site-footer__cta site-footer__cta--social" href="<?php echo esc_url( home_url('/email-sign-up/') ); ?>">Join Our Email List</a>
                     </div>
                 </div>
             </div>

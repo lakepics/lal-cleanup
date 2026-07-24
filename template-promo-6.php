@@ -174,7 +174,7 @@ a[class="button external external"] {display: none !important;}
     text-align: center;
     -webkit-appearance: none;
     -webkit-border-radius: 0;
-    border-radius: 0;" href="/request-a-proposal-film/" class="rfpbutton" target="_blank">Schedule a Scout
+    border-radius: 0;" href="/film/filming-request-form/" class="rfpbutton" target="_blank">Schedule a Scout
 </a>
 
 </div>
@@ -210,7 +210,7 @@ a[class="button external external"] {display: none !important;}
     text-align: center;
     -webkit-appearance: none;
     -webkit-border-radius: 0;
-    border-radius: 0;" href="/request-a-proposal-film/" class="rfpbutton" target="_blank">Schedule a Scout</a>
+    border-radius: 0;" href="/film/filming-request-form/" class="rfpbutton" target="_blank">Schedule a Scout</a>
 
 </div>
 
@@ -511,7 +511,7 @@ As a working lodge, we can safely accommodate your cast and crew in 83 comfortab
     position: relative;
     width: auto;
     -webkit-transition: padding .3s ease-out;
-    transition: padding .3s ease-out;" href="/stay-at-ucla-lake-arrowhead-conference-center/">Learn More</a>
+    transition: padding .3s ease-out;" href="/lake-arrowhead-accommodations/">Learn More</a>
 </div>
 
 
@@ -1455,7 +1455,7 @@ Unwind in this vintage cottage, which features a queen bed and an expanded livin
 
 <div class="column3" style="background-color:#fff;">
 <img src="https://lakearrowheadconferencecenter.ucla.edu/wp-content/uploads/2021/01/LAL_Film_ResortRooms.jpg" style="width: 100%">
-<h4><a href="/stay-at-ucla-lake-arrowhead-conference-center/" target="_blank">Resort amenities</a></h4>
+<h4><a href="/lake-arrowhead-accommodations/" target="_blank">Resort amenities</a></h4>
 <p>
 Enjoy a resort experience while you work. Take five in a cozy chalet with deck and fireplace; relax and socialize in our charming Main Lodge; enjoy award-winning dining.
 </p>
@@ -1463,7 +1463,7 @@ Enjoy a resort experience while you work. Take five in a cozy chalet with deck a
 
 <div class="column3" style="background-color:#fff;">
 <img src="https://lakearrowheadconferencecenter.ucla.edu/wp-content/uploads/2021/01/LAL_Film_Recreation.jpg" style="width: 100%">
-<h4><a href="/recreation/" target="_blank">On-site recreation</a></h4>
+<h4><a href="/play-at-lake-arrowhead-lodge/" target="_blank">On-site recreation</a></h4>
 
 <p>
 We have a 24-hour fitness center, swimming pool, indoor hot tub, ropes course, tennis and basketball courts and much more to stay active on set.</p>
@@ -1548,7 +1548,7 @@ Enjoy a touch of SoCal's famous beach lifestyle on our sand volleyball court. Ga
     position: relative;
     width: auto;
     -webkit-transition: padding .3s ease-out;
-    transition: padding .3s ease-out;" href="/request-a-proposal-film/">Schedule a Scout</a>
+    transition: padding .3s ease-out;" href="/film/filming-request-form/">Schedule a Scout</a>
 </div>
 
 

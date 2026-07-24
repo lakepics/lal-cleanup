@@ -33,6 +33,7 @@
                 ?> </div>
                 <div class="footer-email">
                     <h4>Join Our Email List</h4>
+                    <?php $tabindex = 0; ?>
                     <?php gravity_form( 'Join Our Email List', $display_title = false, $display_description = false, $display_inactive = false, $field_values = null, $ajax = false, $tabindex, $echo = true ); ?>
                 </div>
 

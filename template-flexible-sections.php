@@ -54,25 +54,61 @@
   }
   </style>
   <?php if ( have_rows('page_sections') ) : ?>
+    <?php $rendered_page_section = false; ?>
+    <?php
+    $render_component = static function ( $component_name ) {
+        $template_file = locate_template( 'components/components-' . $component_name . '.php', false, false );
+
+        if ( ! $template_file ) {
+            return false;
+        }
+
+        include $template_file;
+        return true;
+    };
+    ?>
     <?php while ( have_rows('page_sections') ) : the_row(); ?>
       <?php $current_layout = get_row_layout(); ?>
-      <?php if ( 'section_video_hero' === $current_layout ) : ?>
-        <?php get_template_part('components/components', 'section-video-hero'); ?>
-      <?php elseif ( 'section_content_block' === $current_layout ) : ?>
-        <?php get_template_part('components/components', 'section-content-block'); ?>
-      <?php elseif ( 'section_card_repeater_grid' === $current_layout ) : ?>
-        <?php get_template_part('components/components', 'section-card-repeater-grid'); ?>
-      <?php elseif ( 'section_image_scroller' === $current_layout ) : ?>
-        <?php get_template_part('components/components', 'section-image-scroller'); ?>
-      <?php elseif ( 'section_split_media' === $current_layout ) : ?>
-        <?php get_template_part('components/components', 'section-split-media'); ?>
+      <?php $normalized_layout = str_replace( '-', '_', strtolower( trim( (string) $current_layout ) ) ); ?>
+      <?php
+      $component_name = '';
 
-      <?php elseif ( 'section_faq_accordion' === $current_layout ) : ?>
-        <?php get_template_part('components/components', 'section-faq-accordion'); ?>
-      <?php elseif ( 'section_split_collage' === $current_layout ) : ?>
-        <?php get_template_part('components/components', 'section-split-collage'); ?>
-      <?php endif; ?>
+      if ( 'section_video_hero' === $normalized_layout ) {
+          $component_name = 'section-video-hero';
+      } elseif ( 'section_card_grid' === $normalized_layout ) {
+          $component_name = 'section-card-grid';
+      } elseif ( 'section_content_block' === $normalized_layout ) {
+          $component_name = 'section-content-block';
+      } elseif ( 'section_card_repeater_grid' === $normalized_layout ) {
+          $component_name = 'section-card-repeater-grid';
+      } elseif ( 'section_image_scroller' === $normalized_layout ) {
+          $component_name = 'section-image-scroller';
+      } elseif ( 'section_split_media' === $normalized_layout ) {
+          $component_name = 'section-split-media';
+      } elseif ( 'section_faq_accordion' === $normalized_layout ) {
+          $component_name = 'section-faq-accordion';
+      } elseif ( 'section_split_collage' === $normalized_layout ) {
+          $component_name = 'section-split-collage';
+      } elseif ( false !== strpos( $normalized_layout, 'card_repeater' ) ) {
+          $component_name = 'section-card-repeater-grid';
+      } elseif ( false !== strpos( $normalized_layout, 'card_grid' ) ) {
+          $component_name = 'section-card-grid';
+      } elseif ( false !== strpos( $normalized_layout, 'content_block' ) ) {
+          $component_name = 'section-content-block';
+      }
+
+      if ( '' !== $component_name && $render_component( $component_name ) ) {
+          $rendered_page_section = true;
+      }
+      ?>
     <?php endwhile; ?>
+    <?php if ( ! $rendered_page_section ) : ?>
+      <div class="flexible-sections-fallback" style="padding-top:60px;padding-bottom:60px;max-width:1200px;margin:0 auto;padding-left:20px;padding-right:20px;">
+        <div class="flexible-sections-fallback__content">
+          <?php the_content(); ?>
+        </div>
+      </div>
+    <?php endif; ?>
   <?php else : ?>
     <div class="flexible-sections-fallback" style="padding-top:60px;padding-bottom:60px;max-width:1200px;margin:0 auto;padding-left:20px;padding-right:20px;">
       <div class="flexible-sections-fallback__content">
